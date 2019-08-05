@@ -1,0 +1,21 @@
+\documentclass{standalone}
+
+\begin{document}
+
+\chapter*{Appendix A - Bioinformatic Pipeline Profiling}\label{profiling}
+
+% Comprendere lo stato dell'infrastruttura a disposizione e monitorarlo è importante non solo per il mantenimento del sistema e la sua stabilità ma anche per lo studio di pipeline di lavoro nell'ottica di una loro ottimizzazione. In particolare, infatti, nel caso di complessi workflow di lavoro, la conoscenza delle quantità di memoria, disco e cpu è utile per la gestione ottimale dei processi in termini di concurrences dei vari job e ottiimizzazione dei tempi di calcolo.
+
+% Con il termine metriche si intende il processo di misurazione delle risorse (raw) utilizzate da uno o più software, a partire da l'utilizzo low-level dato dal sistema operativo, sino a quelle high-level associate alla singola componente di lavoro. Per collezionare, aggregare e visualizzare questa tipologia di informazioni è necessario utilizzare un sistema di monitoring. La differenza tra metriche e profiling risulta del tutto equivalente alla differenza tra dati e informazione contenuta in essi.
+
+% % continua la chiacchiera sul profiling
+
+% Come software di profiling in questo lavoro è stato utlizzato \textit{telegraf}\cite{telegraf}, ovvero un sistema daemon scritto in Go in grado di collezionare ed aggregare metriche di vario tipo ed eseguibile su differenti sistemi operativi senza bisogno di dipendenze esterne. I dati raccolti sono stati sempre salvati in formato testuale ed è stato sviluppato un apposito parser in C++ per il filtraggio dei dati e rendere possibile la successiva manipolazione dei dati. L'output fornito dal software, infatti, risulta di facile manipolazione mediante plug-in per l'import dei dati in strutture a database (es. InfluxDB) ma di difficile visualizzazione in locale. Per le esigenze richieste da questo lavoro è stato quindi più pratico sviluppare una pipeline di processing composta da un iniziale parser ed un successivo script di visualizzazione dei dati mediante codice python. In Figura \ref{fig:telegraf} è riportato un esempio di file di output generato dal software di monitoring.
+
+
+
+% %The importance in the understanding the state of our infrastructure is essential not only for ensuring the reliability and stability of a service but also for a more efficiency use of the available resources. In particular about what concern the memory, cpus and diskIO management is usefull to know the required ammount of each pipeline's program to set the better concurrences configuration. In this section we focused on the importance of monitoring and on the monitoring tool used for the benchmarking of different bioinformatics pipelines.
+
+% %Metrics represent the raw measurements of resource usage that are used by a software or a collection of them. These might be low-level usage summaries provided by the operating system, or they can be higher-level types of data tied to the specific functionality or work of a component. These kind of data could be collected and aggregated by a monitoring system like \textit{telegraf}\ref{telegraf}. In general, the difference between metrics and monitoring mirrors the difference between data and information. Monitoring takes metrics data, aggregates it, and presents it in various ways that allow humans to extract insights from the collection of individual pieces.
+
+\end{document}
