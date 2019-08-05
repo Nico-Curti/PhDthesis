@@ -13,10 +13,25 @@
 \usepackage{colortbl}
 \definecolor{grayrow}{rgb}{0.85, 0.85, 0.85}
 \definecolor{darkgrayrow}{rgb}{0.7, 0.7, 0.7}
+\definecolor{RoyalRed}{rgb}{0.61,0.11,0.19}
 
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhf{}
+%%\fancyhead[LE]{}
+%\fancyhead[RE]{\rightmark}
+%\fancyhead[LO]{\leftmark}
+%\fancyhead[RO]{\thepage}
+%\fancyfoot[CE]{\thepage}
+%\renewcommand{\headrulewidth}{1pt} % it is too short!
+
+%% chpater title style
+% \usepackage[ ]{titlesec}  %
+% \titleformat{\chapter}[display]
+%   { \Huge \bfseries \rmfamily \color{black}}
+%   {\flushright \color{RoyalRed} \bfseries \rmfamily \MakeUppercase { \chaptertitlename } \hspace{1 ex} { \fontsize{60}{60}\selectfont \bfseries \color{RoyalRed} \rmfamily \thechapter }} {15 pt}{\Huge}
+
+\usepackage{emptypage} % remove header in blanck pages
 
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -50,6 +65,7 @@ urlcolor=blue
 \begin{document}
 
 \input{./tex/Cover.tex}
+\thispagestyle{empty}
 
 \begin{flushright}
 %% insert inscription (page 2)
@@ -57,10 +73,11 @@ urlcolor=blue
 
 %% Epigraph
 \chapter*{}
+\pagenumbering{gobble}% Remove page numbers (and reset to 1)
 \epigraph{""\textit{No one know nothing,\\everyone know something,\\but something is nothing to someone,\\while\\something is important to everybody}''}{Daudi, Manyara}
 
 %% Abstract
-
+\pagenumbering{gobble}% Remove page numbers (and reset to 1)
 \input{./tex/Abstract.tex}
 
 \tableofcontents
@@ -68,6 +85,7 @@ urlcolor=blue
 
 %% Introduction
 
+\pagenumbering{arabic}% Arabic page numbers (and reset to 1)
 \input{./tex/Introduction.tex}
 
 %% Chapter 1 - DNetPRO algorithm
@@ -158,6 +176,7 @@ urlcolor=blue
 
 %% Acknowledgment
 
+\pagenumbering{gobble}% Remove page numbers (and reset to 1)
 \input{./tex/Acknowledgment.tex}
 
 

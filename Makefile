@@ -10,8 +10,20 @@ tesifile = main.tex
 tesiout = PhDThesis
 tex_dir = tex
 
+svg_img = $(sort $(wildcard img/*.svg))
+imgs    = $(patsubst img/%.svg, img/%, $(svg_img))
+pdf_img = $(patsubst img/%, img/%.pdf, $(imgs))
+
+
+all: tesi
+
+convert_img: $(pdf_img)
+
+img/%.pdf: img/%.svg
+	inkscape -D -z --file=$< --export-pdf=$@ --export-latex
+
 tesi: $(tesifile) \
-	   $(wildcard img/**/*)
+	    $(pdf_img)
 	latexmk -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(basename $(tesifile)) -jobname=$(tesiout)
 	$(MAKE) clean
 
@@ -27,4 +39,5 @@ clean: $(paper_out)
 cleanall: $(paper_out) clean
 	@$(remove) $(tesiout).aux
 	@$(remove) $(tesiout).bbl
+	@$(remove) $(tesiout).toc
 	@$(remove) $(tesiout).fdb_latexmk
