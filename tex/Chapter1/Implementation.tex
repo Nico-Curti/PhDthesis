@@ -11,13 +11,23 @@ Further optimization can be performed in a cross validation environment and they
 }.
 In this section will be analyzed each part of the pipeline focusing on the optimization strategies used for the algorithm implementation.
 
+The full code is open source and available at~\cite{DNetPRO}.
+The code installation is automatically tested using \emph{travis} (for Linux and MacOS environments) and \emph{appveyor} (for Windows environments) at every commit.
+The installation can be performed using \emph{CMake} or \emph{Makefile} and a full set of installation instructions can be found in the on-line project documentation.
+
+The Python version of the algorithm (see next sections) can be installed via \emph{setup.py} and the compilable parts of it checked via \emph{CMake} or \emph{Makefile}.
+The Python installer provides also the full list of dependencies of the project which will be automatically installed by the main.
+
+In the Github repository can be found also a full list of example scripts and utilities to obtain the results shown in the next sections.
+The complete benchmark pipeline can be found which can be run on cluster environment using the SnakeMake version of it (see next section).
+
 
 \subsection[Pairs evaluation]{Combinatorial algorithm}\label{implementation:couples}
 
 The most computational time expensive step of the algorithm is certainly the couples evaluation.
 From a computation point-of-view this step requires $(O(N^2))$ operations for the full set of combination.
 Since we want to perform also an internal Leave-One-Out cross validation for the couple performances estimation we have to add a $(O(S-1))$ to the algorithmic complexity.
-Lets focused on some preliminary considerations before the implementation discussion:
+Let's focused on some preliminary considerations before the implementation discussion:
 
 \begin{itemize}
 
@@ -70,6 +80,7 @@ So the best strategy to use in this case is to perform the full set of $N^2$ ite
   Obviously the iteration where the inner loop variable is lower than the outer one will be skipped by an if condition.
 }.
 
+\lstset{style=snippet}
 \begin{lstlisting}[language=Python, caption=Python parallel couples evaluation algorithm, label=code:py_couples]
 import pandas as pd
 import itertools
@@ -118,7 +129,13 @@ In the next sections we will discuss the computational performances of this naiv
 
 \subsection[Sorting]{Pair sort}\label{implementation:sort}
 
-The sorting algorithm starts at the end of variable couple evaluation and re-order the pairs in ascending order to ease the next steps of signature identification.
+The sorting algorithm starts at the end of variable couple evaluation and re-order the pairs in ascending order to ease the next steps of signature identification\footnote{
+  Up to now we are talking about couples performances meaning the classification accuracy of the feature pair.
+  In some cases the simple accuracy is useless, especially when we are working with unbalanced population classes.
+  In this case we can use a statistical score which takes in count the balanced between the right classifications of our samples (e.g Matthews Correlation coefficient, MCC).
+  The developed code evaluate either the global accuracy of classification either the MCC and, with slight changes allows to perform the re-ordering of feature pair according to the desired score.
+  Since in the next section we will discuss the application of the DNetPRO algorithm to real data using only the classification accuracy as score, we focused only on it in the next sections.
+}.
 This step is performed in the same code (and same parallel section) of the before section but it deserves an own topic for a better focus on the parallelization strategy chosen.
 Moreover there are many common parallel implementation of sorting algorithm and to reach the best performances we have to chose the appropriated one.
 
@@ -142,17 +159,186 @@ Then, going backwards to the subdivisions at each step we merge the sub-arrays t
 
 \subsection[Network Signature]{Network signature}\label{implementation:network}
 
+After the rearrangement of feature pairs in ascending order we can start to create the variable network and looking for its connected components as putative signatures.
+Each feature will be represent a node in the network and a given pair will be a connection between them.
+Since the full storage of the network would require a matrix $(N\times N)$ we have to chose a better strategy for the processing\footnote{
+  We are working in the hypothesis of very large $N$.
+}.
+
+The ordered set of couples computes in the previous section represents a so-called \emph{COO sparse matrix} (Coordinate Format sparse matrix) and we can reasonable assume that the desired signature will be composed by the top ranking of them.
+So, the first step will be to cut a reasonable percentage of the full set of pairs and process only them.
+
+Moreover we are interested in a small set of variables unknown a prior.
+The load of all the node pairs into the same graph can slow down the computation.
+An iterative method (with stop criteria) can perform better in the large case of samples and only in worst cases the full set of pair will be loaded.
+
+Since the described algorithm step does not require particular performance efficiency now, the main code used in our simulation was written in pure Python.
+A C++ implementation of the same algorithm was developed with the help of the Boost Graph Library~\cite{BGL} (BGL) but to not overweight the code installation was reserved just for a style exercise.
+In this section we discuss about this second version and about the strategies chosen to implement an efficiency version of it.
+This version of the algorithm was also used as stand alone method for other applications that will be presented later.
+
+BGL is a very wide framework for graph analysis based on template structures.
+The library efficiency discourage the users to re-implement the same algorithms and for the current purposes it was resulted more than sufficient.
+
+Starting from the top scorer feature pairs we progressively add each couple of nodes to an empty graph.
+At each iteration step the number of connected components is evaluated until a desired number of nodes (greater or equal) is not reached\footnote{
+  This procedure is quite similar to put a threshold value on the couple performances or just simpler highlight inside the full network the components linked by weights greater than a given value.
+}.
+Two degree of freedom are left to the user: in order, \textsf{pruning} and \textsf{merging}.
+The first one perform an iteratively remotion of nodes with degree equal (or lower) than 1, i.e pendant nodes, until the graph core is not filtered.
+The \textsf{merging} clause choose between the biggest connected component or the the set of all the disjoint connect components as putative signature.
+The output of \textsf{merging} step determine the number of nodes in the graph which have been considered for the stop criteria.
+
+A crucial role in the optimization of the algorithm is played by the BGL graph structure chosen.
+Since the two degree of freedom imply a continuous rearrangement of the graph nodes the strategy chosen is to apply a filter mask over the main graph structure that highlights the only part of interest.
+This can be done using the \textsf{boost :: filtered\_graph} object of BGL.
+In ~\ref{code:featuresel} the C++ snippet is shown.
+
+\lstset{style=c++}
+\begin{lstlisting}[language=C++, caption=DNetPRO signature extraction, label=code:featuresel]
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/connected_components.hpp>
+#include <boost/graph/filtered_graph.hpp>
+#include <boost/function.hpp>
+#include <boost/graph/iteration_macros.hpp>
+
+typedef typename boost :: adjacency_list< boost :: vecS, boost :: vecS, boost :: undirectedS, boost :: property< boost :: vertex_color_t, int >, boost :: property < boost :: edge_index_t, int > > Graph;
+using V = Graph :: vertex_descriptor;
+using Filtered = boost :: filtered_graph < Graph, boost :: keep_all, boost :: function < bool(V) > >;
+
+
+std :: vector < int > FeatureSelection (int ** couples, const int & min_size, bool pruning=true,  bool merging=true)
+{
+  Graph G;
+  std :: vector < V > removed_set;
+  Filtered Signature (G, boost :: keep_all {}, [] (V v) {return removed_set.end() == removed_set.find(v);});
+
+  int L = 0, leave, Ncomp, i = 0;
+
+  while ( true ){
+
+    boost :: add_edge (couples[i][0], couples[i][1], G);
+
+    while ( pruning ){
+
+      leave = 0;
+      BGL_FORALL_VERTICES (v, Signature, Filtered);
+        if ( boost :: in_degree (v, Signature) < 2 ){
+          removed_set.insert (v);
+          ++ leave;
+        }
+
+      if ( leave == 0 )
+        break;
+    }
+
+    if ( num_vertices (G) - removed_set.size() ){
+
+      components.resize (num_vertices (G));
+
+      Ncomp = boost :: connected_components (Signature, &components[0]);
+
+      if ( merging ){
+
+        BGL_FORALL_VERTICES (v, Signature, Filtered)
+          core.push_back ( static_cast < int >(v) );
+      }
+      else {
+
+        std :: map < int, int > size;
+        for ( auto && comp : components ) ++ size[comp];
+
+        auto max_key = std :: max_element (std :: begin(size), std :: end(size), [] (auto && p1, auto && p2) { return p1.second < p2.second; })->first;
+
+        BGL_FORALL_VERTICES (v, Signature, Filtered)
+          if ( components[v] == max_key )
+            core.push_back( static_cast < int >(v) );
+      }
+
+      components.resize (0);
+      L = static_cast < int >(core.size());
+    }
+
+    removed_set.clear();
+
+    if ( L >= min_size ) break;
+
+    ++ i;
+
+    core.resize (0);
+  }
+
+  return core;
+}
+
+\end{lstlisting}
+
+From the above description should be clear that given any set of ordered (in ascending order) couples of variables, this algorithm allows to extract the core network independently by the procedure which generate them.
+So it can be used as dimensionality reduction algorithm of general purpose network structures.
+An example of this kind of application was reported in Appendix B - Venice Road Network in which we summarized the results of~\cite{Mizzi2018, CurtiSDPS2018}.
+
+
 \subsection[Python wrap]{DNetPRO in Python}\label{implementation:python}
+
+Up to now we are focusing on the algorithm performances leaving out the usability of the DNetPRO algorithm for the (research) community.
+Despite the C++ is one of the most efficient and old programming language\footnote{
+  Still in common use in scientific research groups.
+}, the Python language users are increasing in the last few years.
+Python is becoming leader in scientific research publications and the large part of Machine Learning analysis are performed using Python libraries (in particular \emph{scikit-learn} library).
+So we have to reach a compromise between the performances and usability of new developed codes and it can be reached using the Cython~\cite{behnel2010cython} framework.
+
+Cython \quotes{language}\footnote{
+  It is not a real programming language since it is based on Python.
+  However it has its own syntax and keywords which are different either from Python either from C++.
+  In the end it needs a compiler to run and it is certainly different from Python.
+} allows an easy interface between C++ codes and Python language.
+With a relatively simple wrapping of the C++ functions they can be used inside a pure Python code preserving as much as possible the computational performances of the pure C++ version.
+In this way we can create a simple Python object which performs the full set of DNetPRO steps and moreover which is compatible with the functions provided by the other machine learning libraries.
+
+With this purposes we chose to operate a double wrap of the C++ functions to separate as much as possible the C++ component from the Python one\footnote{
+  Cython wrap are very powerful tools for C++ integration into Python code but, by experience, they are difficult to manage by pure-Python users.
+  A simple workaround is to perform a first wrap of the C++ function inside a Cython object and a second wrap of it into a pure-Python one.
+  This two-steps wrap certainly gets worse the computational performances but it allows a complete separation between the compiled part of the code (Cython) and the interpreted (Python) one.
+  Moreover we can leave back all the checks on input parameters
+  in the C++ version since they will be performed at run time in the Python wrap.
+}.
+The Python object was written considering a full compatibility with the \emph{scikit-learn} library to allow the use of the DNetPRO feature selection as an alternative component of other Machine Learning pipelines.
+
 
 \subsection[Pipeline]{DNetPRO in Snakemake}\label{implementation:snakemake}
 
+The starting (silent) hypothesis done until now is that we are running the DNetPRO algorithm on a single dataset (or better on a single Hold-Out subdivision of our data).
+On this configuration it is legal to stress as much as possible the available computational resources and parallel processing each step of the algorithm.
+
+If we want introduce our algorithm inside a larger pipeline in which we compare the resulting obtained over a Cross-Validation of our datasets we have to re-think about the parallelization done.
+In this case each fold of the cross validation can be interpreted as independent task and following the main programming rule \emph{\quotes{parallelize the outer, vectorize the inner}} we should spawn a thread for each fold and perform the couple evaluation in sequential mode.
+Certainly, the optimal solution would be to separate our jobs across a wide range of inter-connected computers and still perform the same computation in parallel but it would required to implement our hybrid (C++ and Python) pipeline in a Message Passing Interface (MPI) environment.
+
+An easier solution to overcome all these problems can raise by the use of SnakeMake~\cite{snakemake} rules.
+SnakeMake is an intermediate language between Python and Make.
+Its syntax is almost like the Make language but with the help of the easier and powerful Python functions.
+It is wide use for bioinformatic pipeline parallelization since it can easily applied over single or multi-cluster environment (master-slave scheme) with a simple change of command line.
+
+\begin{center}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{qdanet_pipe_single.pdf}
+\caption{Example of DNetPRO pipeline on a single cross validation.
+It is highlighted the independence of each fold from each other.
+This scheme shows a possible distribution of the jobs on a multi-threading architecture or for a distributed computing architecture.
+The second case allows further parallelization scheme (hidden in the graph) for each internal step (e.g. the evaluation of each pair of genes).
+}
+\label{fig:dnet_workflow}
+\end{figure}
+\end{center}
+
+So to improve the scalability of our algorithm we implement the benchmark pipeline scheme using Snakemake rules and a work-flow example for a single cross-validation is shown in Fig.~\ref{fig:dnet_workflow}.
+In this case each step of Fig.~\ref{fig:dnet_workflow} can be performed by a different computer unit preserving the multi-threading steps, with a maximum scalability and the possibility to enlarge the problem size and the number of variables.
+
+
+
 \subsection[Time performances]{Time performances}\label{implementation:timing}
 
-\subsection[Code availability]{Code availability}\label{implementation:repo}
-
-The full code is open source and available at~\cite{DNetPRO}.
-The code installation is automatically tested using \emph{travis} (for Linux and MacOS environments) and \emph{appveyor} (for Windows environments) at every commit.
-The installation can be performed using \emph{CMake} or \emph{Makefile} and a full set of installation instructions can be found in the on-line project documentation.
 
 %Description of the algorithm implementation in C++.
 %Parallelization of the algorihtm.
