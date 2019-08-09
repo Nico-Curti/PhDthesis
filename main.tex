@@ -57,6 +57,36 @@ linkcolor=black,
 urlcolor=blue
 }
 
+
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{snippet}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=t,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=snippet}
+
+\usepackage[]{algorithm2e}
+
 %% Custom commands
 
 \newcommand{\quotes}[1]{``#1''}
@@ -74,7 +104,7 @@ urlcolor=blue
 %% Epigraph
 \chapter*{}
 \pagenumbering{gobble}% Remove page numbers (and reset to 1)
-\epigraph{""\textit{No one know nothing,\\everyone know something,\\but something is nothing to someone,\\while\\something is important to everybody}''}{Daudi, Manyara}
+\epigraph{""\emph{No one know nothing,\\everyone know something,\\but something is nothing to someone,\\while\\something is important to everybody}''}{Daudi, Manyara}
 
 %% Abstract
 \pagenumbering{gobble}% Remove page numbers (and reset to 1)
@@ -165,6 +195,7 @@ urlcolor=blue
 
 %% Appendix
 
+\input{./tex/Appendix/DiscriminantAnalysis.tex}
 \input{./tex/Appendix/Profiling.tex}
 % reference to the studies about performances of the developed algorithms.
 

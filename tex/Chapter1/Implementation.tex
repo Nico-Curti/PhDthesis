@@ -1,14 +1,164 @@
 \documentclass{standalone}
 
+
 \begin{document}
 
 \section[DNetPRO Implementation]{Algorithm implementation}\label{implementation}
 
-Description of the algorithm implementation in C++.
-Parallelization of the algorihtm.
-Use of BGL for network processing (filter node using view)
-Wrap in Python for Sklearn use
-Time Performances on different machines.
+The DNetPRO algorithm is made by a sequence of different steps which have to be performed sequentially for a signature extraction.
+For this purpose each step can be optimized independently using the full set of available computational resources\footnote{
+Further optimization can be performed in a cross validation environment and they will be discussed later in this section.
+}.
+In this section will be analyzed each part of the pipeline focusing on the optimization strategies used for the algorithm implementation.
+
+
+\subsection[Pairs evaluation]{Combinatorial algorithm}\label{implementation:couples}
+
+The most computational time expensive step of the algorithm is certainly the couples evaluation.
+From a computation point-of-view this step requires $(O(N^2))$ operations for the full set of combination.
+Since we want to perform also an internal Leave-One-Out cross validation for the couple performances estimation we have to add a $(O(S-1))$ to the algorithmic complexity.
+Lets focused on some preliminary considerations before the implementation discussion:
+
+\begin{itemize}
+
+\item \textbf{Performances:} we aim to apply our method on large datasets since we have to focused on time performances of the code and particularly on this step (identified as bottleneck).
+To reduce as much as possible the call stack inside our code we should perform the entire code with the small number of functions as possible and possibly inside a unique main.
+Moreover we can simplify the for loop and take care of the automatic code vectorization performed by the optimizer at compile time (SIMD, \emph{Single Instruction Multiple Data}).
+A further optimization step to take in count is related to the cache accesses: the use of custom objects inside the code should benefit from cache accesses (AoS vs SoA, \emph{Array of Structure} vs \emph{Structure of Arrays}).
+
+\item \textbf{Interdependence:} the variable couple performances evaluation is a completely independent computational process and can be faced on as $N^2$ separately tasks.
+Thus it can be easily parallelizable to increase speed performance.
+
+\item \textbf{Simplify:} the use of simple classifier for performance evaluation simplify the computation and the storage of the relevant statistical quantities.
+In the discussed implementation we focused on a Diag-Quadratic classifier (see Appendix A for further informations) and only means and variances of the data plays a role in its evaluation.
+
+\item \textbf{Cross Validation:} the use of Leave-One-Out cross validation allows to perform substantially optimizations in the statistical quantities evaluations across the folds (see discussion in Appendix A - Numerical Implementation).
+
+\item \textbf{Numerical stability:} we have also to take in care the numerical stability of the statistics since we are working in the assumption of a reasonable small number of samples compared to the amount of variables.
+This behavior particularly affects the variance estimation: the chose of a numerical stable formula for this quantity play a crucial role for the computation because the classifier score has to be normalized by it.
+
+\end{itemize}
+
+With these idea in mind we can write a C++ code able to optimize this step of computation in a multi-threading environment with the purpose of testing its scalability over multi-core machines.
+
+Starting from the first discussed point we chose to implement the full code inside a unique main function with the help of only a single SoA custom object and one external function (\emph{sorting algorithm} discussed in the next section).
+This allows us to implement the code inside a single parallel section reducing the time of thread spawns.
+We chose to import the data from file in sequential mode since the I/O is not affected by parallel optimizations.
+
+Following the instructions suggested in Appendix A - Numerical Implementation we compute the statistic quantities on the full set of data before starting the couples evaluation.
+Taking a look to the variance equation
+
+$$
+\sigma^2 = \frac{\sum_{i=1}^{S}(x_i - \mu)^2} {S - 1} = \frac{\sum_{i=1}^{S}({x_i}^2)} {S - 1} - \mu^2
+$$
+\\
+we can see that the first equation involve the computation of the mean as a simple sum of the elements but a large number of subtractions from it that are numerical unstable for data outliers (moreover because they are elevated to square).
+The better choice in this case is given by the second formulation that allows us to compute the both quantities in the formula inside a single parallel loop\footnote{
+  To facilitate the SIMD optimization the code is written using only float (single precision) and integer variables.
+  This precaution takes in care the register alignment inside the loops and facilitate the compile time optimizer.
+}.
+At each cross validation we will use the two pre-calculated sums of variables removing the only data point excluded by the Leave-One-Out.
+Another precaution to take in care is to add a small epsilon to the variance before its use at denominator inside the classifier function to prevent numerical underflow.
+
+The main role is still given by the couples loop.
+The set of pair variables can be obtained only by two nested for loops in C++ and naive optimization can be obtained by simply reduce the number of iterations following the triangular indexes of the full matrix (by definition the score of the couple $(i, j)$ is equal to the score of $(j, i)$).
+This precaution easily allows the parallelization of the external loop and drastically reduce the number of iteration but it also creates a link between the two iteration variables.
+The new release of OpenMP libraries~\cite{OpenMP}\footnote{
+  The OpenMP library is the most common non-standard library for C++ multi-threading applications.
+} (from OpenMP 4.5) introduce a new \emph{keyword} of the language that allows the collapsing of nested for loops in a single one (whose number of iterations is given by the product of the single dimensions) in the only exception of completely independences of iteration variables.
+So the best strategy to use in this case is to perform the full set of $N^2$ iterations with a single \textsf{collapse} clause in the external loop\footnote{
+  Obviously the iteration where the inner loop variable is lower than the outer one will be skipped by an if condition.
+}.
+
+\begin{lstlisting}[language=Python, caption=Python parallel couples evaluation algorithm, label=code:py_couples]
+import pandas as pd
+import itertools
+import multiprocessing
+
+from sklearn.naive_bayes import GaussianNB
+from sklearn.model_selection import LeaveOneOut, cross_val_score
+
+def couple_evaluation (pair):
+  f1, f2 = pair
+  samples = data.iloc[[f1, f2]]
+  score = cross_val_score(GaussianNB(), samples.T, labels,
+                          cv=LeaveOneOut(), n_jobs=1).mean() # nested parallel loops are not allowed
+
+  return (f1, f2, score)
+
+def read_data (filename):
+  data = pd.read_csv(filename, sep='\t', header=0)
+  labels = data.columns.astype('float').astype('int')
+  data.columns = labels
+
+  return (data, labels)
+
+if __name__ == '__main__':
+
+  filename = 'data.txt'
+
+  global data, labels
+  data, labels = read_data(filename)
+
+  Nfeature, Nsample = data.shape
+
+  couples = itertools.combinations(range(0, Nfeature), 2)
+
+  nth = multiprocessing.cpu_count()
+
+  with multiprocessing.Pool(nth) as pool:
+    score = zip(*pool.map(couple_evaluation, couples))
+
+\end{lstlisting}
+
+In this section we also provide an \quotes{equivalent} Python implementation with the use of common machine learning libraries and parallel settings (ref.~\ref{code:py_couples}).
+In the next sections we will discuss the computational performances of this naive implementation with C++ one discussed above.
+
+
+
+\subsection[Sorting]{Pair sort}\label{implementation:sort}
+
+The sorting algorithm starts at the end of variable couple evaluation and re-order the pairs in ascending order to ease the next steps of signature identification.
+This step is performed in the same code (and same parallel section) of the before section but it deserves an own topic for a better focus on the parallelization strategy chosen.
+Moreover there are many common parallel implementation of sorting algorithm and to reach the best performances we have to chose the appropriated one.
+
+The sorting algorithm are already implemented in serial version in the major part of the languages (Python and C++ included).
+The naive version of the algorithms are also quite optimized and they perform the computation with complexity $(O(N\dot\log(N)))$\footnote{
+  We are considering only un-stable sort in which the preserving order of equivalent elements in the array is not guaranteed.
+}.
+In this case we have not to re-invent any sorting technique but only insert as well as possible these algorithms inside a parallel sections and use the variable format chosen for couple performances storage.
+Since we are working with SoA objects we need to re-order all the structure arrays in the same way.
+So we can not use the a simple sort function but can compute the set of indexes that allow the re-order of the arrays, the so called \textsf{argsort} method.
+To rearrange the indexes according to a given array of values we can use the templates in C++.
+
+% insert image merge-sort here
+
+As parallelization strategy we can yet invoke the new \emph{keywords} of OpenMP libraries and apply a \emph{divide-and-conquer} architecture using a tree of independent \emph{tasks}\footnote{
+  Tasks in OpenMP are code blocks that the compiler wraps up and makes available to be executed in parallel.
+}.
+Using the maximum power of two of the available threads we split the computation in equal size sub-arrays and perform independent \textsf{argsort}s.
+Then, going backwards to the subdivisions at each step we merge the sub-arrays two-by-two until the root.
+
+
+\subsection[Network Signature]{Network signature}\label{implementation:network}
+
+\subsection[Python wrap]{DNetPRO in Python}\label{implementation:python}
+
+\subsection[Pipeline]{DNetPRO in Snakemake}\label{implementation:snakemake}
+
+\subsection[Time performances]{Time performances}\label{implementation:timing}
+
+\subsection[Code availability]{Code availability}\label{implementation:repo}
+
+The full code is open source and available at~\cite{DNetPRO}.
+The code installation is automatically tested using \emph{travis} (for Linux and MacOS environments) and \emph{appveyor} (for Windows environments) at every commit.
+The installation can be performed using \emph{CMake} or \emph{Makefile} and a full set of installation instructions can be found in the on-line project documentation.
+
+%Description of the algorithm implementation in C++.
+%Parallelization of the algorihtm.
+%Use of BGL for network processing (filter node using view)
+%Wrap in Python for Sklearn use
+%Time Performances on different machines.
 
 
 \end{document}
