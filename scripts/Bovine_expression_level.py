@@ -69,6 +69,12 @@ if __name__ == '__main__':
            #weigth='semibold',
            color='k')
 
+  fig.text(0.0, 0.9, 'b',
+           size=30,
+           color='k',
+           #weight='bold'
+           )
+
   fig.legend(str_label, scatterpoints=1,
              fontsize=24, ncol=3)
 
