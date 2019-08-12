@@ -13,5 +13,5 @@
 # directories
 [Rr]ef*/
 [Ii]mg/*.pdf*
-[Ss]cripts/data.txt
+[Ss]cripts/*.txt
 [Ss]cripts/merge_sort.dot
