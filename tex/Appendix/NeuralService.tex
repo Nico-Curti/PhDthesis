@@ -1,0 +1,115 @@
+\documentclass{standalone}
+
+\begin{document}
+
+\chapter*{Appendix E - Neural Network as Service}\addcontentsline{toc}{chapter}{Appendix E - Neural Network as Service}
+
+One of the final goals of Machine Learning is certainly the automation of the processes.
+We develop complex models to perform tasks that can be automatically executed by a computer without human supervision.
+Neural Networks are classically mathematical tools used for these purposes and was wide discussed in Chapter~\ref{neural} of this work.
+Beyond the Neural Network structures and purposes for which they are made there is a still uncovered topic to discuss: the automation of these kind of algorithms inside a computer device.
+In this section we discuss an example of implementation of these algorithms as service in computer server.
+In particular we will talk about the implementation of the \emph{FiloBlu} service which is a project developed in collaboration with the University of Sapienza (Roma) and the INFN-CNAF of Bologna.
+Since this work is still in progress and its purpose goes beyond the current topic, we will focused only on the implementation of the service without any reference on the Machine Learning algorithm used.
+This is a further proof that the developed techniques are totally independent by the final application purpose.
+
+A service is a software that is executed in background in a machine.
+In Unix machines it is often call \emph{daemon} while in Windows machine is called \emph{Windows service}.
+A service can be started only by admin users and it goes on without any user presence.
+An other important requirement is the ability to re-start when some troubles occurs in the machine functionality and/or at the boot of the machine.
+
+A Machine Learning service could be used in applications in which we have to manage an asynchronous stream of data for long time intervals.
+An example could be the case which the data provider is identified by an App or a video-camera.
+These data should stored inside a central database that can be located in a different device or in the same computer in which the service run.
+Since the service process runs in background the only communication channel with the user is given by log files.
+A log file is a simple readable file in which are saved the base informations about the current status of the service.
+Thus, it is crucial to set appropriate check-points inside the service script and chose the minimum quantity of informations that the service should write to make user-understandable its status.
+
+\section*{FiloBlu Service}\addcontentsline{toc}{section}{FiloBlu Service}
+
+In the \emph{FiloBlu} project we have a stream of data provided by an external App that are stored in a central database server.
+The Machine Learning service has to read the information in the database, to process them and finally write the results in the same database.
+All these operations have to be performed with high frequency since the result of the algorithm are shown in a real-time application.
+This frequency will be the clock-time of the process function, i.e at each time interval (as small as we like) the process task will be called and we have the desired results in output.
+At the same time we have to be care of the time required by our Machine Learning algorithm: not all the algorithms can process data in real time and the process function frequency has to be less than the time required by the algorithm or we can lose some frequency clock.
+
+The best efficiency by a service can be obtained splitting as much as possible the required functionality in small-and-easy tasks.
+Small task can evaluated as independent functions with an associated frequency that in this case can be reduced as much as possible.
+The \emph{FiloBlu} required functionality can be reviewed as a sequence of 3 fundamental steps and other 2 optional ones: read the data from the database, process the data with the Machine Learning algorithm and write the obtained results on the database are certainly the fundamental ones; update the Machine Learning model and clear old log files are optional steps.
+To further improve the efficiency of the service we can give each independent step to a different thread.
+The whole set of tasks will be piloted by a master thread given by the service itself.
+In this way the service will be computational efficient and moreover it does not weight on the computer performances.
+We have always take in mind that the computer which host the service have to be effected by the daemon process as less as possible either in memory either on computational point-of-view.
+Now we only have to synchronize our steps with appropriate clock frequencies.
+
+Let's start from the reading data function.
+Since our data are assumed to be stored in a database this function have to perform a simple query and extract the latest data inserted.
+Obviously the efficiency of the step is based on the efficiency of the chosen query.
+The data extracted will be saved in a common container shared between the list of thread and thus belonging to the master.
+The choice of an appropriate shared container is a second point to carefully take in mind.
+This container should be light an thread-safe to avoid thread concurrency.
+While the second request is implementation dependent the first one can be faced on using a FIFO container\footnote{
+  FIFO container, i.e \emph{First-In-First-Out}, is a special data structure in which the first element added will be processed as first and then automatically removed from it.
+}.
+In this way we can ensure that the application will saved a fixed maximum of data and it will not occupy large portion of memory (RAM).
+
+The second task is identified by the Machine Learning function which process the data.
+The algorithm will take from the FIFO container of the previous step (if there is) and it will save the result in a second FIFO container for the next step.
+The time frequency of the step is given by the time required by the Machine Learning algorithm.
+
+The third step will keep the data from the FIFO container of results (if there is) and it performs a second query (a writing one in this case) to the database.
+Also in this case the frequency is given by the efficiency of the chosen query.
+
+The last two steps can be executed without press time requirements and are useful only on a large time scale.
+
+Each step perform its independent logging on a single shared file.
+If an error occurs the service logs the message and save the current log-file in a different location to prevent possible log-cleaning (optional step).
+Then the service will be re-started.
+
+% \begin{figure}[htbp]
+% \centering
+% \def\svgwidth{0.8\textwidth}
+% \input{./img/FiloBlu.pdf_tex}
+% \caption{
+% }
+% \label{fig:FiloBlu}
+% \end{figure}
+
+%The above computational scheme of the service is shown in Fig.~\ref{fig:FiloBlu}.
+
+We implemented this type of service in pure Python~\cite{FiloBlu}.
+The developed service was customize according to the server requirements of the project\footnote{
+  The FiloBlu service is a Windows service and it can not run on Unix machines.
+  Moreover the database used in the project is a MySQL one so the queries and the libraries used are compatible only with this kind of databases.
+}.
+We chose the Python language either for its simplicity in the code writing either for its thread native module which ensures a total thread-safety of each variable.
+Using simple decorator we are able to run each function in a separate-detached thread as required by the previous instructions.
+The project includes a documentation about its use (also in general applications) and it can be easily installed via \textsf{setup}.
+In the \emph{FiloBlu} project we use a Neural Network algorithm written in \emph{Tensorflow}.
+\emph{Tensorflow} does not allow to run background process directly so the problem was overcame using a direct call to a Python script which perform full list of steps into an infinite loop.
+In this way the service can be re-started also if the process-service is killed.
+The service can be driven using a simple \emph{Powershell} script provided in the project.
+
+
+
+\section*{Data Transmission}\addcontentsline{toc}{section}{Data Transmission}
+
+In the above configuration we have focused on the pipeline which process the stream of data ignoring the problems about the communication between the external device and the machine which host the service.
+The \emph{FiloBlu} project uses an external App to send data to the main server.
+So we have two systems which have to communicate between them automatically via Internet connection.
+In general we could also manage sensitive data and the Internet communication could became a vulnerability in our application.
+To face on this problem we developed a simple TCP/IP client-server package which also supports a RSA cryptography, the \emph{CryptoSocket} package~\cite{CryptoSocket}.
+
+The communication security could be an important point in many research applications and a valid cryptography is essential.
+The RSA cryptography is considered one of the most secure cryptography for data transmission and it is quite easy to implement.
+In this package we implemented a simple wrap around the \emph{socket} Python library to perform a serialization of our data which will be (optionally) processed by a custom RSA algorithm.
+In this way different kind of data could be sent by the client at the same time.
+The client script could be adapted with slight modification for any user need and also complex Python structure could be transmitted between two machines.
+The cryptography module was written in pure C++ for computational efficiency and a \emph{Cython} wrap was provided for a pure-Python application.
+\emph{CryptoSocket} has only demonstrative purpose and so it works only for a 1-by-1 data transmission (1 server and 1 client).
+
+Since this second implementation could be used also for other applications it was treated as a separated project and it has its own open-source code.
+The \emph{CryptoSocket} package can be installed via \emph{CMake} in any platform and a full list of installation instructions is provided in the project repository.
+The continuous integration of the project is guaranteed by testing the package installation across multiple C++ compilers and Unix and Windows platforms.
+
+\end{document}
