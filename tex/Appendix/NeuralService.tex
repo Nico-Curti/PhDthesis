@@ -3,6 +3,7 @@
 \begin{document}
 
 \chapter*{Appendix E - Neural Network as Service}\addcontentsline{toc}{chapter}{Appendix E - Neural Network as Service}
+\markboth{Appendix E}{Neural Network as Service}
 
 One of the final goals of Machine Learning is certainly the automation of the processes.
 We develop complex models to perform tasks that can be automatically executed by a computer without human supervision.
@@ -26,6 +27,7 @@ A log file is a simple readable file in which are saved the base informations ab
 Thus, it is crucial to set appropriate check-points inside the service script and chose the minimum quantity of informations that the service should write to make user-understandable its status.
 
 \section*{FiloBlu Service}\addcontentsline{toc}{section}{FiloBlu Service}
+\markboth{Appendix E}{FiloBlus Service}
 
 In the \emph{FiloBlu} project we have a stream of data provided by an external App that are stored in a central database server.
 The Machine Learning service has to read the information in the database, to process them and finally write the results in the same database.
@@ -93,6 +95,7 @@ The service can be driven using a simple \emph{Powershell} script provided in th
 
 
 \section*{Data Transmission}\addcontentsline{toc}{section}{Data Transmission}
+\markboth{Appendix E}{CryptoSocket}
 
 In the above configuration we have focused on the pipeline which process the stream of data ignoring the problems about the communication between the external device and the machine which host the service.
 The \emph{FiloBlu} project uses an external App to send data to the main server.
