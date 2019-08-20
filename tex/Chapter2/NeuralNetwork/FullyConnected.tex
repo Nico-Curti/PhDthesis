@@ -1,0 +1,70 @@
+\documentclass{standalone}
+
+\begin{document}
+
+\section[Fully Connected]{Fully Connected Neural Network}\label{connected}
+
+The fundamental unit of each Neural Network model is the \emph{simple Perceptron} (or single neuron).
+The \emph{Perceptron} it the simpler mathematical model of biological neuron and it is based on the Rosenblatt~\cite{Rosenblat} model which identifies a neuron as a computational unit with input, synaptic weights and an activation threshold (or function).
+Following the biological model of Hodgkin and Huxley~\cite{HHmodel} (H-H model), we have an action potential, i.e the output of the neuron, given by
+
+$$
+y = \sigma\left(\sum_{i=1}^{N}w_i x_i + w_0 \right)
+$$
+\\
+where $\sigma$ is the activation function, $w_i$ are the synaptic weights and $x_i$ the inputs.
+The $w_0$ coefficient identifies the bias of the linear combination and it is left as parameter to be tune by the optimization algorithm.
+
+The connection weights $w_i$ are tuned during the training section by the chosen updating rule.
+The standard updating rule is simply given
+
+$$
+w_i(\tau + 1) = w_i(\tau) + \gamma(t - y)x
+$$
+\\
+where $\gamma$ is the gain or step size ($\gamma \in [0, 1]$) and $t$ is the desired output.
+In other words we have to firstly compute the difference between the current output and the desired one, i.e the error, and weight this error by the gain factor and the corresponding input.
+Repeating the error computation and the updating rule we can bring the weights to convergence.
+From a geometrical point-of-view this process is equivalent to an hyper-plane placement defined by $w_0 + < w, x >$ which splits an $n-$dimensional space into two half-spaces, i.e two desired classes.
+
+The mathematical formulation already highlights the numerous limits of this model.
+The output function is a simple linear combination of the input with a vector of weights and so only linearly separable problems can be learned by the \emph{Perceptron}\footnote{
+  A classical example of learning problems is given by the XOR logic function.
+  Since the XOR output is not linearly separable the Perceptron could not converge.
+}.
+Moreover we can manage only two classes since an hyper-plane divide the space in only two half-spaces.
+
+To overcome these problems we can join together multiple Perceptron units into a more complex network of interaction in which the output of a neuron feed-forward the input of an other.
+This is the Multi-layers Perceptron (MLP) configuration and if the graph is fully connected, i.e each neuron is connected to all the others, we talk about \emph{fully connected neural networks} (or \emph{dense} neural network, DNN).
+
+Given the Perceptron formulas, the extrapolation to the MLP architecture is straight-forward and given by
+
+$$
+y = \sigma\left(X \cdot W + W_0 \right)
+$$
+\\
+where we simply pass from the vector formulation to the matrix one.
+The updating rule consequentially becomes
+
+$$
+W(\tau + 1) = W(\tau) + \gamma X^T (T - Y)
+$$
+\\
+where also in this case we simply pass to the matrix formalism.
+From the re-iteration of such structures we can join together multiple fully connected layers and so obtain multiple neuron layers jointly together with different levels of complexity and units (an input layer followed by multiple \emph{hidden} layers).
+
+The fully connected Neural Networks overcome the told above \emph{Perceptron} problems using a combination of linear functions (single \emph{Perceptron} units) and they gain more useful properties:
+
+\begin{itemize}
+
+\item If the activation functions of \emph{all} the hidden units in the Neural Network are linear, then the network architecture is equivalent to a network without hidden units.
+
+\item If the number of hidden units is smaller than either the number of input units either the number of output ones, then the network can generate transformations from inputs to outputs as much general as possible since the information is lost in the dimensionality reduction performed by the hidden units.
+
+\item We can find multiple weight configurations, i.e $W$ matrices, which give us the same mapping function from inputs to outputs.
+
+\end{itemize}
+
+%% Aggiungere parte sulla back-propagation
+
+\end{document}

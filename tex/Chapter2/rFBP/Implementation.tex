@@ -1,0 +1,36 @@
+\documentclass{standalone}
+
+\begin{document}
+
+
+\section[Algorithm Optimization]{Algorithm Optimization}\label{rFBP}
+
+The rFBP algorithm is a learning algorithm model developed to justify the learning process of a binary neural network framework.
+The model is based on a spin-glass distribution of neurons put on a fully connected neural network architecture.
+In this way each neuron is identified by a spin and so only binary weights (-1 and 1) can be assumed by each entry.
+The learning rule which controls the weight updates is given by the Belief Propagation method.
+
+A first implementation of the algorithm was proposed in the original paper~\cite{BaldassiE7655} jointly with an open-source Github repository.
+The original version was written in Julia language and despite it is a quite efficient implementation the Julia programming language stays on difficult and far from many users.
+To broaden the scope and use of the method a C++ implementation was developed with a jointly \emph{Cython} wrap for Python users.
+The C++ language guarantees also better computational performances against the Julia implementation.
+This implementation is optimized for parallel computing and is endowed with a newly written C++ library called \emph{Scorer} (see Appendix D for further details), which is able to compute a large number of statistical measurements based on a hierarchical graph scheme.
+With this optimized implementation we believe we can encourage researchers to approach these alternative algorithms and to use them more frequently in real context.
+
+Like the Julia implementation also the C++ one provides the entire rFBP framework in a single library callable via a command line interface.
+The library widely uses template method to perform dynamic specialization of the methods between two magnetization version of the algorithm.
+The main categories of objects needed by the algorithm are wrapped in handy C++ objects easy to use also from the Python interface.
+A further optimization is given by the reduction of the number of available functions: in the original implementation a large amount of small functions are used to perform a single complex computation step enlarging the amount of call stack; in the C++ implementation the main functions are re-written with the minimum quantity of functions to ease the vectorization of the code.
+
+The full rFBP library is released under MIT license and it is open-source on Github~\cite{ReplicatedFocusingBeliefPropagation}.
+The on-line repository provides also a full list of installation instructions which could be performed via \emph{CMake} or \emph{Makefile}.
+The continuous integration of the project is guaranteed in every operative system using \emph{Travis CI} and \emph{Appveyor CI} which test more than 15 different C++ compilers and environments.
+
+To encourage the Machine Learning community in the use of this kind of methods we provide a Python version based on a \emph{Cython} wrap of the C++ objects.
+This wrap guarantees also a good integration with the other common Machine Learning tools provided in the \emph{scikit-learn} Python package; in this way we can use the rFBP algorithm as equivalent in other pipelines.
+Like other Machine Learning algorithm also the rFBP one depends on many parameters, i.e its hyper-parameters, which has to be tuned according to the given problem.
+The Python wrap of the library was written also according the \emph{scikit-optimize} Python package to allow an easy hyper-parameters optimization using the already implemented classical methods.
+
+% Insert time testing performances
+
+\end{document}
