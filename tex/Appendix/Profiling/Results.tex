@@ -33,21 +33,24 @@ The virtual machine has the highest consumption despite the fact that the execut
 
 \begin{figure*}[t!]
 \centering
-\includegraphics[width=\linewidth]{memory_per_function.png}
+\def\svgwidth{\textwidth}
+\input{./img/memory_per_function.pdf_tex}
 \caption{Memory used for each step of the pipeline. Due to the GATK memory allocation strategy, all steps use a baseline amount of memory proportional to the available memory. Smaller nodes, like the low power ones, require more memory as the baseline allocated memory is not sufficient to perform the calculation.}
 \label{fig:memory-per-step}
 \end{figure*}
 
 \begin{figure*}[t!]
 \centering
-\includegraphics[width=\linewidth]{time_performances.png}
+\def\svgwidth{\textwidth}
+\input{./img/time_performances.pdf_tex}
 \caption{Time elapsed per step of the pipeline, and total elapsed time. In the sorting step, Pentium J is 20 times slower than the reference, probably due to the limited cache size.}
 \label{fig:performance-per-step}
 \end{figure*}
 
 \begin{figure*}[t!]
 \centering
-\includegraphics[width=\linewidth]{energy_and_cost.png}
+\def\svgwidth{\textwidth}
+\input{./img/energy_and_cost.pdf_tex}
 \caption{Energy consumption per pipeline step and on the whole pipeline.
 Energy consumption is estimated as the time taken by the step, multiplied by the number of cores used in the step and the power consumption per core (TDP divided by the available cores).
 }
