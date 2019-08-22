@@ -2,6 +2,9 @@
 
 \begin{document}
 
+% https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0
+% https://towardsdatascience.com/activation-functions-and-its-types-which-is-better-a9a5310cc8f
+% https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6
 
 \section[Activation functions]{Activation Functions}\label{activation}
 
@@ -64,11 +67,10 @@ The derivative is expressed as function of $f(x)$ to optimize their numerical ev
 \label{tab:activations}
 \end{table*}
 
-
-
 As can be shown in Tab.~\ref{tab:activations} it is easier to compute the activation function derivative as function of it.
 This is an (well known) important type of optimization in computation term since it reduces the number of operations and it allows to apply the backward gradient directly.
 
+%% move this paragraph to numpynet chapter!
 To better understand the effects of activation functions we can perform these functions on a simple test image and comment the results.
 This can be easy done using the example scripts inserted inside our library\footnote{
   Aware of the author no other example implementations have been done.

@@ -22,7 +22,7 @@ In this case we can access to a contiguous memory portion of the first matrix si
 This configuration allows the cache optimization in the access to the first matrix since we can store in the small portion of cache memory a series of row elements and use them in a vectorization environment.
 
 From the second matrix we have to extract the elements from each column.
-This means that the elements will be given by a discontinuous portion of memories (the column elements will be given by $x[0], x[M], x[2M], \dots, x[N*(M-1)]$).
+This means that the elements will be given by a discontinuous portion of memories (the column elements will be given by $x[0], x[M], x[2M], \dots, x[N(M-1)]$).
 In this case we can not insert a full column into the cache memory and in consequence we will have a \emph{cache-miss} at each iteration\footnote{
   The \emph{cache-miss} happens when a required data can not be found into the cache and so its search has to be done in the main memory (RAM).
 }.
