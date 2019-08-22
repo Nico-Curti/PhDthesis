@@ -12,7 +12,7 @@ After the training section we can verify the efficiency of our training using a 
 If we have prior knowledge about the output of our test set we can compute the accuracy (or more generally the score) of our model; in the other case we will simply have an extrapolation of our data.
 
 A wide range of documentations and implementations have been written on this topic and it is more and more hard to move around the different sources.
-Leader on this topic are became the multiple open-source Python libraries available on-line as \emph{Tensorflow}, \emph{Pytorch} and \emph{Caffè}.% cite
+Leader on this topic are became the multiple open-source Python libraries available on-line as \emph{Tensorflow}~\cite{tensorflow2015-whitepaper}, \emph{Pytorch}~\cite{paszke2017automatic} and \emph{Caffè}~\cite{Jia:2014:Caffe}.
 Their portability and efficiency are closely related on the simplicity of the Python language and on the simplicity in writing complex models in a minimum number of code lines.
 Only a small part of the research community uses more deeper implementation in C++ or other low-level programming languages.
 About them it should be mentioned the \emph{darknet project} which created a sort of standard in object detection applications using a pure Ansi-C library.
@@ -38,20 +38,20 @@ The simplicity of this library we will allow to give a first numerical analysis 
   Aware of the author no other example implementations have been done.
   This makes the NumPyNet library a useful tool for neural network study and a virtual laboratory for new neural network functions.
 }.
-Each NumPyNet function was tested against the \emph{Tensorflow} implementation of the same methods with an automatic testing routine through \emph{PyTest}~\cite{PyTest}.
+Each NumPyNet function was tested against the \emph{Tensorflow} implementation of the same methods with an automatic testing routine through \emph{PyTest}~\cite{Okken:2017:PTP:3176124}.
 The full code is open-source on the Github page of the project.
 Its installation is guaranteed by a continuous integration framework of the code through \emph{Travis CI} for Unix environments and \emph{Appevyor CI} for Windows users.
 The library supports Python version $\ge2.6$\footnote{
   The library provides also an \textsf{Image} object to load and process images.
   The object is based on OpenCV API~\cite{OpenCV}.
   OpenCV does not yet support Python version 2.7 and 3.3 so the whole NumPyNet package does not work on these two version of Python.
-  You can just exclude the \textsf{Image} scripts from the package or use a novel wrap based on different library (e.g \textsf{Pillow}~\cite{Pillow}).
+  You can just exclude the \textsf{Image} scripts from the package or use a novel wrap based on different library (e.g \textsf{Pillow}).
 }.
 
-As term of comparison we will discuss the more sophisticated implementation into the Byron library.
+As term of comparison we will discuss the more sophisticated implementations into the Byron library.
 Byron (Build YouR Own Neural network) library is written in pure C++ with the support of the modern standard 17.
 We deeply use the c++17 functionality to reach the better performances and flexibility of our code.
-what makes Byron an efficient alternative to the competition is the complete multi-threading environment in which it works.
+What makes Byron an efficient alternative to the competition is the complete multi-threading environment in which it works.
 Despite the most common Neural Network libraries are optimized for GPU environments, there are only few code implementations which exploit the fully functionality of a multiple CPUs architecture.
 This gap discourage multiple research groups on the use of such computational intensive models in their applications.
 Byron works in a fully parallel section in which is single computational function is performed using the full set of available cores.

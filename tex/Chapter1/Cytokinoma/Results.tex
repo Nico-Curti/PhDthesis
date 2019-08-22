@@ -1,0 +1,64 @@
+\documentclass{standalone}
+
+\begin{document}
+
+\subsection[Results]{Resuls}\label{cytokine_result}
+
+The best signature identified to discriminate between CTL and AD subjects is composed of three cytokines, IFN$\alpha$2, TNF$\alpha$, and IL-1$\alpha$.
+Its total accuracy on the CTL-AD test set is 65.27\% (with 61\% CTL and 66\% AD correctly classified).
+The sensitivity/specificity values for classification is reported in Tab.~\ref{tab:cytokine}.
+
+\begin{table}[!htb]
+  \begin{minipage}{.5\linewidth}
+    \caption{}
+    \centering
+      \begin{tabular}{cccc}
+          \hline \rowcolor{darkgrayrow}
+                      &  \textbf{Accuracy}  &  \textbf{Sensitivity}  &  \textbf{Specificity} \\
+                      &  AD vs. CTL         &  AD                    &    CTL                \\
+          \hline
+              Men     &    16/25 (64.00\%)  &    8/12 (66.67\%)      &    8/13 (61.54\%)     \\
+              Women   &    33/48 (68.75\%)  &   27/38 (71.05\%)      &    6/10 (60.00\%)     \\
+              Total   &    47/72 (65.24\%)  &   36/54 (66.66\%)      &   11/18 (61.11\%)     \\
+          \hline
+      \end{tabular}
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \centering
+      \caption{}
+      \begin{tabular}{cccc}
+          \hline \rowcolor{darkgrayrow}
+                      & \textbf{Prediction} &  \textbf{Sensitivity}  &  \textbf{Specificity} \\
+                      &  MCI as non-CTL     &  MCI                   &    CTL                \\
+          \hline
+              Men     &    15/26 (57.69\%)  &   15/26 (57.69\%)      &   24/36 (66.67\%)     \\
+              Women   &    41/47 (87.23\%)  &   41/47 (87.23\%)      &   23/51 (45.09\%)     \\
+              Total   &    62/73 (84.93\%)  &   62/73 (84.93\%)      &   36/87 (41.38\%)     \\
+          \hline
+      \end{tabular}
+  \end{minipage}
+  \caption{The sensitivity/specificity values for AD vs CTL classification by the 3-protein signature, for the total sample dataset and stratified by sex.
+    The second table shows the result of predictions of MCI samples with the same signature as non-CTL samples.
+    In this case the sensitivity and specificity were computed in relation to the CTL in the training setlast column \quotes{prediction} shows the classification of MCI samples with the same signature as non-CTL samples.
+  }
+\end{table}
+
+% insert figures here
+
+Applying this signature to classify MCI vs CTL samples, it correctly predicted 84.93\% of MCI as \quotes{non-CTL}.
+Two cytokines from the signature, IFN$\alpha$2 and IL-1$\alpha$, showed a significant difference between groups also at a single cytokine level in previous analyses.
+We plotted them as a representative in all population (ref. Fig.~\ref{} A) and stratified the scatter plots by sex (ref Fig.~\ref{} B, C).
+The CTL group resulted better separated from MCI and AD in women as compared with men.
+The trajectory of the subject groups moves from CLT to AD, and interestingly the identified signature is able to differentiate MCI from CLT better than from AD.
+This is a promising result since it seems more useful to recognize MCI from CLT than full-blown AD from CLT.
+Probably the poor sensibility in detecting AD could be linked to the disease evolution that makes nebulous and vague the cytokine pattern in the brain of these patients, as confirmed from several studies that found both upregulation and downregulation of many cytokines in AD cerebral samples.
+This fact could be more accentuated in our population of old age subjects in which markers of ageing are often mixed with those of dementia.
+
+In this study we show that: 1) an easy to get cytokines signature composed of three molecules - IFN$\alpha$2, TNF$\alpha$, and IL-1$\alpha$ - is able to discriminate the studied groups;  2) the combination of IFN$\alpha$2 and IL-1$\alpha$ able to distinguish CTL from  MCI and AD better in women than in men.
+Sex (referred to biological differences) and gender (psychosocial and cultural differences) affect human brain biology throughout individual lifespans, affecting male and female cognitive functions differently.
+Epidemiological studies show that women have a higher risk of AD as well as a higher dementia prevalence, particularly in the old age, as compared with men.
+
+In conclusion, the identified cytokinome signature shows a good accuracy in differentiating aMCI from CTL, especially in female.
+Understanding sex differences will help to define individualized preventive and treatment interventions for AD.
+
+\end{document}

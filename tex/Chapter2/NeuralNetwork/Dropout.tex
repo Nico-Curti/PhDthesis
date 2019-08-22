@@ -2,7 +2,98 @@
 
 \begin{document}
 
-\section[Dropout function]{Droout function}\label{dropout}
+\section[Dropout function]{Dropout function}\label{dropout}
+
+Many times along this work we have been talked about the \emph{over-fitting} problem.
+The over-fitting problems arise when the complexity of our model becomes too high regard the amount of available data, i.e when the number of parameters of our model is comparable to the number of available data.
+A classical example is given by the polynomial fitting problem.
+Given an initial set of $N$ data points we can always find a polynomial curve of degree equal to $N-1$ which can perfectly fit our data.
+In this case the model flexibility is minimum and new additional data points difficulty lies on the same curve.
+In other words we tuned each model parameter according to the given data set but we completely lose the possibility of generalization.
+
+In Neural Network models we have to manage a large quantities of parameters and it is quite easy to stumble on this problem.
+A possible workaround is given by a Dropout function.
+This function simply dropping out some neuron units into a neural network during the training phase.
+Ignoring some neurons means that they will not be considered during a particular (single) forward/backward step.
+So, given a set of neuron we have a probability $p$ to keep the neuron and $1-p$ to remove it.
+In this way we can reduce the co-dependency of nearest neurons inside the network and so reduce the possibility of over-fitting.
+An other common way is to regularize the neuron outputs with penalty loss function\footnote{
+  Classical examples are given by the L1 (Laplacian) and L2 (Gaussian) penalties.
+  Both these functions are implemented either in NumPyNet and Byron but for sake of brevity we will not discuss about them.
+}.
+
+
+
+\subsection[Numerical Implementation]{Numerical Implementation}\label{drop_num}
+
+The above description bring us to a straight forward implementation of the algorithm into the NumPyNet library.
+
+
+\lstset{style=snippet}
+\begin{lstlisting}[language=Python, caption=NumPyNet version of Dropout function, label=code:py_dropout]
+import numpy as np
+
+class Dropout_layer(object):
+
+  def __init__(self, prob):
+
+    self.probability = prob
+    self.scale = 1. / (1. - prob)
+
+    self.batch, self.w, self.h, self.c = (0, 0, 0, 0)
+
+    self.output, self.delta = (None, None)
+
+  def __str__(self):
+    batch, out_width, out_height, out_channels = self.out_shape()
+    return 'Dropout       p = {:.2f}        {:4d}, {:4d}, {:4d}, {:4d}  ->  {:4d}, {:4d}, {:4d}, {:4d}'.format(
+           self.probability,
+           batch, out_width , out_height , out_channels,
+           batch, out_width , out_height , out_channels)
+
+  def out_shape(self):
+    return (self.batch, self.w, self.h, self.c)
+
+  def forward(self, inpt):
+
+    self.batch, self.w, self.h, self.c = inpt.shape
+
+    self.output = inpt.copy()
+
+    self.rnd = np.random.uniform(low=0., high=1., size=self.output.shape) < self.probability
+    self.output[self.rnd] = 0.
+    self.rnd = ~self.rnd
+    self.output[self.rnd] *= self.scale
+
+  def backward(self, delta=None):
+
+    if delta is not None:
+      delta[self.rnd] *= self.scale
+      self.rnd = ~self.rnd
+      delta[self.rnd] = 0.
+
+\end{lstlisting}
+
+The above code numerically reproduce the theoretical formulation given.
+After the initialization of the private object variables the forward function generate a set of random positions and apply them (if they are less than the given probability) to the output: these positions will be turned off and the others will be multiply by a scale probability factor to increase their importances.
+The backward function simply invert the transformation on the back-propagated gradient \textsf{delta}.
+
+Despite this straight forward implementation we have to carefully manage some crucial points into the C++ equivalent.
+We are working on a complete parallel region so after the (sequential) initialization initialization of the layer object the forward/backward phases are evaluated by all the available threads in parallel.
+This bring us to a standard problem in multi-threading programming: the generation of independent random numbers among threads.
+Inside a parallel region all the variables declared are (by definition) shared among threads and so if we simply create a random number generator in it we have to face on the thread-concurrency.
+As consequence the random number generated will not be independent but (most probably) repeated by each thread\footnote{
+  The deterministic generation of random number is hard to reproduce into a parallel environments despite the seed initialization.
+  The \quotes{probability} of repeat the same sequence is related to the affinity of each thread to the given process.
+}.
+The simple workaround implemented into Byron library is given by assigning a random number generator to each thread (with its own seed and indexed by the thread Id).
+In this way we can ensure a totally independence of the random numbers generated during the forward phase (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/dropout_layer.cpp}{on-line}).
+
+% insert figure here
+
+As visualization example we can use a simple test image and apply our transformation (see Fig.\ref{fig:dropout}).
+As expected our input image shows many pixel turned off according to the given probability.
+
 
 
 \end{document}

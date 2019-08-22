@@ -18,7 +18,7 @@
 
 My PhD thesis in Applied Physics (a.a 2019/2020).
 
-To compile the project you can use the [`Makefile`]() with the simple `make` command.
+To compile the project you can use the [`Makefile`](https://github.com/Nico-Curti/PhDthesis/blob/master/Makefile) with the simple `make` command.
 In this way all the figure into the `img` directory will be converted into a pdf_tex and the full Pdf document generated.
 
 
