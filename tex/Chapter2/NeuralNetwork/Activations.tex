@@ -30,35 +30,35 @@ An important feature of activation function, in fact, is that is should be diffe
 \textbf{Name} & \textbf{Equation} & \textbf{Derivative} \\
 \hline
 
-Linear   &  $f(x) = x$                           &  $f'(x) = 1$                                                  \\
+Linear   &  $f(x) = x$                              &  $f'(x) = 1$                                                                                           \\
 
-Logistic &  $f(x) = \frac{1}{1 + \exp(-x)}$      &  $f'(x) = (1 - f(x)) * f(x)$                                  \\
+Logistic &  $f(x) = \frac{1}{1 + \exp(-x)}$         &  $f'(x) = (1 - f(x)) * f(x)$                                                                           \\
 
-Loggy    &  $f(x) = \frac{2}{1 + \exp(-x)} - 1$  &  $f'(x) = 2 * (1 - \frac{f(x) + 1}{2}) * \frac{f(x) + 1}{2} $ \\
+Loggy    &  $f(x) = \frac{2}{1 + \exp(-x)} - 1$     &  $f'(x) = 2 * (1 - \frac{f(x) + 1}{2}) * \frac{f(x) + 1}{2} $                                          \\
 
-Relu     &  $f(x) = \max(0, x)$                  &  $f'(x) = $                                                   \\
+Relu     &  $f(x) = \max(0, x)$                     &  $f'(x) = \left\{\begin{array}{rl} 1   & \mbox{if} x > 0 \\0    & \mbox{if} x\leq0 \end{array}\right.$ \\
 
-Elu      &  $f(x) = \max(\exp(x) - 1, x)$        &  $f'(x) = $                                                   \\
+Elu      &  $f(x) = \max(\exp(x) - 1, x)$           &  $f'(x) = \left\{\begin{array}{rl} 1   & \mbox{if} x\geq0\\x+1  & \mbox{if} x<0    \end{array}\right.$ \\
 
-Relie    &  $f(x) = $                            &  $f'(x) = $                                                   \\
+Relie    &  $f(x) = $                               &  $f'(x) = \left\{\begin{array}{rl} 1   & \mbox{if} x>0   \\1e-2 & \mbox{if} x\leq0 \end{array}\right.$ \\
 
-Ramp     &  $f(x) = $                            &  $f'(x) = $                                                   \\
+Ramp     &  $f(x) = $                               &  $f'(x) = \left\{\begin{array}{rl} x+1 & \mbox{if} x>0   \\ x   & \mbox{if} x\leq0 \end{array}\right.$ \\
 
-Tanh     &  $f(x) = $                            &  $f'(x) = $                                                   \\
+Tanh     &  $f(x) = \tanh(x)$                       &  $f'(x) = 1 - x^2$                                                                                     \\
 
-Plse     &  $f(x) = $                            &  $f'(x) = $                                                   \\
+Plse     &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
 
-Leaky    &  $f(x) = $                            &  $f'(x) = $                                                   \\
+Leaky    &  $f(x) = $                               &  $f'(x) = \left\{\begin{array}{rl} 1   & \mbox{if} x>0   \\ C   & \mbox{if} x\leq0 \end{array}\right.$ \\
 
-Stair    &  $f(x) = $                            &  $f'(x) = $                                                   \\
+HardTan  &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
 
-HardTan  &  $f(x) = $                            &  $f'(x) = $                                                   \\
+LhTan    &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
 
-LhTan    &  $f(x) = $                            &  $f'(x) = $                                                   \\
+Selu     &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
 
-Selu     &  $f(x) = $                            &  $f'(x) = $                                                   \\
+Swish    &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
 
-Swish    &  $f(x) = $                            &  $f'(x) = $                                                   \\
+SoftMax  &  $f(x) =\frac{\exp(x)}{\sum_{i=1}^{N}x}$ &  $f'(x) = $                                                                                            \\
 
 \hline\\
 \end{tabular}

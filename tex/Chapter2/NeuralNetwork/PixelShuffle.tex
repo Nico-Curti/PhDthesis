@@ -12,7 +12,7 @@ Its application is closely related to the single-image super-resolution (SISR) r
 The first SISR neural networks start with a pre-processing of low-resolution image in input with a bicubic up-sample.
 Then the image, with the same dimension of the desired output, feeds the model which aim to increase the resolution and fix its details.
 In this way the amount of parameters and moreover the computational required by the training section increase (by a factor equal to the square of the desired up-sample scale), despite the image processing required is smaller.
-To overcome this problem a Pixel Shuffle transformation, also known as \emph{sub-pixel convolution}, was introduced~\cite{Wenzhe2016Shuffle}.
+To overcome this problem a Pixel Shuffle transformation, also known as \emph{sub-pixel convolution}, was introduced~\cite{Wenzhe2016Shuffle}: in this work the authors proofed the equivalence between a regular transpose convolution, i.e the previous standard transformation to enlarge the input dimensions, and the sub-pixel convolution transformation without losing any information.
 The Pixel Shuffle transformation reorganize the low-resolution image channels to obtain a bigger image with few channels.
 An example of this transformation is shown in Fig.~\ref{fig:pixel_shuffle}.
 
@@ -42,5 +42,117 @@ Moreover each library implements the transformation following its own data organ
   \emph{Pytorch} has a so-called channel-first implementation and so the input tensor is organized as $C \times H \times W$.
 }.
 For this reason we will propose in our libraries a dynamic version of the algorithm in C++ able to perform both version of the algorithm.
+
+
+\subsection[Numerical Implementation]{Numerical Implementation}\label{shuffle_num}
+
+The algorithmic implementation of the pixel-shuffle transformation is essentially a re-indexing of the input values.
+While in a C++ implementation of the algorithm we can obtain the desired result inside a sequence of nested for loops playing with the loop indexes, for an efficient Python version we will use a sequence of transposition and reshaping to rearrange the input values.
+The following snippet shows the NumPyNet version of this algorithm.
+
+\lstset{style=snippet}
+\begin{lstlisting}[language=Python, caption=NumPyNet version of Pixel-Shuffle function, label=code:py_shuffle]
+import numpy as np
+
+class Shuffler_layer(object):
+
+  def __init__(self, scale, **kwargs):
+
+    self.scale = scale
+    self.scale_step = scale * scale
+
+    self.batch, self.w, self.h, self.c = (0, 0, 0, 0)
+
+    self.output, self.delta = (None, None)
+
+  def __str__(self):
+    batch, out_width, out_height, out_channels = self.out_shape
+    return 'Shuffler x {:3d}            {:>4d} x{:>4d} x{:>4d} x{:>4d}   ->  {:>4d} x{:>4d} x{:>4d} x{:>4d}'.format(
+           self.scale,
+           batch, self.w, self.h, self.c,
+           batch, out_width, out_height, out_channels)
+
+  @property
+  def out_shape(self):
+    return (self.batch, self.w * self.scale, self.h * self.scale, self.c // (self.scale_step))
+
+  def _phase_shift(self, input, scale):
+    b, w, h, c = input.shape
+    X = input.transpose(1, 2, 3, 0).reshape(w, h, scale, scale, b)
+    X = np.concatenate(X, axis=1)
+    X = np.concatenate(X, axis=1)
+    X = X.transpose(2, 0, 1)
+    return np.reshape(X, (b, w * scale, h * scale, 1))
+
+  def _reverse(self, delta, scale):
+    # This function apply numpy.split as a reverse function to numpy.concatenate
+    # along the same axis also
+
+    delta = delta.transpose(1, 2, 0)
+
+    delta = np.asarray(np.split(delta, self.h, axis=1))
+    delta = np.asarray(np.split(delta, self.w, axis=1))
+    delta = delta.reshape(self.w, self.h, scale * scale, self.batch)
+
+    # It returns an output of the correct shape (batch, in_w, in_h, scale**2)
+    # for the concatenate in the backward function
+    return delta.transpose(3, 0, 1, 2)
+
+  def forward(self, input):
+
+    self.batch, self.w, self.h, self.c = input.shape
+
+    channel_output = self.c // self.scale_step # out_c
+
+    # The function phase shift receives only in_c // out_c channels at a time
+    # the concatenate stitches together every output of the function.
+
+    self.output = np.concatenate([self._phase_shift(input[:, :, :, range(i, self.c, channel_output)], self.scale)
+                                  for i in range(channel_output)], axis=3)
+
+    self.delta = np.zeros(shape=self.out_shape, dtype=float)
+
+  def backward(self, delta):
+
+    channel_out = self.c // self.scale_step # out_c
+
+    # I apply the reverse function only for a single channel
+    X = np.concatenate([self._reverse(self.delta[:, :, :, i], self.scale)
+                                      for i in range(channel_out)], axis=3)
+
+
+    # The 'reverse' concatenate actually put the correct channels together but in a
+    # weird order, so this part sorts the 'layers' correctly
+    idx = sum([list(range(i, self.c, channel_out)) for i in range(channel_out)], [])
+    idx = np.argsort(idx)
+
+    delta[:] = X[:, :, :, idx]
+
+\end{lstlisting}
+
+The two function \textsf{\_phase\_shift} and \textsf{\_reverse}\footnote{
+  These function are \quotes{private} function of the object class.
+}
+produce the rearrangement of the indexes according to the pixel-shuffle transformation and its inversion\footnote{
+  During the back-propagation, in fact, we have to apply the reverse transformation to the gradient.
+}
+In the forward function we apply the \textsf{\_phase\_shift} to the sequence of channels (in the right order) and then we concatenate the results into a single tensor (output).
+The backward function instead needs a reordering of channels sequence after the concatenation.
+
+As told above, in the C++ implementation provided into Byron library we can compute the desired re-indexing using a series of nested for loops.
+An equivalent solution can be obtained also by the contraction of the loops into a single one using divisions to obtain the right indexes.
+This solution was taken in count in a first version of the library but the amount of required divisions weight the computational performances.
+The division operations are the most computationally cost operation in terms of CPU clock time.
+The old versions of OpenMP multi-threading library forced the users to spend time in the evaluation of the \quotes{loop-contraction} to obtain the better performances by a single parallel for loop.
+The new features of OpenMP library provided the very powerful \emph{collapse} keyword which provides an automatic loop-contraction.
+The keyword can be applied only with a series of independent and perfectly nested\footnote{
+  Two for loops are perfectly nested if there are not other code lines between them.
+}
+for loops which is exactly our case.
+Moreover we have not to take in care any thread concurrency trouble since the iteration as the output indexes are totally independent.
+We largely used the collapse keyword in the Byron library to simplify the codes and the function evaluation but the Pixel-Shuffle case is one of the most efficient one since we have to collapse six nested loops\footnote{
+  In the Pixel-Shuffle we have to loop over batch, width, height, channels plus a couple of loops over the scale factor that we want to apply.
+  In total we have to manage six dimensions that can be easily collapsed into a single one given by their product.
+} (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/shuffler_layer.cpp}{on-line}.
 
 \end{document}

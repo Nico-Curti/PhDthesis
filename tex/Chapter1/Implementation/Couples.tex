@@ -66,12 +66,14 @@ So the best strategy to use in this case is to perform the full set of $N^2$ ite
 import pandas as pd
 import itertools
 import multiprocessing
+from functools import partial
 
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import LeaveOneOut, cross_val_score
 
-def couple_evaluation (pair):
-  f1, f2 = pair
+def couple_evaluation (couple, data, labels):
+  f1, f2 = couple
+
   samples = data.iloc[[f1, f2]]
   score = cross_val_score(GaussianNB(), samples.T, labels,
                           cv=LeaveOneOut(), n_jobs=1).mean() # nested parallel loops are not allowed
@@ -89,17 +91,17 @@ if __name__ == '__main__':
 
   filename = 'data.txt'
 
-  global data, labels
   data, labels = read_data(filename)
 
   Nfeature, Nsample = data.shape
 
   couples = itertools.combinations(range(0, Nfeature), 2)
+  couples_eval = partial(couple_evaluation, data=data, labels=labels)
 
   nth = multiprocessing.cpu_count()
 
   with multiprocessing.Pool(nth) as pool:
-    score = zip(*pool.map(couple_evaluation, couples))
+    score = zip(*pool.map(couple_eval, couples))
 
 \end{lstlisting}
 

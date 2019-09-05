@@ -13,8 +13,8 @@ __package__ = 'DNetPRO TCGA pipeline - BoxPlot'
 __author__  = ['Nico Curti']
 __email__   = ['nico.curti2@unibo.it']
 
-matplotlib.rc('text', usetex=True)
-matplotlib.rcParams['text.latex.preamble']=[r'\usepackage{amsmath}']
+plt.rc('text', usetex=True)
+plt.rcParams['text.latex.preamble']=[r'\usepackage{amsmath}']
 
 
 def boxplot (dtype, letter, directories):

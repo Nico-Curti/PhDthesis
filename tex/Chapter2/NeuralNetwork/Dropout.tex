@@ -35,7 +35,7 @@ import numpy as np
 
 class Dropout_layer(object):
 
-  def __init__(self, prob):
+  def __init__(self, prob, **kwargs):
 
     self.probability = prob
     self.scale = 1. / (1. - prob)
