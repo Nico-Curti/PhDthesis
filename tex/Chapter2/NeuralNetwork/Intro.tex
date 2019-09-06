@@ -15,7 +15,15 @@ A wide range of documentations and implementations have been written on this top
 Leader on this topic are became the multiple open-source Python libraries available on-line as \emph{Tensorflow}~\cite{tensorflow2015-whitepaper}, \emph{Pytorch}~\cite{paszke2017automatic} and \emph{Caffè}~\cite{Jia:2014:Caffe}.
 Their portability and efficiency are closely related on the simplicity of the Python language and on the simplicity in writing complex models in a minimum number of code lines.
 Only a small part of the research community uses more deeper implementation in C++ or other low-level programming languages.
-About them it should be mentioned the \emph{darknet project} of Redmon J. et al. which created a sort of standard in object detection applications using a pure Ansi-C library.
+About them it should be mentioned the \emph{darknet project} of Redmon J. et al. which created a sort of standard in object detection applications using a pure Ansi-C library\footnote{
+  \emph{Darknet} is framework for neural network model developing.
+  It is written in pure Ansi-C by a Washington University research group.
+  The library was developed only for Unix OS but in its many branches (literally \emph{forks}) a complete porting for each operative system was provided.
+  The code is particularly optimized for GPUs using the CUDA support, i.e only for NVidia GPUs.
+  It is particularly famous for object detection applications since it firstly theorize a novel approach to multi-scale object detections called Yolo (You Only Look Once).
+  The library developed in this work are all inspired on it.
+  The large part of the original work developed is related to a deep optimization of this library either in terms of functionality and issues either in terms of computational performances.
+}.
 
 In this section we firstly retrace the mathematical background of these models.
 To each theoretical explanation we discuss the numerical problems associated and we provide an efficient custom implementation of each algorithm.

@@ -1,0 +1,57 @@
+\documentclass{standalone}
+
+\begin{document}
+
+\section[Image Quality]{Image Quality}\label{quality}
+
+The most common image quality evaluator is given by our eyes.
+This is true also for SR problems: the final purpose still remain to obtain images that are better visible for human eyes, the so called \emph{visual loss}.
+We can however provide some mathematical formulas which allows to quantitative evaluate the image quality.
+In both cases we need to establish a relation between the original image and the produced one.
+Thus we can formulate a quality score only with a reference image.
+In SR problems, or more in general in up-sampling problems, we can compare the original HR image with the image obtained by the output of our model.
+In this way our quality score will be a measure of similarity between the two images.
+
+The simple similarity score can be obtained evaluating the peak-signal-to-noise-ratio (PSNR).
+This quantity is commonly used to establish the compression lossless of an image and it can be computed as
+
+$$
+PSNR = 20 \cdot \log_{10}\left( \frac{\max(I)}{\sqrt(MSE)} \right)
+$$
+\\
+where $\max(I)$ is the maximum value which can be taken by a pixel in the image (in general it will be 1 or 255 depending on the image format chosen) and $MSE$ is the Mean Square Error (ref. \ref{cost}) between the original image and the reconstructed one.
+The MSE for an image can be computed as:
+
+$$
+MSE = \frac{1}{WH} \sum_{i=1}^{W}\sum_{j=1}^{H} \left( I(i, j) - K(i, j) \right)^2
+$$
+\\
+where $W$, $H$ are width and height of the two images and $I$, $K$ are the original and reconstructed images, respectively.
+
+In other words the PSNR is the maximum power of the signal over the background noise.
+It is expressed in decibel (dB) because the image values ranging in a wide interval and the logarithmic function rearrange the domain.
+The PSNR is probably the most common quality score~\ref{psnr-ssim} but it does not always related to a qualitative visual quality.
+Despite it is commonly used as loss function for SR models.
+
+Considering the series of images shown in Fig.\ref{figure:resampling} we can evaluate the PSNR score considering as high-quality image the bicubic and Lanczos results.
+In this way we can compare the nearest interpolation result against them.
+In the down-sampling case the PSNR of the nearest algorithm against the bicubic one is equal to 21.9 while against the Lanczos result we obtain a value of 21.8.
+The PSNR value obtained with the Lanczos algorithm is less than the result obtained with the bicubic interpolation as expected from a mathematical point-of-view since the nearest interpolation should be more similar to the bicubic one.
+We can reach analogous conclusions in the up-sampling case...
+
+
+% Down Bicubic PSNR : 21.903
+% Down Bicubic SSIM : 0.775
+% Down Lanczos PSNR : 21.849
+% Down Lanczos SSIM : 0.771
+% Up   Bicubic PSNR : 31.162
+% Up   Bicubic SSIM : 0.931
+% Up   Lanczos PSNR : 31.299
+% Up   Lanczos SSIM : 0.930
+% Up   Lanczos PSNR : 45.199
+% Up   Lanczos SSIM : 0.995
+% DOWN Lanczos PSNR : 44.167
+% DOWN Lanczos SSIM : 0.999
+
+
+\end{document}
