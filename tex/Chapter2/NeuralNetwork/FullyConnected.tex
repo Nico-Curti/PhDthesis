@@ -17,10 +17,14 @@ where we simply pass from the vector formulation to the matrix one.
 The updating rule consequentially becomes
 
 $$
-W(\tau + 1) = W(\tau) + \gamma X^T (T - Y)
+\delta W = \delta W + X^T \cdot \left( \frac{\partial f(y)}{\partial y} \cdot \delta^l \right)  \quad\quad \delta W_0 = \sum_{i=0}^{m}\frac{\partial f(y)}{\partial y_i} \cdot \delta_i^l
 $$
 \\
-where also in this case we simply pass to the matrix formalism.
+where also in this case we simply pass to the matrix formalism and we convert the discrete format to a continuous one, i.e with continuous values we convert the error to a partial derivative.
+In the above equation $\delta^l$ represents the error pass from the next layer in the network structure\footnote{
+  In the Back-Propagation Algorithm the error is passed by each layer to the previous one, starting from the output error computed according to chosen loss function.
+}.
+
 From the re-iteration of such structures we can join together multiple fully connected layers and so obtain multiple neuron layers jointly together with different levels of complexity and units (an input layer followed by multiple \emph{hidden} layers).
 
 The fully connected Neural Networks overcome the told above \emph{Perceptron} problems using a combination of linear functions (single \emph{Perceptron} units) and they gain more useful properties:
@@ -35,6 +39,5 @@ The fully connected Neural Networks overcome the told above \emph{Perceptron} pr
 
 \end{itemize}
 
-%% Aggiungere parte sulla back-propagation
 
 \end{document}

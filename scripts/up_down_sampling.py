@@ -10,23 +10,9 @@ import cv2
 import pylab as plt
 from matplotlib import gridspec
 
-import tensorflow as tf
-from skimage.measure import compare_ssim
-
 __author__ = ['Nico Curti']
 __email__ = ['nico.curti2@unibo.it']
 __package__ = 'Upsampling/Downsampling example'
-
-
-def compute_score(raw_img, sr_img):
-  scale = 4
-  boundary = 6 + scale
-  ssim = compare_ssim(raw_img[boundary : -boundary, boundary : -boundary, :],
-                      sr_img[boundary : -boundary, boundary : -boundary, :],
-                      data_range=255, multichannel=True)
-  with tf.Session().as_default():
-    psnr = tf.image.psnr(raw_img, sr_img, max_val=255).eval()
-  return psnr, ssim
 
 
 if __name__ == '__main__':
@@ -138,26 +124,4 @@ if __name__ == '__main__':
 
   fig.savefig('../img/up_down_sampling.svg', bbox_inches='tight')
 
-  up_bicubic_psnr, up_bicubic_ssim = compute_score(up_bicubic, up_nearest)
-  up_lanczos_psnr, up_lanczos_ssim = compute_score(up_lanczos, up_nearest)
 
-  down_bicubic_psnr, down_bicubic_ssim = compute_score(down_bicubic, down_nearest)
-  down_lanczos_psnr, down_lanczos_ssim = compute_score(down_lanczos, down_nearest)
-
-  down_lanczos2_psnr, down_lanczos2_ssim = compute_score(down_lanczos, down_bicubic)
-  up_lanczos2_psnr, up_lanczos2_ssim = compute_score(up_lanczos, up_bicubic)
-
-
-  print('Down Bicubic PSNR : {:.3f}'.format(down_bicubic_psnr))
-  print('Down Bicubic SSIM : {:.3f}'.format(down_bicubic_ssim))
-  print('Down Lanczos PSNR : {:.3f}'.format(down_lanczos_psnr))
-  print('Down Lanczos SSIM : {:.3f}'.format(down_lanczos_ssim))
-  print('Up   Bicubic PSNR : {:.3f}'.format(up_bicubic_psnr))
-  print('Up   Bicubic SSIM : {:.3f}'.format(up_bicubic_ssim))
-  print('Up   Lanczos PSNR : {:.3f}'.format(up_lanczos_psnr))
-  print('Up   Lanczos SSIM : {:.3f}'.format(up_lanczos_ssim))
-
-  print('Up   Lanczos PSNR : {:.3f}'.format(up_lanczos2_psnr))
-  print('Up   Lanczos SSIM : {:.3f}'.format(up_lanczos2_ssim))
-  print('DOWN Lanczos PSNR : {:.3f}'.format(down_lanczos2_psnr))
-  print('DOWN Lanczos SSIM : {:.3f}'.format(down_lanczos2_ssim))

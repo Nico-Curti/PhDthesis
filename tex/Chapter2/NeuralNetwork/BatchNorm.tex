@@ -22,13 +22,16 @@ BatchNorm function (Batch Normalization) allows to overcome these problems with 
   The input data to feed the Neural Network model are commonly packed into a series of \emph{batches}, i.e small subsets of data.
   The BatchNorm function takes its name from this nomenclature and it processes each batch independently.
 }~\cite{Sergey2015BatchNorm}.
+In this way we can ensure more stability of the extracted features~\cite{Lecun2000EffBackProp} during the training a faster convergence.
+
 In particular, the method processes the input of a given layer in order to fight the internal covariate shift problem removing the batch mean and normalizing by the batch variance:
 
 $$
 \mu_B = \frac{1}{m}\sum_{i=1}^{m}x_i \quad\quad {\sigma_B}^2 = \frac{1}{m-1}\sum_{i=1}^{m}(x_i - \mu_B)^2
 $$
 \\
-and so the input data becomes:
+where $m$ represents the batch-size and $x_i$ is the value of the pixel $x$ in the $i$-th image of the batch ($\in[0, m]$).
+Thus the input data becomes:
 
 $$
 \hat{x_i} = \frac{x_i - \mu_B}{\sqrt{{\sigma_B}^2 + \epsilon}}
@@ -44,10 +47,20 @@ y_i = \gamma\hat{x_i} + \beta
 $$
 \\
 where the $\gamma$ and $\beta$ coefficients are left as variables to be tuned during the training (they are learned during training).
-The updating rule of the function parameters ($\gamma$ and $\beta$) is given by the simple derivative of the previous function. % maybe insert backprop formulas
-In this way we can ensure more stability of the extracted features~\cite{Lecun2000EffBackProp} during the training a faster convergence.
+The updating rule of the function parameters ($\gamma$ and $\beta$) is given by the derivative of the previous function:
 
-Since the BatchNorm function is became a sort of standard into a deep learning models an efficient implementation of this algorithm is essential to achieve the best computational performances.
+$$
+\delta\beta = \sum_{i=1}^{m}{\delta_i}^l \quad\quad \delta\gamma = \sum_{i=0}^{m} {\delta_i}^l \cdot \mu_B
+$$
+\\
+where $\delta^l$ is the error passed from the next layer of the network structure.
+To complete the error propagation we have also compute the derivative of the BatchNorm function output:
+
+$$
+{\delta_i}^{l-1} = \frac{{m}\cdot \delta\hat{x_i} - \sum_{j=1}^{m}\delta\hat{x_i} - \hat{x_i} \cdot \sum_{j=1}^{m} \delta\hat{x_i} \cdot \hat{x_i}}{m \cdot \sqrt{{\sigma_B}^2 + \epsilon} }
+$$
+
+Since the BatchNorm function is became a sort of standard into a deep learning models, an efficient implementation of this algorithm is essential to achieve the best computational performances.
 We have also to take in count that the batch-normalization procedure is commonly performed after a fully-connected layer or a convolutional one.
 Thus the best performances could be obtained merging the two functionality as much as possible as suggested in~\cite{AlexeyAB}.
 In the next sections we will show our implementation of the algorithm and we discuss about the code optimization performed\footnote{

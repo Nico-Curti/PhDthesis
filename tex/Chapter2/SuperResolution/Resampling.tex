@@ -25,7 +25,7 @@ The simpler down-sampling algorithm is given by a \emph{nearest interpolation}.
 This algorithm pass a kernel mask over the image and it substitutes each pixel mask to their average\footnote{
   The inverse (up-sampling) interpolation simply replicates each pixel in each dimension by a number equal to the scale factor.
 }.
-This procedure can be achieved using a \emph{Pooling} algorithm (in particular an AveragePooling) (ref. \ref{pooling} for further informations) for the down-sample or we can use an UpSample layer.
+This procedure can be achieved using a \emph{Pooling} algorithm (in particular an AveragePooling) (ref.~\ref{pooling} for further informations) for the down-sample or we can use an UpSample layer.
 The UpSample function is commonly related to GAN (Generative Adversarial Networks) models in which we have to provide a series of artificial images to a given Neural Network but it is a function which can be introduce inside a Neural Network model to rescale the number of features.
 We mention it in this section since it is not intrinsically related to a Neural Network model but it could be use as image processing technique.
 
@@ -34,7 +34,7 @@ The UpSample function inside a Neural Network model has to provide both up- and 
 To achieve this function in NumPyNet we can use a series of reshapes and striding on the input matrix as shown in the following snippet.
 
 \lstset{style=snippet}
-\begin{lstlisting}[language=Python, caption=NumPyNet version of Dropout function, label=code:py_dropout]
+\begin{lstlisting}[language=Python, caption=NumPyNet version of Upsampling function, label=code:py_dropout]
 import numpy as np
 from numpy.lib.stride_tricks import as_strided
 
@@ -61,18 +61,6 @@ class Upsample_layer(object):
       raise NotImplementedError('Mixture upsample/downsample are not yet implemented')
 
     self.output, self.delta = (None, None)
-
-
-  def __str__(self):
-    out_w = self.w // self.stride[0] if self.reverse else self.w * self.stride[0]
-    out_h = self.h // self.stride[1] if self.reverse else self.h * self.stride[1]
-
-    if self.reverse: # downsample
-      return 'downsample         {0:>2d}/{1:>2d}x {2:>4d} x{3:>4d} x{4:>4d}  -> {5:>4d} x{6:>4d} x{7:4d}'.format(
-        self.stride[0], self.stride[1], self.w, self.h, self.c, out_w, out_h, self.c)
-    else:            # upsample
-      return 'upsample           {0:>2d}/{1:>2d}x {2:>4d} x{3:>4d} x{4:>4d}  -> {5:>4d} x{6:>4d} x{7:4d}'.format(
-        self.stride[0], self.stride[1], self.w, self.h, self.c, out_w, out_h, self.c)
 
   def _downsample (self, input):
     batch, w, h, c = input.shape
@@ -134,10 +122,10 @@ Commonly values used for the filter parameters are $B=0$ and $C=0.75$ (used by O
 }.
 Despite this function was also implemented in the most common library in Python we provide an efficient multi-threading implementation in the Byron library.
 
-Better performances could be achieved using a generalized version of the bicubic filter which use the 8 positions mask around each pixel, the so called Lanczos filter.
+Equivalent performances could be achieved using a generalized version of the bicubic filter which use the 8 positions mask around each pixel, the so called Lanczos filter.
 Also this function was provided into the Byron library.
 
-To better understand the told above functions we can consider their application on the simple image given in Fig.\ref{figure:resampling}.
+To better understand the told above functions we can consider their application on the simple image given in Fig.\ref{fig:resampling}.
 
 \begin{figure}[htbp]
 \centering

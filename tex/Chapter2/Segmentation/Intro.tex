@@ -4,9 +4,24 @@
 
 \section[UNet]{Image Segmentation - UNet architecture}\label{unet}
 
-%Introduction on Image Segmentation problem.
-%Creation of the datasets with common image-processing methods % TODO: apply to the full set of the images
-%Application of Unet (Byron implementation) on femur images. % TODO: all
+%insert image segmented as example
 
+In the previous section we have discussed about the object classification and object detection problems (ref.~\ref{yolo}).
+Now we want to go deeper on this topic and extract the exact pixels which belong to an object into a given image.
+This kind of problem is called Image Segmentation, i.e give a label to each pixel of the input image.
+
+Image segmentation is a typical task in many research fields and could be used for different purposes.
+Informations about pixel-wise position of objects inside an image could be used for extract object shapes from the image or to simplify and/or change the representation of an image into something more meaningful and easier to understand.
+This is an hot topic especially for self-driving car applications in which we have to find the exact shapes of object to better estimate their perspective position.
+Moreover, all these applications require fast algorithm as much as possible closed to real-time.
+
+This kind of task can be performed using a pipeline of image processing functions or by training a neural network model.
+In the first case we have to stack a series of function to process the input image: it has to filters and extracts the useful informations about the searched object but most of all it has to be as most general as possible to face on the common heterogeneity of samples.
+In the second case we leave to the neural network model parameters the searching of optimal combination of function but we have to provide a supervised input pattern, i.e a combination of input and annotated pixel-wise mask of each image.
+The image annotation is one of the most hardest and boring step of image segmentation and for these reasons is very hard to find public dataset usable.
+
+In this chapter we introduce a particular neural network model commonly used in image segmentation problems and we will describe its characteristic and performances.
+We applied this model to a novel dataset of CT images.
+The dataset annotation was performed by a custom semi-supervised pipeline of image processing and the neural network model was trained on this dataset.
 
 \end{document}

@@ -4,12 +4,27 @@
 
 \section[Toy Model]{Synthetic dataset benchmark}\label{toy}
 
-We firstly tested the DNetPRO method with synthetic data, consisting in a small set of discriminating variables together with a large number of \quotes{noisy} variables.
-Fixing the number of informative features and classes we test the DNetPRO efficiency on the features extraction, compared to the results obtained by individually single features ranking (\emph{Kbest} feature selection).
+Standard feature selection algorithms evaluate the single-variable performances.
+Starting from the ranked variables according to their score, a signature is obtained selecting the top scorer ones according to an hard thresholding or by an iteratively add of variables until a desired output score is reached.
+This method is called $K$-best algorithm and it allows to filter the number of variables without any constrain on their mutual interaction or correlation.
+On the other hand, the proposed DNetPRO algorithm tries to extract the more statistically significant variables considering the interaction between them, i.e the combination of variable-pairs.
+Thus, while the $K$-best algorithm scaled according to the number of variables, the DNetPRO algorithm is more computational expensive and its used can be justify only if its efficiency can be proofed.
 
-To simulate a synthetic \quotes{gene expression dataset}, with a large number of variables and a much smaller number of samples, we use the toy \href{https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html}{model generator} provided by the \emph{scikit-learn}~\cite{scikit-learn} python package.
-This model generator allows to set a precise number of classes and it distinguishes between \emph{informative features}, i.e. features which easily separate the class populations, and \emph{redundant features}, i.e. features which represent noise in our problem.
-The number of informative features should be realistically small compared to the noise, so in our simulations we chose to introduce at least a 10\% of informative features in the whole dataset.
+We developed a toy model simulation to compare the performances of the standard $K$-best algorithm with the DNetPRO one, considering either the number of samples either the number of variables.
+Since the DNetPRO algorithm was designed to gene expression dataset applications our toy model should consider a large number of variables with only a relative small number of samples.
+To simulate a so like synthetic dataset we used the toy model generator provided by the \href{https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html}{scikit-learn package}.
+This model generator allows to set a precise number of classes and distinguish between \emph{informative features}, i.e. features which easily separate the class populations, and \emph{redundant features}, i.e. features which represent noise in our problem.
+The number of informative features should be realistically small compared to the noise, so in our simulations we chose to introduce a maximum of 0.1\% informative features in each simulation.
+
+We randomly generated data from Gaussian distributions with an increasing number of samples and variables, i.e dimensions.
+In each simulation we split the number of samples in training and test sets (Hold-Out method, with 2/3 of data as training and 1/3 as test) and we applied the DNetPRO algorithm.
+From each simulation the extracted signatures were tested against the test set and the best performing one was kept.
+On the same data we applied the $K$-best algorithm and we kept the same number of variables of the DNetPRO best signature, i.e $K$ equal to the number of nodes in the DNetPRO best signature.
+In this way we can compare the performances obtained on the test set by the two methods.
+We would highlight that in general there is not a stop criteria on the $K$-best algorithm, so the number of variables selected could be smaller or greater than the number of DNetPRO signature nodes.
+However we can reasonably assume that according to the $K$-best interpretation the selected features should be the most performing ones and adding more variables should introduce only small quantity of noise.
+This justify the use of the same number of variables between the two algorithms using the DNetPRO signature as reference.
+
 
 % TODO: simulations and results
 

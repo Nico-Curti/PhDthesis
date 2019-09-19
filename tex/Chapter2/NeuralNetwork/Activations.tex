@@ -19,56 +19,126 @@ From a biological point of view the activation functions model the on/off state 
 
 Many activation functions were proposed during the years and each one has its characteristics but not an appropriate field of application.
 The better activation function to use in a particular situation (to a particular problem) is still an open question.
-Each one has its pro and cons in some situations so each Neural Network libraries implements a wide range of them and it leaves to the user to perform his tests.
-In Tab.~\ref{tab:activations} we show the list of activation functions implemented in our library with mathematical formulation and its derivative.
-An important feature of activation function, in fact, is that is should be differentiable since the main procedure of model optimization implies the backpropagation of the error gradients.
+Each one has its pro and cons in some situations so each Neural Network library implements a wide range of them and it leaves to the user to perform his own tests.
+In Tab.~\ref{tab:activations} we show the list of activation functions implemented in our library with mathematical formulation and its derivative (ref. \href{https://github.com/Nico-Curti/NumPyNet/blob/master/NumPyNet/activations.py}{\textsf{activations.py}} for the code implementation).
+An important feature of any activation function, in fact, is that it should be differentiable since the main procedure of model optimization implies the backpropagation of the error gradients.
 
 \begin{table*}
 \centering
+\begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lcc}
 \hline \rowcolor{darkgrayrow}
 \textbf{Name} & \textbf{Equation} & \textbf{Derivative} \\
 \hline
 
-Linear   &  $f(x) = x$                              &  $f'(x) = 1$                                                                                           \\
+Linear   &  $f(x) = x$                              &  $f'(x) = 1$ \\
 
-Logistic &  $f(x) = \frac{1}{1 + \exp(-x)}$         &  $f'(x) = (1 - f(x)) * f(x)$                                                                           \\
+Logistic &  $f(x) = \frac{1}{1 + \exp(-x)}$         &  $f'(x) = (1 - f(x)) * f(x)$ \\
 
-Loggy    &  $f(x) = \frac{2}{1 + \exp(-x)} - 1$     &  $f'(x) = 2 * (1 - \frac{f(x) + 1}{2}) * \frac{f(x) + 1}{2} $                                          \\
+Loggy    &  $f(x) = \frac{2}{1 + \exp(-x)} - 1$     &  $f'(x) = 2 * (1 - \frac{f(x) + 1}{2}) * \frac{f(x) + 1}{2} $ \\
 
-Relu     &  $f(x) = \max(0, x)$                     &  $f'(x) = \left\{\begin{array}{rl} 1   & \mbox{if} x > 0 \\0    & \mbox{if} x\leq0 \end{array}\right.$ \\
+Relu     &  $f(x) = \max(0, x)$                     &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                       1   & \mbox{if} & f(x) > 0    \\
+                                                                       0   & \mbox{if} & f(x) \leq 0
+                                                                       \end{array}\right.$           \\
 
-Elu      &  $f(x) = \max(\exp(x) - 1, x)$           &  $f'(x) = \left\{\begin{array}{rl} 1   & \mbox{if} x\geq0\\x+1  & \mbox{if} x<0    \end{array}\right.$ \\
+Elu      &  $f(x) = \max(\exp(x) - 1, x)$           &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                       1        & \mbox{if} & f(x) \geq 0 \\
+                                                                       f(x) + 1 & \mbox{if} & f(x) < 0
+                                                                       \end{array}\right.$                \\
 
-Relie    &  $f(x) = $                               &  $f'(x) = \left\{\begin{array}{rl} 1   & \mbox{if} x>0   \\1e-2 & \mbox{if} x\leq0 \end{array}\right.$ \\
+Relie    &  $f(x) = \max(x * 1e-2, x) $             &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                       1    & \mbox{if} & f(x) > 0    \\
+                                                                       1e-2 & \mbox{if} & f(x) \leq 0
+                                                                       \end{array}\right.$            \\
 
-Ramp     &  $f(x) = $                               &  $f'(x) = \left\{\begin{array}{rl} x+1 & \mbox{if} x>0   \\ x   & \mbox{if} x\leq0 \end{array}\right.$ \\
+Ramp     &  $f(x) = \left\{\begin{array}{rlr}
+                            x^2 + 0.1 * x^2 &  \mbox{if} & x > 0    \\
+                            0               &  \mbox{if} & x \leq 0
+                           \end{array}\right.$
+                                                    &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                       f(x) + 1 & \mbox{if} & f(x) > 0   \\
+                                                                       f(x)     & \mbox{if} & f(x) \leq 0
+                                                                       \end{array}\right.$               \\
 
-Tanh     &  $f(x) = \tanh(x)$                       &  $f'(x) = 1 - x^2$                                                                                     \\
+Tanh     &  $f(x) = \tanh(x)$                       &  $f'(x) = 1 - f(x)^2$  \\
 
-Plse     &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
+Plse     &  $f(x) = \left\{\begin{array}{rlr}
+                            (x + 4) * 1e-2     & \mbox{if} & x < -4           \\
+                            (x - 4) * 1e-2 + 1 & \mbox{if} & x > 4            \\
+                            x * 0.125 + 5      & \mbox{if} & -4 \leq x \leq 4
+                           \end{array}\right.$
+                                                    &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                       1e-2  & \mbox{if } & f(x) < 0 \mbox{ or } f(x) > 1 \\
+                                                                       0.125 & \mbox{if } & 0 \leq f(x) \leq 1
+                                                                       \end{array}\right.$                                \\
 
-Leaky    &  $f(x) = $                               &  $f'(x) = \left\{\begin{array}{rl} 1   & \mbox{if} x>0   \\ C   & \mbox{if} x\leq0 \end{array}\right.$ \\
+Leaky    &  $f(x) = \left\{\begin{array}{rlr}
+                            x * C &  \mbox{if} & x \leq 0 \\
+                            x     &  \mbox{if} & x > 0
+                           \end{array}\right.$
+                                                    &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                       1   & \mbox{if} & f(x) > 0    \\
+                                                                       C   & \mbox{if} & f(x) \leq 0
+                                                                       \end{array}\right.$           \\
 
-HardTan  &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
+HardTan  &  $f(x) = \left\{\begin{array}{rlr}
+                            -1 & \mbox{if} &     x < -1 \\
+                            +1 & \mbox{if} &     x > 1  \\
+                             x & \mbox{if} & -1 \leq x \leq 1
+                           \end{array}\right.$
+                                                    &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                        0 & \mbox{if} & f(x) < -1 \mbox{ or } f(x) > 1 \\
+                                                                        1 & \mbox{if} & -1 \leq f(x) \leq 1
+                                                                       \end{array}\right.$                            \\
 
-LhTan    &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
+LhTan    &  $f(x) = \left\{\begin{array}{rlr}
+                            x * 1e-3           & \mbox{if} &     x < 0  \\
+                            (x - 1) * 1e-3 + 1 & \mbox{if} &     x > 1  \\
+                             x                 & \mbox{if} & 0 \leq x \leq 1
+                           \end{array}\right.$
+                                                    &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                        1e-3           & \mbox{if} & f(x) < 0 \mbox{ or } f(x) > 1 \\
+                                                                        1              & \mbox{if} & 0 \leq f(x) \leq 1
+                                                                       \end{array}\right.$                                  \\
 
-Selu     &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
+Selu     &  $f(x) =\left\{\begin{array}{rlr}
+                            1.0507 * 1.6732 * (e^x - 1) & \mbox{if} &    x < 0  \\
+                            x * 1.0507                  & \mbox{if} &    x \geq 0
+                           \end{array}\right.$
 
-Swish    &  $f(x) = $                               &  $f'(x) = $                                                                                            \\
+                                                    &  $f'(x) = \left\{\begin{array}{rlr}
+                                                                        f(x) * 1e-3           & \mbox{if} & f(x) 0    \\
+                                                                        (f(x) - 1) * 1e-3 + 1 & \mbox{if} & f(x) > 1  \\
+                                                                        \end{array}\right.$                           \\
 
-SoftMax  &  $f(x) =\frac{\exp(x)}{\sum_{i=1}^{N}x}$ &  $f'(x) = $                                                                                            \\
+SoftPlus &  $f(x) = log(1 + e^{x})$                 &  $f'(x) = \frac{\exp(f(x)}){1 + e^{f(x)}}$ \\
+
+SoftSign &  $f(x) = \frac{x}{|x| + 1}$              &  $f'(x) = \frac{1}{(|f(x)| + 1)^{2}}$ \\
+
+Elliot   &  $f(x) = \frac{\frac{1}{2} * S * x}{1 + |x + S|} + \frac{1}{2}$
+
+                                                    &  $f'(x) = \frac{\frac{1}{2} * S}{(1 + |f(x) + S|)^{2}} $ \\
+
+SymmElliot &  $f(x) = \frac{S * x}{1 + |x * S|}$    &  $f'(x) = \frac{S}{(1 + |f(x) * S|)^{2}}$ \\
+
+
+%Swish    &  $f(x) = $                               &  $f'(x) = $                                                                                            %\\
+
+%SoftMax  &  $f(x) =\frac{\exp(x)}{\sum_{i=1}^{N}x}$ &  $f'(x) = $
+
 
 \hline\\
 \end{tabular}
-\caption{List of common activation functions with correspondig mathematical equation and derivative.
-The derivative is expressed as function of $f(x)$ to optimize their numerical evaluation.}
+\end{adjustbox}
+\caption{List of common activation functions with their correspondig mathematical equation and derivative.
+The derivative is expressed as function of $f(x)$ to optimize their numerical evaluation.
+}
 \label{tab:activations}
 \end{table*}
 
-As can be shown in Tab.~\ref{tab:activations} it is easier to compute the activation function derivative as function of it.
-This is an (well known) important type of optimization in computation term since it reduces the number of operations and it allows to apply the backward gradient directly.
+As can be seen in Tab.~\ref{tab:activations} it is easier to compute the activation function derivative as function of it.
+This is a (well known) important type of optimization in computation term since it reduces the number of operations and it allows to apply the backward gradient directly.
 
 %% move this paragraph to numpynet chapter!
 To better understand the effects of activation functions we can perform these functions on a simple test image and comment the results.

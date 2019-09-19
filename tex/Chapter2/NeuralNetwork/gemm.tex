@@ -40,9 +40,27 @@ Fallowing back to our Neural Network implementation we can obtain the output val
 Moreover we can assumes from the beginning that the weight matrix is transpose and so remove the transposition step from the matrix product.
 This simple (but carefully studied) optimization allows us to obtain numerically better results in the feed-forward evaluation but it paybacks a revision of the standard mathematical formulation a carefully implementation of the code.
 
-In the proposed numerical implementations of this model we implements both the matrix product cases to compare the performance results.
+\begin{figure}[htbp]
+\centering
+\def\svgwidth{\textwidth}
+\input{./img/gemm.pdf_tex}
+\caption{Gemm algorithms time performances.
+GEMM NN: matrix multiplication considering both the matrices in \quotes{normal} format, i.e $A\cdot B$.
+GEMM NT: matrix multiplication considering the first matrix in \quotes{normal} format and the second one transposed, i.e $A\cdot B^T$.
+We perform 100 tests of 1K runs each of both the gemm algorithms using the \textsf{einsum} function of Numpy library.
+The values are rescaled according to the mean time of the GEMM NN algorithm.
+}
+\label{fig:gemm}
+\end{figure}
 
-%% TODO fare simulazioni tra NumpyNet e Byron per il matrix product
-%% Oppure fare simulazioni dentro NumpyNet con tutte e due le versioni
+In the proposed numerical implementations of this model we implements both the matrix product cases to compare the performance results.
+We tested the two implementation inside Python using the \textsf{einsum} function provided by Numpy package.
+In particular we evaluate the timing performances over 1000 applications of two the gemm functions (Gemm NN, i.e considering both matrices in \quotes{normal} shapes; Gemm NT, i.e considering the first matrix as \quotes{normal} and the second transpose) considering matrices of shapes ($100\times100$).
+We perform 100 run we save the minimum time obtained over the 1000 realizations.
+In Fig.~\ref{fig:gemm} we show the results rescaled by the mean time of the Gemm NN algorithm.
+As can be seen in Fig.~\ref{fig:gemm} the speedup of the Gemm NT matrix is evident and, except few cases, it is always faster than Gemm NN algorithm.
+
+In the Byron library implementation we provide a parallelize version of this algorithm with also an \textsf{avx} support.
+In this way we could manually manage the register memory of the two matrices and obtain faster version of the Gemm algorithm (especially for dimensions proportional by powers of 2 which are very common in neural network models).
 
 \end{document}

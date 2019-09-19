@@ -1,0 +1,64 @@
+\documentclass{standalone}
+
+\begin{document}
+
+\section[Super Resolution Models]{Super Resolution Models}\label{wdsr}
+
+% insert intro
+
+The EDSR model structure could be summarized as follow:
+
+
+
+
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lccc}
+\hline \rowcolor{darkgrayrow}
+                         &  Channels     & Filter     & Number of    \\
+\rowcolor{darkgrayrow}
+Layer                    & input/output  & dimensions & Parameters   \\
+\hline
+Conv. input              & 3/256      & $3\times3$   & 6912    \\
+Conv. (residual block)   & 256/256    & $3\times3$   & 589824  \\
+conv. (pre-shuffle)      & 256/256    & $3\times3$   & 589824  \\
+Conv. (upsample block)   & 256/1024   & $3\times3$   & 2359296 \\
+Conv. output             & 256/3      & $3\times3$   & 6912    \\
+\hline
+\end{tabular}
+\caption{EDSR model scheme summary.
+We highlight the number of parameters of each macro-block.
+The total number of parameters of this model is given by the sum of the values in the last column (more than 3 million of parameters).
+}
+\label{tab:edsr}
+\end{table}
+
+
+
+
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lccc}
+\hline \rowcolor{darkgrayrow}
+                            &  Channels     & Filter     & Number of    \\
+\rowcolor{darkgrayrow}
+Layer                       & input/output  & dimensions & Parameters   \\
+\hline
+Conv. input 1               & 3/32       & $3\times3$   & 864     \\
+Conv. 1 (residual block)    & 32/192     & $3\times3$   & 55296   \\
+conv. 2 (residual block)    & 192/32     & $3\times3$   & 55296   \\
+Conv. (pre-shuffle)         & 32/48      & $3\times3$   & 13824   \\
+Conv. input 2 (pre-shuffle) & 3/48       & $5\times5$   & 3600    \\
+\hline
+\end{tabular}
+\caption{WDSR model scheme summary.
+We highlight the number of parameters of each macro-block.
+The total number of parameters of this model is given by the sum of the values in the last column ($\sim100$K parameters, less than $1/10$ of EDSR model).
+}
+\label{tab:wdsr}
+\end{table}
+
+
+\end{document}

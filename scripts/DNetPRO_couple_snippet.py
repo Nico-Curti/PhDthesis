@@ -17,7 +17,7 @@ __email__   = ['nico.curti2@unibo.it']
 
 def couple_evaluation (couple):
   f1, f2 = couple
-  print(f1, f2)
+
   samples = data.iloc[[f1, f2]].values
   score = cross_val_score(GaussianNB(), samples.T, labels,
                           cv=LeaveOneOut(), n_jobs=1).mean()
