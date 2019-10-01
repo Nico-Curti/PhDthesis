@@ -56,7 +56,7 @@ using Filtered = boost :: filtered_graph < Graph, boost :: keep_all, boost :: fu
 std :: vector < int > FeatureSelection (int ** couples, const int & min_size, bool pruning=true,  bool merging=true)
 {
   Graph G;
-  std :: vector < V > removed_set;
+  std :: set < V > removed_set;
   Filtered Signature (G, boost :: keep_all {}, [] (V v) {return removed_set.end() == removed_set.find(v);});
 
   int L = 0, leave, Ncomp, i = 0;
@@ -87,14 +87,17 @@ std :: vector < int > FeatureSelection (int ** couples, const int & min_size, bo
       if ( merging ){
 
         BGL_FORALL_VERTICES (v, Signature, Filtered)
-          core.push_back ( static_cast < int >(v) );
+          if ( boost :: in_degree(v, Signature) )
+            core.push_back ( static_cast < int >(v) );
       }
       else {
 
         std :: map < int, int > size;
         for ( auto && comp : components ) ++ size[comp];
 
-        auto max_key = std :: max_element (std :: begin(size), std :: end(size), [] (auto && p1, auto && p2) { return p1.second < p2.second; })->first;
+        auto max_key = std :: max_element (std :: begin(size), std :: end(size),
+                                           [] (const decltype(size) :: value_type && p1, const decltype(size) :: value_type && p2)
+                                           { return p1.second < p2.second; })->first;
 
         BGL_FORALL_VERTICES (v, Signature, Filtered)
           if ( components[v] == max_key )

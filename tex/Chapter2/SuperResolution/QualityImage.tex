@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\section[Image Quality]{Image Quality}\label{quality}
+\section[Image Quality]{Image Quality}\label{SR:quality}
 
 The most common image quality evaluator is given by our eyes.
 This is true also for SR problems: the final purpose still remain to obtain images that are better visible for human eyes, the so called \emph{visual loss}.
@@ -19,7 +19,7 @@ $$
 PSNR = 20 \cdot \log_{10}\left( \frac{\max(I)}{\sqrt(MSE)} \right)
 $$
 \\
-where $\max(I)$ is the maximum value which can be taken by a pixel in the image (in general it will be 1 or 255 depending on the image format chosen) and $MSE$ is the Mean Square Error (ref.~\ref{cost}) between the original image and the reconstructed one.
+where $\max(I)$ is the maximum value which can be taken by a pixel in the image (in general it will be 1 or 255 depending on the image format chosen) and $MSE$ is the Mean Square Error (ref.~\ref{NN:cost}) between the original image and the reconstructed one.
 The MSE for an image can be computed as:
 
 $$
@@ -81,7 +81,7 @@ where $\mu$ and $\sigma$ are the means and variances of the images, respectively
 The $c_1$ and $c_2$ parameters are fixed to avoid mathematical divergence.
 Also in this case higher value of SSIM corresponds to high similarity between the original image and the reconstructed one.
 
-Based on the previous equation we can highlight a link with the pooling functions discussed in~\ref{pooling}.
+Based on the previous equation we can highlight a link with the pooling functions discussed in~\ref{NN:pooling}.
 Also in this case, in fact, we works with a window/kernel moved along the image which applies a mathematical function on the underlying pixels.
 This equivalence suggests an easy implementation of this method with slight modifications of the previous code.
 

@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\subsection[Results]{Resuls}\label{cytokine_result}
+\subsection[Results]{Resuls}\label{cytokine:cytokine_result}
 
 The best signature identified to discriminate between CTL and AD subjects is composed of three cytokines, IFN$\alpha$2, TNF$\alpha$, and IL-1$\alpha$.
 Its total accuracy on the CTL-AD test set is 65.27\% (with 61\% CTL and 66\% AD correctly classified).
@@ -39,20 +39,33 @@ The sensitivity/specificity values for classification is reported in Tab.~\ref{t
   \end{minipage}
   \caption{The sensitivity/specificity values for AD vs CTL classification by the 3-protein signature, for the total sample dataset and stratified by sex.
     The second table shows the result of predictions of MCI samples with the same signature as non-CTL samples.
-    In this case the sensitivity and specificity were computed in relation to the CTL in the training setlast column \quotes{prediction} shows the classification of MCI samples with the same signature as non-CTL samples.
+    In this case the sensitivity and specificity were computed in relation to the CTL in the training set.
   }
 \end{table}
 
-% insert figures here
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{males.png}
+\qquad\qquad
+\centering
+\includegraphics[width=0.45\textwidth]{females.png}
+\caption{\textbf{(A)} Scatter plot of IL-1$\alpha$ and IFN-$\alpha$, and distribution plot for the single cytokines along the axes, stratified by diagnostic group (AD, CTL, and MCI) in \textbf{males}.
+In this case, the HC group is less separated from aMCI and AD.
+\textbf{(B)} Scatter plot of IL-1$\alpha$ and IFN-$\alpha$, and distribution plot for the single cytokines along the axes, stratified by diagnostic group (AD, CTL, and MCI) in \textbf{females}.
+In this case, the HC group is well separated from aMCI and AD.
+}
+\label{fig:cytokine_sex}
+\end{figure}
 
 Applying this signature to classify MCI vs CTL samples, it correctly predicted 84.93\% of MCI as \quotes{non-CTL}.
 Two cytokines from the signature, IFN$\alpha$2 and IL-1$\alpha$, showed a significant difference between groups also at a single cytokine level in previous analyses.
-We plotted them as a representative in all population (ref. Fig.~\ref{} A) and stratified the scatter plots by sex (ref Fig.~\ref{} B, C).
+We plotted them as a representative in all population and stratified the scatter plots by sex (ref Fig.~\ref{cytokine_sex} A, B).
 The CTL group resulted better separated from MCI and AD in women as compared with men.
 The trajectory of the subject groups moves from CLT to AD, and interestingly the identified signature is able to differentiate MCI from CLT better than from AD.
 This is a promising result since it seems more useful to recognize MCI from CLT than full-blown AD from CLT.
-Probably the poor sensibility in detecting AD could be linked to the disease evolution that makes nebulous and vague the cytokine pattern in the brain of these patients, as confirmed from several studies that found both upregulation and downregulation of many cytokines in AD cerebral samples.
-This fact could be more accentuated in our population of old age subjects in which markers of ageing are often mixed with those of dementia.
+Probably the poor sensibility in detecting AD could be linked to the disease evolution that makes nebulous and vague the cytokine pattern in the brain of these patients, as confirmed from several studies that found both up-regulation and down-regulation of many cytokines in AD cerebral samples.
+This fact could be more accentuated in our population of old age subjects in which markers of aging are often mixed with those of dementia.
 
 In this study we show that: 1) an easy to get cytokines signature composed of three molecules - IFN$\alpha$2, TNF$\alpha$, and IL-1$\alpha$ - is able to discriminate the studied groups;  2) the combination of IFN$\alpha$2 and IL-1$\alpha$ able to distinguish CTL from  MCI and AD better in women than in men.
 Sex (referred to biological differences) and gender (psychosocial and cultural differences) affect human brain biology throughout individual lifespans, affecting male and female cognitive functions differently.

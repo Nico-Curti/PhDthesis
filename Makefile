@@ -28,7 +28,7 @@ tesi: $(tesifile) \
 	$(MAKE) clean
 
 .PHONY: clean
-clean: $(paper_out)
+clean:
 	$(remove) $(tesiout).blg
 	$(remove) $(tesiout).log
 	$(remove) $(tesiout).out
@@ -36,7 +36,7 @@ clean: $(paper_out)
 	$(remove) $(tesiout).synctex.gz
 
 .PHONY: cleanall
-cleanall: $(paper_out) clean
+cleanall: clean
 	@$(remove) $(tesiout).aux
 	@$(remove) $(tesiout).bbl
 	@$(remove) $(tesiout).toc

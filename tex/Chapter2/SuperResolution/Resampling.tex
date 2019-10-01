@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\section[Resampling]{Resampling}\label{downsampling}
+\section[Resampling]{Resampling}\label{SR:downsampling}
 
 Up to now we have talked about neural network models as classification algorithms.
 In the SR problem we have no classes but the desired output is a image.
@@ -25,7 +25,7 @@ The simpler down-sampling algorithm is given by a \emph{nearest interpolation}.
 This algorithm pass a kernel mask over the image and it substitutes each pixel mask to their average\footnote{
   The inverse (up-sampling) interpolation simply replicates each pixel in each dimension by a number equal to the scale factor.
 }.
-This procedure can be achieved using a \emph{Pooling} algorithm (in particular an AveragePooling) (ref.~\ref{pooling} for further informations) for the down-sample or we can use an UpSample layer.
+This procedure can be achieved using a \emph{Pooling} algorithm (in particular an AveragePooling) (ref.~\ref{NN:pooling} for further informations) for the down-sample or we can use an UpSample layer.
 The UpSample function is commonly related to GAN (Generative Adversarial Networks) models in which we have to provide a series of artificial images to a given Neural Network but it is a function which can be introduce inside a Neural Network model to rescale the number of features.
 We mention it in this section since it is not intrinsically related to a Neural Network model but it could be use as image processing technique.
 
@@ -34,7 +34,7 @@ The UpSample function inside a Neural Network model has to provide both up- and 
 To achieve this function in NumPyNet we can use a series of reshapes and striding on the input matrix as shown in the following snippet.
 
 \lstset{style=snippet}
-\begin{lstlisting}[language=Python, caption=NumPyNet version of Upsampling function, label=code:py_dropout]
+\begin{lstlisting}[language=Python, caption=NumPyNet version of Upsampling function, label=code:py_upsample]
 import numpy as np
 from numpy.lib.stride_tricks import as_strided
 

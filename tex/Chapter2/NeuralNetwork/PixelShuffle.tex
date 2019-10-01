@@ -4,10 +4,10 @@
 
 % https://medium.com/@hirotoschwert/introduction-to-deep-super-resolution-c052d84ce8cf
 
-\section[Pixel Shuffle]{Pixel Shuffle}\label{shuffler}
+\section[Pixel Shuffle]{Pixel Shuffle}\label{NN:shuffler}
 
 Pixel Shuffle layer is one of the most recent layer type introduced in modern deep learning Neural Network.
-Its application is closely related to the single-image super-resolution (SISR) research, i.e the techniques ensemble which aim at restoring a high-resolution image from a single low-resolution one (see section~\ref{sr} for further details).
+Its application is closely related to the single-image super-resolution (SISR) research, i.e the techniques ensemble which aim at restoring a high-resolution image from a single low-resolution one (see section~\ref{SR:sr} for further details).
 
 The first SISR neural networks start with a pre-processing of low-resolution image in input with a bicubic up-sample.
 Then the image, with the same dimension of the desired output, feeds the model which aim to increase the resolution and fix its details.
@@ -44,7 +44,7 @@ Moreover each library implements the transformation following its own data organ
 For this reason we will propose in our libraries a dynamic version of the algorithm in C++ able to perform both version of the algorithm.
 
 
-\subsection[Numerical Implementation]{Numerical Implementation}\label{shuffle_num}
+\subsection[Numerical Implementation]{Numerical Implementation}\label{NN:shuffle_num}
 
 The algorithmic implementation of the pixel-shuffle transformation is essentially a re-indexing of the input values.
 While in a C++ implementation of the algorithm we can obtain the desired result inside a sequence of nested for loops playing with the loop indexes, for an efficient Python version we will use a sequence of transposition and reshaping to rearrange the input values.

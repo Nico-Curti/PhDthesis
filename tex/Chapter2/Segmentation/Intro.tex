@@ -2,11 +2,11 @@
 
 \begin{document}
 
-\section[UNet]{Image Segmentation - UNet architecture}\label{unet}
+\section[UNet]{Image Segmentation - UNet architecture}\label{segmentation:unet}
 
 %insert image segmented as example
 
-In the previous section we have discussed about the object classification and object detection problems (ref.~\ref{yolo}).
+In the previous section we have discussed about the object classification and object detection problems (ref.~\ref{obj_detection:yolo}).
 Now we want to go deeper on this topic and extract the exact pixels which belong to an object into a given image.
 This kind of problem is called Image Segmentation, i.e give a label to each pixel of the input image.
 
@@ -20,8 +20,9 @@ In the first case we have to stack a series of function to process the input ima
 In the second case we leave to the neural network model parameters the searching of optimal combination of function but we have to provide a supervised input pattern, i.e a combination of input and annotated pixel-wise mask of each image.
 The image annotation is one of the most hardest and boring step of image segmentation and for these reasons is very hard to find public dataset usable.
 
-In this chapter we introduce a particular neural network model commonly used in image segmentation problems and we will describe its characteristic and performances.
+In this chapter we introduce a particular neural network model commonly used in image segmentation problems and we will describe its characteristics and performances.
 We applied this model to a novel dataset of CT images.
-The dataset annotation was performed by a custom semi-supervised pipeline of image processing and the neural network model was trained on this dataset.
+The dataset annotation was performed by a custom semi-supervised pipeline of image processing and the neural network model was trained and tested on this dataset.
+The original data are taken from [here] and the corresponding annotations are released on [here].
 
 \end{document}

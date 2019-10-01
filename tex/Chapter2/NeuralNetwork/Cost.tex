@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\section[Cost function]{Cost function}\label{cost}
+\section[Cost function]{Cost function}\label{NN:cost}
 
 A machine learning algorithm is used to minimize or maximize a function.
 In other words when we implement a machine learning algorithm we want to know how good is our result according to prior knowledge about the desired results.
@@ -27,7 +27,7 @@ $$
 MSE = \frac{\sum_{i=1}^{N}\left( y - t \right)^2}{N}
 $$
 \\
-where we follow the nomenclature given in \ref{perceptron} and $N$ is the number of output which is equivalent to the number of classes.
+where we follow the nomenclature given in \ref{NN:perceptron} and $N$ is the number of output which is equivalent to the number of classes.
 It is one of the most used cost function due to its simplicity either from a mathematical either from a numerical point of view.
 The possible range of values ranged from 0 to $\infty$.
 With MSE function predictions which are far away from actual values are heavily penalized, due to the squaring.
@@ -62,7 +62,7 @@ In this way when we have two classes (e.g $t \in [0, 1]$) we can alternatively n
 In this way the loss function heavily penalizes the predictions that are confident but wrong.
 This functions works with binary classification problems where the output classes are binned in $[0, 1]$.
 For this reason the output of the model must be constrained into the $[0, 1]$ domain and thus a proper activation function should be provided.
-Classically this loss function is used jointly to the sigmoid activation (ref. \ref{activation}) which constrains the output of the model in the desired interval.
+Classically this loss function is used jointly to the sigmoid activation (ref.~\ref{NN:activation}) which constrains the output of the model in the desired interval.
 For this reason in our implementation of the algorithm we chose to merge the sigmoid function and the Log Loss function into a single object\footnote{
   We also try to prevent wrong uses of this loss function for laypersons.
   This implementation was already suggested by the \emph{darknet} library so we simply propagate it in our implementations.

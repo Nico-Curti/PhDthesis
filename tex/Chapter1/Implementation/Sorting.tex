@@ -3,8 +3,6 @@
 
 \begin{document}
 
-
-
 \subsection[Sorting]{Pair sort}\label{implementation:sort}
 
 The sorting algorithm starts at the end of variable couple evaluation and re-order the pairs in ascending order to ease the next steps of signature identification\footnote{
@@ -26,7 +24,17 @@ Since we are working with SoA objects we need to re-order all the structure arra
 So we can not use the a simple sort function but can compute the set of indexes that allow the re-order of the arrays, the so called \textsf{argsort} method.
 To rearrange the indexes according to a given array of values we can use the templates in C++.
 
-% insert image merge-sort here
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{merge_sort.png}
+\caption{Parallel merge-sort algorithm scheme.
+Starting from the original array the master thread split the work (sub-arrays) along two slaves threads (\textsf{split} step in the graph).
+The split recursion is applied until a required size of sub-arrays is reached.
+Each slave-thread applied a sort function (\textsf{sort} step in the graph).
+Then the full array is recombined following back the thread recursion applying an \textsf{inplace-merge} function (\textsf{merge} step in the graph).
+}
+\label{fig:merge_sort}
+\end{figure}
 
 As parallelization strategy we can yet invoke the new \emph{keywords} of OpenMP libraries and apply a \emph{divide-and-conquer} architecture using a tree of independent \emph{tasks}\footnote{
   Tasks in OpenMP are code blocks that the compiler wraps up and makes available to be executed in parallel.
