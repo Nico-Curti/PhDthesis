@@ -10,8 +10,8 @@ In our application we divide the dataset into a training-test subdivision and th
 This kind of setup could produce 10 totally different signatures, in the worst case.
 Moreover we replicated our simulation for 100 repetitions and thus a set of 1000 totally independent signatures were extracted.
 
-Starting from this large subset of variables we can evaluate the robustness of the DNetPRO algorithm in the variable identifications and thus we can evaluate the overlap between these signatures.
-From a statistical point-of-view is quite unlikely that the same set of variables were included into all the extracted signatures, especially on this application in which the variable roles are assumed by genes.
+Starting from this large subset of variables we can evaluate the robustness of the DNetPRO algorithm in the variable identifications studying the overlap between these signatures.
+From a statistical point-of-view is quite unlikely that the same set of variables were included into all the extracted signatures, especially on this application, in which the variable roles are assumed by genes.
 On the other hand the overlap of these signatures could highlight a statistical significance of some variables and thus genes related to the understudied tumors.
 
 As case study we analyzed only the KIRC mRNA dataset in which the extracted signatures ranged from 4 to 650 genes ($\mu=382$ genes).
@@ -21,55 +21,33 @@ In Fig.~\ref{fig:overlap} the genes distribution obtained by the three methods a
 
 \begin{figure}[htbp]
 \centering
-\def\svgwidth{0.4\textwidth}
+\def\svgwidth{0.6\textwidth}
 \input{./img/DNetPRO_overlap.pdf_tex}
-\caption{
+\caption{Signatures overlap obtained in the KIRC mRNA datasets.
+Genes occurrences of the 1000 DNetPRO signatures extracted from the Synapse pipeline (blue).
+Genes occurrences of the 1000 $K$-best variables extracted from the Synapse pipeline (red): the number of genes ($K$) is the same of the corresponding DNetPRO signature.
+Genes occurrences of 1000 random signatures (yellow).
 }
 \label{fig:overlap}
 \end{figure}
 
+Both DNetPRO and $K$-best feature extraction algorithms identified a core set of genes common to the full set of signatures.
+The $K$-best algorithm appears more stable than the DNetPRO algorithm and it is easier to find the same genes along the extracted signatures.
+This behavior could be associated to the problems highlight also in the toy model simulations (ref. \ref{dnetpro:toy}): the DNetPRO algorithm is able to identify only one signature but the informative features (genes) could not co-operate in the same network-signature and thus they could be discarded.
+The DNetPRO signatures are, in fact, very small compared to the number of variables and thus only small network components were extracted which are very closed to star-networks.
+Despite the discrepancy between the signatures we have a core of 18 genes which occurs in at least the 95\% of both signatures and 8 of them are in the 99\% of both signatures.
 
+The common genes were also mapped on public databases (TISIDB~\cite{10.1093/bioinformatics/btz210} and Oncotarget~\cite{
+%TODO:MISS REF (search KIRC LTB4R on google)
+}, which link tumors to related genes.
+We found 14/18 genes as informative probes for the KIRC tumor in the TISIDB and 7 of them were also found in the Oncotarget database\footnote{
+  The list of genes in the TISIDB cover \quotes{only} 988 genes.
+  From our list we have only one gene which was found in the Oncotarget database and not in the TISIDB.
+  This gene misses in the TISIDB so we can not evaluate its importance.
+}.
+Taking into account the core set of 8 genes we found 3 of them on Oncotarget database and 7 of them on the TISIDB.
+The only exception was given by the LOC388796 gene which was not found in any database.
 
-% DNetPRO unique genes 5694
-% KBest unique   genes 2485 ---> half than DNetPRO
-
-% Minimum Size Signature: 4
-% Maximum Size Signature: 654
-% Average Size Signature: 382.344
-% Median  Size Signature: 371.500
-
-
-% The signature overlap could be estimated either across the 10 data subdivisions related to the cross-validation step, or across the 100 simulations done.
-% %The first case allows us to study the robustness of our \emph{best} signatures in relation of the data subdivision, while the second one cover the possibility of having the same data in the training section.
-% Moreover, we also considered the overlap between all 1000 signatures: a part of the results obtained on the mRNA datasets are shown in Fig.~\ref{supfig:overlap}.
-% In the first column (Fig.~\ref{supfig:overlap} (a-c-e-g)) the full combination of signatures was computed for each tumor type and the overlap was estimated as the number of genes that appear in both signatures, normalized by the size of the smallest one.
-% In the second column (Fig.~\ref{supfig:overlap} (b-d-f-h)) the overlap of signatures across the 10-fold cross-validation was estimated, and only the genes belonging to the 10 signature intersection was considered.
-% Also in this case we normalized the overlap by the smallest size of the signatures.
-
-
-% % KIRC:total genes (100x10): 5694   mean # in fold (100): 1333.26
-% % GBM: total genes (100x10): 8655   mean # in fold (100): 2113.73
-% % LUSC:total genes (100x10): 7795   mean # in fold (100): 1304.92
-% % OV : total genes (100x10): 8431   mean # in fold (100): 2448.49
-
-% The highest result of overlap for all 1000 signatures was obtained in the KIRC dataset, with an average overlap of 57\%.
-% Significant overlaps were obtained also in the GBM and OV datasets, in which the overlap is around 50\%.
-% The worst percentage of overlap between signatures was obtained in the GBM dataset which is however around the 40\% on average.
-% Moreover, the maximum overlap reached 100\%, except for the OV dataset in which it was 76\%.%\textbf{e il massimo quale é?}.%%% DONE
-% %This behavior could be associated to the lower performance obtained on this dataset, possibly due to a high noise level in the data.
-
-% %The GBM tumor is a well known difficult pathology and a low statistical agreement between the features extracted was expected.
-
-% Analogous results about the tumor types was obtained on the analysis of the percentage of gene overlap across the cross-validation subdivision.
-% We remark that we considered only the genes overlapping in the whole set of signatures extracted.
-% Also in this case the most prominent results were obtained on the KIRC signatures with an average of 20\% of overlap in a 30\% of the signatures, with a peak of 34\%.
-% GBM and OV show a less overlap percentage (around the 10\%) in the same (30\%) of the signatures, with a peak of 16\% and 27\% respectively.
-% The worst results were obtained on the LUSC dataset where only in two cases the 11\% of overlap was reached.
-
-% The signature intersection across the 100 simulations was analyzed with the same hard threshold: we considered only the genes belonging to the full set of 100 signatures in the same fold.
-% The overlaps in this case does not give us percentages greater than 4\%.
-% Reducing this condition to the 75\% of occurrences the overlap percentages reaches 42\% in KIRC and about 25\% in the other datasets.
-
-
+The random feature extraction method is not even comparable with the others and it simply represents a null model.
 
 \end{document}

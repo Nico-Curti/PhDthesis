@@ -28,10 +28,10 @@ To rearrange the indexes according to a given array of values we can use the tem
 \centering
 \includegraphics[width=0.45\textwidth]{merge_sort.png}
 \caption{Parallel merge-sort algorithm scheme.
-Starting from the original array the master thread split the work (sub-arrays) along two slaves threads (\textsf{split} step in the graph).
+Starting from the original array the master thread splits the work (sub-arrays) along two slave threads (\textsf{split} step in the graph).
 The split recursion is applied until a required size of sub-arrays is reached.
-Each slave-thread applied a sort function (\textsf{sort} step in the graph).
-Then the full array is recombined following back the thread recursion applying an \textsf{inplace-merge} function (\textsf{merge} step in the graph).
+Each slave-thread applies a sort function (\textsf{sort} step in the graph).
+Then the full array is recombined following back the thread recursion and applying an \textsf{inplace-merge} function (\textsf{merge} step in the graph).
 }
 \label{fig:merge_sort}
 \end{figure}
@@ -40,7 +40,7 @@ As parallelization strategy we can yet invoke the new \emph{keywords} of OpenMP 
   Tasks in OpenMP are code blocks that the compiler wraps up and makes available to be executed in parallel.
 }.
 Using the maximum power of two of the available threads we split the computation in equal size sub-arrays and perform independent \textsf{argsort}s.
-Then, going backwards to the subdivisions at each step we merge the sub-arrays two-by-two until the root.
+Then, going backwards to the subdivisions at each step we merge the sub-arrays two-by-two until the root (ref Fig.~\ref{fig:merge_sort}).
 
 
 \end{document}

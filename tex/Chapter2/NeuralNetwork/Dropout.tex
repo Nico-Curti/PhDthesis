@@ -79,7 +79,16 @@ As consequence the random number generated will not be independent but (most pro
 The simple workaround implemented into Byron library is given by assigning a random number generator to each thread (with its own seed and indexed by the thread Id).
 In this way we can ensure a totally independence of the random numbers generated during the forward phase (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/dropout_layer.cpp}{on-line}).
 
-% insert figure here
+\begin{figure}[htbp]
+\centering
+\def\svgwidth{0.7\textwidth}
+\input{./img/dropout_layer.pdf_tex}
+\caption{Dropout function applied on a testing image.
+The 10\% of image pixels are turned off by the forward function.
+The corresponding gradient is back-propagated only on the previously activated pixels.
+}
+\label{fig:dropout}
+\end{figure}
 
 As visualization example we can use a simple test image and apply our transformation (see Fig.\ref{fig:dropout}).
 As expected our input image shows many pixel turned off according to the given probability.
