@@ -13,16 +13,87 @@ The reduction of feature quantity can also prevent over-fitting problems and it 
 Pooling layers are intrinsically related to Convolutional layers.
 The analogy lives in the filter mapping procedure which produces the output in both methods.
 While in the Convolutional layer we map a filter over the input signal and we apply a multiplication of the layer weights and the signal values, in the pooling layer we simply change the filter function keeping the same filter mapping procedure (see section~\ref{NN:convolutional} for more informations).
-The input parameters of the method are the same of the Convolutional one:
+The input parameters of the method are the same of the Convolutional one: the input dimensions, the kernel size and (optional) the stride value.
 
-\begin{itemize}
+The most common pooling layers are the Average Pool and the Maximum Pool.
+The Average Pool layer performs a down sampling on the batch of images.
+It slides a 2D kernel of arbitrary size over the image and the output is the mean value of the pixels inside the kernel.
+In Fig.~\ref{fig:avgpool} are shown some results obtained by performing an average pool with different kernel sizes.
+Also in this case this test was obtained using our NumPyNet library.
 
-\item Input: (batch, width, height, channels) of the input data.
+\begin{center}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{avgpool_layer.png}
+\caption{Average Pool functions applied on a testing image.
+\textbf{(left)} The original image.
+\textbf{(center)} Average Pool output obtained with a kernel mask $(3\times 3)$.
+\textbf{(right)} Average Pool output obtained with a kernel mask $(30\times 30)$.
+}
+\label{fig:avgpool}
+\end{figure}
+\end{center}
 
-\item Stride: scalar which control the amount of pixels that the filter slide.
+If in the Convolutional layers a key role was played by the matrix product, in the Pooling layers we have to carefully manage the mapping operations to obtain optimal results.
+In particular we would to show the efficient implementation provided into NumPyNet.
 
-\item K: (kx, ky) window filter size.
+In the previous sections we introduced the \textsf{im2col} algorithm which is an efficient method to re-organize the input data.
+The same algorithm can also be applied for Pooling layers and thus evaluate the Pooling function (avg, max, etc.) on each row of the re-arranged matrix.
+The implementation of the \textsf{im2col} algorithm in Python requires the evaluation of multiple indexes using complex formulas.
+Since the NumPyNet library was founded on the Numpy package we can provide an alternative implementation using the \textsf{view} functionality of the library.
+A \textsf{view} of a given array is simply another way of viewing its data: technically that means that the data of both objects is shared and thus no copies are created.
+In particular we can use the deeper functions of the Numpy package to create a re-organization of our data according to the desired output\footnote{
+  The same technique was also used for the implementation of the Convolutional layer in the NumPyNet library.
+}.
+In the following code we show our implementation of the Average Pooling layer:
 
-\end{itemize}
+\lstset{style=snippet}
+\begin{lstlisting}[language=Python, caption=NumPyNet version of AvgPool function, label=code:py_avgpool]
+import numpy as np
+
+class Avgpool_layer(object):
+
+  def __init__(self, size=(3, 3), stride=(2, 2)):
+
+    self.size = size
+    self.stride = stride
+    self.batch, self.w, self.h, self.c = (0, 0, 0, 0)
+    self.output, self.delta = (None, None)
+
+  def _asStride(self, input, size, stride):
+
+    batch_stride, s0, s1 = input.strides[:3]
+    batch,        w,  h  = input.shape[:3]
+    kx, ky     = size
+    st1, st2   = stride
+
+    # Shape of the final view
+    view_shape = (batch, 1 + (w - kx)//st1, 1 + (h - ky)//st2) + input.shape[3:] + (kx, ky)
+
+    # strides of the final view
+    strides = (batch_stride, st1 * s0, st2 * s1) + input.strides[3:] + (s0, s1)
+
+    subs = np.lib.stride_tricks.as_strided(input, view_shape, strides=strides)
+    # returns a view with shape = (batch, out_w, out_h, out_c, kx, ky)
+    return subs
+
+  def forward(self, input):
+
+    self.batch, self.w, self.h, self.c = input.shape
+    kx, ky = self.size
+    sx, sy = self.stride
+
+    input = input[:, : (self.w - kx) // sx*sx + kx, : (self.h - ky) // sy*sy + ky, ...]
+    # 'view' is the strided input image, shape = (batch, out_w, out_h, out_c, kx, ky)
+    view = self._asStride(input, self.size, self.stride)
+
+    # Mean of every sub matrix, computed without considering the pad(np.nan)
+    self.output = np.nanmean(view, axis=(4, 5))
+
+\end{lstlisting}
+
+A key role in this implementation is played by the \textsf{\_asStride} function: it returns a view of the original array in which all the masks are organized into a single list.
+Using this data re-arrangement we can easily compute the desired pooling function (average in this example) according to the appropriated axes.
+We would stress that no copies are produced during this computation and thus we can obtain a faster execution than other possible implementations (e.g \textsf{im2col}).
 
 \end{document}

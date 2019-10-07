@@ -11,8 +11,8 @@ __author__ = ['Nico Curti']
 __email__ = ['nico.curti2@unibo.it']
 __package__ = 'Gemm testing'
 
-NUM_REPEATS = 500
-NUMBER = 1000
+NUM_REPEATS = 10
+NUMBER = 500
 
 def gemm_nn (N, M, K):
 
@@ -71,55 +71,42 @@ if __name__ == '__main__':
   import seaborn as sns
   import pylab as plt
   import pandas as pd
-  import matplotlib.patches as mpatches
-
+  import numpy as np
 
   N, M, K = (100, 200, 300)
 
   times_nn = gemm_nn(N, M, K)
   times_nt = gemm_nt(N, M, K)
 
+  ref = np.asarray(times_nn)
+  val = np.asarray(times_nt)
+
+  times_nt = np.asarray(times_nt)/ref
+  times_nn = np.asarray(times_nn)/ref
+
   times_nn = pd.DataFrame(data=times_nn, columns=['Times'])
   times_nn['Gemm'] = 'GEMM_NN'
   times_nt = pd.DataFrame(data=times_nt, columns=['Times'])
   times_nt['Gemm'] = 'GEMM_NT'
 
-  ref = times_nn.Times.mean()
-
   data = pd.concat((times_nn, times_nt), axis=0)
-  data.Times /= ref
 
-  palette = sns.color_palette(['forestgreen', 'gold'])
-
-  fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 8))
+  fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 8))
   sns.despine(ax=ax, offset=1, top=True, right=True, bottom=False,  left=False)
 
-  box = sns.boxplot(x='Gemm',
+  box = sns.barplot(x=data.index,
                     y='Times',
-                    #hue='Gemm',
-                    palette=palette,
+                    hue='Gemm',
                     data=data,
                     ax=ax,
-                    notch=True,
-                    saturation=.75,
-                    linewidth=3,
                    )
-  for i,artist in enumerate(box.artists):
-    line = box.lines[i*6 + 4]
-    line.set_color('k')
-    line.set_linewidth(5)
-
-  labels = [ mpatches.Patch(facecolor='forestgreen', label='GEMM NN', edgecolor='k', linewidth=2),
-             mpatches.Patch(facecolor='gold',        label='GEMM NT', edgecolor='k', linewidth=2)
-           ]
-
   # add legend
-  ax.legend(handles=labels,
-            fontsize=24,
+  ax.legend(fontsize=24,
             loc='best',
             prop={'weight' : 'semibold',
                   'size':24},
             )
+  ax.semilogy()
 
   for tick in ax.xaxis.get_major_ticks():
     tick.label.set_fontsize(16)
@@ -130,8 +117,9 @@ if __name__ == '__main__':
     tick.label.set_fontsize(16)
 
   # set axes labels
+  ax.set_ylim(None, 1.3)
   ax.set_ylabel('SpeedUp', fontsize=24)
-  ax.set_xlabel('Gemm Algorithm', fontsize=24)
+  ax.set_xlabel('Simulations', fontsize=24)
 
   fig.tight_layout()
   fig.savefig('../img/gemm.svg', bbox_inches='tight')

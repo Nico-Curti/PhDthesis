@@ -13,10 +13,10 @@ y = \sigma\left(\sum_{i=1}^{N}w_i x_i + w_0 \right)
 $$
 \\
 where $\sigma$ is the activation function, $w_i$ are the synaptic weights and $x_i$ the inputs.
-The $w_0$ coefficient identifies the bias of the linear combination and it is left as parameter to be tune by the optimization algorithm.
+The $w_0$ coefficient identifies the bias of the linear combination and it is left as parameter to be tune by the optimization algorithm (learning phase).
 
 The connection weights $w_i$ are tuned during the training section by the chosen updating rule.
-The standard updating rule is simply given
+The standard updating rule is simply given by
 
 $$
 w_i(\tau + 1) = w_i(\tau) + \gamma(t - y)x
@@ -48,7 +48,7 @@ $$
 E(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^{N}\left( t_i - y_i \right)^2
 $$
 \\
-where in this case both $t_i$ and $y_i$ are continuous variables.
+where in this case both $t_i$ and $y_i$ are continuous variables, i.e floating point numbers.
 Now the updating rule can be given by the gradient of the cost function applied to the original weights as
 
 $$
@@ -61,16 +61,16 @@ $$
 \Delta\mathbf{w_i} = -\gamma\frac{\partial E}{\partial w_i} = -\gamma\sum_{i=1}^{N} \left( t_i - y_i \right)\left(-x_i \right)
 $$
 \\
-which looks identical to previous updating rule but in this case are managing real number and not simple class label.
+which looks identical to previous updating rule but in this case we are managing real numbers and not simple class labels.
 Moreover in this way we compute the weight updates according to the full set of training sample and not for each sample (this approach leads to the so-called \emph{batch}-update, i.e small subsets of data).
 
 To implement this kind of model into a pure Python application we do not need extra libraries but we can just use the native keyword of the language.
-A possible implementation of this model was developed and release in a on-line \href{https://gist.github.com/Nico-Curti/358b7a2ffed1abbb57ee87a5338ca073}{Gist}.
-In this simple snippet we examine the functionality of the Simple Perceptron model across different logical function and we proof its fast convergence on linear separable datasets\footnote{
+A possible implementation of this model was developed and release in a on-line \href{https://gist.github.com/Nico-Curti/358b7a2ffed1abbb57ee87a5338ca073}{gist}.
+In this simple snippet we examine the functionality of the Simple Perceptron model across different logical functions and we proof its fast convergence on linear separable datasets\footnote{
   The proof the non-linear separable convergence introducing an extra stop criteria during the weights tuning given by a maximum number of step.
 }.
 
-An equivalent C++ implementation of the model is also provided and can be found in this other \href{https://gist.github.com/Nico-Curti/856c3baf523bc5d01b1e7dfe2515c0e2}{Gist}.
+An equivalent C++ implementation of the model is also provided and can be found in this other \href{https://gist.github.com/Nico-Curti/856c3baf523bc5d01b1e7dfe2515c0e2}{gist}.
 
 The model is too naive for computational efficiency discussions.
 Thus we can just observe how a learning algorithm could be easily implemented using basic programming language keywords either in Python either in C++.

@@ -15,23 +15,24 @@ The time evaluation was performed using the \textsf{timing} Python package in wh
 }.
 In our simulations we monitored the three main parameters related to the algorithm efficiency: the number of samples, the number of variables and (as we provided a parallel multi threading implementation) the number of threads used.
 For each combination of parameters we performed 30 runs of both algorithms and we extracted the minimum execution time.
-The tests were performed on a classical bioinformatics server (128~GB RAM memory and 2 CPU E5-2620, with 8 cores each)
+The tests were performed on a classical bioinformatics server (128~GB RAM memory and 2 CPU E5-2620, with 8 cores each).
 The obtained results are shown in Fig.~\ref{fig:dnetpro_timing}.
 In each plot we fixed two variables and we evaluated the remaining one.
 
 \begin{figure}[htbp]
-\def\svgwidth{0.4\textwidth}
+\hspace{-1.0cm}
+\def\svgwidth{0.45\textwidth}
 \input{./img/features_timing.pdf_tex}
-\qquad\qquad
-\centering
-\def\svgwidth{0.4\textwidth}
+\qquad
+\hspace{1.0cm}
+\def\svgwidth{0.45\textwidth}
 \input{./img/samples_timing.pdf_tex}
 \qquad\qquad
 \centering
-\def\svgwidth{0.5\textwidth}
+\def\svgwidth{0.7\textwidth}
 \input{./img/nth_timing.pdf_tex}
 \caption{Execution time of DNetPRO algorithm.
-We compare the execution time between pure-Python and Cython (C++ wrap) implementation.
+We compare the execution time between pure-Python (orange) and Cython (blue, C++ wrap) implementation.
 \textbf{(a - left)} Execution time in function of the number of variables (the number of samples and the number of threads are kept fixed).
 \textbf{(b - right)} Execution time in function of the number of samples (the number of variables and the number of threads are kept fixed).
 \textbf{(c - bottom)} Execution time in function of the number of threads (the number of variables and the number of samples are kept fixed).

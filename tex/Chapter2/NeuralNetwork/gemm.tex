@@ -6,7 +6,7 @@
 \subsection[Matrix Product]{Matrix Product}\label{NN:gemm}
 
 Despite the mathematical formulation of the model we have to take in count also an efficient implementation.
-From a numerical point-of-view we can notice that all the computation requires by this kind of Networks (or layer if we consider it into an hybrid Neural Network architecture as we will see in the next sections) can be summarized into the matrix product evaluation.
+From a numerical point-of-view we can notice that all the computation required by this kind of Networks (or layer if we consider it into an hybrid Neural Network architecture as we will see in the next sections) can be summarized into the matrix product evaluation.
 The matrix product is a well-known numerical problems and the complexity of the algorithm can be hardly reduced under $O(N^3)$\footnote{
   The complexity is often given in the assumption of only square matrices $(N\times N)$ involved in the computation.
   For no-square matrix the algorithm complexity is given by the product of the three possible different matrix dimensions involved ($(N\times K) = (N\times M)(M\times K)$ brings to $O(NMK)$ complexity).
@@ -14,9 +14,9 @@ The matrix product is a well-known numerical problems and the complexity of the 
 }.
 A crucial role on this kind of algorithms is played by the cache accesses.
 The CPU cache is the hardware cache used by the CPU to store small portion of data in order to reduce the average cost (in time or energy consumption) to data access from the main memory.
-Cache optimization in writing an algorithm is one of the most difficult parts to perform but can lead to higher performance gains.
+Cache optimization is one of the most difficult parts to perform writing an algorithm, but can lead to highest performance gains.
 
-In the matrix product we have to multiply each row of the previous matrix by each column of the second one.
+In the matrix product we have to multiply each row of a matrix $A$ by each column of a second matrix $B$.
 We work in the assumption that each matrix is stored into an array of 1D or 2D without nested structures.
 In this case we can access to a contiguous memory portion of the first matrix since each row will be given by a series of sequential index locations (the row elements will be given by $x[0], x[1], \dots, x[N]$).
 This configuration allows the cache optimization in the access to the first matrix since we can store in the small portion of cache memory a series of row elements and use them in a vectorization environment.
@@ -36,15 +36,17 @@ The total complexity of the computation increase to $O(N^2)$ (for the matrix tra
   The cache memory is a very tight portion of memory and it is impossible to completely remove cache-misses.
 }.
 
-Fallowing back to our Neural Network implementation we can obtain the output values using the above technique.
-Moreover we can assumes from the beginning that the weight matrix is transpose and so remove the transposition step from the matrix product.
-This simple (but carefully studied) optimization allows us to obtain numerically better results in the feed-forward evaluation but it paybacks a revision of the standard mathematical formulation a carefully implementation of the code.
+Following back to our Neural Network implementation we can obtain the output values using the above technique.
+Moreover we can assumes from the beginning that the weight matrix is transposed and so remove the transposition step from the matrix product.
+This simple (but carefully studied) optimization allows us to obtain better results in the feed-forward evaluation but it paybacks a revision of the standard mathematical formulation and a carefully implementation of the code.
 
 \begin{figure}[htbp]
+\includegraphics[width=0.45\textwidth]{gemm_schema.png}
+\quad
 \centering
-\def\svgwidth{0.5\textwidth}
+\def\svgwidth{0.45\textwidth}
 \input{./img/gemm.pdf_tex}
-\caption{Gemm algorithms time performances.
+\caption{GEMM algorithms time performances.
 GEMM NN: matrix multiplication considering both the matrices in \quotes{normal} format, i.e $A\cdot B$.
 GEMM NT: matrix multiplication considering the first matrix in \quotes{normal} format and the second one transposed, i.e $A\cdot B^T$.
 We perform 100 tests of 1K runs each of both the gemm algorithms using the \textsf{einsum} function of Numpy library.
@@ -53,14 +55,14 @@ The values are rescaled according to the mean time of the GEMM NN algorithm.
 \label{fig:gemm}
 \end{figure}
 
-In the proposed numerical implementations of this model we implements both the matrix product cases to compare the performance results.
-We tested the two implementation inside Python using the \textsf{einsum} function provided by Numpy package.
-In particular we evaluate the timing performances over 1000 applications of two the gemm functions (Gemm NN, i.e considering both matrices in \quotes{normal} shapes; Gemm NT, i.e considering the first matrix as \quotes{normal} and the second transpose) considering matrices of shapes ($100\times100$).
-We perform 100 run we save the minimum time obtained over the 1000 realizations.
-In Fig.~\ref{fig:gemm} we show the results rescaled by the mean time of the Gemm NN algorithm.
-As can be seen in Fig.~\ref{fig:gemm} the speedup of the Gemm NT matrix is evident and, except few cases, it is always faster than Gemm NN algorithm.
+In the proposed numerical implementations of this model we implement both the matrix product cases to compare the performance results.
+We tested the two implementation inside Python using the \textsf{einsum} function provided by the Numpy package.
+In particular we evaluate the timing performances over 1000 applications of two the gemm functions (GEMM NN, i.e considering both matrices in \quotes{normal} shapes; GEMM NT, i.e considering the first matrix as \quotes{normal} and the second transpose) considering matrices of shapes ($100\times100$).
+We performed 100 run and we save the minimum time obtained over the 1000 realizations.
+In Fig.~\ref{fig:gemm} we show the results rescaled by the mean time of the GEMM NN algorithm (reference).
+As can be seen in Fig.~\ref{fig:gemm} the speedup of the GEMM NT matrix is evident and, except few cases, it is always faster than GEMM NN algorithm.
 
-In the Byron library implementation we provide a parallelize version of this algorithm with also an \textsf{avx} support.
-In this way we could manually manage the register memory of the two matrices and obtain faster version of the Gemm algorithm (especially for dimensions proportional by powers of 2 which are very common in neural network models).
+In the Byron library implementation we provide a parallelized version of this algorithm with also an \textsf{avx} support.
+In this way we could manually manage the register memory of the two matrices and obtain faster version of the GEMM algorithm (especially for dimensions proportional to powers of 2 which are very common in neural network models).
 
 \end{document}

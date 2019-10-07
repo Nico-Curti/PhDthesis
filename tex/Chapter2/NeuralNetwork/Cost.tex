@@ -4,14 +4,14 @@
 
 \section[Cost function]{Cost function}\label{NN:cost}
 
-A machine learning algorithm is used to minimize or maximize a function.
+A machine learning algorithm is used to minimize or maximize a cost function.
 In other words when we implement a machine learning algorithm we want to know how good is our result according to prior knowledge about the desired results.
 So we have to establish a function ables to represent the error of our model.
 This kind of function are commonly called \emph{error functions} or \emph{loss functions} or just simply \emph{cost function}.
-In the previous sections we have shown many algorithms used into a neural network model and we always talked about how to update the functional parameters according to the evaluated error.
+In the previous sections we have shown many algorithms used into a Neural Network model and we have talked about how to update the functional parameters according to the evaluated error.
 This error is provided by the cost function.
 
-The cost function represents the final output of our neural network model so it is reasonable to talk about it at the end of this chapter.
+The cost function represents the final output of our Neural Network model so it is reasonable to talk about it at the end of this chapter.
 There are many kinds of loss functions and there is not a particular one able to works with all kinds of data.
 So we have to pay attention to chose the right one in our problems.
 In particular we have to take in count the possible presence of outliers, the structure of our model, the computational efficiency of our algorithm and most of all the number of classes that we want to predict.
@@ -20,7 +20,7 @@ In the first case we want to predict a finite number of categorical values (clas
 In the second case the prediction is performed on a series of continuous values.
 Since in this work we are focusing only on classification problems we will only talk about the first case.
 
-The most common cost function is given by the \emph{Mean Square Error} (MSE) or \emph{L2 loss}.
+The most common cost function is given by the \emph{Mean Square Error} (MSE) or \emph{L2 loss} (very closed to the regularization function hinted at the end of \ref{NN:batchnorm}).
 Its mathematical formulation is quite simple and it is given by
 
 $$
@@ -30,7 +30,7 @@ $$
 where we follow the nomenclature given in \ref{NN:perceptron} and $N$ is the number of output which is equivalent to the number of classes.
 It is one of the most used cost function due to its simplicity either from a mathematical either from a numerical point of view.
 The possible range of values ranged from 0 to $\infty$.
-With MSE function predictions which are far away from actual values are heavily penalized, due to the squaring.
+With MSE function the predictions which are far away from actual values are heavily penalized, due to the squaring.
 
 A slight different function is given by the \emph{Mean Absolute Error} (MAE) or \emph{L1 loss} in which we replace the squaring with a module of the error.
 
@@ -38,15 +38,15 @@ $$
 MAE = \frac{\sum_{i=1}^{N}|\left( y - t \right)|}{N}
 $$
 
-With MAE we loose the information about the error direction (preserved by the squaring in MSE) and just simply evaluate the absolute value of the error.
+With MAE we loose the information about the error direction (preserved by the squaring in MSE) and just simply evaluate the absolute value of it.
 
-The main differences between these two function can be summarized as follow: using the MSE function we can easily solve the problem but the MAE function is more robust against possible outliers.
-Despite both function reaches the minimum in a perfect classification configuration (error equal to zero), in presence of outliers we have to manage with large differences in the numerator of the function.
-With large differences, the square values are greater than the absolute values but while the MSE tries to adjust its performance to minimize those cases, the other common examples pays the higher cost.
+The main differences between these two functions can be summarized as follow: using the MSE function we can easily solve the problem but the MAE function is more robust against possible outliers.
+Despite both functions reach the minimum in a perfect classification configuration (error equal to zero), in presence of outliers we have to manage with large differences in the numerator of the function.
+With large differences, the square values are greater than the absolute values but while the MSE tries to adjust its performance to minimize those cases, the other samples pay the higher cost.
 
 A problem related to the MAE function arises during the gradient evaluation.
 Its gradient, in fact, is the same throughout, which means that we will have large gradient values also with small differences which is a worse configuration during the training.
-A simple possible workaround is to introduce a shrinking parameters, given by a dynamic learning rate, when we move closer to the minimum.
+A simple possible workaround is to introduce a shrinking parameter, given by a dynamic learning rate, when we move closer to the minimum.
 
 When we have to manage multi-class problems there are other common cost functions based on likelihood scores.
 The simpler one is the \emph{Cross Entropy loss} or \emph{Log loss}:
@@ -60,7 +60,7 @@ In this way when we have two classes (e.g $t \in [0, 1]$) we can alternatively n
   When the actual label is equal to 1, i.e $y=1$, the second half of the Log Loss function disappears whereas in case of actual label is equal to 0 the first half is null.
 }.
 In this way the loss function heavily penalizes the predictions that are confident but wrong.
-This functions works with binary classification problems where the output classes are binned in $[0, 1]$.
+This function works with binary classification problems where the output classes are binned in $[0, 1]$.
 For this reason the output of the model must be constrained into the $[0, 1]$ domain and thus a proper activation function should be provided.
 Classically this loss function is used jointly to the sigmoid activation (ref.~\ref{NN:activation}) which constrains the output of the model in the desired interval.
 For this reason in our implementation of the algorithm we chose to merge the sigmoid function and the Log Loss function into a single object\footnote{
@@ -68,7 +68,7 @@ For this reason in our implementation of the algorithm we chose to merge the sig
   This implementation was already suggested by the \emph{darknet} library so we simply propagate it in our implementations.
 }.
 
-A last duty to mention loss function is the extension of the Log loss function to multiple classes, the so-called \emph{Categorical Cross Entropy Loss}.
+A last duty to mention loss function is the extension of the Log loss to multiple classes, the so-called \emph{Categorical Cross Entropy Loss}.
 
 $$
 CategoricalCrossEntropyLoss = -\sum{i=1}^{N}\left( y\cdot\log(t) \right)
@@ -81,15 +81,39 @@ Also in this case we have to pay attention to the output of our model which is i
 In particular this function commonly works jointly to a softmax activation function.
 As in the previous case we chose to implements this loss function in a separated object associated to the softmax transformation.
 
-Many other loss function can be mentioned and are formulated to overcome different kind of problems.
-The list of presented loss function was related to the implementation of the \emph{darknet}-like library which are ported also into the NumPyNet and Byron libraries, i.e either in Python either in C++.
+Many other loss function can be mentioned to overcome different kind of problems.
+The list of presented loss function was related to the implementation of the \emph{darknet}-like library which are ported also into the NumPyNet and Byron libraries, i.e either in Python and C++.
 NumPyNet and Byron libraries also provided a wider list of loss functions to improve the usability of them and improve their computation (and fixed some \emph{darknet} issues).
-A full list of available loss functions can be found in the \href{https://github.com/Nico-Curti/Byron/blob/master/src/cost_layer.cpp}{on-line} version of the libraries with a list of easy visual examples.
+A full list of available loss functions can be found in the \href{https://github.com/Nico-Curti/Byron/blob/master/src/cost_layer.cpp}{on-line} version of the libraries with a list of easily visual examples.
 
-A further improvements was given by the Byron library from a numerical point-of-view: many mathematical formulas needs expensive math operations as logarithms and trigonometric functions.
-An efficient (but with less precision) math formulas was implemented in the C++ version to reach faster computational performances.
-These numerical math operations are widely used into the Byron library to increase the performances despite their used can be turned off by user at compile time.
-The full set of functions, in fact, is enclosed into a macro definition (\textsf{\_\_fmath\_\_}) that can be enabled during the compilation of the library.
+A further improvements was given from a numerical point-of-view: many mathematical formulas needs expensive math operations as logarithms and trigonometric functions.
+An efficient (but approximated) math formulas was implemented both in the C++ and Python to reach faster computational performances.
+These numerical math operations are widely used into the Byron library to increase the performances despite their used can be turned off by user at compile time in Byron.
+The full set of functions, in fact, is enclosed into a \textsf{macro} definition (\textsf{\_\_fmath\_\_}) that can be enabled at compile-time.
+
+A classical example of this faster math operation is given by the \emph{fast inverse square root} algorithm, firstly introduced in 1999 in the source code of \emph{Quake III Arena}, a first-person shooter video game.
+The method is based on a Newton algorithm which can be stopped at the desired precision order: less precision is associated to faster execution, obviously.
+In our \textsf{fast math} implementation we provide a set of Newton algorithms associated to the most common mathematical operations, like \textsf{exp}, \textsf{log}, \textsf{sqrt} and so on.
+We tested these implementations against the common standards (Numpy package for Python and \textsf{std::} for C++) and we compare the time execution performances (we required a precision of at least $10^-4$).
+The obtained results are shown in Fig.~\ref{fig:fmath} where we normalized the execution time taking Numpy implementation as reference.
+
+\begin{figure}[htbp]
+\centering
+\def\svgwidth{0.8\textwidth}
+\input{./img/fmath_timing.pdf_tex}
+\caption{Time performances of standard mathematical operations implemented through Newton approximations.
+We compare the results obtained with the Numpy library (blue, reference) and the standard C++ library (\textsf{CMath}) to their equivalent into the custom \textsf{FMath} version.
+In the comparison we have to take in mind that the Numpy library is based on a C++ wrap and that the Python version of the \textsf{FMath} is written in pure Python language.
+In all the cases the \textsf{FMath} version of the functions performs better or at-least-equal to the standard one.
+}
+\label{fig:fmath}
+\end{figure}
+
+As can be see all the results obtained by the \textsf{fast math} algorithms are faster or at least equals to the standard ones.
+The C++ version of the \textsf{fast math} is certainly the better choice for an efficient implementation of the algorithms in all the cases and it is interesting to notice how some functions (\textsf{pow2} and \textsf{log10}) are drastically slower in C++ than in Python, despite the intrinsic overhead of the Python language.
+This is probably due to particularly optimizations performed by the Numpy package in the implementation of these special cases: if we compare those functions to the general ones (\textsf{pow} and \textsf{log}), in fact, the results confirm the efficiency of the C++ language.
+
+These results highlight the importance of code testing before release it: we have to pay always attention in writing a code and query also the standard choices.
 
 
 \end{document}
