@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\section[Shortcut]{Shortcut connections}\label{NN:shortcut}
+\subsection[Shortcut]{Shortcut connections}\label{NN:shortcut}
 
 The harder becomes the problem to solve and the deeper\footnote{
   The deep of a Neural Network model is related to the number of layers which made it.
@@ -48,7 +48,7 @@ The function $F$ generalizes the combination of these two values\footnote{
 
 The introduction of these extra connections bring us to the ResNet (Residual Neural Network) models era in which a key role was played by the object detection models.
 A wide range of modern deep learning architectures use this kind of connections and in this way they involve a large number of layers: famous examples of this kind are the VGG models and the ResNets.
-We have done a large use of this connections also in the models described in the next sections, either for object detection purposes (ref. \ref{obj_detection:yolo}), Super Resolution (ref. \ref{SR:sr}) and mostly for our segmentation (ref. \ref{segmentation:unet}) applications.
+We have done a large use of this connections also in the models described in the next sections, either for object detection purposes (ref. \ref{obj_detection:obj}), Super Resolution (ref. \ref{SR:sr}) and mostly for our segmentation (ref. \ref{segmentation:unet}) applications.
 This kind of functions are becoming so popular into the modern deep learning models that more and more often we describe a model according to its \emph{residual blocks}, i.e the layer ensemble between two shortcut connection.
 
 From a computational point of view the implementation of this kind of \quotes{layers} is straightforward in Python (and thus in our NumPyNet): we can easily implement a network structure as a list of object and thus a shortcut connection simply combine the output of two elements of it.

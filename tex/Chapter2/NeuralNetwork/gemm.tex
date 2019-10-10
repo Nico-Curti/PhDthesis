@@ -3,7 +3,7 @@
 \begin{document}
 
 
-\subsection[Matrix Product]{Matrix Product}\label{NN:gemm}
+\subsubsection[Matrix Product]{Matrix Product}\label{NN:gemm}
 
 Despite the mathematical formulation of the model we have to take in count also an efficient implementation.
 From a numerical point-of-view we can notice that all the computation required by this kind of Networks (or layer if we consider it into an hybrid Neural Network architecture as we will see in the next sections) can be summarized into the matrix product evaluation.
@@ -58,9 +58,9 @@ The values are rescaled according to the mean time of the GEMM NN algorithm.
 In the proposed numerical implementations of this model we implement both the matrix product cases to compare the performance results.
 We tested the two implementation inside Python using the \textsf{einsum} function provided by the Numpy package.
 In particular we evaluate the timing performances over 1000 applications of two the gemm functions (GEMM NN, i.e considering both matrices in \quotes{normal} shapes; GEMM NT, i.e considering the first matrix as \quotes{normal} and the second transpose) considering matrices of shapes ($100\times100$).
-We performed 100 run and we save the minimum time obtained over the 1000 realizations.
+We performed 500 run and we save the minimum time obtained over the 10 realizations.
 In Fig.~\ref{fig:gemm} we show the results rescaled by the mean time of the GEMM NN algorithm (reference).
-As can be seen in Fig.~\ref{fig:gemm} the speedup of the GEMM NT matrix is evident and, except few cases, it is always faster than GEMM NN algorithm.
+As can be seen in Fig.~\ref{fig:gemm} the speedup of the GEMM NT matrix is evident and it is always faster than GEMM NN algorithm with a maximum of 3.2x in the speedup.
 
 In the Byron library implementation we provide a parallelized version of this algorithm with also an \textsf{avx} support.
 In this way we could manually manage the register memory of the two matrices and obtain faster version of the GEMM algorithm (especially for dimensions proportional to powers of 2 which are very common in neural network models).

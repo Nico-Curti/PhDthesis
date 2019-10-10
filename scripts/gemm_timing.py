@@ -117,7 +117,7 @@ if __name__ == '__main__':
     tick.label.set_fontsize(16)
 
   # set axes labels
-  ax.set_ylim(None, 1.3)
+  ax.set_ylim(None, 1.4)
   ax.set_ylabel('SpeedUp', fontsize=24)
   ax.set_xlabel('Simulations', fontsize=24)
 

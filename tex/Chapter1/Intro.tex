@@ -23,7 +23,8 @@ From a computational point of view, the Bioinformatics new-science is looking fo
 The common Machine Learning methods, i.e computational algorithms able to identify significant patterns into large quantities of data, needs to be optimized and modified to increase their computational and statistical performances.
 To optimize the computational times we need to extend existing methods and algorithms and to develop new dimensionality reduction techniques.
 In Machine Learning, in fact, as the dimensionality of the data increases, the amount of data required to perform a reliable analysis grows exponentially\footnote{
-  Often this phenomenon is called \quotes{curse of dimensionality}.
+  High dimensional data tends to become very sparse and as consequence it is hard to perform robust statistical evaluation on it.
+  This phenomena is commonly called \quotes{curse of dimensionality}~\cite{bellman1961adaptive}.
 }.
 The dimensionality reduction techniques are methods able to identify the more significant variables of a given problem or a combination of them, where \quotes{significant} means that this smaller number of variables (or features) preserves the information about the problem as much as possible.
 So this huge amount of high-dimensional omics data (e.g. transcriptomics through microarray or NGS, epigenomics, SNP profiling, proteomics and metabolomics, but also metagenomics of gut microbiota) poses enormous challenges as how to extract useful information from them.
@@ -61,6 +62,7 @@ Moreover, the \quotes{linearity} of these methods (that generate very simple cla
 This consideration are relevant in particular for microarray data where we face on a small number of samples compared to a huge amount of variables (gene probes).
 This kind of problem, often called \quotes{large $N$, small $S$} problem (where $N$ is the number of features, i.e variables, and $S$ is the number of samples), tend to be prone to overfitting\footnote{
   A solution to a problem is classified as \quotes{overfitted} if small fluctuations on the data variance produce classification errors.
+  This problem arises when the model perfectly fit the training set but it is not able to generalize to new (test) samples.
 } and they are classified to ill-posed.
 The difficulty on the feature extraction can also increase due to noisy variables that can drastically affect the machine learning algorithms.
 Often is difficult to discriminate between noise and significant variables and even more as the number of variables rises.

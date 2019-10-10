@@ -142,15 +142,15 @@ if __name__ == '__main__':
     step_size = int(image.width / 5)
 
     for x in range(0, image.width, step_size):
-        line = ((x, y_start), (x, y_end))
-        draw.line(line, fill=0)
+      line = ((x, y_start), (x, y_end))
+      draw.line(line, fill=0)
 
     x_start = 0
     x_end = image.width
 
     for y in range(0, image.height, step_size):
-        line = ((x_start, y), (x_end, y))
-        draw.line(line, fill=0)
+      line = ((x_start, y), (x_end, y))
+      draw.line(line, fill=0)
     return image
 
   colors = sns.color_palette('hls', 9)
