@@ -47,10 +47,10 @@ The total number of parameters of this model is given by the sum of the values i
 \label{tab:edsr}
 \end{table}
 
-The first model is called EDSR (\emph{Enhanced Deep Super Resolution}) and was firstly proposed at the NTIRE challenge in 2017~\cite{}.
+The first model is called EDSR (\emph{Enhanced Deep Super Resolution}) and was firstly proposed at the NTIRE challenge in 2017~\cite{Agustsson_2017_CVPR_Workshops}.
 The EDSR model structure could be broadly summarized as an updated version of the SRResNet model which is already a modified version of the classical ResNet (standard CNN based on multiple residual blocks).
 The major updates concern a series of optimization to improve the training speed and the quality of the output image.
-In particular, the batch normalization steps are removed to improve the algorithm speed: it was proofed that in low-level vision tasks as the super resolution one, i.e without complex evaluations as object detection, a wide and dynamic range of outputs can be useful~\cite{}.
+In particular, the batch normalization steps are removed to improve the algorithm speed: it was proofed that in low-level vision tasks as the super resolution one, i.e without complex evaluations as object detection, a wide and dynamic range of outputs can be useful~\cite{edsr}.
 A scheme of the EDSR architecture is shown in Fig.~\ref{fig:sr_models}(a) and the full set of parameters are reported in Tab.~\ref{tab:edsr}: the EDSR model has more than 43 billion of parameters in total.
 
 A first convolutional layer takes the LR image which is processed using 256 filters.
@@ -66,7 +66,7 @@ The last set of up-sampling blocks simply reshape and reorganize the extracted i
 
 The large amount of filters of the up-sampling blocks and the input dimensions drastically affect the computational performances of the model: we numerically evaluated that the most time spent by the processing is related to the tail of the model and thus to the up-sampling blocks.
 
-The second analyzed and implemented model is the WDSR (\emph{Wide Deep Super Resolution}) model which won the NTIRE challenge in 2018~\cite{}.
+The second analyzed and implemented model is the WDSR (\emph{Wide Deep Super Resolution}) model which won the NTIRE challenge in 2018~\cite{wdsr}.
 The WDSR model is a modified version of the EDSR one.
 The improvements principally concern two aspects: the network structure and the residual blocks.
 
@@ -97,7 +97,7 @@ The total number of parameters of this model is given by the sum of the values i
 \label{tab:wdsr}
 \end{table}
 
-The WDSR also changes the residual block structure: the ReLU activations tends to block the information flow from the first layers~\cite{} and in super resolution structures is important to prevent it since they contain the low-frequency components of the image.
+The WDSR also changes the residual block structure: the ReLU activations tends to block the information flow from the first layers~\cite{mobilenet} and in super resolution structures is important to prevent it since they contain the low-frequency components of the image.
 To overcome this problem without increasing the number of parameters the WDSR proposes the so-called \quotes{passage enlargement}, i.e the reduction in the number of channels in input and the corresponding enlargement of the output channels before the ReLU activation.
 This optimization allows to increase the number of channels to be activated and thus a better information flux along the network keeping the required non-linearity.
 The number of parameters is however constant because there is only a re-arrangement of the input/output parameters.

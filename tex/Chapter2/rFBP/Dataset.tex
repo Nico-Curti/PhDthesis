@@ -7,53 +7,45 @@
 
 The few available applications of the rFBP algorithm to real data are amenable to two aspects: I) learning technique; II) algorithm implementation.
 The first one is related to the intrinsic definition of the algorithm which is designed to reach a complete memorization of the training dataset; in the other Machine Learning processes we normally want to avoid this kind of results since it could bring to \emph{over-fitting} problems.
-The second one is given by the binary values involved in each step of the algorithm which intrinsically limit the possible applications\footnote{
+The second one is given by the binary values involved in each step of the algorithm which intrinsically limits the possible applications\footnote{
   The Neural Network weights can assume only binary values since they model up/down spins.
   Moreover also the input is required to be a spin configuration and thus binary.
-  The common Machine Learning problems involve floating-point values as input pattern.
+  The common Machine Learning problems involve floating-point values as input pattern and it is not straightforward their conversion to binary values without loosing informations.
 }.
 
-
-Classification problems which involved only binary quantities are quite small but the GWA is one of them.
+Classification problems which involve only binary quantities are quite small but the GWA is one of them.
 In the GWA we have a series of genome data belonging to different classes as input.
 A genome is the ensemble of genes of an organism and each gene is identified by a series of nucleotides with 4 possible values (G, guanine; C, cytosine; A, adenine; T, thymine).
 The comparison between a reference (healthy) genome and an infected one highlights the biological mutation related to the understudy disease.
-This mutation are the so-called SNPs (Single Nucleotide Polymorphisms).
-So we can identify a genome as a sequence of its mutation in relation to a reference genome, i.e a sequence of two possible values given by the on/off of the mutation in each nucleotide.
+These mutations are the so-called SNPs (Single Nucleotide Polymorphisms).
+Thus, we can identify a genome as a sequence of its mutation in relation to a reference one, i.e a sequence of two possible values given by the on/off of nucleotide mutation.
 
 The COMPARE project aims to develop new methods to avoid the genetic disease transmission.
 In this project plays a crucial role the \emph{Source Attribution}, i.e the classification of a given disease based on the list of its mutation.
 
 We tested the rfBP on $210$ Salmonella enterica genome sequences, $4857450\,bp$ (base pairs) long, living inside animals.
-Our early goal was to discriminate those bacteria living in pigs (159 samples) with respect to all the others animals (51 samples).
+Our early goal was to discriminate bacteria which lives in pigs (159 samples) against to all the others animals (51 samples).
 
-First of all we filter our data removing from each genome a base if it is not mutated in each sample.
-In this way we reduce the number of bases to $8189\,bp$.
+\begin{figure}[htbp]
+\centering
+% \def\svgwidth{\textwidth}
+% \input{./img/Sequences.pdf_tex}
+\includegraphics[width=0.85\textwidth]{Sequences.png}
+\caption{SNP sequences of Salmonella enterica samples used in this work.
+The x-axis shows the genome bases and the y-axis the corresponding sample (210 samples in total).
+The black dots are related to a base without mutation (in relation to the genome reference), while the with dots are the mutation (SNPs) identified.
+The first 159 rows contains the genome sequences related to pigs, i.e the sequences obtained by a pig which host the bacteria, and the following ones contains sequences of other animals.
+Also with naked eyes we can see the differences between the two data types.
+}
+\label{fig:SNPsAle}
+\end{figure}
+
+First of all, we filtered our data removing from each genome a base if it was not mutated in each sample.
+In this way we reduced the number of bases to $8189\,bp$.
 A graphical representation of these samples is given in Fig.~\ref{fig:SNPsAle}.
 The dataset was divided in training and test sets using a stratified cross-validation procedure to guarantee a proportional subdivision of the samples into the two classes.
-The algorithm hyper-parameters was tuned on the training set based on the performances obtained using a internal stratified 10-fold cross-validation: in each fold the training was performed by a given sequence of hyper-parameters and the performances evaluated on the corresponding test set; the hyper-parameters configuration which obtains the best performances on the full training set was chosen as best configuration.
-The performances evaluation was performed using the custom \emph{Scorer} library.
-Considering the unbalanced sample quantities the Matthews Correlation Coefficient (MCC) is chosen as good scorer indicator for the evaluation.
-
-With the tuned hyper-parameters we performed the training of rFBP algorithm on different percentage of the training set: $25\%$, $45\%$, $65\%$ and $85\%$.
-In the same way we train also a list of the most common Machine Learning classifiers: single perceptron with floating-point weights (Perc); standard Neural Network with gradient descent as updating rule (MLP); support vector machine with linear kernel (lSVM); support vector machine with radial kernel (rSVM); linear discriminant analysis (LDA); decision tree (DT); random forest (RF); k-nearest neighbors with 2-clusters (kNN); Guassian process (GP); diag-quadratic discriminant analysis (GNB); Bernoulli naive bayes (BNB); AdaBoost (AdaB).
-For each training percentage we perform the optimization of the hyper-parameters of each classifier with the same number of optimization steps.
-In Fig.~\ref{fig:confronto_bestclassificatoriACC, fig:confronto_best_classificatoriMCC} the accuracies and MCC results are shown, respectively.
-
-From this analysis we can conclude that the rFBP algorithm shows comparable performances with the other classifiers.
-These performances globally grow with the training set size but only the rFBP is able to reach a \quotes{perfect learning} configuration, i.e accuracy of 100\% and MCC=1.
-We have also noticed that the rFBP classifier and the GNB are the only two algorithms which qualitatively does not show performances saturation on their training.
-
-A second analysis was performed on the data distribution using a multiple $\chi^2$-test.
-Starting from the whole set of genomes we can compute the contingency-matrix of the two classes\footnote{
-  The contingency-matrix displays the (multivariate) frequency distribution of the variables.
-  Each row will count the number of hosts with/without the SNPs.
-  Each column will identify a class.
-}.
-The $\chi^2$-test was performed on the full set of $8189\,bp$ and so the extracted \emph{p-values} were corrected according multiple-tests.
-Using the \v{S}id\'ak~\cite{Sidak1967} correction method and by the definition of significant threshold of $0.05$ we found $1103$ significant bases.
-An analogous $\chi^2$-test was performed on the rFBP weights to identify a putative
-
-% MISS
+The algorithm hyper-parameters were tuned on the training set in relation to the performances obtained using a internal stratified 10-fold cross-validation: in each fold the training was performed using a sequence of hyper-parameters and the performances evaluated on the corresponding test set; the hyper-parameters configuration which obtained the best performances on the full training set was chosen as best one.
+We use our custom \emph{Score} library for the performance evaluation.
+Considering the unbalanced sample quantities the Matthews Correlation Coefficient (MCC) was chosen as good score indicator for the evaluation.
 
 \end{document}
