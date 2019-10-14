@@ -20,16 +20,3 @@ In this way all the figure into the `img` directory will be converted into a pdf
 ## Arguments
 
 Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through model deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
-
-1. [Introduction on Big Data](./Introduction.md)
-2. [DNetPRO algorithm and Feature Selection](./md/Chapter1/Intro.md)
-3. [Deep learning Neural Networks via Byron and NumPyNet](./md/Chapter2/Intro.md)
-4. [Biological Big Data and CHIMeRA project](./md/Chapter3/Intro.md)
-5. [Conclusions](./Conclusions.md)
-6. Appendix:
-  * [Discriminant Analysis](./md/Appendix/DiscriminantAnalysis/Intro.md)
-  * [Venice](./md/Appendix/Venice/Intro.md)
-  * [BlendNet](./md/Appendix/BlendNet/Intro.md)
-  * [FiloBlu](./md/Appendix/FiloBlu/Intro.md)
-  * [Scorer](./md/Appendix/Scorer/Intro.md)
-  * [Profiling](./md/Appendix/Profiling/Intro.md)
