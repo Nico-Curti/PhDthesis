@@ -20,3 +20,27 @@ In this way all the figure into the `img` directory will be converted into a pdf
 ## Arguments
 
 Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through model deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
+
+* [Index](./README.md)
+* [Introduction on Big Data](./Introduction.md)
+* [DNetPRO algorithm and Feature Selection](./md/Chapter1/README.md)
+  * [DNetPRO algorithm](./md/Chapter1/DNetPRO/README.md)
+  * [Synthetic dataset benchmark](./md/Chapter1/DNetPRO/ToyModel.md)
+  * [Algorithm implementation](./md/Chapter1/Implementation/README.md)
+  * [Combinatorial algorithm](./md/Chapter1/Implementation/Couples.md)
+  * [Network signature](./md/Chapter1/Implementation/FeatSel.md)
+  * [Pair sort](./md/Chapter1/Implementation/Sorting.md)
+  * [DNetPRO in Python](./md/Chapter1/Implementation/Python.md)
+  * [DNetPRO in Snakemake](./md/Chapter1/Implementation/Pipeline.md)
+* [Deep learning Neural Networks](./md/Chapter2/README.md)
+  * [Neural Network models](./md/Chapter2/NeuralNetwork/README.md)
+* [Biological Big Data - CHIMeRA project](./md/Chapter3/README.md)
+* [Conclusions](./Conclusions.md)
+* Appendix:
+  * [Appendix A - Discriminant Analysis](./md/Appendix/DiscriminantAnalysis/README.md)
+  * [Appendix B - Venice Road Network](./md/Appendix/Venice/README.md)
+  * [Appendix C - BlendNet](./md/Appendix/BlendNet/README.md)
+  * [Appendix D - Multi-Class Performances](./md/Appendix/Scorer/README.md)
+  * [Appendix E - Neural Network as Service](./md/Appendix/FiloBlu/README.md)
+  * [Appendix F - Bioinformatics Pipeline Profiling](./md/Appendix/Profiling/README.md)
+
