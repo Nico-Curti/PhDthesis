@@ -31,4 +31,3 @@ Different topics about Big Data Analytics are discussed in this work, starting f
 4. [Biological Big Data and CHIMeRA project]()
 5. [Conclusions]()
 6. [Appendix]()
-
