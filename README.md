@@ -1,12 +1,12 @@
 | **Author**   | **Project** | **Documentation**                                                                   | **Build Status**              |
 |:------------:|:-----------:|:-----------------------------------------------------------------------------------:|:-----------------------------:|
-|   [**N. Curti**](https://github.com/Nico-Curti)   |  **PhDThesis**  | [![docs](https://img.shields.io/badge/documentation-latest-blue.svg?style=plastic)](https://nico-curti.github.io/PhDThesis/) | **Linux** : *miss* <br/> **Windows** : *miss* |
+|   [**N. Curti**](https://github.com/Nico-Curti)   |  **PhDthesis**  | [![docs](https://img.shields.io/badge/documentation-latest-blue.svg?style=plastic)](https://nico-curti.github.io/PhDthesis/) | **Linux** : *miss* <br/> **Windows** : *miss* |
 
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/Nico-Curti/PhDThesis.svg?style=plastic)](https://github.com/Nico-Curti/PhDThesis/pulls)
-[![GitHub issues](https://img.shields.io/github/issues/Nico-Curti/PhDThesis.svg?style=plastic)](https://github.com/Nico-Curti/PhDThesis/issues)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/Nico-Curti/PhDthesis.svg?style=plastic)](https://github.com/Nico-Curti/PhDthesis/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/Nico-Curti/PhDthesis.svg?style=plastic)](https://github.com/Nico-Curti/PhDthesis/issues)
 
-[![GitHub stars](https://img.shields.io/github/stars/Nico-Curti/PhDThesis.svg?label=Stars&style=social)](https://github.com/Nico-Curti/PhDThesis/stargazers)
-[![GitHub watchers](https://img.shields.io/github/watchers/Nico-Curti/PhDThesis.svg?label=Watch&style=social)](https://github.com/Nico-Curti/PhDThesis/watchers)
+[![GitHub stars](https://img.shields.io/github/stars/Nico-Curti/PhDthesis.svg?label=Stars&style=social)](https://github.com/Nico-Curti/PhDthesis/stargazers)
+[![GitHub watchers](https://img.shields.io/github/watchers/Nico-Curti/PhDthesis.svg?label=Watch&style=social)](https://github.com/Nico-Curti/PhDthesis/watchers)
 
 <a href="https://github.com/UniboDIFABiophysics">
 <div class="image">

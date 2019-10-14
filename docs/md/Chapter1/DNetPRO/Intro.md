@@ -13,7 +13,7 @@ evaluation is the most time expensive step of the algorithm and it needs
 accurate algorithmic implementation for Big Data applications (see the
 next section for further informations about the algorithm implementation
 strategy). The algorithm can be summarize as shown
-in [pseudo-code](#code:DNetPRO).
+in the following pseudo-code.
 
 ```
 Data matrix (N, S) -> List of putative signatures
@@ -89,7 +89,7 @@ separation might not be common in some classification problems (e.g.
 image classification) but it is very plausible in biological systems, in
 which many responses to perturbation consist in increase or decrease of
 variable values (e.g. expression of genes or proteins, see
-Fig. [1](#fig:example)(b)).
+Fig.[1](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/expression.svg?token=AF4CJXY7EMQ24VIPT2D6ATC5VYJ2K&sanitize=true)(b)).
 
 In a general classification problem (e.g. image analysis) this could not
 be the case, since complex non linear separating surfaces may exist

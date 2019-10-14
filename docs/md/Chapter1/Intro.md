@@ -61,7 +61,7 @@ profile [[Scotlandi2009](https://doi.org/10.1200/JCO.2008.19.2542),
 [Johnson2017](https://accpjournals.onlinelibrary.wiley.com/doi/abs/10.1002/phar.1975),
 [Beckmann2016ReconcilingEM](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5165712/)].
 
-| <img src="../../../img/distributions.svg" width="400px;"/> | <img src="../../../img/expression.svg" width="400px;"/> |
+| <img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/distributions.svg?token=AF4CJX7XWVY22FIIBN2U7VK5VYJNE&sanitize=true" width="400px;"/> | <img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/expression.svg?token=AF4CJXY7EMQ24VIPT2D6ATC5VYJ2K&sanitize=true" width="400px;"/> |
 | :----: | :----: |
 
 Many approaches are used for these classification purposes 
