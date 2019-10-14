@@ -83,36 +83,36 @@ include:
 
 theme:              jekyll-theme-slate
 
-  feature:
-    tabs: true
+#   feature:
+#     tabs: true
 
-  language: 'en'
+#   language: 'en'
 
-  extra:
-    search:
-      language: 'en'
-      tokenizer: '[\s\-\.]+'
+#   extra:
+#     search:
+#       language: 'en'
+#       tokenizer: '[\s\-\.]+'
 
-nav:
-  - About Me: authors.md
+# nav:
+#   - About Me: authors.md
 
-  - Introduction:
-    - Abstract: md/Abstract.md
-    - Introduction: md/Introduction.md
+#   - Introduction:
+#     - Abstract: md/Abstract.md
+#     - Introduction: md/Introduction.md
 
-  - Feature Selection:
-      - Introduction: md/Chapter1/Intro.md
+#   - Feature Selection:
+#       - Introduction: md/Chapter1/Intro.md
 
-  - Neural Network:
-      - Introduction: md/Chapter2/Intro.md
+#   - Neural Network:
+#       - Introduction: md/Chapter2/Intro.md
 
-  - CHIMeRA:
-      - Introduction: md/Chapter3/Intro.md
+#   - CHIMeRA:
+#       - Introduction: md/Chapter3/Intro.md
 
-  - BlendNet:
-      - Introduction: md/Appendix/BlendNet/Intro.md
+#   - BlendNet:
+#       - Introduction: md/Appendix/BlendNet/Intro.md
 
-  - Conclusions:
-      - Conclusions: md/Conclusions.md
+#   - Conclusions:
+#       - Conclusions: md/Conclusions.md
 
 
