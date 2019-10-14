@@ -1,19 +1,26 @@
-# Feature Selection - DNetPRO algorithm
+# Chapter 1
+##Feature Selection - DNetPRO algorithm
 
-After the end of the Human Genome Project (HGP, 2003) [@McKinney2012]
+After the end of the Human Genome Project (HGP, 2003) 
+[[McKinney2012](https://doi.org/10.1108/09504121211211415)]
 there has been growing interest on biological data and their analysis.
 At the same time, the availability of this type of data increased
 exponentially with the technological improvement of data extractors
-(High-Throughput technologies) [@Reuter2015] and with lower production
-costs. Lower costs and efficiency in time extraction are the main
+(High-Throughput technologies) 
+[[Reuter2015](https://doi.org/10.1016/j.molcel.2015.05.004)] and
+with lower production costs.
+Lower costs and efficiency in time extraction are the main
 factors that allow us to go into the new scientific era of Big Data.
 Biological Big Data works with very large and complex datasets which are
 typically impossible to store, handle and analyze using standard
-computer and techniques [@Kumari2014]. Just think that we need around
+computer and techniques 
+[[Kumari2014](https://pdfs.semanticscholar.org/6cb1/5f5dc5605559230617828dc1dadad5775e85.pdf)].
+Just think that we need around
 140 Gb for the storage of the DNA of a single person and an Array
 Express, a compendium of public gene expression data, contains more than
 1.3 million of genomes which have been collected in more than 45000
-experiments [@Greene2014]. Since the number of available data is getting
+experiments [[Greene2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5604462/)].
+Since the number of available data is getting
 greater, we need to design several storage databases to organize,
 classify and moreover to extract informations from them. The
 Bioinformatics European Institute (EBI) at Hinxton (UK), which is part
@@ -22,10 +29,10 @@ biggest repositories of biological data, stores 20 petabytes of data and
 genomics and proteomics back-ups. The amount of the genomics data is
 only 2 petabytes, and it doubles every year: it is not worth to remark
 that these quantities represent about a tenth of data stored by CERN of
-Ginevra [@Marx2013]. On the other hand, the ability of processing data
-and the computational techniques of analysis do not grow the same way.
-Therefore the gap between the great growth of the number of available
-data and our ability to work with them is getting bigger.
+Ginevra [[Marx2013](https://doi.org/10.1038/498255a)]. On the other hand,
+the ability of processing data and the computational techniques of analysis
+do not grow the same way. Therefore the gap between the great growth of the
+number of available data and our ability to work with them is getting bigger.
 
 From a computational point of view, the Bioinformatics new-science is
 looking for new methods to analyze these large amount of data. The
@@ -49,30 +56,32 @@ to extract low-dimensional sets of variables -- signatures -- for
 classification and diagnostic purposes, for example to better stratify
 patients for personalized intervention strategies based on their
 molecular
-profile [@Scotlandi2009; @Chan2011; @Johnson2017; @Beckmann2016ReconcilingEM].
+profile [[Scotlandi2009](https://doi.org/10.1200/JCO.2008.19.2542),
+[Chan2011](https://doi.org/10.1146/annurev-genom-082410-101446),
+[Johnson2017](https://accpjournals.onlinelibrary.wiley.com/doi/abs/10.1002/phar.1975),
+[Beckmann2016ReconcilingEM](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5165712/)].
 
-![Alt text](https://github.com/Nico-Curti/PhDthesis/blob/master/img/distributions.svg)
-<img src="https://github.com/Nico-Curti/PhDthesis/blob/master/img/distributions.svg">
-![Alt text](https://github.com/Nico-Curti/PhDthesis/blob/master/img/expression.svg)
-<img src="https://github.com/Nico-Curti/PhDthesis/blob/master/img/expression.svg">
+| <img src="https://github.com/Nico-Curti/PhDthesis/blob/master/img/distributions.svg" width="400px;"/> | <img src="https://github.com/Nico-Curti/PhDthesis/blob/master/img/expression.svg" width="400px;"/> |
+| :----: | :----: |
 
-Many approaches are used for these classification purposes [@Guyon2002],
-such as Elastic Net [@Hughey2015], Support Vector Machine, K-nearest
-Neighbor, Neural networks and Random Forest [@Pang2012]. Some methods
+Many approaches are used for these classification purposes 
+[[Guyon2002](https://link.springer.com/article/10.1023/A:1012487302797)],
+such as Elastic Net [[Hughey2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4499117/)],
+Support Vector Machine, K-nearest Neighbor, Neural networks and Random Forest 
+[[Pang2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3495190/)]. Some methods
 select signature variables by means of single-variable scoring
-methods [@Eckhard2012; @Hocking1976]  (e.g. Student's t test for a
+methods [[Eckhard2012](https://www.scirp.org/journal/PaperInformation.aspx?PaperID=18585),
+[Hocking1976](http://www.jstor.org/stable/2529336)]  (e.g. Student's t test for a
 two-class comparison), while others search for projections in variable
 space, and then perform a dimensionality reduction by thresholding the
 projection weights, but these approaches could fail even in simple
 two-dimensional situations
-(Fig. [\[fig:example\]](#fig:example){reference-type="ref"
-reference="fig:example"}).
+(Fig. [1](#fig:example)).
 
 Methods that select variables for multi-dimensional signatures based on
 single-variable performance can have limits in predicting
 higher-dimensional signature performance. As shown in
-Fig. [\[fig:example\]](#fig:example){reference-type="ref"
-reference="fig:example"}(a), in which both variables taken singularly
+Fig. [1](#fig:example)(a), in which both variables taken singularly
 perform poorly, but their performance becomes optimal in a 2-dimensional
 combination, in terms of linear separation of the two classes.
 
@@ -81,11 +90,9 @@ tasks associated to image and speech recognition, for which Deep
 Networks are used successfully in recent times, but in many cases
 biological data, such as gene or protein expression, are more likely
 characterized by a up/down-regulation behavior (as shown in
-Fig. [\[fig:example\]](#fig:example){reference-type="ref"
-reference="fig:example"}(b) top), while more complex behaviors (e.g. a
+Fig. [1](#fig:example)(b) top), while more complex behaviors (e.g. a
 optimal range of activity,
-Fig. [\[fig:example\]](#fig:example){reference-type="ref"
-reference="fig:example"}(b) bottom) are much less likely. Thus,
+Fig. [1](#fig:example)(b) bottom) are much less likely. Thus,
 discriminant-based methods (and logistic regression methods alike) can
 very likely provide good classification performances in these cases (as
 demonstrated by our results with DNetPRO) if applied in at least
@@ -119,7 +126,8 @@ same techniques also in different kind of problems with good results
 
 [^1]: High dimensional data tends to become very sparse and as
     consequence it is hard to perform robust statistical evaluation on
-    it. This phenomena is commonly called  [@bellman1961adaptive].
+    it. This phenomena is commonly called
+    [[bellman1961adaptive](https://books.google.it/books?id=POAmAAAAMAAJ)].
 
 [^2]: A solution to a problem is classified as if small fluctuations on
     the data variance produce classification errors. This problem arises
