@@ -1,0 +1,25 @@
+{
+  "gitbook": "2.x.x",
+  "title": "PhD Thesis",
+  "isbn": "978-3-16-148410-0",
+  "language": "en",
+  "direction": "rtl",
+
+  "styles": {
+    "website": "styles/website.css",
+    "ebook": "styles/ebook.css",
+    "pdf": "styles/pdf.css",
+    "mobi": "styles/mobi.css",
+    "epub": "styles/epub.css"
+  },
+
+  "plugins": ["mathjax"],
+
+  "root": "./docs/",
+
+  "structure": {
+        "readme": "README.md",
+        "summary": "SUMMARY.md"
+  }
+
+}

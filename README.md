@@ -25,15 +25,17 @@ In this way all the figure into the `img` directory will be converted into a pdf
 
 Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through model deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
 
+The on-line version of the thesis can be found on the [gitbook version](https://app.gitbook.com/@nico-curti2/s/phd-thesis) or via the [github web](https://nico-curti.github.io/PhDthesis).
+
 1. [Introduction on Big Data](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Introduction.md)
-2. [DNetPRO algorithm and Feature Selection](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/DNetPRO/Intro.md)
-3. [Deep learning Neural Networks via Byron and NumPyNet](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/NeuralNetwork/Intro.md)
-4. [Biological Big Data and CHIMeRA project](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Intro.md)
+2. [DNetPRO algorithm and Feature Selection](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/DNetPRO/README.md)
+3. [Deep learning Neural Networks via Byron and NumPyNet](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/NeuralNetwork/README.md)
+4. [Biological Big Data and CHIMeRA project](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/README.md)
 5. [Conclusions](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Conclusions.md)
 6. Appendix:
-  * [Discriminant Analysis](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/DiscriminantAnalysis/Intro.md)
-  * [Venice](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Venice/Intro.md)
-  * [BlendNet](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/BlendNet/Intro.md)
-  * [FiloBlu](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/FiloBlu/Intro.md)
-  * [Scorer](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Scorer/Intro.md)
-  * [Profiling](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Profiling/Intro.md)
+  * [Discriminant Analysis](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/DiscriminantAnalysis/README.md)
+  * [Venice](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Venice/README.md)
+  * [BlendNet](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/BlendNet/README.md)
+  * [FiloBlu](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/FiloBlu/README.md)
+  * [Scorer](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Scorer/README.md)
+  * [Profiling](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Profiling/README.md)
