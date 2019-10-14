@@ -11,7 +11,7 @@ Since we are working with SoA objects we need to re-order all the structure arra
 So we can not use the a simple sort function but can compute the set of indexes that allow the re-order of the arrays, the so called `argsort` method.
 To rearrange the indexes according to a given array of values we can use the templates in C++.
 
-<img src="../../../img/merge_sort.png">
+<img src="../../../../img/merge_sort.png">
 
 As parallelization strategy we can yet invoke the new *keywords* of OpenMP libraries and apply a *divide-and-conquer* architecture using a tree of independent *tasks*[^3].
 Using the maximum power of two of the available threads we split the computation in equal size sub-arrays and perform independent `argsort`s.

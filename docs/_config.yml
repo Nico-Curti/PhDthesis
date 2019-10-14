@@ -9,11 +9,46 @@ extra_javascript:
   - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
   - assets/mathjaxhelper.js
 
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/Nico-Curti'
+    - type: 'Unibo'
+      link: 'https://www.unibo.it/sitoweb/nico.curti2'
+
+
 markdown_extensions:
   - extra
   - tables
   - fenced_code
   - mdx_math
+
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
 
 plugins:
   - jekyll-relative-links
@@ -47,3 +82,37 @@ include:
   - authors.md
 
 theme:              jekyll-theme-slate
+
+  feature:
+    tabs: true
+
+  language: 'en'
+
+  extra:
+    search:
+      language: 'en'
+      tokenizer: '[\s\-\.]+'
+
+nav:
+  - About Me: authors.md
+
+  - Introduction:
+    - Abstract: md/Abstract.md
+    - Introduction: md/Introduction.md
+
+  - Feature Selection:
+      - Introduction: md/Chapter1/Intro.md
+
+  - Neural Network:
+      - Introduction: md/Chapter2/Intro.md
+
+  - CHIMeRA:
+      - Introduction: md/Chapter3/Intro.md
+
+  - BlendNet:
+      - Introduction: md/Appendix/BlendNet/Intro.md
+
+  - Conclusions:
+      - Conclusions: md/Conclusions.md
+
+

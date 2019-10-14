@@ -1,7 +1,7 @@
 # Appendix C
 ## BlendNet
 
-| <img src="../../../img/cycle_graph.png" width="400px;"/> | <img src="../../../img/star_graph_node.png" width="400px;"/> |
+| <img src="../../../../img/cycle_graph.png" width="400px;"/> | <img src="../../../../img/star_graph_node.png" width="400px;"/> |
 | :----: | :----: |
 
 Graph visualization is still an open problem in many applications.
