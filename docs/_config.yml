@@ -57,26 +57,26 @@ relative_links:
   collections: true
 
 include:
-  - index.md
+  - README.md
   - md/Abstract.md
-  - md/Introduction.md
-  - md/Chapter1/Intro.md
-  - md/Chapter1/DNetPRO/Intro.md
+  - md/READMEduction.md
+  - md/Chapter1/README.md
+  - md/Chapter1/DNetPRO/README.md
   - md/Chapter1/DNetPRO/ToyModel.md
-  - md/Chapter1/Implementation/Intro.md
+  - md/Chapter1/Implementation/README.md
   - md/Chapter1/Implementation/Couples.md
   - md/Chapter1/Implementation/Sorting.md
   - md/Chapter1/Implementation/FeatSel.md
   - md/Chapter1/Implementation/Python.md
   - md/Chapter1/Implementation/Pipeline.md
 
-  - md/Chapter2/Intro.md
-  - md/Chapter2/NeuralNetwork/Intro.md
+  - md/Chapter2/README.md
+  - md/Chapter2/NeuralNetwork/README.md
 
-  - md/Chapter3/Intro.md
+  - md/Chapter3/README.md
 
-  - md/Appendix/BlendNet/Intro.md
-  - md/Appendix/DiscriminantAnalysis/Intro.md
+  - md/Appendix/BlendNet/README.md
+  - md/Appendix/DiscriminantAnalysis/README.md
 
   - md/Conclusions.md
   - authors.md
@@ -96,21 +96,21 @@ theme:              jekyll-theme-slate
 # nav:
 #   - About Me: authors.md
 
-#   - Introduction:
+#   - READMEduction:
 #     - Abstract: md/Abstract.md
-#     - Introduction: md/Introduction.md
+#     - READMEduction: md/READMEduction.md
 
 #   - Feature Selection:
-#       - Introduction: md/Chapter1/Intro.md
+#       - READMEduction: md/Chapter1/README.md
 
 #   - Neural Network:
-#       - Introduction: md/Chapter2/Intro.md
+#       - READMEduction: md/Chapter2/README.md
 
 #   - CHIMeRA:
-#       - Introduction: md/Chapter3/Intro.md
+#       - READMEduction: md/Chapter3/README.md
 
 #   - BlendNet:
-#       - Introduction: md/Appendix/BlendNet/Intro.md
+#       - READMEduction: md/Appendix/BlendNet/README.md
 
 #   - Conclusions:
 #       - Conclusions: md/Conclusions.md
