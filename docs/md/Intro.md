@@ -1,5 +1,5 @@
 # Chapter 1
-##Feature Selection - DNetPRO algorithm
+## Feature Selection - DNetPRO algorithm
 
 After the end of the Human Genome Project (HGP, 2003) 
 [[McKinney2012](https://doi.org/10.1108/09504121211211415)]
@@ -133,3 +133,6 @@ same techniques also in different kind of problems with good results
     the data variance produce classification errors. This problem arises
     when the model perfectly fit the training set but it is not able to
     generalize to new (test) samples.
+
+
+[**next >>**](./md/Chapter1/DNetPRO/Intro.md)
