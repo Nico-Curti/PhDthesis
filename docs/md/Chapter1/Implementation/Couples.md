@@ -31,7 +31,9 @@ We chose to import the data from file in sequential mode since the I/O is not af
 Following the instructions suggested in Appendix A - Numerical Implementation we compute the statistic quantities on the full set of data before starting the couples evaluation.
 Taking a look to the variance equation
 
-![\Large \sigma^2 = \frac{\sum_{i=1}^{S}(x_i - \mu)^2} {S - 1} = \frac{\sum_{i=1}^{S}({x_i}^2)} {S - 1} - \mu^2}](http://latex.codecogs.com/svg.latex?\sigma^2%20=%20\frac{\sum_{i=1}^{S}(x_i%20-%20\mu)^2}%20{S%20-%201}%20=%20\frac{\sum_{i=1}^{S}({x_i}^2)}%20{S%20-%201}%20-%20\mu^2)
+$$
+\sigma^2 = \frac{\sum_{i=1}^{S}(x_i - \mu)^2} {S - 1} = \frac{\sum_{i=1}^{S}({x_i}^2)} {S - 1} - \mu^2}
+$$
 
 we can see that the first equation involve the computation of the mean as a simple sum of the elements but a large number of subtractions from it that are numerical unstable for data outliers (moreover because they are elevated to square).
 The better choice in this case is given by the second formulation that allows us to compute the both quantities in the formula inside a single parallel loop[^1].

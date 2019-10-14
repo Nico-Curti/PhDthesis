@@ -32,7 +32,7 @@ In this way the user can performs complex computational tasks using the library 
 NumPyNet wants to overcome this problem using simple Python codes with extremely readability also for novel users to better understand the symmetry between mathematical formulas and code.
 
 The simplicity of this library we will allow to give a first numerical analysis of the model functions and, moreover, to show the results of each function to a simple image to better understand the effects of their applications on real data[^2].
-Each NumPyNet function was tested against the *Tensorflow* implementation of the same methods with an automatic testing routine through *PyTest*[[Okken:2017:PTP:3176124](https://docs.pytest.org/en/latest/)].
+Each NumPyNet function was tested against the *Tensorflow* implementation of the same methods with an automatic testing routine through *PyTest* [[Okken:2017:PTP:3176124](https://docs.pytest.org/en/latest/)].
 The full code is open-source on the Github page of the project.
 Its installation is guaranteed by a continuous integration framework of the code through *Travis CI* for Unix environments and *Appevyor CI* for Windows users.
 The library supports Python version >= 2.6[^3].
