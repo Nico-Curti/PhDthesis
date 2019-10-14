@@ -61,7 +61,7 @@ profile [[Scotlandi2009](https://doi.org/10.1200/JCO.2008.19.2542),
 [Johnson2017](https://accpjournals.onlinelibrary.wiley.com/doi/abs/10.1002/phar.1975),
 [Beckmann2016ReconcilingEM](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5165712/)].
 
-| <img src="https://github.com/Nico-Curti/PhDthesis/blob/master/img/distributions.svg" width="400px;"/> | <img src="https://github.com/Nico-Curti/PhDthesis/blob/master/img/expression.svg" width="400px;"/> |
+| <img src="../../../img/distributions.svg" width="400px;"/> | <img src="../../../img/expression.svg" width="400px;"/> |
 | :----: | :----: |
 
 Many approaches are used for these classification purposes 
@@ -135,4 +135,4 @@ same techniques also in different kind of problems with good results
     generalize to new (test) samples.
 
 
-[**next >>**](./md/Chapter1/DNetPRO/Intro.md)
+[**next >>**](./DNetPRO/Intro.md)

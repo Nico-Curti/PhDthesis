@@ -23,7 +23,7 @@ However we can reasonably assume that according to the `K`-best interpretation t
 This justify the use of the same number of variables between the two algorithms using the DNetPRO signature as reference.
 In Fig.2 we show the results obtained in our simulations: the results are obtained keeping fixed the number of variables/samples and varying the number of samples/variables, Fig.2(a) and Fig.2(b) respectively.
 
-| <img src="https://github.com/Nico-Curti/PhDthesis/blob/master/img/samples_toy.svg" width="400px;"/> | <img src="https://github.com/Nico-Curti/PhDthesis/blob/master/img/features_toy.svg" width="400px;"/> |
+| <img src="../../../img/samples_toy.svg" width="400px;"/> | <img src="../../../img/features_toy.svg" width="400px;"/> |
 | :----: | :----: |
 
 For the same number of variables (Fig.2(a)) we can noticed as the two methods performs quite similarly but the DNetPRO is able to reach better performances as the number of samples increase.
@@ -71,4 +71,4 @@ This highlights the limits of the DNetPRO algorithm and also the need of a (opti
   In the case described above this step can help but not completely solve the problems: if there are two disjointed signatures we have to enlarge the number of nodes until we create a connection between them but this connection would be probably due to a noise variable.
   The pendant nodes remotion can help to reduce the amount of node but the link which connects the two components would be preserved
 
-[**next >>**](./md/Chapter1/Implementation/Intro.md)
+[**next >>**](./Implementation/Intro.md)
