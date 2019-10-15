@@ -12,8 +12,8 @@ The official implementations are written using \emph{Tensorflow} and \emph{PyTor
 Thus no test were performed in relation to them but only between the two models inside the same \textsf{Byron} framework.
 
 We started our numerical tests comparing the efficiency of the two models keeping fixed the input sizes.
-In this way we could reproduce what already proofed by the original paper, i.e the numerical efficiency of the WDSR model against its predecessor EDSR one.
-In particular over 100 runs we could easily proof that the WDSR model is more than 10x faster than EDSR, due to the discussed properties explained in the previous section.
+In this way we could reproduce what already proved by the original paper, i.e the numerical efficiency of the WDSR model against its predecessor EDSR one.
+In particular over 100 runs we could easily prove that the WDSR model is more than 10x faster than EDSR, due to the discussed properties explained in the previous section.
 
 A second analysis was performed on the performance efficiency of both the models over a validation set of images.
 We evaluated the two quality scores described in the above sections (PSNR and SSIM) over the validation set provided by the DIV2K dataset.
@@ -115,7 +115,7 @@ The most central and thus informative from a bio-medical point-of-view part was 
 We would stress that an increment of 0.25 in the PSNR score is visible by naked eyes.
 The images shown at the beginning of this section (ref. Fig.~\ref{fig:sr_wow}) were obtained using the WDSR model over our images and they visibly highlight the efficiency of our Super Resolution models.
 
-In conclusion this work proofed how we can obtain good results without need to re-train a Neural Network model.
+In conclusion this work proved how we can obtain good results without need to re-train a Neural Network model.
 The presented models are, in fact, able to generalize the learning patterns and textures also to different image kinds.
 The PSRN and SSIM performances obtained by the NMR image reconstructions are also in agreement with the results obtained on the DIV2K validation set and they confirm the goodness of the DIV2K dataset as training set for Super Resolution applications.
 Further analyses are still in work in progress and these results encourage us to test our trained models also on wider bio-medical datasets.

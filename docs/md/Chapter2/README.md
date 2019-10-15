@@ -21,7 +21,7 @@ Both libraries are released with MIT license and the codes are public available 
 These libraries have already used in different kind of applications and in the last sections we will show some of the obtained results[^1].
 
 In the last section of this chapter we will also introduce a different kind of Neural Network model.
-This model starts from a complex and theoretically proofed physical and statistical model and we will discuss about a novel custom implementation also in this case public available on my Github page ([Replicated Focusing Belief Propagation](https://github.com/Nico-Curti/rFBP)) and release under MIT license.
+This model starts from a complex and theoretically proved physical and statistical model and we will discuss about a novel custom implementation also in this case public available on my Github page ([Replicated Focusing Belief Propagation](https://github.com/Nico-Curti/rFBP)) and release under MIT license.
 This model differs from the standard deep learning neural network changing the updating rule to tune the model parameters and in this work we will show its first application on real data.
 
 [^1]: Both the `NumPyNet` and `Byron` libraries have been developed by the collaboration of master degree students and multiple thesis have taken their use as main argument.

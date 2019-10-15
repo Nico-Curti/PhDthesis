@@ -50,7 +50,7 @@ The total number of parameters of this model is given by the sum of the values i
 The first model is called EDSR (\emph{Enhanced Deep Super Resolution}) and was firstly proposed at the NTIRE challenge in 2017~\cite{Agustsson_2017_CVPR_Workshops}.
 The EDSR model structure could be broadly summarized as an updated version of the SRResNet model which is already a modified version of the classical ResNet (standard CNN based on multiple residual blocks).
 The major updates concern a series of optimization to improve the training speed and the quality of the output image.
-In particular, the batch normalization steps are removed to improve the algorithm speed: it was proofed that in low-level vision tasks as the super resolution one, i.e without complex evaluations as object detection, a wide and dynamic range of outputs can be useful~\cite{edsr}.
+In particular, the batch normalization steps are removed to improve the algorithm speed: it was proved that in low-level vision tasks as the super resolution one, i.e without complex evaluations as object detection, a wide and dynamic range of outputs can be useful~\cite{edsr}.
 A scheme of the EDSR architecture is shown in Fig.~\ref{fig:sr_models}(a) and the full set of parameters are reported in Tab.~\ref{tab:edsr}: the EDSR model has more than 43 billion of parameters in total.
 
 A first convolutional layer takes the LR image which is processed using 256 filters.

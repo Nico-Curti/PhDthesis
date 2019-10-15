@@ -8,7 +8,7 @@ Standard feature selection algorithms evaluate the single-variable performances.
 Starting from the ranked variables according to their score, a signature is obtained selecting the top scorer ones according to an hard thresholding or by an iteratively add of variables until a desired output score is reached.
 This method is called $K$-best algorithm and it allows to filter the number of variables without any constrain on their mutual interaction or correlation.
 On the other hand, the proposed DNetPRO algorithm tries to extract the more statistically significant variables considering the interaction between them, i.e the combination of variable-pairs.
-Thus, while the $K$-best algorithm scaled according to the number of variables, the DNetPRO algorithm is more computational expensive and its used can be justify only if its efficiency can be proofed.
+Thus, while the $K$-best algorithm scaled according to the number of variables, the DNetPRO algorithm is more computational expensive and its used can be justify only if its efficiency can be proved.
 
 We developed a toy model simulation to compare the performances of the standard $K$-best algorithm with the DNetPRO one, considering either the number of samples either the number of variables.
 Since the DNetPRO algorithm was designed to gene expression dataset applications our toy model should consider a large number of variables with only a relative small number of samples.
@@ -62,7 +62,7 @@ The evaluation of pair of variables could be helpful to find good variables whic
 In this cases the DNetPRO results could be helpful also to understand the variable interactions due to the network structure of the signature that can bring to deeper considerations on the fine grain interaction of the variables in a real problem context.
 
 This kind of toy model is considered a standard for feature extraction algorithm testing but it puts several disadvantages for the DNetPRO evaluation.
-We started our discussion about the DNetPRO taking into account the two distributions of data shew in Fig.~\ref{fig:example}(a).
+We started our discussion about the DNetPRO taking into account the two distributions of data showed in Fig.~\ref{fig:example}(a).
 The DNetPRO algorithm was designed to face on that kind of situations in the better way.
 The limits of our algorithm are so bounded to the sample distributions: if the informative variables are totally independent one from each other the couples evaluation does not guaranteed the best approach to the problem.
 An informative variable could work better with noise data than with another informative one: in this way we could expect a star-network signature in which the central node would be the informative variable connected to a series of noise variables.
@@ -73,7 +73,7 @@ If the informative variables are disjointed the corresponding star-networks will
 This means that we have to enlarge the quantity of nodes in our signature and thus increase the difficulty in the filtering of noise.
 
 We evaluated both these situations in our toy model simulations.
-In the first case we introduced only two informative variables obtained by a sampling of the distribution shew in Fig.~\ref{fig:example}(a).
+In the first case we introduced only two informative variables obtained by a sampling of the distribution showed in Fig.~\ref{fig:example}(a).
 In all our simulations the DNetPRO algorithm was able to identify the couple of these variables as best putative signature.
 At the same time the $K$-best algorithm find with more difficulty those variables, especially when the number of variables become greater.
 Considering the distribution of single-variable scores, in fact, we could noticed as the informative variables, despite they are manually introduced, were not always the top scoring ones: in large dimensional spaces also noise-variables produced high(er) performances.

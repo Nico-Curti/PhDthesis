@@ -6,6 +6,34 @@
 
 The increasing availability of large-scale biomedical literature under the form of public on-line databases, has opened the door to a whole new understanding of multi-level associations between genomics, protein interactions and metabolic pathways for human diseases via network approaches.
 Many structures and resources aiming at such type of analyses have been built, with the purpose of disentangling the complex relationships between various aspects of the human system relating to diseases~\cite{SymtomsNet, HumanPhenotype}.
+All these data come from different kind of studies performed by independent research groups who want to prove their theory about a particular aspect of the human biological interactions.
+The capillarity of biological analyses allow to focus on a very deep aspect of these relationships, completely ignoring all the other agents.
+This approach is certainly extremely efficient for the detection of the minimal causal agents of the problem but it tends to loose the global and complex\footnote{
+  From a physical point-of-view.
+} environment and prospective in which the process occurs.
+The study of individual aspects concerning a particular disease could give us only a partial overview of the problem and the merge of the various research study it is hard to perform.
+
+The network structures are acquiring even more importance on this kind of studies.
+Complex System and System Biology researches have proposed multiple models about the dynamical and evolutionary interactions of the human system agents aiming to study the hidden relations between them.
+A network model, in fact, is able to highlight and quantify the non-trivial correlations between our data.
+The main problem of this kind of approach is certainly the increasing dimensionality of the involved data: a network model could be described via its adjacency matrix, i.e a matrix $(N\times N)$ in which each row/column identifies an agent of the understudy problem and each entry $(i, j)$ quantifies the importance of the interaction between the agent $i$ and the agent $j$.
+In real data applications we can often reasonably assume that a wide amount of the matrix entries are null, i.e the interaction between the involved agent is quite sparse, and thus we can used the important properties related to the sparse matrices.
+However, when the amount of data increase also the management of a such sparse matrix could be difficult.
+More efficient solutions are provided by the modern Database formats and languages (e.g MySQL, SQLite, InfluxDB, $\cdots$) which store all these informations into a binary format and they allow to submit queries to extract the desired portion of data.
+A global visualization of these huge amount of data is, in fact, without practical-sense and none valuable informations can extract from the global representation of the model.
+
+In light of these considerations we started to develop the CHIMeRA project (\emph{Complex Human Interactions in MEdical Records and Atlases}) in which we aim to merge the state-of-art studies and databases about biomedical agents into a unified network structure.
+A key role on our network structure is played by the diseases: the major part of biological researches are focused on causes and consequences of a given disease and thus the corresponding databases involve the interaction between them and other biological factors.
+The diseases are also the most bigger manifestations of biological malfunctions and the large part of biological researches are financed on their study.
+Thus a disease could be a valid \quotes{bridge} between multiple data sources which highlights the multiple biological aspects related to it.
+
+The crucial point of this project was, in fact, the merging of different kind of informations provided by multiple distinct data structured.
+As told above, the major part of researches focus on a partial aspect of the problem and they provide an independent result from the others, reducing the possibility of interactions between the outputs.
+Moreover, a lot of time is always spent for the creation of a practical visualization of the results using web pages and on-line services which drastically affect the real usage of these informations when we want to combine multiple sources.
+The CHIMeRA project started from these independent sources and it aims to maximize the overlap and thus the communications between them.
+Multiple language databases were used to fill the gaps between the different biological ones.
+%TODO : finire
+
 
 %What is CHIMeRA project and which is its potentiality.
 %Description of the database created and of the query implemented to obtain the results %TODO: better query

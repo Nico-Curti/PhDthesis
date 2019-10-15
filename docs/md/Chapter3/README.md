@@ -1,6 +1,8 @@
 # Chapter 3
 ## Biological Big Data - CHIMeRA project
 
+<img src="../../../../img/5v.png" width="400px;"/>
+
 Every second a large quantity of data are produced and shared through Internet and Web-pages.
 Data are collected by social networks, messages, video streaming and images.
 Everyone, in fact, can easily create new data sources and share or put them in Internet pages.
@@ -39,7 +41,7 @@ However, also in this case, it is hard to generalize this property on all the am
 A key role is played by the *questions* which we ask: for every data source there is always an appropriated question which can be answer using it and vice versa.
 In this way also the seemingly useless datasets can acquire importance for an appropriated research project.
 
-In this chapter we will discuss about one of the latest project developed during my PhD and which is still in work in progress: the CHIMera (*Complex Human Interactions in Medical Records and Atlases*) project.
+In this chapter we will discuss about one of the latest project developed during my PhD and which is still in work in progress: the CHIMera (*Complex Human Interactions in MEdical Records and Atlases*) project.
 The project is founded on Big Data applications and it is accidentally born as separated branch of the INFN FiloBlu project (ref. next sections and Appendix E for further informations about the project) which financed my last PhD year.
 CHIMeRA aims to create a unified database of bio-medical records using Natural Language processing techniques.
 The final purpose is to merge multiple data sources available on-line into a single network structure which highlights the relevant interactions between bio-medical informations, i.e starting from diseases to the biological agents involved into their causes and consequences.

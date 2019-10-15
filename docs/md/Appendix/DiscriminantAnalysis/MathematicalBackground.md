@@ -71,7 +71,7 @@ The function dependency by the covariance matrix allows 5 different cases:
   After the $\Sigma$ substitution in the equation, we obtain
 
   $$
-  g_i(\mathbf{x}) = -\frac{1}{2}\sum_{k=1}^{s}\frac{(\mathbf{x_k}-\mu_{i,k})^2}{{\sigma_k}^2}-\frac{1}{2}\log\prod_{k=1}^{s}{\sigma_k}^2+\log P(w_i)
+  g_i(\mathbf{x}) = -\frac{1}{2}\sum_{k=1}^{s}\frac{(\mathbf{x_k}-\mu_{i,k})^2}{\sigma_k}^2-\frac{1}{2}\log\prod_{k=1}^{s}{\sigma_k}^2+\log P(w_i)
   $$
 
   where we can remove constant $$\mathbf{x_k}^2$$ terms (equals for each class) and obtain another time a linear discriminant function where the discriminant surfaces are hyper-planes and equal-probability boundaries given by hyper-ellipsoids.
@@ -95,7 +95,7 @@ The function dependency by the covariance matrix allows 5 different cases:
   $$
 
   where the quadratic term is the Mahalanobis distance, i.e a normalization of the distance according to the inverse of their covariance matrix.
-  We can proof that expanding the scalar product and removing the constant term $$\mathbf{x^T\Sigma^{-1}x}$$, we obtain yet a linear discriminant function with the same properties of the previous case.
+  We can prove that expanding the scalar product and removing the constant term $$\mathbf{x^T\Sigma^{-1}x}$$, we obtain yet a linear discriminant function with the same properties of the previous case.
   In this case the hyper-ellipsoids have axes aligned according to the eigenvectors of the $\Sigma$ matrix.
 
 

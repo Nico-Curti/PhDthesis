@@ -1,7 +1,7 @@
 ## Time performances
 
 As described in the above sections the DNetPRO is a combinatorial algorithm and thus it requires a particular accuracy in the code implementation to optimize as much as possible the computational performances.
-The theoretical optimization strategies described until now have to be proofed by quantitative measures.
+The theoretical optimization strategies described until now have to be proved by quantitative measures.
 
 We tested the computational performances of our Cython (C++ wrap) implementation against the pure Python (naive) implementation shown in the previous snippet.
 The time evaluation was performed using the `timing` Python package in which we can easily simulate multiple run of a given algorithm [^1].
