@@ -1,0 +1,13 @@
+## The datasets
+
+The dataset used in this study has been provided by the Italian mobile phone company TIM and contains geo-referenced positions of tens of thousands anonymous devices (e.g. mobile phones, tablets, etc. ...), whenever they performed an activity (e.g. a phone call or an Internet access) during eight days from 23/2/2017 up to 02/03/2017 (Carnival of Venice dataset), and from 14/7/2017 up to 16/7/2017 (*Festa del Redentore* dataset).
+According to statistical data, 66% of the whole Italian population has a smart-phone and TIM is one the greatest mobile phone company in Italy whose users are around the 30% of the whole smart-phone population.
+The datasets refer to a geographical region that includes an area of the Venice province, so that it is possible to distinguish commuters from sedentary people and the different transportation means used to reach Venice.
+Each valid record gives information about the GPS localization of the device, the recording time, the signal quality and also the roaming status, which in turns allow to distinguish between Italian and
+foreigners.
+The devices are fully anonymized and not reversible identification numbers (ID) are automatically provided by the system for mobile phones and calls within the scope of the trial; the ID is kept for a period of 24 hours.
+During each activity a sequence of GPS data is recorded with a 2 sec. sampling rate and the collection stops when the activity ends.
+As matter of fact during an activity most of people reduce their mobility except if they are on a transportation mean, so that the dataset contains a lot of small trajectories that have to be joined to reconstruct the daily mobility.
+After a filtering procedure these data provide information on the mobility of a sample containing 3000–4000 devices per day.
+Since the presences during the considered events were of the order of 105 individuals per day, as reported by the local newspapers, we estimate an overall penetration of our sample of 3–4%.
+The filtering procedure and the other statistical informations about the sample penetration are discussed in the original paper [[Mizzi2018](https://doi.org/10.1140/epjds/s13688-018-0168-2)].

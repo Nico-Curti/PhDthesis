@@ -1,0 +1,19 @@
+## Bovine Paratuberculosis
+
+Paratuberculosis or Johne's disease (JD) in cattle is a chronic granulomatous gastroenteritis caused by infection with \emph{Mycobacterium avium subspecies paratuberculosis} (MAP).
+JD is not treatable; therefore the early identification and isolation of infected animals is a key point to reduce its incidence worldwide.
+In this work DNetPRO algorithm was applied to RNAseq experimental data of 5 cattle positive to MAP infection compared to 5 negative uninfected controls.
+The purpose was to find a small set of differentially expressed genes able to discriminate between infected animals in a pre-clinical phase.
+Results of the DNetPRO algorithm identified a small set of 10 transcripts that differentiate between potentially infected, but clinically healthy, animals belonging to paratuberculosis positive herds and negative unexposed animals.
+Furthermore, the same set of 10 transcripts differentiate negative unexposed animals from positive animals based on the results of the ELISA test [^1] for bovine paratuberculosis and fecal culture.
+Within the 10 transcripts that together had good discriminative potential, 5 (TRPV4, RIC8B, IL5RA, ERF and CDC40) show significant differential expression between the three groups while the remaining 5 transcripts (RDM1, EPHX1, STAU1, TLE1, ASB8) did not show a significant differences in at least one of the pairwise comparisons.
+In conclusion, the discriminant analysis described here identified a set of 10 genes that discriminate between the exposed and sero-converted animals.
+When tested in a larger cohort, these finding lead the possible use of RNA expression analysis as new diagnostic test for paratuberculosis.
+Such a signature could allow early interventions to reduce the sanitary and economic burden, and to reduce the risk of infection spreading.
+
+In the next sections a description of the dataset and of main DNetPRO results will be discussed.
+Further informations can found in the original paper [[Malvisi2019]()].
+
+
+[^1]: The enzyme-linked immunosorbent assay. It is a common diagnostic tool as well as a quality control check in various bio-medical industries and in medicine.
+

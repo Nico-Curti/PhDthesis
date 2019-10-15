@@ -1,0 +1,24 @@
+sudo: false
+language: generic
+
+
+matrix:
+  include:
+    - os: linux
+
+  cache:
+    directories:
+      - "/tmp/texlive"
+      - "$HOME/.texlive"
+
+  timeout: 3600
+
+
+before_install:
+  - chmod 777 ./utility/travis_setup.sh
+  - travis_wait 45 bash ./utility/travis_setup.sh
+  - export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
+
+script:
+
+  - make
