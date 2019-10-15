@@ -56,4 +56,4 @@ The pipeline algorithm is made by many different steps and only a part of it was
 
 [^2]: A solution to a problem is classified as if small fluctuations on the data variance produce classification errors. This problem arises when the model perfectly fit the training set but it is not able to generalize to new (test) samples.
 
-[**next >>**](./DNetPRO/Intro.md)
+[**next >>**](./DNetPRO/README.md)

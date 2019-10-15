@@ -71,4 +71,4 @@ This highlights the limits of the DNetPRO algorithm and also the need of a (opti
   In the case described above this step can help but not completely solve the problems: if there are two disjointed signatures we have to enlarge the number of nodes until we create a connection between them but this connection would be probably due to a noise variable.
   The pendant nodes remotion can help to reduce the amount of node but the link which connects the two components would be preserved
 
-[**next >>**](../Implementation/Intro.md)
+[**next >>**](../Implementation/README.md)

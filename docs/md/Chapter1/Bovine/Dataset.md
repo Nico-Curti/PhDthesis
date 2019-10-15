@@ -12,3 +12,6 @@ In detail, the dataset used comprised 15036 transcripts from 15 samples, classif
 Only transcripts with non-zero measures for all samples were considered, reducing the dataset to 13529 transcripts.
 
 All data generated or analyzed during this study is available upon request, furthermore all transcript counts per sample are given as supplementary information files of the original paper.
+
+
+[**next >>**](./Results.md)

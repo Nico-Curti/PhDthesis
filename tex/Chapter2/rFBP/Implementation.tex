@@ -12,7 +12,7 @@ The learning rule which controls the weight updates is given by the Belief Propa
 
 A first implementation of the algorithm was proposed in the original paper~\cite{BaldassiE7655} jointly with an open-source Github repository.
 The original version of the code was written in Julia language and despite it is a quite efficient implementation the Julia programming language stays on difficult and far from many users.
-To broaden the scope and use of the method, a C++ implementation was developed with a jointly \emph{Cython} wrap for Python users.
+To broaden the scope and use of the method, a C++ implementation was developed with a joint \emph{Cython} wrap for Python users.
 The C++ language guarantees better computational performances against the Julia implementation and the Python version enlarge its usability.
 This implementation is optimized for parallel computing and is endowed with a custom C++ library called \emph{Scorer} (see Appendix D for further details), which is able to compute a large number of statistical measurements based on a hierarchical graph scheme.
 With this optimized implementation we try to encourage researchers to approach these alternative algorithms and to use them more frequently on real context.
@@ -28,14 +28,14 @@ The continuous integration of the project is guaranteed in every operative syste
 
 The Python wrap guarantees also a good integration with the other common Machine Learning tools provided by \emph{scikit-learn} Python package; in this way we can use the rFBP algorithm as equivalent alternative also in other pipelines.
 Like other Machine Learning algorithm also the rFBP one depends on many parameters, i.e its hyper-parameters, which has to be tuned according to the given problem.
-The Python wrap of the library was written according the \emph{scikit-optimize} Python package to allow an easy hyper-parameters optimization using the already implemented classical methods.
+The Python wrap of the library was written according to \emph{scikit-optimize} Python package to allow an easy hyper-parameters optimization using the already implemented classical methods.
 
 
 \begin{figure}[htbp]
 \centering
 \def\svgwidth{0.85\textwidth}
 \input{./img/rfbp_magp_timing.pdf_tex}
-\caption{Comparison of time performances between the original Julia implementation and our Cython one of the rFBP algorithm varying the input dimension sizes.
+\caption{Comparison of time performances between the original Julia implementation and our Cython one of the rFBP algorithm varying the input dimension sizes (number of samples, $M$, and number of variables, $N$).
 For each input configuration 100 runs of both algorithm were performed and the results were normalized by the Julia implementation.
 In these cases we fixed the magnetization to \textbf{MagP64}.
 }
@@ -46,7 +46,7 @@ In these cases we fixed the magnetization to \textbf{MagP64}.
 \centering
 \def\svgwidth{0.85\textwidth}
 \input{./img/rfbp_magt_timing.pdf_tex}
-\caption{Comparison of time performances between the original Julia implementation and our Cython one of the rFBP algorithm varying the input dimension sizes.
+\caption{Comparison of time performances between the original Julia implementation and our Cython one of the rFBP algorithm varying the input dimension sizes (number of samples, $M$, and number of variables, $N$).
 For each input configuration 100 runs of both algorithm were performed and the results were normalized by the Julia implementation.
 In these cases we fixed the magnetization to \textbf{MagT64}.
 }
@@ -56,7 +56,7 @@ In these cases we fixed the magnetization to \textbf{MagT64}.
 
 We firstly test the computational efficiency of our implementation against the original Julia one.
 The tests were performed comparing our \emph{Cython} version of the code (and thus with a slight overhead given by the Python interpreter) and the Julia implementation as reference.
-Varying the dimension sizes (number of samples and number of variables) we tested the time efficiency over 100 runs of both the algorithms.
+Varying the dimension sizes (number of samples, $M$, and number of variables, $N$) we tested the time efficiency over 100 runs of both the algorithms.
 We divided our simulation according to the two possible type of magnetizations (MagP64 and MagT64 as described by the original implementation available \href{https://github.com/carlobaldassi/BinaryCommitteeMachineFBP.jl}{here}) and the obtained results are shown in Fig.~\ref{fig:rfbp_magp}~\ref{fig:rfbp_magt}, respectively.
 
 As can be seen by the two simulations our implementation always overcome the time performances of the original one, taken as reference in the plot.

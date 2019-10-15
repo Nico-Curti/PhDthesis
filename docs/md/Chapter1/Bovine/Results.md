@@ -38,3 +38,5 @@ In conclusion, the DNetPRO algorithm identified a set of 10 genes, the expressio
 These finding lead the possible use of RNA expression analysis as new diagnostic test for JD.
 In particular the approach may be able to identify infected animals prior to sero-conversion, prior to a positive ELISA test result.
 However, further tests for specificity and validation in a larger cohort are required.
+
+[**next >>**](../../Chapter2/README.md)

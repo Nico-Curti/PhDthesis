@@ -10,7 +10,7 @@ $$
 G(\mathbf{x}|\mu, \Sigma) = \frac{1}{(2\pi)^{d/2}\cdot\left|\Sigma\right|^{1/2}}\cdot exp\left[-\frac{1}{2}(\mathbf{x}-\mathbf{\mu})^T\Sigma^{-1}(\mathbf{x}-\mathbf{\mu})\right]
 $$
 
-where $\mathbf{x}$ is a column $d$-dimensional vector, $$\mathbf{\mu}$$ the mean vector of the distribution, $$\Sigma$$ the covariance matrix `(d x d)`, $$|\Sigma|$$ and $$\Sigma^{-1}$$ the determinant and the inverse of $$\Sigma$$, respectively, we can notice the `G` depends quadratically by $$\mathbf{x}$$,
+where $$\mathbf{x}$$ is a column `d`-dimensional vector, $$\mathbf{\mu}$$ the mean vector of the distribution, $$\Sigma$$ the covariance matrix `(d x d)`, $$|\Sigma|$$ and $$\Sigma^{-1}$$ the determinant and the inverse of $$\Sigma$$, respectively, we can notice the `G` depends quadratically by $$\mathbf{x}$$,
 
 $$
 \Delta^2 = (\mathbf{x}-\mu)^T\Sigma^{-1}(\mathbf{x}-\mu)
@@ -51,7 +51,7 @@ The function dependency by the covariance matrix allows 5 different cases:
   and removing all the $$\mathbf{x^Tx}$$ constant terms for each class
 
   $$
-  g_i(\mathbf{x}) = -\frac{1}{2\sigma^2}(-2{\mu_i}^T\mathbf{x}+{\mu_i}^T\mu_i)+\log P(w_i) = \mathbf{{w_i}^Tx}+\mathbf{w_0}
+  g_i(\mathbf{x}) = -\frac{1}{2\sigma^2}(-2{\mu_i}^T\mathbf{x}+{\mu_i}^T\mu_i)+\log P(w_i) = \mathbf{w_i}^T\mathbf{x}+\mathbf{w_0}
   $$
 
   This simplifications create a linear discriminant function where the separation surfaces between classes are hyper-planes ($$g_i(\mathbf{x})=g_j(\mathbf{x})$$).

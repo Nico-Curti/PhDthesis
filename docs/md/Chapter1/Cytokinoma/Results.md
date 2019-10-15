@@ -34,3 +34,6 @@ Epidemiological studies show that women have a higher risk of AD as well as a hi
 
 In conclusion, the identified cytokinome signature shows a good accuracy in differentiating MCI from CTL, especially in female.
 Understanding sex differences will help to define individualized preventive and treatment interventions for AD.
+
+
+[**next >>**](../Bovine/README.md)
