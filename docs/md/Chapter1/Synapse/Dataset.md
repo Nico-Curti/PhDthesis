@@ -10,10 +10,10 @@ The summary description of the datasets used is reported in the following Table.
 
 | Cancer |    mRNA                   | miRNA                    | Protein         | Number </br> of samples  |
 |:------:|:-------------------------:|:------------------------:|:---------------:|:------------------------:|
-GBM      | AgilentG4502A </br> 17814 | H-miRNA_8x15k </br> 533  | RPPA [^a]       |     210                  |
-KIRC     | HiseV2        </br> 20530 | GA+Hiseq      </br> 1045 | RPPA </br> 166  |     243                  |
-OV       | AgilentG4502A </br> 17814 | H-miRNA_8x15k </br> 798  | RPPA </br> 165  |     379                  |
-LUSC     | HiseqV2       </br> 20530 | GA+Hiseq      </br> 1045 | RPPA </br> 174  |     121                  |
+| GBM    | AgilentG4502A       17814 | H-miRNA_8x15k       533  | RPPA [^a]       |     210                  |
+| KIRC   | HiseV2              20530 | GA+Hiseq            1045 | RPPA       166  |     243                  |
+| OV     | AgilentG4502A       17814 | H-miRNA_8x15k       798  | RPPA       165  |     379                  |
+| LUSC   | HiseqV2             20530 | GA+Hiseq            1045 | RPPA       174  |     121                  |
 
 Each tumor dataset was pre-processed by adding a zero-mean Gaussian random noise ($$\sigma = 10^{-4}$$)) to remove the possible null values in the database, which could produce numerical errors in the distances evaluation between genes.
 Then, we randomly split each dataset in training and test sets with a stratified (i.e. balanced for class sample ratio) 10-fold procedure: with the stratification we are reasonably sure that each training-set is a good representative of the whole sample set.

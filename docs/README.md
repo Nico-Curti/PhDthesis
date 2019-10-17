@@ -84,3 +84,27 @@ Different topics about Big Data Analytics are discussed in this work, starting f
     * [Results](./md/Chapter2/rFBP/Results.md)
 
 
+* [Biological Big Data - CHIMeRA project](./md/Chapter3/README.md)
+  * [The CHIMeRA project](./md/Chapter3/CHIMeRA/README.md)
+
+* [Conclusions](./Conclusions.md)
+
+* Appendix:
+  * [Appendix A - Discriminant Analysis](./md/Appendix/DiscriminantAnalysis/README.md)
+    * [Mathematical background](./md/Appendix/DiscriminantAnalysis/MathematicalBackground.md)
+    * [Numerical Implementation](./md/Appendix/DiscriminantAnalysis/Numerical.md)
+  * [Appendix B - Venice Road Network](./md/Appendix/Venice/README.md)
+    * [The datasets](./md/Appendix/Venice/Dataset.md)
+    * [Mobility paths reconstruction on the road network](./md/Appendix/Venice/MobilityPaths.md)
+  * [Appendix C - BlendNet](./md/Appendix/BlendNet/README.md)
+  * [Appendix D - Multi-Class Performances](./md/Appendix/Scorer/README.md)
+  * [Appendix E - Neural Network as Service](./md/Appendix/FiloBlu/README.md)
+    * [FiloBlu Service](./md/Appendix/FiloBlu/Service.md)
+    * [Data Transmission](./md/Appendix/FiloBlu/CryptoSocket.md)
+  * [Appendix F - Bioinformatics Pipeline Profiling](./md/Appendix/Profiling/README.md)
+    * [GATK-LODn pipeline](./md/Appendix/Profiling/Pipeline.md)
+    * [Computational Environments](./md/Appendix/Profiling/Environment.md)
+    * [Pipeline steps](./md/Appendix/Profiling/Step.md)
+    * [Results](./md/Appendix/Profiling/Results.md)
+    * [Conclusions](./md/Appendix/Profiling/Conclusion.md)
+

@@ -1,10 +1,10 @@
 ## GATK-LODn pipeline
 
-|                | **Coverage** | **No. of** </br> **Reads** | **Read** </br> **Lenght** | **BAM file** </br> **size** | **NGS** </br> **size** |
-|:--------------:|:------------:|:--------------------------:|:-------------------------:|:---------------------------:|:--------:|
-**Whole genome** | 37.7x        | 975,000,000                | 115                       | 82 GB                       | 104 GB |
-**Whole genome** | 38.4x        | 3,200,000,000              | 36                        | 138 GB                      | 193 GB |
-**Exome**        | 40x          | 110,000,000                | 75                        | 5.7 GB                      | 7.1 GB |
+|                | **Coverage** | **No. of Reads** | **Read Lenght** | **BAM file size** | **NGS size** |
+|:--------------:|:------------:|:----------------:|:---------------:|:-----------------:|:------------:|
+|**Whole genome** | 37.7x       | 975,000,000      | 115             | 82 GB             | 104 GB       |
+|**Whole genome** | 38.4x       | 3,200,000,000    | 36              | 138 GB            | 193 GB       |
+|**Exome**        | 40x         | 110,000,000      | 75              | 5.7 GB            | 7.1 GB       |
 
 The pipeline used in this work, GATK-LODn, has been developed in 2016 by Do Valle et al. [DoValle2016](http://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-1190-7), and codifies a new approach aimed to Single Nucleotype Polimorphism (SNP) identification in tumors from Whole Exome Sequencing data (WES).
 WES is a type of "next generation sequencing" data [[Zwolak2008](https://arxiv.org/abs/0708.2724), [Behjati2013](http://ep.bmj.com/lookup/doi/10.1136/archdischild-2013-304340), [Shendure2008](http://www.nature.com/doifinder/10.1038/nbt1486)], focused on the part of the genome that actually codifies proteins (the exome).

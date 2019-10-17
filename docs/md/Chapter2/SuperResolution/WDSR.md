@@ -5,7 +5,7 @@
 There were different kind of models proposed for image Super Resolution purposes but in this work we focused only on two of them.
 Both are based on deep learning Neural Network models and they became famous in the research community since they both won the last NTIRE editions, 2017 and 2018 respectively.
 
-|   Layer                |  Channels </br> input/output | Filter </br> dimensions | Number of </br> Parameters |
+|   Layer                |  Channels       input/output | Filter       dimensions | Number of       Parameters |
 |:----------------------:|:----------------------------:|:-----------------------:|:--------------------------:|
 | Conv. input            | 3/256                        | `3 x 3`                 | 6912                       |
 | Conv. (residual block) | 256/256                      | `3 x 3`                 | 589824                     |
@@ -39,7 +39,7 @@ Moreover, if the EDSR applies a x2 up-sampling every pixel-shuffle layer, in the
 This update drastically reduce the computational time and the amount of parameters.
 Furthermore, the combination between low- and high- frequency components in this case are processed separately (two different branches) and only at the end they are re-combined (ref. Fig. [1](../../../../img/SR_models.png)(b)).
 
-|   Layer                     |  Channels </br> input/output | Filter </br> dimensions | Number of </br> Parameters |
+|   Layer                     |  Channels       input/output | Filter       dimensions | Number of       Parameters |
 |:---------------------------:|:----------------------------:|:-----------------------:|:--------------------------:|
 | Conv. input 1               | 3/32                         | `3 x 3`                 | 864                        |
 | Conv. 1 (residual block)    | 32/192                       | `3 x 3`                 | 55296                      |
