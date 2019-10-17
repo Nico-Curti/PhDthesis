@@ -1,0 +1,30 @@
+## Conclusions
+
+Bioinformatics pipelines are one of the most important uses of biomedical big data and, at the same time, one of the hardest to optimize, both for their extreme requisites and the constant change of the specification, both in input-output data format and program API.
+
+This makes the task of pipeline optimization a daunting one, especially for the final target of the results; physicians and biologists could lack the technical expertise (and time) required to optimize each new version of the various softwares of the pipelines.
+Moreover, in a verified pipeline updating the software included without a long and detailed cross-validation with the previous one is often considered a bad practice: this means that often these pipelines are running with under-performing versions of each software.
+
+Clinical use of these pipelines is growing, in particular with the rise of the concept of *personalized medicine*, where the therapy plan is designed on the specific genotype and phenotype of the individual patient rather than on the characteristic of the overall population.
+This would increase the precision of the therapy and thus increase its efficacy, while cutting considerably the trial and error process required to identify promising target of therapy.
+This requires the pipelines to be evaluated in real time, for multiple subjects at the same time (and potentially with multiple samples per subject).
+To perform this task no single node is powerful enough, and thus it is necessary to use clusters.
+This brings the need to evaluate which is the most cost and time efficient node that can be employed.
+
+In the cost assessment there are several factors that need to be considered aside of the initial setup cost, namely cost for running the server and opportunity cost for obsolescence.
+Scaled on medium sized facilities, such the one that could be required for a hospital, this cost could quickly overcome the setup cost.
+This cost does also include not only the direct power consumption of the nodes, but also the required power for air conditioning to maintain them in the working temperature range.
+Opportunity costs are more complex, but do represent the loss of possibility of using the most advanced technologies due to the cost of the individual node of the cluster.
+Higher end nodes require a significant investment, and thus can not be replaced often.
+
+With this perspective in mind, we surmise that energy efficient nodes present an interesting opportunity for the implementation of these pipelines.
+As shown in this work, these nodes have a low cost per subject, paired with a low setup cost.
+This makes them an interesting alternative to traditional nodes as a workhorse node for a cluster, as a greater number of cores can be bought and maintained for the same cost.
+
+Given the high variability of the performances in the various steps, in particular with the sorting and mapping steps, it might be more efficient to employ a hybrid environment, where few high power nodes are used for specific tasks, while the bulk of the computation is done by the energy efficient nodes.
+This is true even for those steps that can be massively parallelized, such as the mapping, as they benefit mainly from a high number of processors rather than few powerful ones.
+In this work we focused only on CPUs computation, but another possibility could be an hybrid-parallelization approach in which the use of a single GPU accelerator can improve the parallelization of the slower steps.
+Each pipeline work-flow requires its own analyses and tuning to reach the best performances and the right parallelization strategy based on the use which it is intended but a low energy node approach is emerging as a good alternative to the more expensive and common solutions.
+
+
+[**end**](../../README.md)

@@ -30,7 +30,7 @@ This behavior particularly affects the variance estimation: the chose of a numer
 
 \end{itemize}
 
-With these idea in mind we can write a C++ code able to optimize this step of computation in a multi-threading environment with the purpose of testing its scalability over multi-core machines.
+With these idea in mind we can write a \textsf{C++} code able to optimize this step of computation in a multi-threading environment with the purpose of testing its scalability over multi-core machines.
 
 Starting from the first discussed point we chose to implement the full code inside a unique main function with the help of only a single SoA custom object and one external function (\emph{sorting algorithm} discussed in the next section).
 This allows us to implement the code inside a single parallel section reducing the time of thread spawns.
@@ -52,10 +52,10 @@ At each cross validation we will use the two pre-calculated sums of variables re
 Another precaution to take in care is to add a small epsilon to the variance before its use at denominator inside the classifier function to prevent numerical underflow.
 
 The main role is still given by the couples loop.
-The set of pair variables can be obtained only by two nested for loops in C++ and naive optimization can be obtained by simply reduce the number of iterations following the triangular indexes of the full matrix (by definition the score of the couple $(i, j)$ is equal to the score of $(j, i)$).
+The set of pair variables can be obtained only by two nested for loops in \textsf{C++} and naive optimization can be obtained by simply reduce the number of iterations following the triangular indexes of the full matrix (by definition the score of the couple $(i, j)$ is equal to the score of $(j, i)$).
 This precaution easily allows the parallelization of the external loop and drastically reduce the number of iteration but it also creates a link between the two iteration variables.
 The new release of OpenMP libraries~\cite{OpenMP}\footnote{
-  The OpenMP library is the most common non-standard library for C++ multi-threading applications.
+  The OpenMP library is the most common non-standard library for \textsf{C++} multi-threading applications.
 } (from OpenMP 4.5) introduce a new \emph{keyword} of the language that allows the collapsing of nested for loops in a single one (whose number of iterations is given by the product of the single dimensions) in the only exception of completely independences of iteration variables.
 So the best strategy to use in this case is to perform the full set of $N^2$ iterations with a single \textsf{collapse} clause in the external loop\footnote{
   Obviously the iteration where the inner loop variable is lower than the outer one will be skipped by an if condition.
@@ -106,6 +106,6 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 In this section we also provide an \quotes{equivalent} Python implementation with the use of common machine learning libraries and parallel settings (ref.~\ref{code:py_couples}).
-In the next sections we will discuss the computational performances of this naive implementation with C++ one discussed above.
+In the next sections we will discuss the computational performances of this naive implementation with \textsf{C++} one discussed above.
 
 \end{document}

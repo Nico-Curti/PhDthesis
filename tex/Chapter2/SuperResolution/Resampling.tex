@@ -100,7 +100,7 @@ class Upsample_layer(object):
 Thus the down-sampling algorithm is obtained reshaping the input array according the two scale factors (\textsf{strides} in the code) along the two dimensions and computing the mean along these axes.
 Instead the up-sample function use the stride functionality of the Numpy array to rearrange and replicate the value of each pixel in a mask of size \textsf{strides}$\times$\textsf{strides}.
 
-The same functionality can be obtained in the C++ version of the code provided by the Byron library in which we compute the right indexes along a nested sequence of for loops (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/upsample_layer.cpp}{on-line}).
+The same functionality can be obtained in the \textsf{C++} version of the code provided by the Byron library in which we compute the right indexes along a nested sequence of for loops (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/upsample_layer.cpp}{on-line}).
 We have to take in care the summation reduction provided by the down-sampling according to the thread concurrency: in this case we can not generalize the loop collapsing to the full set of lops but we have to separately manage the summation in a sequential section.
 
 A more sophisticated interpolation algorithm, which reduce the loosing informations, is provided by the \emph{bicubic interpolation}.

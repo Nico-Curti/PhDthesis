@@ -23,7 +23,7 @@ This is a (well known) important type of optimization in computation term since 
 To better understand the effects of activation functions we can apply these functions on a simple test image and see the results.
 This can be easy done using the example scripts inserted inside our library.
 
-<img src="../../../../img/activations_layer.png" width="400px;"/>
+![Activation functions applied on a testing image. **(top)** Elu function and corresponding gradient. **(center)** Logistic function and corresponding gradient. **(bottom)** Relu function and corresponding gradient.](../../../../img/activations_layer.png)
 
 In the Figure the effects of the told above functions are reported on a test image.
 For each function we show the output of the activation function and its gradient.

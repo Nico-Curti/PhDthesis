@@ -15,14 +15,14 @@ The sorting algorithm starts at the end of variable couple evaluation and re-ord
 This step is performed in the same code (and same parallel section) of the before section but it deserves an own topic for a better focus on the parallelization strategy chosen.
 Moreover there are many common parallel implementation of sorting algorithm and to reach the best performances we have to chose the appropriated one.
 
-The sorting algorithm are already implemented in serial version in the major part of the languages (Python and C++ included).
+The sorting algorithm are already implemented in serial version in the major part of the languages (\textsf{Python} and \textsf{C++} included).
 The naive version of the algorithms are also quite optimized and they perform the computation with complexity $(O(N\dot\log(N)))$\footnote{
   We are considering only un-stable sort in which the preserving order of equivalent elements in the array is not guaranteed.
 }.
 In this case we have not to re-invent any sorting technique but only insert as well as possible these algorithms inside a parallel sections and use the variable format chosen for couple performances storage.
 Since we are working with SoA objects we need to re-order all the structure arrays in the same way.
 So we can not use the a simple sort function but can compute the set of indexes that allow the re-order of the arrays, the so called \textsf{argsort} method.
-To rearrange the indexes according to a given array of values we can use the templates in C++.
+To rearrange the indexes according to a given array of values we can use the templates in \textsf{C++}.
 
 \begin{figure}[htbp]
 \centering
@@ -36,7 +36,7 @@ Then the full array is recombined following back the thread recursion and applyi
 \label{fig:merge_sort}
 \end{figure}
 
-As parallelization strategy we can yet invoke the new \emph{keywords} of OpenMP libraries and apply a \emph{divide-and-conquer} architecture using a tree of independent \emph{tasks}\footnote{
+As parallelization strategy we can yet invoke the new \emph{keywords} of OpenMP libraries and apply a \emph{divide-and-conquer} architecture using a tree of independent \textsf{tasks}\footnote{
   Tasks in OpenMP are code blocks that the compiler wraps up and makes available to be executed in parallel.
 }.
 Using the maximum power of two of the available threads we split the computation in equal size sub-arrays and perform independent \textsf{argsort}s.

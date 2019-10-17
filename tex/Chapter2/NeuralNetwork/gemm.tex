@@ -47,22 +47,22 @@ This simple (but carefully studied) optimization allows us to obtain better resu
 \def\svgwidth{0.45\textwidth}
 \input{./img/gemm.pdf_tex}
 \caption{GEMM algorithms time performances.
-GEMM NN: matrix multiplication considering both the matrices in \quotes{normal} format, i.e $A\cdot B$.
-GEMM NT: matrix multiplication considering the first matrix in \quotes{normal} format and the second one transposed, i.e $A\cdot B^T$.
-We perform 100 tests of 1K runs each of both the gemm algorithms using the \textsf{einsum} function of Numpy library.
-The values are rescaled according to the mean time of the GEMM NN algorithm.
+\textsf{GEMM NN}: matrix multiplication considering both the matrices in \quotes{normal} format, i.e $A\cdot B$.
+\textsf{GEMM NT}: matrix multiplication considering the first matrix in \quotes{normal} format and the second one transposed, i.e $A\cdot B^T$.
+We perform 100 tests of 1K runs each of both the \textsf{GEMM} algorithms using the \textsf{einsum} function of \textsf{Numpy} library.
+The values are rescaled according to the mean time of the \textsf{GEMM NN} algorithm.
 }
 \label{fig:gemm}
 \end{figure}
 
 In the proposed numerical implementations of this model we implement both the matrix product cases to compare the performance results.
-We tested the two implementation inside Python using the \textsf{einsum} function provided by the Numpy package.
-In particular we evaluate the timing performances over 1000 applications of two the gemm functions (GEMM NN, i.e considering both matrices in \quotes{normal} shapes; GEMM NT, i.e considering the first matrix as \quotes{normal} and the second transpose) considering matrices of shapes ($100\times100$).
+We tested the two implementation inside \textsf{Python} using the \textsf{einsum} function provided by the \textsf{Numpy} package.
+In particular we evaluate the timing performances over 1000 applications of two the \textsf{GEMM} functions (\textsf{GEMM NN}, i.e considering both matrices in \quotes{normal} shapes; \textsf{GEMM NT}, i.e considering the first matrix as \quotes{normal} and the second transpose) considering matrices of shapes ($100\times100$).
 We performed 500 run and we save the minimum time obtained over the 10 realizations.
-In Fig.~\ref{fig:gemm} we show the results rescaled by the mean time of the GEMM NN algorithm (reference).
-As can be seen in Fig.~\ref{fig:gemm} the speedup of the GEMM NT matrix is evident and it is always faster than GEMM NN algorithm with a maximum of 3.2x in the speedup.
+In Fig.~\ref{fig:gemm} we show the results rescaled by the mean time of the \textsf{GEMM NN} algorithm (reference).
+As can be seen in Fig.~\ref{fig:gemm} the speedup of the \textsf{GEMM NT} matrix is evident and it is always faster than GEMM NN algorithm with a maximum of 3.2x in the speedup.
 
-In the Byron library implementation we provide a parallelized version of this algorithm with also an \textsf{avx} support.
-In this way we could manually manage the register memory of the two matrices and obtain faster version of the GEMM algorithm (especially for dimensions proportional to powers of 2 which are very common in neural network models).
+In the \textsf{Byron} library implementation we provide a parallelized version of this algorithm with also an \textsf{avx} support.
+In this way we could manually manage the register memory of the two matrices and obtain faster version of the \textsf{GEMM} algorithm (especially for dimensions proportional to powers of 2 which are very common in neural network models).
 
 \end{document}

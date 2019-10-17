@@ -51,8 +51,14 @@ The function dependency by the covariance matrix allows 5 different cases:
 
 \item \textbf{$\Sigma_i=\sigma^2I$ - DiagLinear Classifier}
 
+\begin{minipage}{.30\textwidth}
+\hspace{-.5cm}
+\includegraphics[width=1\textwidth]{case1.png}
+\end{minipage}%
+\begin{minipage}{.70\textwidth}
 This is the case of completely independence of features, where they have equal variance for each class.
 This hypothesis allow us to simplify the discriminant function as:
+\end{minipage}\\
 
 $$
 g_i(\mathbf{x})=-\frac{1}{2\sigma^2}(\mathbf{x^Tx}-2{\mu_i}^T\mathbf{x} + {\mu_i}^T\mu_i) + \log P(w_i)
@@ -77,8 +83,14 @@ which is called \emph{nearest mean classifier} where the equal-probability surfa
 
 \item \textbf{$\Sigma_i = \Sigma$ (diagonal matrix) - Linear Classifier}
 
+\begin{minipage}{.30\textwidth}
+\hspace{-.5cm}
+\includegraphics[width=1\textwidth]{case2.png}
+\end{minipage}%
+\begin{minipage}{.70\textwidth}
 In this case the classes have same covariances but each feature has its own different variance.
 After the $\Sigma$ substitution in the equation, we obtain
+\end{minipage}\\
 
 $$
 g_i(\mathbf{x}) = -\frac{1}{2}\sum_{k=1}^{s}\frac{(\mathbf{x_k}-\mu_{i,k})^2}{{\sigma_k}^2}-\frac{1}{2}\log\prod_{k=1}^{s}{\sigma_k}^2+\log P(w_i)
@@ -90,8 +102,14 @@ Note that the only difference from the previous case is the normalization factor
 
 \item \textbf{$\Sigma_i = \Sigma$ (non-diagonal matrix) - Mahalanobis Classifier}
 
+\begin{minipage}{.30\textwidth}
+\hspace{-.5cm}
+\includegraphics[width=1\textwidth]{case3.png}
+\end{minipage}%
+\begin{minipage}{.70\textwidth}
 In this case we assume that each class has the same covariance matrix but they are non-diagonal ones.
 The discriminant function becomes
+\end{minipage}\\
 
 $$
 g_i(\mathbf{x}) = -\frac{1}{2}(\mathbf{x}-\mu_i)^T{\Sigma}^{-1}(\mathbf{x}-\mu_i) -\frac{1}{2}\log\left|\Sigma\right|+\log P(w_i)
@@ -111,8 +129,14 @@ In this case the hyper-ellipsoids have axes aligned according to the eigenvector
 
 \item \textbf{$\Sigma_i = {\sigma_i}^2I$ - DiagQuadratic Classifier}
 
+\begin{minipage}{.30\textwidth}
+\hspace{-.5cm}
+\includegraphics[width=1\textwidth]{case4.png}
+\end{minipage}%
+\begin{minipage}{.70\textwidth}
 In this case we have different covariance matrix for each class but they are proportional to the identity matrix, i.e diagonal matrix.
 The discriminant function in this case becomes
+\end{minipage}\\
 
 $$
 g_i(\mathbf{x}) = -\frac{1}{2}(\mathbf{x}-\mu_i)^T{\sigma_i}^{-2}(\mathbf{x}-\mu_i) -\frac{1}{2}s\log\left|{\sigma_i}^2\right|+\log P(w_i)
@@ -124,7 +148,13 @@ In this case the equal-probability boundaries are hyper-spheres aligned accordin
 
 \item \textbf{$\Sigma_i \neq\Sigma_j$ (general case) - Quadratic Classifier}
 
+\begin{minipage}{.30\textwidth}
+\hspace{-.5cm}
+\includegraphics[width=1\textwidth]{case5.png}
+\end{minipage}%
+\begin{minipage}{.70\textwidth}
 Starting from the more general discriminant function we can relabel the variables and highlight its quadratic form as
+\end{minipage}\\
 
 $$
 g_i(\mathbf{x}) = \mathbf{x^TW_{2,i}x}+\mathbf{w_{1,i}^Tx} + \mathbf{w_{0,i}} \quad \mbox{with}\quad \left\{\begin{array}{l} \mathbf{W_{2,i}}=-\frac{1}{2}{\Sigma_i}^{-1}\\ \mathbf{w_{1,i}}={\Sigma_i}^{-1}\mu_i \\ \mathbf{w_{0,i}}=-\frac{1}{2}{\mu_i}^T{\Sigma_i}^{-1}\mu_i-\frac{1}{2}\log\left|\Sigma_i\right|+\log P(w_i) \\ \end{array}\right.
@@ -135,7 +165,7 @@ In this case each class has its own covariance matrix $\Sigma_i$ and the equal-p
 \end{itemize}
 
 The Gaussianity of dataset distribution should be tested before using this classifiers.
-It can be performed using statistical tests as \emph{Malkovic-Afifi} based on \emph{Kolmogorov-Smirnov} index or just simpler with the empirical visualization of the data points.
+It can be performed using statistical tests as \href{https://www.jstor.org/stable/2284163?seq=1#page_scan_tab_contents}{\emph{Malkovich-Afifi}} based on \href{https://en.wikipedia.org/wiki/Kolmogorov–Smirnov_test}{\emph{Kolmogorov-Smirnov}} index or just simpler with the empirical visualization of the data points.
 
 
 \end{document}

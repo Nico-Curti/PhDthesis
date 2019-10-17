@@ -27,7 +27,7 @@ Obviously the efficiency of the step is based on the efficiency of the chosen qu
 The data extracted will be saved in a common container shared between the list of thread and thus belonging to the master.
 The choice of an appropriate shared container is a second point to carefully take in mind.
 This container should be light an thread-safe to avoid thread concurrency.
-While the second request is implementation dependent the first one can be faced on using a FIFO container\footnote{
+While the second request is implementation dependent the first one can be faced on using a \textsf{FIFO} container\footnote{
   FIFO container, i.e \emph{First-In-First-Out}, is a special data structure in which the first element added will be processed as first and then automatically removed from it.
 }.
 In this way we can ensure that the application will saved a fixed maximum of data and it will not occupy large portion of memory (RAM).
@@ -64,9 +64,9 @@ The developed service was customize according to the server requirements of the 
 We chose the Python language either for its simplicity in the code writing either for its thread native module which ensures a total thread-safety of each variable.
 Using simple decorator we are able to run each function in a separate-detached thread as required by the previous instructions.
 The project includes a documentation about its use (also in general applications) and it can be easily installed via \textsf{setup}.
-In the \emph{FiloBlu} project we use a Neural Network algorithm written in \emph{Tensorflow}.
-\emph{Tensorflow} does not allow to run background process directly so the problem was overcame using a direct call to a Python script which perform full list of steps into an infinite loop.
+In the \emph{FiloBlu} project we use a Neural Network algorithm written in \textsf{Tensorflow}.
+\textsf{Tensorflow} does not allow to run background process directly so the problem was overcame using a direct call to a Python script which perform full list of steps into an infinite loop.
 In this way the service can be re-started also if the process-service is killed.
-The service can be driven using a simple \emph{Powershell} script provided in the project.
+The service can be driven using a simple \href{https://github.com/Nico-Curti/FiloBluService/blob/master/filobluservice.ps1}{\textsf{Powershell}} script provided in the project.
 
 \end{document}

@@ -16,7 +16,7 @@ Thus it can be easily parallelizable to increase speed performance.
 * **Simplify:** the use of simple classifier for performance evaluation simplify the computation and the storage of the relevant statistical quantities.
   In the discussed implementation we focused on a Diag-Quadratic classifier (see Appendix A for further informations) and only means and variances of the data plays a role in its evaluation.
 
-* **Cross Validation:** the use of Leave-One-Out cross validation allows to perform substantially optimizations in the statistical quantities evaluations across the folds (see discussion in Appendix A - Numerical Implementation).
+* **Cross Validation:** the use of Leave-One-Out cross validation allows to perform substantially optimizations in the statistical quantities evaluations across the folds (see discussion in [Appendix A - Numerical Implementation](../../Appendix/DiscriminantAnalysis/README.md)).
 
 * **Numerical stability:** we have also to take in care the numerical stability of the statistics since we are working in the assumption of a reasonable small number of samples compared to the amount of variables.
   This behavior particularly affects the variance estimation: the chose of a numerical stable formula for this quantity play a crucial role for the computation because the classifier score has to be normalized by it.
@@ -43,7 +43,7 @@ Another precaution to take in care is to add a small epsilon to the variance bef
 The main role is still given by the couples loop.
 The set of pair variables can be obtained only by two nested for loops in C++ and naive optimization can be obtained by simply reduce the number of iterations following the triangular indexes of the full matrix (by definition the score of the couple `(i, j)` is equal to the score of `(j, i)`).
 This precaution easily allows the parallelization of the external loop and drastically reduce the number of iteration but it also creates a link between the two iteration variables.
-The new release of OpenMP libraries [[OpenMP]()]  [^2]  (from OpenMP 4.5) introduce a new *keyword* of the language that allows the collapsing of nested for loops in a single one (whose number of iterations is given by the product of the single dimensions) in the only exception of completely independences of iteration variables.
+The new release of OpenMP libraries [[OpenMP](https://www.openmp.org/)]  [^2]  (from OpenMP 4.5) introduce a new *keyword* of the language that allows the collapsing of nested for loops in a single one (whose number of iterations is given by the product of the single dimensions) in the only exception of completely independences of iteration variables.
 So the best strategy to use in this case is to perform the full set of $N^2$ iterations with a single `collapse` clause in the external loop [^3].
 
 
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
 ```
 
-In this section we also provide an "equivalent" Python implementation with the use of common machine learning libraries and parallel settings (ref. code).
+In this section we also provide an "equivalent" Python implementation with the use of common machine learning libraries and parallel settings (ref. [code](https://github.com/Nico-Curti/DNetPRO/blob/master/timing/timing.py)).
 In the next sections we will discuss the computational performances of this naive implementation with C++ one discussed above.
 
 

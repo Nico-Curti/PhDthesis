@@ -25,19 +25,19 @@ Following back to our Neural Network implementation we can obtain the output val
 Moreover we can assumes from the beginning that the weight matrix is transposed and so remove the transposition step from the matrix product.
 This simple (but carefully studied) optimization allows us to obtain better results in the feed-forward evaluation but it paybacks a revision of the standard mathematical formulation and a carefully implementation of the code.
 
-
-| <img src="../../../../img/gemm_schema.png" width="400px;"/> | <img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/gemm.svg?token=AF4CJX7MMGLFVWT66DMQLKC5V4IWE&sanitize=true" width="400px;"/> |
+| ![`GEMM` algorithms time performances. `GEMM NN`: matrix multiplication considering both the matrices in "normal" format, i.e `A x B`.We perform 100 tests of 1K runs each of both the `GEMM` algorithms using the \textsf{einsum} function of `Numpy` library.
+The values are rescaled according to the mean time of the `GEMM NN` algorithm.](../../../../img/gemm_schema.png) | ![`GEMM NT`: matrix multiplication considering the first matrix in normal format and the second one transposed, i.e `A x B^T`.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/gemm.svg?token=AF4CJX7MMGLFVWT66DMQLKC5V4IWE&sanitize=true) |
 | :----: | :----: |
 
 In the proposed numerical implementations of this model we implement both the matrix product cases to compare the performance results.
-We tested the two implementation inside Python using the `einsum` function provided by the Numpy package.
-In particular we evaluate the timing performances over 1000 applications of two the gemm functions (GEMM NN, i.e considering both matrices in "normal" shapes; GEMM NT, i.e considering the first matrix as "normal" and the second transpose) considering matrices of shapes (`100 x 100`).
+We tested the two implementation inside `Python` using the `einsum` function provided by the `Numpy` package.
+In particular we evaluate the timing performances over 1000 applications of two the `GEMM` functions (`GEMM NN`, i.e considering both matrices in "normal" shapes; `GEMM NT`, i.e considering the first matrix as "normal" and the second transpose) considering matrices of shapes (`100 x 100`).
 We performed 500 run and we save the minimum time obtained over the 10 realizations.
-In the previous Figure we show the results rescaled by the mean time of the GEMM NN algorithm (reference).
-As can be seen in the Figure the speedup of the GEMM NT matrix is evident and it is always faster than GEMM NN algorithm with a maximum of 3.2x in the speedup.
+In the previous Figure we show the results rescaled by the mean time of the `GEMM NN` algorithm (reference).
+As can be seen in the Figure the speedup of the `GEMM NT` matrix is evident and it is always faster than `GEMM NN` algorithm with a maximum of 3.2x in the speedup.
 
-In the Byron library implementation we provide a parallelized version of this algorithm with also an `avx` support.
-In this way we could manually manage the register memory of the two matrices and obtain faster version of the GEMM algorithm (especially for dimensions proportional to powers of 2 which are very common in neural network models).
+In the `Byron` library implementation we provide a parallelized version of this algorithm with also an `avx` support.
+In this way we could manually manage the register memory of the two matrices and obtain faster version of the `GEMM` algorithm (especially for dimensions proportional to powers of 2 which are very common in neural network models).
 
 
 [^1]: The complexity is often given in the assumption of only square matrices `(N x N)` involved in the computation. For no-square matrix the algorithm complexity is given by the product of the three possible different matrix dimensions involved (`(N x K) = (N x M)(M x K)` brings to `O(NMK)` complexity). More sophisticated implementation of the algorithm are able to reduce the algorithm complexity (e.g Strassen algorithm) but neither implementation is able to overcome the `O(N^{2.7})` complexity up-to-now.

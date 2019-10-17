@@ -11,15 +11,17 @@ The tests were performed on a classical bioinformatics server (128 GB RAM memory
 The obtained results are shown in following Figure.
 In each plot we fixed two variables and we evaluated the remaining one.
 
-<img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/features_timing.svg?token=AF4CJX7ROKWWINO2OXDALZS5V4FFA&sanitize=true" width="400px;"/>
-<img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/samples_timing.svg?token=AF4CJXYL7JVTUYUJLHY57FK5V4FFK&sanitize=true" width="400px;"/>
-<img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/nth_timing.svg?token=AF4CJX7HAOH27UT3CBTNQ3S5V4FFS&sanitize=true" width="400px;"/>
+![Execution time of DNetPRO algorithm. We compare the execution time between pure-Python (orange) and Cython (blue, C++ wrap) implementation. Execution time in function of the number of variables (the number of samples and the number of threads are kept fixed).](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/features_timing.svg?token=AF4CJX7ROKWWINO2OXDALZS5V4FFA&sanitize=true)
+
+![Execution time of DNetPRO algorithm. We compare the execution time between pure-Python (orange) and Cython (blue, C++ wrap) implementation. Execution time in function of the number of samples (the number of variables and the number of threads are kept fixed).](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/samples_timing.svg?token=AF4CJXYL7JVTUYUJLHY57FK5V4FFK&sanitize=true)
+
+![Execution time of DNetPRO algorithm. We compare the execution time between pure-Python (orange) and Cython (blue, C++ wrap) implementation. Execution time in function of the number of threads (the number of variables and the number of samples are kept fixed).](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/nth_timing.svg?token=AF4CJX7HAOH27UT3CBTNQ3S5V4FFS&sanitize=true)
 
 In all our simulations the efficiency of the (optimized) Cython version is easily visible and the gap between the two implementations reached more than `10^4` seconds.
 On the other hand is important to highlight the scalability of the codes against the various parameters.
-While the code performances scales quite well with the number of features (Figure (a)) in both the implementations, we have a different trend varying the number of samples (Figure (b)): the Cython trend starts to saturate almost immediately while the computational time of the Python implementation continues to grow.
+While the code performances scales quite well with the number of features (Fig. [1](../../../img/features_timing.svg)) in both the implementations, we have a different trend varying the number of samples (Fig. [2](../../../img/samples_timing.svg)): the Cython trend starts to saturate almost immediately while the computational time of the Python implementation continues to grow.
 This behavior highlights the results of the optimizations performed on the Cython implementation which allows the application of the DNetPRO algorithm also to larger datasets without loosing performances.
-An opposite behavior is found monitoring the number of threads (ref Figure (c)): the Python version scales quite well with the number of threads [^2], while Cython trend is more unstable.
+An opposite behavior is found monitoring the number of threads (ref Fig. [3](../../../img/nth_timing.svg)): the Python version scales quite well with the number of threads [^2], while Cython trend is more unstable.
 This behavior is probably due to a not optimized schedule in the parallel section: the work is not equally distributed along the available threads and it penalizes the code efficiency creating a bottleneck related to the slowest thread.
 The above results are computed considering a number of features equal to 90 and thus the parallel section distributes the 180 `(N x N)` iterations along the available threads: when the number of iterations is proportional to the number of threads used (12, 20 and 30 in our case) we have a maximization of the time performances.
 Despite this, the computational efficiency of the Cython implementation is so better than the Python one that its usage is indisputable.

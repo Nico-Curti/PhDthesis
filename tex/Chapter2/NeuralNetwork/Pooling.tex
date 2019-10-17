@@ -19,7 +19,7 @@ The most common pooling layers are the Average Pool and the Maximum Pool.
 The Average Pool layer performs a down sampling on the batch of images.
 It slides a 2D kernel of arbitrary size over the image and the output is the mean value of the pixels inside the kernel.
 In Fig.~\ref{fig:avgpool} are shown some results obtained by performing an average pool with different kernel sizes.
-Also in this case this test was obtained using our NumPyNet library.
+Also in this case this test was obtained using our \textsf{NumPyNet} library.
 
 \begin{center}
 \begin{figure}[htbp]
@@ -35,15 +35,15 @@ Also in this case this test was obtained using our NumPyNet library.
 \end{center}
 
 If in the Convolutional layers a key role was played by the matrix product, in the Pooling layers we have to carefully manage the mapping operations to obtain optimal results.
-In particular we would to show the efficient implementation provided into NumPyNet.
+In particular we would to show the efficient implementation provided into \textsf{NumPyNet}.
 
 In the previous sections we introduced the \textsf{im2col} algorithm which is an efficient method to re-organize the input data.
 The same algorithm can also be applied for Pooling layers and thus evaluate the Pooling function (avg, max, etc.) on each row of the re-arranged matrix.
 The implementation of the \textsf{im2col} algorithm in Python requires the evaluation of multiple indexes using complex formulas.
-Since the NumPyNet library was founded on the Numpy package we can provide an alternative implementation using the \textsf{view} functionality of the library.
+Since the \textsf{NumPyNet} library was founded on the \textsf{Numpy} package we can provide an alternative implementation using the \textsf{view} functionality of the library.
 A \textsf{view} of a given array is simply another way of viewing its data: technically that means that the data of both objects is shared and thus no copies are created.
-In particular we can use the deeper functions of the Numpy package to create a re-organization of our data according to the desired output\footnote{
-  The same technique was also used for the implementation of the Convolutional layer in the NumPyNet library.
+In particular we can use the deeper functions of the \textsf{Numpy} package to create a re-organization of our data according to the desired output\footnote{
+  The same technique was also used for the implementation of the Convolutional layer in the \textsf{NumPyNet} library.
 }.
 In the following code we show our implementation of the Average Pooling layer:
 

@@ -16,7 +16,7 @@ The sensitivity/specificity values for classification is reported in the Table.
 |       |   (65.24%)   |  (66.66%)       |   (61.11%)      |   |     (84.93%)   |   (84.93%)      |     (41.38%)    |
 
 
-| <img src="../../../../img/males.png" width="400px;"/> | <img src="../../../../img/females.png" width="400px;"/> |
+| ![Scatter plot of IL-1$$\alpha$$ and IFN-$$\alpha$$, and distribution plot for the single cytokines along the axes, stratified by diagnostic group (AD, CTL, and MCI) in **males**. In this case, the HC group is less separated from MCI and AD.](../../../../img/males.png) | ![Scatter plot of IL-1$$\alpha$$ and IFN-$$\alpha$$, and distribution plot for the single cytokines along the axes, stratified by diagnostic group (AD, CTL, and MCI) in **females**. In this case, the HC group is well separated from MCI and AD.](../../../../img/females.png) |
 | :----: | :----: |
 
 Applying this signature to classify MCI vs CTL samples, it correctly predicted 84.93% of MCI as "non-CTL".

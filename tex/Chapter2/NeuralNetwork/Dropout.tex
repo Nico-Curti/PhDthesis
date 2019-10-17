@@ -18,7 +18,7 @@ Ignore some neurons means that they will not be considered during a particular (
 So, given a set of neurons we have a probability $p$ to keep the neuron and $1-p$ to remove it.
 In this way we can reduce the co-dependency of nearest neurons inside the network and so reduce the possibility of over-fitting.
 
-The above description bring us to a straightforward implementation of the algorithm into the NumPyNet library (ref. \ref{code:py_dropout}).
+The above description bring us to a straightforward implementation of the algorithm into the \textsf{NumPyNet} library (ref. \ref{code:py_dropout}).
 
 \lstset{style=snippet}
 \begin{lstlisting}[language=Python, caption=NumPyNet version of Dropout function, label=code:py_dropout]
@@ -54,8 +54,8 @@ The above code numerically reproduce the theoretical formulation given.
 After the initialization of the private object variables, the forward function generates a set of random positions and apply them (if they are less than the given probability) to the output: these positions will be turned off and the others will be multiply by a scale probability factor to increase their importance.
 The backward function simply invert the transformation on the back-propagated gradient \textsf{delta}.
 
-Despite this straightforward implementation we have to carefully manage some crucial points into the C++ equivalent.
-The Byron library works into a single parallel region so after the (sequential) initialization of the layer object the forward/backward phases are evaluated by all the available threads in parallel.
+Despite this straightforward implementation we have to carefully manage some crucial points into the \textsf{C++} equivalent.
+The \textsf{Byron} library works into a single parallel region so after the (sequential) initialization of the layer object the forward/backward phases are evaluated by all the available threads in parallel.
 This bring us to a standard problem in multi-threading programming: the generation of independent random numbers among threads.
 Inside a parallel region all the declared variables are (by definition) shared among all the available threads.
 Thus, if we simply create a random number generator we have to face on the thread-concurrency.
@@ -63,7 +63,7 @@ As consequence the random number generated will not be independent but (most pro
   The deterministic generation of random number is hard to reproduce into a parallel environment despite the seed initialization.
   The \quotes{probability} of repeating the same sequence is related to the affinity of each thread to the given process.
 }) repeated by each thread.
-The simple workaround implemented into the Byron library is given by assigning a random number generator to each thread (with its own seed and indexed by the thread ID).
+The simple workaround implemented into the \textsf{Byron} library is given by assigning a random number generator to each thread (with its own seed and indexed by the thread ID).
 In this way we can ensure a totally independence of the random numbers generated during the forward phase (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/dropout_layer.cpp}{on-line}).
 
 \begin{figure}[htbp]
@@ -83,6 +83,6 @@ On the other hand, the backward output turns on only the same pixel\footnote{
   For visualization purposes we manually set the gradient to a uniform value.
 }.
 
-A usage example of this functions is provided into the NumPyNet \href{https://github.com/Nico-Curti/NumPyNet/tree/master/examples}{examples}: in those simple examples we can easily compare the learning performances of standard neural network models with and without the Dropout function on classical datasets.
+A usage example of this functions is provided into the \textsf{NumPyNet} \href{https://github.com/Nico-Curti/NumPyNet/tree/master/examples}{examples}: in those simple examples we can easily compare the learning performances of standard neural network models with and without the Dropout function on classical datasets.
 
 \end{document}

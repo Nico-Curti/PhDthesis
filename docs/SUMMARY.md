@@ -1,7 +1,9 @@
 # Table of contents
 
 * [Implementation and optimization of algorithms in Biological Big Data Analytics](./README.md)
+
 * [Introduction on Big Data](./Introduction.md)
+
 * [DNetPRO algorithm and Feature Selection](./md/Chapter1/README.md)
   * [DNetPRO algorithm](./md/Chapter1/DNetPRO/README.md)
   * [Synthetic dataset benchmark](./md/Chapter1/DNetPRO/ToyModel.md)
@@ -20,17 +22,45 @@
   * [Bovine dataset](./md/Chapter1/Bovine/README.md)
     * [Dataset](./md/Chapter1/Bovine/Dataset.md)
     * [Results](./md/Chapter1/Bovine/Results.md)
+
 * [Deep learning Neural Networks](./md/Chapter2/README.md)
   * [Neural Network models](./md/Chapter2/NeuralNetwork/README.md)
     * [Simple Perceptron](./md/Chapter2/NeuralNetwork/Perceptron.md)
     * [Fully Connected Neural Network](./md/Chapter2/NeuralNetwork/FullyConnected.md)
     * [Matrix Product](./md/Chapter2/NeuralNetwork/gemm.md)
     * [Activation Functions](./md/Chapter2/NeuralNetwork/Activations.md)
-
+    * [Convolution Functions](./md/Chapter2/NeuralNetwork/Convolutional.md)
     * [Pooling function](./md/Chapter2/NeuralNetwork/Pooling.md)
+    * [BatchNorm function](./md/Chapter2/NeuralNetwork/BatchNorm.md)
+    * [Dropout function](./md/Chapter2/NeuralNetwork/Dropout.md)
+    * [Shortcut connections](./md/Chapter2/NeuralNetwork/Shortcut.md)
+    * [Pixel Shuffle](./md/Chapter2/NeuralNetwork/PixelShuffle.md)
+    * [Cost function](./md/Chapter2/NeuralNetwork/Cost.md)
+  * [Super Resolution](./md/Chapter2/SuperResolution/README.md)
+    * [Super Resolution](./md/Chapter2/SuperResolution/README.md)
+    * [Resampling](./md/Chapter2/SuperResolution/Resampling.md)
+    * [Image Quality](./md/Chapter2/SuperResolution/QualityImage.md)
+    * [DIV2K dataset](./md/Chapter2/SuperResolution/Dataset.md)
+    * [Results](./md/Chapter2/SuperResolution/Results.md)
+  * [Object Detection](./md/Chapter2/ObjectDetection/README.md)
+    * [Yolo architecture](./md/Chapter2/ObjectDetection/Yolo.md)
+    * [COCO dataset](./md/Chapter2/ObjectDetection/Dataset.md)
+    * [Results](./md/Chapter2/ObjectDetection/Results.md)
+  * [Image Segmentation](./md/Chapter2/Segmentation/README.md)
+    * [U-Net model](./md/Chapter2/Segmentation/UNet.md)
+    * [Femur CT Dataset](./md/Chapter2/Segmentation/Dataset.md)
+    * [Results](./md/Chapter2/Segmentation/Results.md)
+  * [Replicated Focusing Belief Propagation](./md/Chapter2/rFBP/README.md)
+    * [Algorithm Optimization](./md/Chapter2/rFBP/Implementation.md)
+    * [SNP classification](./md/Chapter2/rFBP/Dataset.md)
+    * [Results](./md/Chapter2/rFBP/Results.md)
+
 
 * [Biological Big Data - CHIMeRA project](./md/Chapter3/README.md)
+  * [The CHIMeRA project](./md/Chapter3/CHIMeRA/README.md)
+
 * [Conclusions](./Conclusions.md)
+
 * Appendix:
   * [Appendix A - Discriminant Analysis](./md/Appendix/DiscriminantAnalysis/README.md)
     * [Mathematical background](./md/Appendix/DiscriminantAnalysis/MathematicalBackground.md)

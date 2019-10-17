@@ -12,19 +12,19 @@ The learning rule which controls the weight updates is given by the Belief Propa
 
 A first implementation of the algorithm was proposed in the original paper~\cite{BaldassiE7655} jointly with an open-source Github repository.
 The original version of the code was written in Julia language and despite it is a quite efficient implementation the Julia programming language stays on difficult and far from many users.
-To broaden the scope and use of the method, a C++ implementation was developed with a joint \emph{Cython} wrap for Python users.
-The C++ language guarantees better computational performances against the Julia implementation and the Python version enlarge its usability.
-This implementation is optimized for parallel computing and is endowed with a custom C++ library called \emph{Scorer} (see Appendix D for further details), which is able to compute a large number of statistical measurements based on a hierarchical graph scheme.
+To broaden the scope and use of the method, a \textsf{C++} implementation was developed with a joint \emph{Cython} wrap for Python users.
+The \textsf{C++} language guarantees better computational performances against the Julia implementation and the Python version enlarge its usability.
+This implementation is optimized for parallel computing and is endowed with a custom \textsf{C++} library called \emph{Scorer} (see Appendix D for further details), which is able to compute a large number of statistical measurements based on a hierarchical graph scheme.
 With this optimized implementation we try to encourage researchers to approach these alternative algorithms and to use them more frequently on real context.
 
-As the Julia implementation also the C++ one provides the entire rFBP framework in a single library callable via a command line interface.
+As the Julia implementation also the \textsf{C++} one provides the entire rFBP framework in a single library callable via a command line interface.
 The library widely uses template syntaxes to perform dynamic specialization of the methods between two magnetization versions of the algorithm.
-The main object categories needed by the algorithm are wrapped in handy C++ objects easy to use also from the Python interface.
-A further optimization is given by the reduction of the number of available functions: in the original implementation a large amount of small functions are used to perform a single complex computation step, enlarging the amount of call stack; in the C++ implementation the main functions are re-written with the minimizing the call stack to ease the vectorization of the code.
+The main object categories needed by the algorithm are wrapped in handy \textsf{C++} objects easy to use also from the Python interface.
+A further optimization is given by the reduction of the number of available functions: in the original implementation a large amount of small functions are used to perform a single complex computation step, enlarging the amount of call stack; in the \textsf{C++} implementation the main functions are re-written with the minimizing the call stack to ease the vectorization of the code.
 
 The full rFBP library is released under MIT license and it is open-source on Github~\cite{ReplicatedFocusingBeliefPropagation}.
 The on-line repository provides also a full list of installation instructions which could be performed via \emph{CMake} or \emph{Makefile}.
-The continuous integration of the project is guaranteed in every operative system using \emph{Travis CI} and \emph{Appveyor CI} which test more than 15 different C++ compilers and environments.
+The continuous integration of the project is guaranteed in every operative system using \emph{Travis CI} and \emph{Appveyor CI} which test more than 15 different \textsf{C++} compilers and environments.
 
 The Python wrap guarantees also a good integration with the other common Machine Learning tools provided by \emph{scikit-learn} Python package; in this way we can use the rFBP algorithm as equivalent alternative also in other pipelines.
 Like other Machine Learning algorithm also the rFBP one depends on many parameters, i.e its hyper-parameters, which has to be tuned according to the given problem.

@@ -21,7 +21,7 @@ Obviously the efficiency of the step is based on the efficiency of the chosen qu
 The data extracted will be saved in a common container shared between the list of thread and thus belonging to the master.
 The choice of an appropriate shared container is a second point to carefully take in mind.
 This container should be light an thread-safe to avoid thread concurrency.
-While the second request is implementation dependent the first one can be faced on using a FIFO container [^1].
+While the second request is implementation dependent the first one can be faced on using a `FIFO` container [^1].
 In this way we can ensure that the application will saved a fixed maximum of data and it will not occupy large portion of memory (RAM).
 
 The second task is identified by the Machine Learning function which process the data.
@@ -37,17 +37,19 @@ Each step perform its independent logging on a single shared file.
 If an error occurs the service logs the message and save the current log-file in a different location to prevent possible log-cleaning (optional step).
 Then the service will be re-started.
 
-We implemented this type of service in pure Python [[FiloBlu](https://github.com/Nico-Curti/FiloBluService)].
+We implemented this type of service in pure Python [[FiloBluService](https://github.com/Nico-Curti/FiloBluService)].
 The developed service was customize according to the server requirements of the project [^2].
 We chose the Python language either for its simplicity in the code writing either for its thread native module which ensures a total thread-safety of each variable.
 Using simple decorator we are able to run each function in a separate-detached thread as required by the previous instructions.
 The project includes a documentation about its use (also in general applications) and it can be easily installed via `setup`.
-In the *FiloBlu* project we use a Neural Network algorithm written in *Tensorflow*.
-*Tensorflow* does not allow to run background process directly so the problem was overcame using a direct call to a Python script which perform full list of steps into an infinite loop.
+In the *FiloBlu* project we use a Neural Network algorithm written in `Tensorflow`.
+`Tensorflow` does not allow to run background process directly so the problem was overcame using a direct call to a Python script which perform full list of steps into an infinite loop.
 In this way the service can be re-started also if the process-service is killed.
-The service can be driven using a simple *Powershell* script provided in the project.
+The service can be driven using a simple [`Powershell`](https://github.com/Nico-Curti/FiloBluService/blob/master/filobluservice.ps1) script provided in the project.
 
 
 [^1]: FIFO container, i.e *First-In-First-Out*, is a special data structure in which the first element added will be processed as first and then automatically removed from it.
 
 [^2]: The FiloBlu service is a Windows service and it can not run on Unix machines. Moreover the database used in the project is a MySQL one so the queries and the libraries used are compatible only with this kind of databases.
+
+[**next >>**](./CryptoSocket.md)

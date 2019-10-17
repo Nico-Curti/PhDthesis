@@ -41,6 +41,8 @@ The function dependency by the covariance matrix allows 5 different cases:
 
 * **$$\Sigma_i=\sigma^2I$$ - DiagLinear Classifier**
 
+  ![DiagLinear Classifier.](../../../../img/case1.png)
+
   This is the case of completely independence of features, where they have equal variance for each class.
   This hypothesis allow us to simplify the discriminant function as:
 
@@ -67,6 +69,8 @@ The function dependency by the covariance matrix allows 5 different cases:
 
 * **$$\Sigma_i = \Sigma$$ (diagonal matrix) - Linear Classifier**
 
+  ![(diagonal matrix) - Linear Classifier.](../../../../img/case2.png)
+
   In this case the classes have same covariances but each feature has its own different variance.
   After the $\Sigma$ substitution in the equation, we obtain
 
@@ -79,6 +83,8 @@ The function dependency by the covariance matrix allows 5 different cases:
 
 
 * **$$\Sigma_i = \Sigma$$ (non-diagonal matrix) - Mahalanobis Classifier**
+
+  ![(non-diagonal matrix) - Mahalanobis Classifier.](../../../../img/case3.png)
 
   In this case we assume that each class has the same covariance matrix but they are non-diagonal ones.
   The discriminant function becomes
@@ -101,6 +107,8 @@ The function dependency by the covariance matrix allows 5 different cases:
 
 * **$$\Sigma_i = {\sigma_i}^2I$$ - DiagQuadratic Classifier**
 
+  ![DiagQuadratic Classifier.](../../../../img/case4.png)
+
   In this case we have different covariance matrix for each class but they are proportional to the identity matrix, i.e diagonal matrix.
   The discriminant function in this case becomes
 
@@ -114,6 +122,8 @@ The function dependency by the covariance matrix allows 5 different cases:
 
 * **$$\Sigma_i \neq\Sigma_j$$ (general case) - Quadratic Classifier**
 
+  ![(general case) - Quadratic Classifier.](../../../../img/case5.png)
+
   Starting from the more general discriminant function we can relabel the variables and highlight its quadratic form as
 
   $$
@@ -124,7 +134,10 @@ The function dependency by the covariance matrix allows 5 different cases:
 
 
 The Gaussianity of dataset distribution should be tested before using this classifiers.
-It can be performed using statistical tests as *Malkovic-Afifi* based on *Kolmogorov-Smirnov* index or just simpler with the empirical visualization of the data points.
+It can be performed using statistical tests as [*Malkovich-Afifi*](https://www.jstor.org/stable/2284163?seq=1#page_scan_tab_contents) based on [*Kolmogorov-Smirnov*](https://en.wikipedia.org/wiki/Kolmogorov–Smirnov_test) index or just simpler with the empirical visualization of the data points.
 
 
 [^1]: In Machine Learning it will correspond to the conditional probability density.
+
+
+[**next >>**](./Numerical.md)

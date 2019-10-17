@@ -15,19 +15,19 @@ The most common pooling layers are the Average Pool and the Maximum Pool.
 The Average Pool layer performs a down sampling on the batch of images.
 It slides a 2D kernel of arbitrary size over the image and the output is the mean value of the pixels inside the kernel.
 In the following Figure are shown some results obtained by performing an average pool with different kernel sizes.
-Also in this case this test was obtained using our NumPyNet library.
+Also in this case this test was obtained using our `NumPyNet` library.
 
-<img src="../../../../img/avgpool_layer.png" width="400px;"/>
+![Average Pool functions applied on a testing image. **(left)** The original image. **(center)** Average Pool output obtained with a kernel mask `(3 x 3)`. **(right)** Average Pool output obtained with a kernel mask `(30 x 30)`.](../../../../img/avgpool_layer.png)
 
 If in the Convolutional layers a key role was played by the matrix product, in the Pooling layers we have to carefully manage the mapping operations to obtain optimal results.
-In particular we would to show the efficient implementation provided into NumPyNet.
+In particular we would to show the efficient implementation provided into `NumPyNet`.
 
 In the previous sections we introduced the `im2col` algorithm which is an efficient method to re-organize the input data.
 The same algorithm can also be applied for Pooling layers and thus evaluate the Pooling function (avg, max, etc.) on each row of the re-arranged matrix.
-The implementation of the `im2col` algorithm in Python requires the evaluation of multiple indexes using complex formulas.
-Since the NumPyNet library was founded on the Numpy package we can provide an alternative implementation using the `view` functionality of the library.
+The implementation of the `im2col` algorithm in `Python` requires the evaluation of multiple indexes using complex formulas.
+Since the `NumPyNet` library was founded on the `Numpy` package we can provide an alternative implementation using the `view` functionality of the library.
 A `view` of a given array is simply another way of viewing its data: technically that means that the data of both objects is shared and thus no copies are created.
-In particular we can use the deeper functions of the Numpy package to create a re-organization of our data according to the desired output [^1].
+In particular we can use the deeper functions of the `Numpy` package to create a re-organization of our data according to the desired output [^1].
 In the following code we show our implementation of the Average Pooling layer:
 
 ```python
@@ -79,6 +79,6 @@ Using this data re-arrangement we can easily compute the desired pooling functio
 We would stress that no copies are produced during this computation and thus we can obtain a faster execution than other possible implementations (e.g `im2col`).
 
 
-[^1]: The same technique was also used for the implementation of the Convolutional layer in the NumPyNet library.
+[^1]: The same technique was also used for the implementation of the Convolutional layer in the `NumPyNet` library.
 
 [**next >>**](./BatchNorm)

@@ -18,8 +18,8 @@ Moreover we are interested in a small set of variables unknown a prior.
 The load of all the node pairs into the same graph can slow down the computation.
 An iterative method (with stop criteria) can perform better in the large case of samples and only in worst cases the full set of pair will be loaded.
 
-Since the described algorithm step does not require particular performance efficiency now, the main code used in our simulation was written in pure Python.
-A C++ implementation of the same algorithm was developed with the help of the Boost Graph Library~\cite{BGL} (BGL) but to not overweight the code installation was reserved just for a style exercise.
+Since the described algorithm step does not require particular performance efficiency now, the main code used in our simulation was written in pure \textsf{Python}.
+A \textsf{C++} implementation of the same algorithm was developed with the help of the Boost Graph Library~\cite{BGL} (BGL) but to not overweight the code installation was reserved just for a style exercise.
 In this section we discuss about this second version and about the strategies chosen to implement an efficiency version of it.
 This version of the algorithm was also used as stand alone method for other applications that will be presented later.
 
@@ -38,7 +38,7 @@ The output of \textsf{merging} step determine the number of nodes in the graph w
 A crucial role in the optimization of the algorithm is played by the BGL graph structure chosen.
 Since the two degree of freedom imply a continuous rearrangement of the graph nodes the strategy chosen is to apply a filter mask over the main graph structure that highlights the only part of interest.
 This can be done using the \textsf{boost :: filtered\_graph} object of BGL.
-In ~\ref{code:featuresel} the C++ snippet is shown.
+In ~\ref{code:featuresel} the \textsf{C++} snippet is shown.
 
 \lstset{style=c++}
 \begin{lstlisting}[language=C++, caption=DNetPRO signature extraction, label=code:featuresel]

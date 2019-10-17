@@ -21,12 +21,12 @@ In this way we can compare the performances obtained on the test set by the two 
 We would highlight that in general there is not a stop criteria on the `K`-best algorithm, so the number of variables selected could be smaller or greater than the number of DNetPRO signature nodes.
 However we can reasonably assume that according to the `K`-best interpretation the selected features should be the most performing ones and adding more variables should introduce only small quantity of noise.
 This justify the use of the same number of variables between the two algorithms using the DNetPRO signature as reference.
-In Fig.2 we show the results obtained in our simulations: the results are obtained keeping fixed the number of variables/samples and varying the number of samples/variables, Fig.2(a) and Fig.2(b) respectively.
+In Fig.2 we show the results obtained in our simulations: the results are obtained keeping fixed the number of variables/samples and varying the number of samples/variables, Fig.[2](../../../img/samples_toy.svg)(a) and Fig.[2](../../../img/features_toy.svg)(b) respectively.
 
-| <img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/samples_toy.svg?token=AF4CJX4USHI7UZJEGXWVDAK5VYJ6U&sanitize=true" width="400px;"/> | <img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/features_toy.svg?token=AF4CJXYWNLWYHWIIEEWMFES5VYJ7Y&sanitize=true" width="400px;"/> |
+| ![Synthetic dataset simulation. Comparison of accuracy performances obtained by the DNetPRO algorithm and the $K$-best algorithm. **(a - left)** Performances obtained in function of the number of samples, keeping fixed the number of variables.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/samples_toy.svg?token=AF4CJX4USHI7UZJEGXWVDAK5VYJ6U&sanitize=true) | ![Synthetic dataset simulation. Comparison of accuracy performances obtained by the DNetPRO algorithm and the $K$-best algorithm. **(b - right)** Performances obtained in function of the number of variables, keeping fixed the number of samples.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/features_toy.svg?token=AF4CJXYWNLWYHWIIEEWMFES5VYJ7Y&sanitize=true) |
 | :----: | :----: |
 
-For the same number of variables (Fig.2(a)) we can noticed as the two methods performs quite similarly but the DNetPRO is able to reach better performances as the number of samples increase.
+For the same number of variables (Fig.[2](../../../img/samples_toy.svg)(a)) we can noticed as the two methods performs quite similarly but the DNetPRO is able to reach better performances as the number of samples increase.
 
 This trend can be explained also in statistical terms: with small samples the variability of our (random) data is large and thus the performance distributions is more unstable.
 With a greater number of samples the variances of our classes is reduced and also the statistical quantities involved in the computation of the discriminant curve can be evaluated with more accuracy.
@@ -35,7 +35,7 @@ In low sample cases the quantity of noise is bigger and in an high dimensional s
 
 Despite the simplicity of our toy model the DNetPRO is able to highlight its efficiency in terms of performances against the single-feature method.
 
-A slight different behavior is shown varying the number of variables and keeping fixed the number of samples (Fig.2(b)).
+A slight different behavior is shown varying the number of variables and keeping fixed the number of samples (Fig.[2](../../../img/features_toy.svg)(b)).
 In this case we have a median accuracy (black line in the plot) always higher for the DNetPRO algorithm.
 With a small number of variables (left part of the plot) the `K`-best algorithm performances are more stable and only from a statistical point-of-view we can justify the efficiency of the DNetPRO algorithm (the median of the distribution is still higher compared to the `K`-best one).
 As the number of variables increase also the efficiency of the DNetPRO algorithm increase until it exceeds the `K`-best algorithm (and its distribution is narrowed).
@@ -45,7 +45,7 @@ The evaluation of pair of variables could be helpful to find good variables whic
 In this cases the DNetPRO results could be helpful also to understand the variable interactions due to the network structure of the signature that can bring to deeper considerations on the fine grain interaction of the variables in a real problem context.
 
 This kind of toy model is considered a standard for feature extraction algorithm testing but it puts several disadvantages for the DNetPRO evaluation.
-We started our discussion about the DNetPRO taking into account the two distributions of data showed in Fig.1(a).
+We started our discussion about the DNetPRO taking into account the two distributions of data showed in Fig.[1](../../../img/expression.svg)(a).
 The DNetPRO algorithm was designed to face on that kind of situations in the better way.
 The limits of our algorithm are so bounded to the sample distributions: if the informative variables are totally independent one from each other the couples evaluation does not guaranteed the best approach to the problem.
 An informative variable could work better with noise data than with another informative one: in this way we could expect a star-network signature in which the central node would be the informative variable connected to a series of noise variables.
@@ -56,7 +56,7 @@ If the informative variables are disjointed the corresponding star-networks will
 This means that we have to enlarge the quantity of nodes in our signature and thus increase the difficulty in the filtering of noise.
 
 We evaluated both these situations in our toy model simulations.
-In the first case we introduced only two informative variables obtained by a sampling of the distribution showed in Fig.1(a).
+In the first case we introduced only two informative variables obtained by a sampling of the distribution showed in Fig.[1](../../../img/expression.svg)(a).
 In all our simulations the DNetPRO algorithm was able to identify the couple of these variables as best putative signature.
 At the same time the `K`-best algorithm find with more difficulty those variables, especially when the number of variables become greater.
 Considering the distribution of single-variable scores, in fact, we could noticed as the informative variables, despite they are manually introduced, were not always the top scoring ones: in large dimensional spaces also noise-variables produced high(er) performances.

@@ -9,12 +9,12 @@ Since the number of sample is drastically small no robust cross-validation proce
 So we focused on the identification of a putative gene-signature able to discriminate between NN and NP samples, leaving the PP data as validation set.
 In this case we hypothesize that PP samples will be classified more closely with NP sample rather than NN as exposed, possibly infected samples, should be more similar to positive samples, than to negative controls.
 
-| <img src="../../../../img/Bovine_signature.png" width="400px;"/> | <img src="https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/Bovine_expression_level.svg?token=AF4CJX3TGYCZV6FUBNH4PM25V3KHC&sanitize=true" width="400px;"/> |
+| ![Plot of the 123-transcript network, with a details of the 10-probe signature (red nodes)](../../../../img/Bovine_signature.png) | ![Transcript levels for the 10 genes belonging to the classification signature identified by the combinatorial discriminant analysis (CDA). Some transcripts (EPHX1, RIC8B, IL5RA, ERF, CDC40) show a clear trend  between 5 animals serologically positive to the ELISA test for MAP (PP), 5 exposed serologically negative (NP) and 5 serologically negative unexposed control animals (NN).](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/Bovine_expression_level.svg?token=AF4CJX3TGYCZV6FUBNH4PM25V3KHC&sanitize=true) |
 | :----: | :----: |
 
 Starting from the top-performing couples of transcripts, we obtained an initial signature of 123 different transcripts (Figure(a), all the nodes), capable to correctly classify 4 out of the 5 NN samples (80%) and all 5 NP samples (100% performance).
-The average performance was therefore 90\% with Matthews correlation coefficient MCC = 0.82.
-Processing the 123-transcript network by removing all pendant nodes (i.e. removing all single transcripts belonging to only one best-performing couple) we obtained a final signature with 10 transcripts with a 100\% performance classifying all NN and NP samples (Figure(a), only red nodes).
+The average performance was therefore 90% with Matthews correlation coefficient MCC = 0.82.
+Processing the 123-transcript network by removing all pendant nodes (i.e. removing all single transcripts belonging to only one best-performing couple) we obtained a final signature with 10 transcripts with a 100% performance classifying all NN and NP samples (Figure(a), only red nodes).
 As it can be seen, many nodes are directly connected to the central node (belonging to the 10-transcript signature), while only the 10 transcripts of the signature are also connected between each other.
 
 Principal Component Analysis of the 10-transcript signature showed that in many cases there was a progressive increase or decrease in the transcript levels when passing from a healthy (NN) sample to a positive (PP) sample, passing through the infected (NP) sample class.

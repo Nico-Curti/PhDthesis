@@ -51,21 +51,21 @@ A wide range of modern deep learning architectures use this kind of connections 
 We have done a large use of this connections also in the models described in the next sections, either for object detection purposes (ref. \ref{obj_detection:obj}), Super Resolution (ref. \ref{SR:sr}) and mostly for our segmentation (ref. \ref{segmentation:unet}) applications.
 This kind of functions are becoming so popular into the modern deep learning models that more and more often we describe a model according to its \emph{residual blocks}, i.e the layer ensemble between two shortcut connection.
 
-From a computational point of view the implementation of this kind of \quotes{layers} is straightforward in Python (and thus in our NumPyNet): we can easily implement a network structure as a list of object and thus a shortcut connection simply combine the output of two elements of it.
-We met more problems when we translated this idea into C++.
-The C++ language is more rigid with the data type involved in each operation and we have to carefully manage the \quotes{signature} (list of input arguments) of each function.
+From a computational point of view the implementation of this kind of \quotes{layers} is straightforward in \textsf{Python} (and thus in our \textsf{NumPyNet}): we can easily implement a network structure as a list of object and thus a shortcut connection simply combine the output of two elements of it.
+We met more problems when we translated this idea into \textsf{C++}.
+The \textsf{C++} language is more rigid with the data type involved in each operation and we have to carefully manage the \quotes{signature} (list of input arguments) of each function.
 In this way we can not simply implement a list of different object types as a network structure.
 
 A possible solution can reached using the object inheritance: we can create a single \textsf{Base\_layer} object and specialize it according to our needs.
-This is certainly the most C++-like solution but it requires many checks (if statements) at execution time.
-An other (more modern) solution is provided by the new (standard) data types provided by the C++17: in particular we refer to the \textsf{variant} objects.
+This is certainly the most \textsf{C++}-like solution but it requires many checks (if statements) at execution time.
+An other (more modern) solution is provided by the new (standard) data types provided by the \textsf{C++17}: in particular we refer to the \textsf{variant} objects.
 A \textsf{variant} is a \textsf{template union} data-type which allow to combine and reinterpret different data types into a single object.
 The most important consequence of the use of this kind of data-type is that we can easily jump to one type to an other using \textsf{constexpr} statement which (by definition) are solved at compile time.
 Besides the particulars involved into this kind of implementation is important to notice that the difference between the two solution is the same between run-time and compile-time: if we perform computation at compile-time we will not re-execute when the code runs and thus we can reach better time performances.
-The Byron library widely use \textsf{template}s and with the support of the C++17 standard a large part of costly operations are execute one-for-all at compile time\footnote{
+The \textsf{Byron} library widely use \textsf{template}s and with the support of the \textsf{C++17} standard a large part of costly operations are execute one-for-all at compile time\footnote{
   We provide also an efficient retro-compatibility for \quotes{old-standard users} with a custom implementation of \textsf{variant} objects.
 }.
 
-Using \textsf{variant} object and \textsf{templates} we can easily implement a shortcut connection also in C++ as can be seen on the on-line version of the code (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/shortcut_layer.cpp}{on-line}).
+Using \textsf{variant} object and \textsf{templates} we can easily implement a shortcut connection also in \textsf{C++} as can be seen on the on-line version of the code (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/shortcut_layer.cpp}{on-line}).
 
 \end{document}

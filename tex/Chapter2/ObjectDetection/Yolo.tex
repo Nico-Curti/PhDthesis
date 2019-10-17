@@ -17,11 +17,11 @@
 The YOLO Neural Network architecture was firstly published in the 2015 but from the first version many improvements were performed and now we have the third revision of it.
 We do not want to recall the history of this model so we will discuss only about the YOLOv3 model (for sake of simplicity we will call it just YOLO).
 
-YOLO is a deep Neural Network model with more than 100 layers and more than 62 billion of parameters.
+YOLO is a deep Neural Network model with more than 100 layers and more than 62 million of parameters.
 The first versions of YOLO are based on a Darknet-19 architecture (19-layer network followed by 11 more layers for object detection).
 In the last release of YOLO model the first part of the network structure is used for the feature map extraction and it is essentially a modified version of the Darknet-53 model, i.e the update version of the previous model, with more layers and parameters.
 This improvements increase the classification performances but it throwbacks a reduction in computational performances\footnote{
-For the record, the older YOLO version are faster than the last release but less accurate.
+  For the record, the older YOLO version are faster than the last release but less accurate.
 }.
 This improvement could be done also thanks to the introduction of multiple residual blocks which, as discussed in the previous sections (ref. \ref{NN:shortcut}) allows to increase the deep of the model without losing performances.
 

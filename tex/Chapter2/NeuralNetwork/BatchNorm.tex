@@ -65,14 +65,14 @@ Since the BatchNorm function is became a sort of standard into a deep learning m
 We have also to take into account that the batch-normalization procedure is commonly performed after a fully-connected layer or a convolutional one.
 Thus the best performances could be obtained merging the two functionality as much as possible as suggested in~\cite{AlexeyAB}.
 
-The Byron library was inspired by the \emph{darknet} library provided by Redmon J. et al. and by its many branches.
+The \textsf{Byron} library was inspired by the \textsf{darknet} library provided by Redmon J. et al. and by its many branches.
 Despite in each implementation we can find the BatchNorm function, aware of the author, in any version we can find a right implementation of this function as standalone method.
 We have already highlighted that this normalization function can be efficiently joined to other function to increase the computational performances but in these case we have to different manage the dimensions of the involved arrays.
-A standalone implementation of the BatchNorm function required a rearrangement of its functions and it was provided into the Byron library.
-This was one of the various improvements provided by Byron against the other \emph{darknet}-like libraries.
+A standalone implementation of the BatchNorm function required a rearrangement of its functions and it was provided into the \textsf{Byron} library.
+This was one of the various improvements provided by \textsf{Byron} against the other \textsf{darknet}-like libraries.
 
 Other common regularization techniques are given by the regularization of the neuron outputs with penalty loss functions.
 Classical examples are given by the L1 (Laplacian) and L2 (Gaussian) penalties.
-Both these functions are implemented either in NumPyNet and Byron but for sake of brevity we will not discuss about them.
+Both these functions are implemented either in \textsf{NumPyNet} and \textsf{Byron} but for sake of brevity we will not discuss about them.
 
 \end{document}

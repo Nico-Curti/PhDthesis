@@ -11,3 +11,5 @@ As matter of fact during an activity most of people reduce their mobility except
 After a filtering procedure these data provide information on the mobility of a sample containing 3000–4000 devices per day.
 Since the presences during the considered events were of the order of 105 individuals per day, as reported by the local newspapers, we estimate an overall penetration of our sample of 3–4%.
 The filtering procedure and the other statistical informations about the sample penetration are discussed in the original paper [[Mizzi2018](https://doi.org/10.1140/epjds/s13688-018-0168-2)].
+
+[**next >>**](./MobilityPaths.md)

@@ -13,3 +13,5 @@ We succeed to highlight two connected mobility subnetworks extracted from the wh
 Our approach shows the existence of characteristic mobility paths in Venice for the tourists and for the residents.
 Moreover the data analysis highlights the different mobility features of the considered case studies and it allows to detect the mobility paths associated to different points of interest.
 Finally we have disaggregated the Italian and foreigner categories to study their different mobility behaviors.
+
+[**next >>**](./Dataset.md)

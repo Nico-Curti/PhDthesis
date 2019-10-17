@@ -4,7 +4,7 @@
 
 \subsection[mRNA data]{mRNA dataset}\label{synapse:mRNA}
 
-We applied both training procedure (ref.~\ref{fig:dnet_pipe}) on the mRNA dataset.
+We applied both training procedure (ref. Fig.~\ref{fig:dnet_pipe}) on the mRNA dataset.
 The results are shown, as distribution of AUC (Area under the curve) score, in Fig.~\ref{fig:dnet_results}~(a) for the best signatures obtained with procedure $A$ (corresponding to the validation approach used in~\cite{Yuan2014}), while results with the full cross-validation procedure $B$ are shown in Fig.~\ref{fig:dnet_results}~(b).
 
 As expected, performances decrease with the introduction of the second cross validation step, but the values remain quite stable showing the robustness of the extracted signatures, and we remark that the validation procedure used in the reference paper by Yuan et al. resembles our approach without the second validation step.
@@ -24,7 +24,6 @@ As expected, performances decrease with the introduction of the second cross val
 
 All results are comparable (LUSC) or better (KIRC, GBM) than the results reported in~\cite{Yuan2014}, except for the OV dataset, also with the more conservative approach involving a further cross-validation step.
 The size of the extracted signatures is quite constant, and smaller than 500 genes in each pipeline execution.
-Analogous results are obtained also for the miRNA dataset, in which our method outperforms in three over four cases, while the RPPA dataset shows less significant results (Supplementary material).
 
 To test the robustness of our method, since each cross-validation procedure may generate different signatures, we measured the overlap of the genes belonging to each mRNA signature over 100 simulations with different training-test data splitting.
 We observed an average overlap ranging from 40\% to 60\%, with a smaller group of genes found across all the 100 cross-validation iterations.

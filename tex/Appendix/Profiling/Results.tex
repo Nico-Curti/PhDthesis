@@ -12,7 +12,7 @@ This is due to the default behavior of the GATK libraries to reserve a fixed per
 The authors could not find any solution to prevent this behavior from happening.
 As it can be noticed, in the node with the greatest amount of total memory (both Xeon E5 and the virtual machine) the requested memory is approximately stable, as is always sufficient for the required task.
 The memory allocation is less stable in the nodes with a limited memory (Xeon D and Pentium J), as GATK might requires more memory than what initially allocated to perform the calculation.
-The exception to this behavior is the \quotes{mapping} step, that uses a fixed amount of memory independently from the available one (between 5 and 7 GB).
+The exception to this behavior is the \emph{mapping} step, that uses a fixed amount of memory independently from the available one (between 5 and 7 GB).
 This is due to the necessity of loading the whole human reference genome (version hg19GRCh37) to align each individual read to it.
 All the other steps do not require the human reference genome but can work on the individual reads, allowing greater flexibility in memory allocation.
 

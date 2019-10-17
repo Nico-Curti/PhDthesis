@@ -1,0 +1,29 @@
+# Appendix F
+
+## Bioinformatics Pipeline Profiling
+
+
+In this work many times we have talked about the performances evaluation of a scripts in terms of time performances and other system statistics.
+The importance in the understanding the state of our infrastructure is essential not only for ensuring the reliability and stability of a software but also for a more efficiency use of the available resources.
+In particular about what concern the memory, CPUs and diskIO management is useful to know the required amount of each step of our software to perform the better parallelization strategy.
+Metrics represent the raw measurements of resource usage that are used by a software or a collection of them.
+These might be low-level usage summaries provided by the operating system, or they can be higher-level types of data tied to the specific functionality or work of a component.
+These kind of data could be collected and aggregated by a monitoring system like [*Telegraf*](https://github.com/influxdata/telegraf)[^1].
+In general, the difference between metrics and monitoring mirrors the difference between data and information.
+Monitoring takes metrics data, aggregates it, and presents it in various ways that allow humans to extract insights from the collection of individual pieces.
+
+In this section we focused on the importance of software monitoring.
+In particular we will talk about a work conducted in collaboration with INFN-CNAF of Bologna about the monitoring and the performance evaluation of a bioinformatics pipeline across various computational environments [EuroPar2018](https://doi.org/10.1007/978-3-030-10549-5_50).
+
+In this work a previously published bioinformatics pipeline was reimplemented across various computational platforms, and the performances of its steps evaluated.
+The tested environments were:
+I) dedicated bioinformatics-specific server
+II) low-power single node
+III) HPC single node
+IV) virtual machine.
+The pipeline was tested on a use case of the analysis of a single patient to assess single-use performances, using the same configuration of the pipeline to be able to perform meaningful comparison and search the optimal environment/hybrid system configuration for biomedical analysis.
+Performances were evaluated in terms of execution wall time, memory usage and energy consumption per patient.
+
+[^1]: An automatic installation guide for Telegraf is provided in the [Shut](https://github.com/Nico-Curti/Shut) project for any OS and also for no-root users.
+
+[**next >>**](./Pipeline.md)

@@ -12,11 +12,11 @@
 \textbf{(left)} EDSR model.
 The model is a modified version of the ResNet architecture designed for SISR applications.
 The architecture is made by a sequential CNN framework which processes the input image.
-The EDSR has more than 43 billion of parameters in total.
+The EDSR has more than 43 million of parameters in total.
 \textbf{(right)} WDSR model.
 The model is the updated version of the EDSR one.
 The model optimizes its numerical efficiency using a different approach in the analysis of low- and high-frequency components in the input image.
-the WDSR has slight more than 3.5 billion of parameters, less than 10\% of the EDSR model.
+the WDSR has slight more than 3.5 million of parameters, less than 10\% of the EDSR model.
 }
 \label{fig:sr_models}
 \end{figure}
@@ -51,7 +51,7 @@ The first model is called EDSR (\emph{Enhanced Deep Super Resolution}) and was f
 The EDSR model structure could be broadly summarized as an updated version of the SRResNet model which is already a modified version of the classical ResNet (standard CNN based on multiple residual blocks).
 The major updates concern a series of optimization to improve the training speed and the quality of the output image.
 In particular, the batch normalization steps are removed to improve the algorithm speed: it was proved that in low-level vision tasks as the super resolution one, i.e without complex evaluations as object detection, a wide and dynamic range of outputs can be useful~\cite{edsr}.
-A scheme of the EDSR architecture is shown in Fig.~\ref{fig:sr_models}(a) and the full set of parameters are reported in Tab.~\ref{tab:edsr}: the EDSR model has more than 43 billion of parameters in total.
+A scheme of the EDSR architecture is shown in Fig.~\ref{fig:sr_models}(a) and the full set of parameters are reported in Tab.~\ref{tab:edsr}: the EDSR model has more than 43 million of parameters in total.
 
 A first convolutional layer takes the LR image which is processed using 256 filters.
 Then a set of 32 residual blocks (convolution with 256 filters + ReLU activation + convolution with 256 filters + linear combination of the output with the input) process the feature map.
@@ -101,13 +101,13 @@ The WDSR also changes the residual block structure: the ReLU activations tends t
 To overcome this problem without increasing the number of parameters the WDSR proposes the so-called \quotes{passage enlargement}, i.e the reduction in the number of channels in input and the corresponding enlargement of the output channels before the ReLU activation.
 This optimization allows to increase the number of channels to be activated and thus a better information flux along the network keeping the required non-linearity.
 The number of parameters is however constant because there is only a re-arrangement of the input/output parameters.
-The list of network parameters are reported in Tab.\ref{tab:wdsr}: the WDSR has slight more than 3.5 billion of parameters, less than 10\% of the EDSR model.
+The list of network parameters are reported in Tab.\ref{tab:wdsr}: the WDSR has slight more than 3.5 million of parameters, less than 10\% of the EDSR model.
 This confirms the computational efficiency of the WDSR against the EDSR one.
 
 In this work we used pre-trained models so we could not change the network structure or change their learning weights.
 For this reason we could use only a x2, x4 EDSR model and a x4 WDSR model.
 The weights were converted to the Byron format and our custom implementation of the network used for the applications.
-We would stress that our could be the first C++ implementation of these models and probably the first optimized version for CPUs environment\footnote{
+We would stress that our could be the first \textsf{C++} implementation of these models and probably the first optimized version for CPUs environment\footnote{
   We have to mention also that the public available implementation of these models are developed only in Tensorflow and PyTorch but the major part of them does not work in CPU environments without heavy modifications.
 }.
 

@@ -65,7 +65,7 @@ For this reason the output of the model must be constrained into the $[0, 1]$ do
 Classically this loss function is used jointly to the sigmoid activation (ref.~\ref{NN:activation}) which constrains the output of the model in the desired interval.
 For this reason in our implementation of the algorithm we chose to merge the sigmoid function and the Log Loss function into a single object\footnote{
   We also try to prevent wrong uses of this loss function for laypersons.
-  This implementation was already suggested by the \emph{darknet} library so we simply propagate it in our implementations.
+  This implementation was already suggested by the \textsf{darknet} library so we simply propagate it in our implementations.
 }.
 
 A last duty to mention loss function is the extension of the Log loss to multiple classes, the so-called \emph{Categorical Cross Entropy Loss}.
@@ -82,36 +82,36 @@ In particular this function commonly works jointly to a softmax activation funct
 As in the previous case we chose to implements this loss function in a separated object associated to the softmax transformation.
 
 Many other loss function can be mentioned to overcome different kind of problems.
-The list of presented loss function was related to the implementation of the \emph{darknet}-like library which are ported also into the NumPyNet and Byron libraries, i.e either in Python and C++.
-NumPyNet and Byron libraries also provided a wider list of loss functions to improve the usability of them and improve their computation (and fixed some \emph{darknet} issues).
+The list of presented loss function was related to the implementation of the \textsf{darknet}-like library which are ported also into the \textsf{NumPyNet} and \textsf{Byron} libraries, i.e either in \textsf{Python} and \textsf{C++}.
+\textsf{NumPyNet} and \textsf{Byron} libraries also provided a wider list of loss functions to improve the usability of them and improve their computation (and fixed some \textsf{darknet} issues).
 A full list of available loss functions can be found in the \href{https://github.com/Nico-Curti/Byron/blob/master/src/cost_layer.cpp}{on-line} version of the libraries with a list of easily visual examples.
 
 A further improvements was given from a numerical point-of-view: many mathematical formulas needs expensive math operations as logarithms and trigonometric functions.
-An efficient (but approximated) math formulas was implemented both in the C++ and Python to reach faster computational performances.
-These numerical math operations are widely used into the Byron library to increase the performances despite their used can be turned off by user at compile time in Byron.
+An efficient (but approximated) math formulas was implemented both in the \textsf{C++} and Python to reach faster computational performances.
+These numerical math operations are widely used into the \textsf{Byron} library to increase the performances despite their used can be turned off by user at compile time in \textsf{Byron}.
 The full set of functions, in fact, is enclosed into a \textsf{macro} definition (\textsf{\_\_fmath\_\_}) that can be enabled at compile-time.
 
 A classical example of this faster math operation is given by the \emph{fast inverse square root} algorithm, firstly introduced in 1999 in the source code of \emph{Quake III Arena}, a first-person shooter video game.
 The method is based on a Newton algorithm which can be stopped at the desired precision order: less precision is associated to faster execution, obviously.
 In our \textsf{fast math} implementation we provide a set of Newton algorithms associated to the most common mathematical operations, like \textsf{exp}, \textsf{log}, \textsf{sqrt} and so on.
-We tested these implementations against the common standards (Numpy package for Python and \textsf{std::} for C++) and we compare the time execution performances (we required a precision of at least $10^-4$).
-The obtained results are shown in Fig.~\ref{fig:fmath} where we normalized the execution time taking Numpy implementation as reference.
+We tested these implementations against the common standards (\textsf{Numpy} package for Python and \textsf{std::} for \textsf{C++}) and we compare the time execution performances (we required a precision of at least $10^-4$).
+The obtained results are shown in Fig.~\ref{fig:fmath} where we normalized the execution time taking \textsf{Numpy} implementation as reference.
 
 \begin{figure}[htbp]
 \centering
 \def\svgwidth{0.8\textwidth}
 \input{./img/fmath_timing.pdf_tex}
 \caption{Time performances of standard mathematical operations implemented through Newton approximations.
-We compare the results obtained with the Numpy library (blue, reference) and the standard C++ library (\textsf{CMath}) to their equivalent into the custom \textsf{FMath} version.
-In the comparison we have to take in mind that the Numpy library is based on a C++ wrap and that the Python version of the \textsf{FMath} is written in pure Python language.
+We compare the results obtained with the \textsf{Numpy} library (blue, reference) and the standard \textsf{C++} library (\textsf{CMath}) to their equivalent into the custom \textsf{FMath} version.
+In the comparison we have to take in mind that the \textsf{Numpy} library is based on a \textsf{C++} wrap and that the \textsf{Python} version of the \textsf{FMath} is written in pure \textsf{Python} language.
 In all the cases the \textsf{FMath} version of the functions performs better or at-least-equal to the standard one.
 }
 \label{fig:fmath}
 \end{figure}
 
 As can be see all the results obtained by the \textsf{fast math} algorithms are faster or at least equals to the standard ones.
-The C++ version of the \textsf{fast math} is certainly the better choice for an efficient implementation of the algorithms in all the cases and it is interesting to notice how some functions (\textsf{pow2} and \textsf{log10}) are drastically slower in C++ than in Python, despite the intrinsic overhead of the Python language.
-This is probably due to particularly optimizations performed by the Numpy package in the implementation of these special cases: if we compare those functions to the general ones (\textsf{pow} and \textsf{log}), in fact, the results confirm the efficiency of the C++ language.
+The \textsf{C++} version of the \textsf{fast math} is certainly the better choice for an efficient implementation of the algorithms in all the cases and it is interesting to notice how some functions (\textsf{pow2} and \textsf{log10}) are drastically slower in \textsf{C++} than in \textsf{Python}, despite the intrinsic overhead of the \textsf{Python} language.
+This is probably due to particularly optimizations performed by the \textsf{Numpy} package in the implementation of these special cases: if we compare those functions to the general ones (\textsf{pow} and \textsf{log}), in fact, the results confirm the efficiency of the \textsf{C++} language.
 
 These results highlight the importance of code testing before release it: we have to pay always attention in writing a code and query also the standard choices.
 

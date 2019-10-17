@@ -114,7 +114,7 @@ std :: vector < int > FeatureSelection (int ** couples, const int & min_size, bo
 
 From the above description should be clear that given any set of ordered (in ascending order) couples of variables, this algorithm allows to extract the core network independently by the procedure which generate them.
 So it can be used as dimensionality reduction algorithm of general purpose network structures.
-An example of this kind of application was reported in Appendix B - Venice Road Network in which we summarized the results of [[Mizzi2018](https://doi.org/10.1140/epjds/s13688-018-0168-2), [CurtiSDPS2018]()].
+An example of this kind of application was reported in [Appendix B - Venice Road Network](../../Appendix/Venice/README.md) in which we summarized the results of [[Mizzi2018](https://doi.org/10.1140/epjds/s13688-018-0168-2), [CurtiSDPS2018](https://www.sdpsnet.org/sdps/documents/sdps-2018/SDPS%202018%20proceedings%20ver%205.pdf)].
 
 
 [^1]: We are working in the hypothesis of very large `N`.
