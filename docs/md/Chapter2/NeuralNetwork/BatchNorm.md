@@ -48,7 +48,7 @@ where $$\delta^l$$ is the error passed from the next layer of the network struct
 To complete the error propagation we have also compute the derivative of the BatchNorm function output:
 
 $$
-{\delta_i}^{l-1} = \frac{{m}\cdot \delta\hat{x_i} - \sum_{j=1}^{m}\delta\hat{x_i} - \hat{x_i} \cdot \sum_{j=1}^{m} \delta\hat{x_i} \cdot \hat{x_i}}{m \cdot \sqrt{{\sigma_B}^2 + \epsilon} }
+{\delta_i}^{l-1} = \frac{m \cdot \delta\hat{x_i} - \sum_{j=1}^{m}\delta\hat{x_i} - \hat{x_i} \cdot \sum_{j=1}^{m} \delta\hat{x_i} \cdot \hat{x_i}}{m \cdot \sqrt{{\sigma_B}^2 + \epsilon} }
 $$
 
 Since the BatchNorm function is became a sort of standard into a deep learning models, an efficient implementation of this algorithm is essential to achieve the best computational performances.

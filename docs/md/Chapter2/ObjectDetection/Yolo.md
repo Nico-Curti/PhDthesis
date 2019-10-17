@@ -52,7 +52,7 @@ where $${1_i}^{\mbox{obj}}$$ is equal to 1 if an object appears in cell `i`, $$p
 The localization loss measures the errors in the predicted boundary box locations and sizes: in this way we can filter only the boxes responsible for detecting the object.
 
 $$
-\mathcal{L}_2 = \lambda_{\mbox{coord}} \sum_{i=0}^{S^2}\sum_{j=0}^B {{1_i}^{\mbox{obj}} \left[ (x_i - \hat{x_i})^2 + (y_i - \hat{y_i})^2 \right] +
+\mathcal{L}_2 = \lambda_{\mbox{coord}} \sum_{i=0}^{S^2}\sum_{j=0}^B {1_i}^{\mbox{obj}} \left[ (x_i - \hat{x_i})^2 + (y_i - \hat{y_i})^2 \right] +
 $$
 
 $$

@@ -49,14 +49,14 @@ Using our custom implementation of the YOLO model we were able to detect a large
 In the previous section we largely discuss about the efficiency of Super Resolution techniques to improve the image quality so it stands to reason that the application of them will be helpful to overcome the told above issues.
 To this purpose we apply the previously described EDSR model to the image which are not perfectly detected by the YOLO model.
 For privacy reasons we cannot show the results obtained on the Venice data and thus we show a simple example to prove our model.
-The example is shown in Fig.[2](../../../../img/yolo_people_sr.svg).
+The example is shown in Fig.[2](../../../../img/yolo_people_sr.png).
 
 ![YOLO people detections on a image ROI. **(left)** The original ROI and its corresponding detections. **(center)** Up-sampling of the original ROI using a bi-cubic algorithm and its corresponding detections. **(right)** Up-sampling of the original ROI using the EDSR model and its corresponding detections. The use of Super Resolution model is able to improve the YOLO detection of small persons of more than 200%. YOLO is not still able to detect the smaller (far) persons.](../../../../img/yolo_people_sr.png)
 
-On the first image (left) of Fig [2](../../../../img/yolo_people_sr.svg) we show only a small ROI of the (larger) input image in which the YOLO model is able to identify only a small part of people.
+On the first image (left) of Fig [2](../../../../img/yolo_people_sr.png) we show only a small ROI of the (larger) input image in which the YOLO model is able to identify only a small part of people.
 We would stress that the detected people are all in the bottom of the image, in which the size of persons are bigger.
-Using a standard bicubic up-sampling (center of Fig.[2](../../../../img/yolo_people_sr.svg)) the detection performances are the same and this proof as standard up-sample methods are not appropriate to overcome this task.
-The application of EDSR model (right of Fig.[2](../../../../img/yolo_people_sr.svg)) is able to improve the quality of the image and ease the work of YOLO model.
+Using a standard bicubic up-sampling (center of Fig.[2](../../../../img/yolo_people_sr.png)) the detection performances are the same and this proof as standard up-sample methods are not appropriate to overcome this task.
+The application of EDSR model (right of Fig.[2](../../../../img/yolo_people_sr.png)) is able to improve the quality of the image and ease the work of YOLO model.
 In this case the detection is more than twice of the previous case.
 The issue remains for the top of the image where only few pixels identify a person.
 Set out to test the limit of this model combination we extract a further ROI from it selecting only the top part of the image.

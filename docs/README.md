@@ -25,8 +25,6 @@ In this way all the figure into the `img` directory will be converted into a pdf
 
 Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through model deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
 
-* [Implementation and optimization of algorithms in Biological Big Data Analytics](./README.md)
-
 * [Introduction on Big Data](./Introduction.md)
 
 * [DNetPRO algorithm and Feature Selection](./md/Chapter1/README.md)
@@ -41,6 +39,10 @@ Different topics about Big Data Analytics are discussed in this work, starting f
     * [Time performances](./md/Chapter1/Implementation/Timing.md)
   * [Benchmark of DNetPRO algorithm](./md/Chapter1/Synapse/README.md)
     * [Synapse dataset](./md/Chapter1/Synapse/Dataset.md)
+    * [mRNA data](./md/Chapter1/Synapse/mRNA.tex)
+    * [miRNA and RPPA data](./md/Chapter1/Synapse/miRNA_RPPA.tex)
+    * [Couple ranking](./md/Chapter1/Synapse/Ranking.tex)
+    * [Characterization of signature overlap](./md/Chapter1/Synapse/Overlap.tex)
   * [Cytokinoma dataset](./md/Chapter1/Cytokinoma/README.md)
     * [Dataset](./md/Chapter1/Cytokinoma/Dataset.md)
     * [Results](./md/Chapter1/Cytokinoma/Results.md)
@@ -65,6 +67,7 @@ Different topics about Big Data Analytics are discussed in this work, starting f
     * [Super Resolution](./md/Chapter2/SuperResolution/README.md)
     * [Resampling](./md/Chapter2/SuperResolution/Resampling.md)
     * [Image Quality](./md/Chapter2/SuperResolution/QualityImage.md)
+    * [Super Resolution models](./md/Chapter2/SuperResolution/WDSR.md)
     * [DIV2K dataset](./md/Chapter2/SuperResolution/Dataset.md)
     * [Results](./md/Chapter2/SuperResolution/Results.md)
   * [Object Detection](./md/Chapter2/ObjectDetection/README.md)
@@ -79,30 +82,5 @@ Different topics about Big Data Analytics are discussed in this work, starting f
     * [Algorithm Optimization](./md/Chapter2/rFBP/Implementation.md)
     * [SNP classification](./md/Chapter2/rFBP/Dataset.md)
     * [Results](./md/Chapter2/rFBP/Results.md)
-
-
-* [Biological Big Data - CHIMeRA project](./md/Chapter3/README.md)
-  * [The CHIMeRA project](./md/Chapter3/CHIMeRA/README.md)
-
-* [Conclusions](./Conclusions.md)
-
-* Appendix:
-  * [Appendix A - Discriminant Analysis](./md/Appendix/DiscriminantAnalysis/README.md)
-    * [Mathematical background](./md/Appendix/DiscriminantAnalysis/MathematicalBackground.md)
-    * [Numerical Implementation](./md/Appendix/DiscriminantAnalysis/Numerical.md)
-  * [Appendix B - Venice Road Network](./md/Appendix/Venice/README.md)
-    * [The datasets](./md/Appendix/Venice/Dataset.md)
-    * [Mobility paths reconstruction on the road network](./md/Appendix/Venice/MobilityPaths.md)
-  * [Appendix C - BlendNet](./md/Appendix/BlendNet/README.md)
-  * [Appendix D - Multi-Class Performances](./md/Appendix/Scorer/README.md)
-  * [Appendix E - Neural Network as Service](./md/Appendix/FiloBlu/README.md)
-    * [FiloBlu Service](./md/Appendix/FiloBlu/Service.md)
-    * [Data Transmission](./md/Appendix/FiloBlu/CryptoSocket.md)
-  * [Appendix F - Bioinformatics Pipeline Profiling](./md/Appendix/Profiling/README.md)
-    * [GATK-LODn pipeline](./md/Appendix/Profiling/Pipeline.md)
-    * [Computational Environments](./md/Appendix/Profiling/Environments.md)
-    * [Pipeline steps](./md/Appendix/Profiling/Step.md)
-    * [Results](./md/Appendix/Profiling/Results.md)
-    * [Conclusions](./md/Appendix/Profiling/Conclusions.md)
 
 

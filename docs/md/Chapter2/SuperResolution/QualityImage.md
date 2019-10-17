@@ -31,10 +31,10 @@ Thus we can conclude that high PSNR values are associated to a good reconstructi
 The PSNR is probably the most common quality score [[PSNR_SSIM](https://ieeexplore.ieee.org/document/5596999)] but it does not always related to a qualitative visual quality.
 Despite it is commonly used as loss function for SR models.
 
-|     | Nearest  | Bicubic | Lanczos |
-|:---:|:--------:|:-------:|:-------:|
-PSNR  | 25.118   | 27.254  | 26.566  |
-SSIM  |  0.847   |  0.894  |  0.871  |
+|       | Nearest  | Bicubic | Lanczos |
+|:-----:|:--------:|:-------:|:-------:|
+| PSNR  | 25.118   | 27.254  | 26.566  |
+| SSIM  |  0.847   |  0.894  |  0.871  |
 
 Considering the series of images shown in Fig. [-1](../../../../img/up_down_sampling.svg) we can evaluate the PSNR score starting from a down-sampled image.
 Taking the down-sampled image obtained with the Lanczos algorithm we can compare the original image with their up-sampled version given by the three methods (ref. Table).
