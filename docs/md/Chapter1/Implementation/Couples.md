@@ -44,7 +44,7 @@ The main role is still given by the couples loop.
 The set of pair variables can be obtained only by two nested for loops in C++ and naive optimization can be obtained by simply reduce the number of iterations following the triangular indexes of the full matrix (by definition the score of the couple `(i, j)` is equal to the score of `(j, i)`).
 This precaution easily allows the parallelization of the external loop and drastically reduce the number of iteration but it also creates a link between the two iteration variables.
 The new release of OpenMP libraries [[OpenMP](https://www.openmp.org/)]  [^2]  (from OpenMP 4.5) introduce a new *keyword* of the language that allows the collapsing of nested for loops in a single one (whose number of iterations is given by the product of the single dimensions) in the only exception of completely independences of iteration variables.
-So the best strategy to use in this case is to perform the full set of $N^2$ iterations with a single `collapse` clause in the external loop [^3].
+So the best strategy to use in this case is to perform the full set of `N^2` iterations with a single `collapse` clause in the external loop [^3].
 
 
 ```python

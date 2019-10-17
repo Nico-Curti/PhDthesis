@@ -6,7 +6,7 @@ Its application is closely related to the single-image super-resolution (SISR) r
 The first SISR Neural Networks start with a preprocessing of low-resolution images in input with a bi-cubic up-sampling.
 Then the image, with the same dimensions of the desired output, feeds the model which aim to increase the resolution and fix its details.
 In this way the amount of parameters and moreover the computation required by the training section increase (by a factor equal to the square of the desired up-sampling scale), despite the required image processing is smaller.
-To overcome this problem a Pixel Shuffle transformation, also known as \emph{sub-pixel convolution}, was introduced [[Wenzhe2016Shuffle](https://ui.adsabs.harvard.edu/\#abs/2016arXiv160905158S)]: in this work the authors proved the equivalence between a regular transpose convolution, i.e the previous standard transformation to enlarge the input dimensions, and the sub-pixel convolution transformation without losing any information.
+To overcome this problem a Pixel Shuffle transformation, also known as *sub-pixel convolution*, was introduced [[Wenzhe2016Shuffle](https://ui.adsabs.harvard.edu/\#abs/2016arXiv160905158S)]: in this work the authors proved the equivalence between a regular transpose convolution, i.e the previous standard transformation to enlarge the input dimensions, and the sub-pixel convolution transformation without losing any information.
 The Pixel Shuffle transformation reorganize the low-resolution image channels to obtain a bigger image with few channels.
 An example of this transformation is shown in Fig. [1](../../../../img/pixel_shuffle.svg).
 

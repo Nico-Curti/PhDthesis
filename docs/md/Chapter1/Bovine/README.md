@@ -1,6 +1,6 @@
 ## Bovine Paratuberculosis
 
-Paratuberculosis or Johne's disease (JD) in cattle is a chronic granulomatous gastroenteritis caused by infection with \emph{Mycobacterium avium subspecies paratuberculosis} (MAP).
+Paratuberculosis or Johne's disease (JD) in cattle is a chronic granulomatous gastroenteritis caused by infection with *Mycobacterium avium subspecies paratuberculosis* (MAP).
 JD is not treatable; therefore the early identification and isolation of infected animals is a key point to reduce its incidence worldwide.
 In this work DNetPRO algorithm was applied to RNAseq experimental data of 5 cattle positive to MAP infection compared to 5 negative uninfected controls.
 The purpose was to find a small set of differentially expressed genes able to discriminate between infected animals in a pre-clinical phase.

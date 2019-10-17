@@ -20,7 +20,7 @@ where the exponent ($$\Delta^2$$) is called Mahalanobis distance of vector $$\ma
 This distance can be reduced to the Euclidean distance when the covariance matrix is the identity $$\mathbf{I}$$.
 
 The covariance matrix is always symmetric and positive semi-definite (useful information for next algorithmic strategies) so it has an inverse.
-If the covariance matrix has only diagonal terms the multidimensional distribution can be express as simple product of $d$ mono-dimensional normal distributions.
+If the covariance matrix has only diagonal terms the multidimensional distribution can be express as simple product of `d` mono-dimensional normal distributions.
 In this case the main axes are parallel to the Cartesian axes.
 
 Starting from the multi-variate Gaussian distribution expression [^1], the Bayesian rule for classification problems can be rewrite as:
@@ -72,7 +72,7 @@ The function dependency by the covariance matrix allows 5 different cases:
   ![(diagonal matrix) - Linear Classifier.](../../../../img/case2.png)
 
   In this case the classes have same covariances but each feature has its own different variance.
-  After the $\Sigma$ substitution in the equation, we obtain
+  After the $$\Sigma$$ substitution in the equation, we obtain
 
   $$
   g_i(\mathbf{x}) = -\frac{1}{2}\sum_{k=1}^{s}\frac{(\mathbf{x_k}-\mu_{i,k})^2}{\sigma_k}^2-\frac{1}{2}\log\prod_{k=1}^{s}{\sigma_k}^2+\log P(w_i)
@@ -102,7 +102,7 @@ The function dependency by the covariance matrix allows 5 different cases:
 
   where the quadratic term is the Mahalanobis distance, i.e a normalization of the distance according to the inverse of their covariance matrix.
   We can prove that expanding the scalar product and removing the constant term $$\mathbf{x^T\Sigma^{-1}x}$$, we obtain yet a linear discriminant function with the same properties of the previous case.
-  In this case the hyper-ellipsoids have axes aligned according to the eigenvectors of the $\Sigma$ matrix.
+  In this case the hyper-ellipsoids have axes aligned according to the eigenvectors of the $$\Sigma$$ matrix.
 
 
 * **$$\Sigma_i = {\sigma_i}^2I$$ - DiagQuadratic Classifier**

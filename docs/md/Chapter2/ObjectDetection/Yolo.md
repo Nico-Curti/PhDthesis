@@ -16,7 +16,7 @@ The network structure can be broadly summarize as a simple CNN and its output is
 Moreover, this detection was performed in three different places in the network, i.e three YOLO detection layers are distributed along the network structure.
 The shape of the detection kernel is `1 x 1 x (B x (5 + C))`, where `B` is the number of bounding boxes a cell on the feature map can predict and `C` is the number of classes.
 The fixed number (`5`) is given by 4 bounding box attributes plus one object confidence coefficient (the so-called *objectness* into the code).
-In our applications we used the COCO dataset (see next sections, [COCO](./Dataset.md)) and thus we fixed the values of $B$ and `C` to 3 and 80, respectively (thus the kernel size is equal to `1 x 1 x 255`).
+In our applications we used the COCO dataset (see next sections, [COCO](./Dataset.md)) and thus we fixed the values of `B` and `C` to 3 and 80, respectively (thus the kernel size is equal to `1 x 1 x 255`).
 We would stress that the three scale detections are equivalent to three level of down-sampling of the original image (or better the feature map), respectively equal to 32, 16 and 8.
 
 The input image is down sampled using the first 81 layer and only the 82nd layer performs the first detection [^2].
@@ -44,34 +44,34 @@ In particular the loss function is composed by three terms: the classification l
 The classification loss quantify the error of detection and it is given by
 
 $$
-\mathcal{L}_1 = \sum_{i=0}^{S^2} {\mathds{1}_i}^{\mbox{obj}} \sum_{c \in \mbox{classes}} \left(p_i(c) - \hat{p_i}(c)\right)^2
+\mathcal{L}_1 = \sum_{i=0}^{S^2} {1_i}^{\mbox{obj}} \sum_{c \in \mbox{classes}} \left(p_i(c) - \hat{p_i}(c)\right)^2
 $$
 
-where $${\mathds{1}_i}^{\mbox{obj}}$$ is equal to 1 if an object appears in cell `i`, $$p_i(c)$$ is the output of the model and $$\hat{p_i}(c)$$ denotes the conditional class probability for class `c` in cell `i`.
+where $${1_i}^{\mbox{obj}}$$ is equal to 1 if an object appears in cell `i`, $$p_i(c)$$ is the output of the model and $$\hat{p_i}(c)$$ denotes the conditional class probability for class `c` in cell `i`.
 
 The localization loss measures the errors in the predicted boundary box locations and sizes: in this way we can filter only the boxes responsible for detecting the object.
 
 $$
-\mathcal{L}_2 = \lambda_{\mbox{coord}} \sum_{i=0}^{S^2}\sum_{j=0}^B {\mathds{1}_i}^{\mbox{obj}} \left[ (x_i - \hat{x_i})^2 + (y_i - \hat{y_i})^2 \right] +
+\mathcal{L}_2 = \lambda_{\mbox{coord}} \sum_{i=0}^{S^2}\sum_{j=0}^B {{1_i}^{\mbox{obj}} \left[ (x_i - \hat{x_i})^2 + (y_i - \hat{y_i})^2 \right] +
 $$
 
 $$
-\lambda_{\mbox{coord}} \sum_{i=0}^{S^2}\sum_{j=0}^B {\mathds{1}_i}^{\mbox{obj}} \left[ (\sqrt{w_i} - \sqrt{\hat{w_i}})^2 + (\sqrt{h_i} - \sqrt{\hat{h_i}})^2 \right]
+\lambda_{\mbox{coord}} \sum_{i=0}^{S^2}\sum_{j=0}^B {1_i}^{\mbox{obj}} \left[ (\sqrt{w_i} - \sqrt{\hat{w_i}})^2 + (\sqrt{h_i} - \sqrt{\hat{h_i}})^2 \right]
 $$
 
-where $${\mathds{1}_i}^{\mbox{obj}}$$ is equal to 1 if `j`th boundary box in cell `i` is responsible for detecting the object, $$\lambda_{\mbox{coord}}$$ increase the weight for the loss in the boundary box coordinates [^3] and `(x, y, w, h)` are the boundary box coordinates.
+where $${1_i}^{\mbox{obj}}$$ is equal to 1 if `j`th boundary box in cell `i` is responsible for detecting the object, $$\lambda_{\mbox{coord}}$$ increase the weight for the loss in the boundary box coordinates [^3] and `(x, y, w, h)` are the boundary box coordinates.
 
 The confidence loss quantifies if an object is detected into the founded box (*objecteness*), i.e
 
 $$
-\mathcal{L}_2 = \sum_{i=0}^{S^2}\sum_{j=0}^B {\mathds{1}_i}^{\mbox{obj}} \left(C_i - \hat{C_i} \right)^2
+\mathcal{L}_2 = \sum_{i=0}^{S^2}\sum_{j=0}^B {1_i}^{\mbox{obj}} \left(C_i - \hat{C_i} \right)^2
 $$
 
 where $$\hat{C_i}$$ is the box confidence score of the box `j` in cell `i`.
 If the object is not detected into the box, the confidence loss is computed as:
 
 $$
-\mathcal{L}_2 = \lambda_{\mbox{noobj}}\sum_{i=0}^{S^2}\sum_{j=0}^B {\mathds{1}_i}^{\mbox{obj}} \left(C_i - \hat{C_i} \right)^2
+\mathcal{L}_2 = \lambda_{\mbox{noobj}}\sum_{i=0}^{S^2}\sum_{j=0}^B {1_i}^{\mbox{obj}} \left(C_i - \hat{C_i} \right)^2
 $$
 
 where $$\lambda_{\mbox{noobj}}$$ weights down the loss when detecting background (most boxes do not contain any objects and in the training images a large amount of pixels are occupied by background) [^4].

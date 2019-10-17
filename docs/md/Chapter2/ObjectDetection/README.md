@@ -22,7 +22,7 @@ The advantages of Faster R-CNN are thus visible: we do not need to feed 2k regio
 In this way we can also separate the feature map creation to the selective search algorithm.
 
 A key role is played by the *anchor* concept: an *anchor* is essentially a box and it identify the shape of a portion of the input image at different scale level.
-The CNN feature map feeds the Region Proposals Network which uses a sliding window over it generating $k$ anchor boxes.
+The CNN feature map feeds the Region Proposals Network which uses a sliding window over it generating `k` anchor boxes.
 These boxes are certainly fewer than the 2k previous cited windows.
 
 A breakthrough idea on the real-time object detection was the introduction of the YOLO model.

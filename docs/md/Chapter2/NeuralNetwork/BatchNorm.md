@@ -27,7 +27,7 @@ where `m` represents the batch-size and $$x_i$$ is the value of the pixel `x` in
 Thus the input data becomes:
 
 $$
-\hat{x_i} = \frac{x_i - \mu_B}{\sqrt{{\sigma_B}^2 + \epsilon}}
+\hat{x_i} = \frac{x_i - \mu_B}{\sqrt{ {\sigma_B}^2 + \epsilon} }
 $$
 
 where we add an extra $$\epsilon$$ in the denominator for numerical stability [^2].

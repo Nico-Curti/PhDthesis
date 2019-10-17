@@ -69,14 +69,82 @@ include:
   - md/Chapter1/Implementation/FeatSel.md
   - md/Chapter1/Implementation/Python.md
   - md/Chapter1/Implementation/Pipeline.md
+  - md/Chapter1/Implementation/Timing.md
+  - md/Chapter1/Synapse/README.md
+  - md/Chapter1/Synapse/Dataset.md
+  - md/Chapter1/Synapse/mRNA.md
+  - md/Chapter1/Synapse/miRNA_RPPA.md
+  - md/Chapter1/Synapse/Ranking.md
+  - md/Chapter1/Synapse/Overlap.md
+  - md/Chapter1/Cytokinoma/README.md
+  - md/Chapter1/Cytokinoma/Dataset.md
+  - md/Chapter1/Cytokinoma/Results.md
+  - md/Chapter1/Bovine/README.md
+  - md/Chapter1/Bovine/Dataset.md
+  - md/Chapter1/Bovine/Results.md
 
   - md/Chapter2/README.md
   - md/Chapter2/NeuralNetwork/README.md
+  - md/Chapter2/NeuralNetwork/Perceptron.md
+  - md/Chapter2/NeuralNetwork/FullyConnected.md
+  - md/Chapter2/NeuralNetwork/gemm.md
+  - md/Chapter2/NeuralNetwork/Activations.md
+  - md/Chapter2/NeuralNetwork/Convolutional.md
+  - md/Chapter2/NeuralNetwork/Pooling.md
+  - md/Chapter2/NeuralNetwork/BatchNorm.md
+  - md/Chapter2/NeuralNetwork/Dropout.md
+  - md/Chapter2/NeuralNetwork/Shortcut.md
+  - md/Chapter2/NeuralNetwork/PixelShuffle.md
+  - md/Chapter2/NeuralNetwork/Cost.md
+
+  - md/Chapter2/SuperResolution/README.md
+  - md/Chapter2/SuperResolution/Resampling.md
+  - md/Chapter2/SuperResolution/QualityImage.md
+  - md/Chapter2/SuperResolution/WDSR.md
+  - md/Chapter2/SuperResolution/Dataset.md
+  - md/Chapter2/SuperResolution/Results.md
+
+  - md/Chapter2/ObjectDetection/Intro.md
+  - md/Chapter2/ObjectDetection/Yolo.md
+  - md/Chapter2/ObjectDetection/Dataset.md
+  - md/Chapter2/ObjectDetection/Results.md
+
+  - md/Chapter2/Segmentation/Intro.md
+  - md/Chapter2/Segmentation/UNet.md
+  - md/Chapter2/Segmentation/Dataset.md
+  - md/Chapter2/Segmentation/Results.md
+
+  - md/Chapter2/rFBP/Intro.md
+  - md/Chapter2/rFBP/Implementation.md
+  - md/Chapter2/rFBP/Dataset.md
+  - md/Chapter2/rFBP/Results.md
 
   - md/Chapter3/README.md
+  - md/Chapter3/CHIMeRA/README.md
+  - md/Chapter3/CHIMeRA/SymptomsNet.md
 
-  - md/Appendix/BlendNet/README.md
-  - md/Appendix/DiscriminantAnalysis/README.md
+  - md/Appendix/DiscriminantAnalysis/Intro.md
+  - md/Appendix/DiscriminantAnalysis/MathematicalBackground.md
+  - md/Appendix/DiscriminantAnalysis/Numerical.md
+
+  - md/Appendix/Venice/Intro.md
+  - md/Appendix/Venice/Dataset.md
+  - md/Appendix/Venice/MobilityPaths.md
+
+  - md/Appendix/BlendNet/Intro.md
+
+  - md/Appendix/Scorer/Intro.md
+
+  - md/Appendix/FiloBlu/Intro.md
+  - md/Appendix/FiloBlu/Service.md
+  - md/Appendix/FiloBlu/CryptoSocket.md
+
+  - md/Appendix/Profiling/Intro.md
+  - md/Appendix/Profiling/Pipeline.md
+  - md/Appendix/Profiling/Environment.md
+  - md/Appendix/Profiling/Step.md
+  - md/Appendix/Profiling/Results.md
+  - md/Appendix/Profiling/Conclusion.md
 
   - md/Conclusions.md
   - authors.md
@@ -96,9 +164,9 @@ theme:              jekyll-theme-slate
 # nav:
 #   - About Me: authors.md
 
-#   - READMEduction:
+#   - Introduction:
 #     - Abstract: md/Abstract.md
-#     - READMEduction: md/READMEduction.md
+#     - READMEduction: md/Introduction.md
 
 #   - Feature Selection:
 #       - READMEduction: md/Chapter1/README.md

@@ -75,7 +75,7 @@ As in the previous case we chose to implements this loss function in a separated
 Many other loss function can be mentioned to overcome different kind of problems.
 The list of presented loss function was related to the implementation of the `darknet`-like library which are ported also into the `NumPyNet` and `Byron` libraries, i.e either in `Python` and `C++`.
 `NumPyNet` and `Byron` libraries also provided a wider list of loss functions to improve the usability of them and improve their computation (and fixed some `darknet` issues).
-A full list of available loss functions can be found in the \href{https://github.com/Nico-Curti/\textsf{Byron}/blob/master/src/cost_layer.cpp}{on-line} version of the libraries with a list of easily visual examples.
+A full list of available loss functions can be found in the [on-line](https://github.com/Nico-Curti/Byron/blob/master/src/cost_layer.cpp) version of the libraries with a list of easily visual examples.
 
 A further improvements was given from a numerical point-of-view: many mathematical formulas needs expensive math operations as logarithms and trigonometric functions.
 An efficient (but approximated) math formulas was implemented both in the `C++` and Python to reach faster computational performances.
@@ -86,7 +86,7 @@ A classical example of this faster math operation is given by the *fast inverse 
 The method is based on a Newton algorithm which can be stopped at the desired precision order: less precision is associated to faster execution, obviously.
 In our `fast math` implementation we provide a set of Newton algorithms associated to the most common mathematical operations, like `exp`, `log`, `sqrt` and so on.
 We tested these implementations against the common standards (`Numpy` package for `Python` and `std::` for `C++`) and we compare the time execution performances (we required a precision of at least `10^-4`).
-The obtained results are shown in Fig. [1](../../../img/fmath_timing.svg) where we normalized the execution time taking `Numpy` implementation as reference.
+The obtained results are shown in Fig. [1](../../../../img/fmath_timing.svg) where we normalized the execution time taking `Numpy` implementation as reference.
 
 ![Time performances of standard mathematical operations implemented through Newton approximations. We compare the results obtained with the `Numpy` library (blue, reference) and the standard `C++` library (`CMath`) to their equivalent into the custom `FMath` version. In the comparison we have to take in mind that the `Numpy` library is based on a `C++` wrap and that the `Python` version of the `FMath` is written in pure `Python` language. In all the cases the `FMath` version of the functions performs better or at-least-equal to the standard one.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/fmath_timing.svg?token=AF4CJX4L2NFNBQLDSOZH4T25WGD3I&sanitize=true)
 

@@ -74,3 +74,8 @@
     * [FiloBlu Service](./md/Appendix/FiloBlu/Service.md)
     * [Data Transmission](./md/Appendix/FiloBlu/CryptoSocket.md)
   * [Appendix F - Bioinformatics Pipeline Profiling](./md/Appendix/Profiling/README.md)
+    * [GATK-LODn pipeline](./md/Appendix/Profiling/Pipeline.md)
+    * [Computational Environments](./md/Appendix/Profiling/Environments.md)
+    * [Pipeline steps](./md/Appendix/Profiling/Step.md)
+    * [Results](./md/Appendix/Profiling/Results.md)
+    * [Conclusions](./md/Appendix/Profiling/Conclusions.md)

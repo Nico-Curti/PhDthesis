@@ -10,7 +10,7 @@ $$
 
 
 In signal processing this operation is also called *crossing correlation* ad it is equivalent to the *autocorrelation* function computed in a given point.
-In image processing the first function is represented by the image $I$ and the second one is a kernel `k` (or filter) which shifts along the image.
+In image processing the first function is represented by the image `I` and the second one is a kernel `k` (or filter) which shifts along the image.
 In this case we will have a 2D discrete version of the formula given by:
 
 $$
@@ -141,7 +141,7 @@ The efficiency of Byron library follows the efficiency of the `Winograd` algorit
 
 [^1]: If we consider a simple image `224 x 224` with `3` color channels we obtain a set of `150'528` features. A classical DNN layer with this input size should have `1024` nodes for a total of more than `150` million weights to tune.
 
-[^2]: Compared to the other implementations the direct (brute force) convolution algorithm exceeds the computational time of order of magnitudes. For this reason it is not taken into account during our tests. A possible implementation in \textsf{C++} is however provided into the [Byron library](https://github.com/Nico-Curti/Byron/blob/master/utility/winograd_test.cpp).
+[^2]: Compared to the other implementations the direct (brute force) convolution algorithm exceeds the computational time of order of magnitudes. For this reason it is not taken into account during our tests. A possible implementation in `C++` is however provided into the [Byron library](https://github.com/Nico-Curti/Byron/blob/master/utility/winograd_test.cpp).
 
 [^3]: We work under the assumption that the weights matrix is already a flatten array and thus each row of the weights matrix represents the full mask.
 

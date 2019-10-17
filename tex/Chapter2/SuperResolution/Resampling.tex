@@ -29,9 +29,9 @@ This procedure can be achieved using a \emph{Pooling} algorithm (in particular a
 The UpSample function is commonly related to GAN (Generative Adversarial Networks) models in which we have to provide a series of artificial images to a given Neural Network but it is a function which can be introduce inside a Neural Network model to rescale the number of features.
 We mention it in this section since it is not intrinsically related to a Neural Network model but it could be use as image processing technique.
 
-We provide an implementation of this algorithm either in NumPyNet either in Byron library using different techniques.
+We provide an implementation of this algorithm either in \textsf{NumPyNet} either in \textsf{Byron} library using different techniques.
 The UpSample function inside a Neural Network model has to provide both up- and down- sampling technique since one is used in the forward function and its inverse during the back-propagation.
-To achieve this function in NumPyNet we can use a series of reshapes and striding on the input matrix as shown in the following snippet.
+To achieve this function in \textsf{NumPyNet} we can use a series of reshapes and striding on the input matrix as shown in the following snippet.
 
 \lstset{style=snippet}
 \begin{lstlisting}[language=Python, caption=NumPyNet version of Upsampling function, label=code:py_upsample]
@@ -98,9 +98,9 @@ class Upsample_layer(object):
 \end{lstlisting}
 
 Thus the down-sampling algorithm is obtained reshaping the input array according the two scale factors (\textsf{strides} in the code) along the two dimensions and computing the mean along these axes.
-Instead the up-sample function use the stride functionality of the Numpy array to rearrange and replicate the value of each pixel in a mask of size \textsf{strides}$\times$\textsf{strides}.
+Instead the up-sample function use the stride functionality of the \textsf{Numpy} array to rearrange and replicate the value of each pixel in a mask of size \textsf{strides}$\times$\textsf{strides}.
 
-The same functionality can be obtained in the \textsf{C++} version of the code provided by the Byron library in which we compute the right indexes along a nested sequence of for loops (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/upsample_layer.cpp}{on-line}).
+The same functionality can be obtained in the \textsf{C++} version of the code provided by the \textsf{Byron} library in which we compute the right indexes along a nested sequence of for loops (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/upsample_layer.cpp}{on-line}).
 We have to take in care the summation reduction provided by the down-sampling according to the thread concurrency: in this case we can not generalize the loop collapsing to the full set of lops but we have to separately manage the summation in a sequential section.
 
 A more sophisticated interpolation algorithm, which reduce the loosing informations, is provided by the \emph{bicubic interpolation}.
@@ -117,13 +117,13 @@ k(x) = \frac{1}{6} \left\{ \begin{array}{rc}
 $$
 \\
 where $x$ identify each pixel below the filter.
-Commonly values used for the filter parameters are $B=0$ and $C=0.75$ (used by OpenCV library) or $B=0$ and $C=0.5$ used by Matlab\footnote{
+Commonly values used for the filter parameters are $B=0$ and $C=0.75$ (used by \textsf{OpenCV} library) or $B=0$ and $C=0.5$ used by \textsf{Matlab}\footnote{
   In this case the filter is also called Catmull-Rom filter.
 }.
-Despite this function was also implemented in the most common library in Python we provide an efficient multi-threading implementation in the Byron library.
+Despite this function was also implemented in the most common library in \textsf{Python} we provide an efficient multi-threading implementation in the \textsf{Byron} library.
 
 Equivalent performances could be achieved using a generalized version of the bicubic filter which use the 8 positions mask around each pixel, the so called Lanczos filter.
-Also this function was provided into the Byron library.
+Also this function was provided into the \textsf{Byron} library.
 
 To better understand the told above functions we can consider their application on the simple image given in Fig.\ref{fig:resampling}.
 
@@ -132,11 +132,11 @@ To better understand the told above functions we can consider their application 
 \def\svgwidth{\textwidth}
 \input{./img/up_down_sampling.pdf_tex}
 \caption{Re-sampling image example.
-\textbf{left}) The original image.
-\textbf{up right}) The down-sampled blue-ROIs using different interpolation algorithm (Nearest, Bicubic and Lanczos, respectively).
+\textbf{(left)} The original image.
+\textbf{(up right)} The down-sampled blue-ROIs using different interpolation algorithm (Nearest, Bicubic and Lanczos, respectively).
 We use a scale factor equal to 2 (half size in down-sampling and double size in up-sampling).
 The Lanczos interpolation is the lossless algorithm but from a qualitative point-of-view the result is the quite the same of the bicubic one.
-\textbf{down right}) The up-sampled red-ROIs using the same interpolation algorithm of the upper row.
+\textbf{(down right)} The up-sampled red-ROIs using the same interpolation algorithm of the upper row.
 Also in the Up-sampling the Lanczos and bicubic algorithms produces equal qualitative results.
 The Nearest algorithm produces the worse results in both up- down- cases.
 }

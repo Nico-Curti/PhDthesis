@@ -32,13 +32,13 @@ Many approaches are used for these classification purposes [[Guyon2002](https:/
 Support Vector Machine, K-nearest Neighbor, Neural networks and Random Forest [[Pang2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3495190/)].
 Some methods select signature variables by means of single-variable scoring methods [[Eckhard2012](https://www.scirp.org/journal/PaperInformation.aspx?PaperID=18585), [Hocking1976](http://www.jstor.org/stable/2529336)]  (e.g. Student's t test for a
 two-class comparison), while others search for projections in variable space, and then perform a dimensionality reduction by thresholding the projection weights, but these approaches could fail even in simple
-two-dimensional situations (Fig. [1](../../../img/distributions.svg)).
+two-dimensional situations (Fig. [1](../../../../img/distributions.svg)).
 
 Methods that select variables for multi-dimensional signatures based on single-variable performance can have limits in predicting
 higher-dimensional signature performance.
-As shown in Fig. [1](../../../img/distributions.svg)(a), in which both variables taken singularly perform poorly, but their performance becomes optimal in a 2-dimensional combination, in terms of linear separation of the two classes.
+As shown in Fig. [1](../../../../img/distributions.svg)(a), in which both variables taken singularly perform poorly, but their performance becomes optimal in a 2-dimensional combination, in terms of linear separation of the two classes.
 
-It is known that complex separation surfaces characterize classification tasks associated to image and speech recognition, for which Deep Networks are used successfully in recent times, but in many cases biological data, such as gene or protein expression, are more likely characterized by a up/down-regulation behavior (as shown in Fig. [1](../../../img/expression.svg)(b) top), while more complex behaviors (e.g. a optimal range of activity, Fig. [1](../../../img/expression.svg)(b) bottom) are much less likely.
+It is known that complex separation surfaces characterize classification tasks associated to image and speech recognition, for which Deep Networks are used successfully in recent times, but in many cases biological data, such as gene or protein expression, are more likely characterized by a up/down-regulation behavior (as shown in Fig. [1](../../../../img/expression.svg)(b) top), while more complex behaviors (e.g. a optimal range of activity, Fig. [1](../../../../img/expression.svg)(b) bottom) are much less likely.
 Thus, discriminant-based methods (and logistic regression methods alike) can very likely provide good classification performances in these cases (as demonstrated by our results with DNetPRO) if applied in at least
 two-dimensional spaces.
 Moreover, the of these methods (that generate very simple class separation surfaces, i.e. linear or quadratic) guarantee that a of a signature based on lower-dimensional signatures is feasible.

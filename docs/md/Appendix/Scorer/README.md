@@ -58,7 +58,7 @@ The code can be compiled using CMakefile or Makefile and a setup is provided for
 So when you write a new paper on Machine Learning and you do not know what could be the most appropriate indicator to show in your research or you are afraid that a referee could ask you to compute an other one there is only one solution: compute them all using `Scorer`.
 
 
-[^1]: The confusion matrix is a square matrix of shapes `(N, N)`, with $N$ the total number of classes in the current problem, whose entries are the number of rights and false classification. In particular, each entry of the matrix represents the instances predicted in a given class. If the class is the right one we call it a true positive item. As counterpart we will have a false positive item.
+[^1]: The confusion matrix is a square matrix of shapes `(N, N)`, with `N` the total number of classes in the current problem, whose entries are the number of rights and false classification. In particular, each entry of the matrix represents the instances predicted in a given class. If the class is the right one we call it a true positive item. As counterpart we will have a false positive item.
 
 [^2]: If the functor receives in input the variable `A` and `B` we have to ensures that two functors named `get_A` and `get_B` will be provided. The only exception is given by the root functor.
 

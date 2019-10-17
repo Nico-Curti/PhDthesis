@@ -11,7 +11,7 @@ In Neural Network models we have to manage a large quantities of parameters and 
 Possible workaround could be given by the regularization techniques told in the previous section (ref. [BatchNorm](./BatchNorm.md) for further informations) or by a Dropout function.
 This function simply dropping out some neuron units into a Neural Network during the training phase.
 Ignore some neurons means that they will not be considered during a particular (single) forward/backward step.
-So, given a set of neurons we have a probability $p$ to keep the neuron and `1-p` to remove it.
+So, given a set of neurons we have a probability `p` to keep the neuron and `1-p` to remove it.
 In this way we can reduce the co-dependency of nearest neurons inside the network and so reduce the possibility of over-fitting.
 
 The above description bring us to a straightforward implementation of the algorithm into the `NumPyNet` library (ref. [code](https://github.com/Nico-Curti/NumPyNet/blob/master/NumPyNet/layers/dropout_layer.py)).
@@ -58,9 +58,9 @@ As consequence the random number generated will not be independent but (most pro
 The simple workaround implemented into the `Byron` library is given by assigning a random number generator to each thread (with its own seed and indexed by the thread ID).
 In this way we can ensure a totally independence of the random numbers generated during the forward phase (ref. [on-line](https://github.com/Nico-Curti/Byron/blob/master/src/dropout_layer.cpp)).
 
-![Dropout function applied on a testing image. The 10% of image pixels are turned off by the forward function. The corresponding gradient is back-propagated only on the previously activated pixels.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/dropout_layer.svg?token=AF4CJX2WAIDBKZFH4DICDJ25WGETY)
+![Dropout function applied on a testing image. The 10% of image pixels are turned off by the forward function. The corresponding gradient is back-propagated only on the previously activated pixels.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/dropout_layer.svg?token=AF4CJX2WAIDBKZFH4DICDJ25WGETY&sanitize=true)
 
-As visualization example we can use our simple test image and apply our transformation (see Fig.[1](../../../img/dropout_layer.svg)).
+As visualization example we can use our simple test image and apply our transformation (see Fig.[1](../../../../img/dropout_layer.svg)).
 Our input image shows many pixel turned off according to the given probability, as expected.
 On the other hand, the backward output turns on only the same pixel [^2].
 

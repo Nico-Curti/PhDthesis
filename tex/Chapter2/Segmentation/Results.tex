@@ -4,11 +4,11 @@
 
 \subsection[Results]{Results}\label{segmentation:results}
 
-We implemented the U-Net model using a custom \emph{Tensorflow} model.
-We did not use our \textsf{Byron} or \textsf{NumPyNet} libraries since the training section is very computational expensive and in this project we had the possibility to use a NVidia GeForce RTX 2080 Ti which can be easily managed using a \emph{Tensorflow} implementation\footnote{
+We implemented the U-Net model using a custom \textsf{Tensorflow} model.
+We did not use our \textsf{Byron} or \textsf{NumPyNet} libraries since the training section is very computational expensive and in this project we had the possibility to use a NVidia GeForce RTX 2080 Ti which can be easily managed using a \textsf{Tensorflow} implementation\footnote{
   We thank the \emph{PhySyCom} group of the Bologna University for its support on this project.
 }.
-Also the data augmentation step was performed by the \emph{Tensorflow} framework.
+Also the data augmentation step was performed by the \textsf{Tensorflow} framework.
 The training performances in terms of loss (\emph{binary CrossEntropy}) and accuracy (we have already mentioned that it is not a good estimator in segmentation task but it is \quotes{required} in standard training plot) were shown in Fig.~\ref{fig:seg_train}.
 
 \begin{figure}[htbp]

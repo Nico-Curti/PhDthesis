@@ -8,7 +8,7 @@ The code is particularly optimized for GPU applications: the `darknet` library p
 
 The proposed `Byron` library was developed following the backbone and the innovative ideas into the `darknet` project.
 The main difference between them is the programming language chosen: `Byron` is written in pure `C++`, a "higher" level programming language.
-Generally we can not obtain better computational performances using \textsf{C++} in relation to an Ansi C implementation.
+Generally we can not obtain better computational performances using `C++` in relation to an Ansi C implementation.
 However, the `C++` language is more popular than `Ansi C` and more easy to write and modify.
 The second main difference of `Byron` is related to the target computational environment: it is designed and optimized to reach the better performances on a single or multiple CPUs architecture.
 In this way we can enlarge also the use of our code.
@@ -26,7 +26,7 @@ To compare the results we implemented the same YOLO model into our custom `Byron
 The test were performed turning off the multi-threading support since the `darknet` implementation use it only in the GEMM evaluation.
 We performed 5 independent simulations using the same input image size to test the time stability of both the implementations.
 Each simulation performs 100 runs of both the algorithms.
-The results are shown in Fig. [1](../../../img/byron_timing.svg) where we normalized our times in relation to the `darknet` ones since it is our reference.
+The results are shown in Fig. [1](../../../../img/byron_timing.svg) where we normalized our times in relation to the `darknet` ones since it is our reference.
 
 ![Comparison of time performances between the `Byron` and `darknet` implementations of the YOLO model. The simulations were performed keeping fixed the input image sizes and without the multi-threading support. Each simulation includes 100 runs of both the algorithms. The `Byron` version is approximately 3.8x faster than `darknet` in all the simulations.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/byron_timing.svg?token=AF4CJXZWP4UOE2NBAMX7HKS5WHNUK&sanitize=true)
 

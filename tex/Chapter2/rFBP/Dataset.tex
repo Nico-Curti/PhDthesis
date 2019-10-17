@@ -5,7 +5,7 @@
 
 \subsection[Compare dataset]{SNP classification}\label{rfbp:snp}
 
-Few available applications of the rFBP algorithm to real data are amenable to two aspects: I) learning technique; II) algorithm implementation.
+Few available applications of the \textsf{rFBP} algorithm to real data are amenable to two aspects: I) learning technique; II) algorithm implementation.
 The first one is related to the intrinsic definition of the algorithm which is designed to reach a complete memorization of the training dataset; in the other Machine Learning processes we normally want to avoid this kind of results since it could bring to \emph{over-fitting} problems.
 The second one is given by the binary values involved in each step of the algorithm which intrinsically limits the possible applications\footnote{
   The Neural Network weights can assume only binary values since they model up/down spins.
@@ -23,7 +23,7 @@ Thus, we can identify a genome as a sequence of its mutation in relation to a re
 The COMPARE project aims to develop new methods to avoid the genetic disease transmission.
 In this project plays a crucial role the \emph{Source Attribution}, i.e the classification of a given disease based on the list of its mutation.
 
-We tested the rfBP on $210$ Salmonella enterica genome sequences, $4857450\,bp$ (base pairs) long, living inside animals.
+We tested the \textsf{rFBP} on $210$ Salmonella enterica genome sequences, $4857450\,bp$ (base pairs) long, living inside animals.
 Our early goal was to discriminate bacteria which lives in pigs (159 samples) against to all the others animals (51 samples).
 
 \begin{figure}[htbp]
@@ -45,7 +45,7 @@ In this way we reduced the number of bases to $8189\,bp$.
 A graphical representation of these samples is given in Fig.~\ref{fig:SNPsAle}.
 The dataset was divided in training and test sets using a stratified cross-validation procedure to guarantee a proportional subdivision of the samples into the two classes.
 The algorithm hyper-parameters were tuned on the training set in relation to the performances obtained using a internal stratified 10-fold cross-validation: in each fold the training was performed using a sequence of hyper-parameters and the performances evaluated on the corresponding test set; the hyper-parameters configuration which obtained the best performances on the full training set was chosen as best one.
-We use our custom \emph{Scorer} library for the performance evaluation.
+We use our custom \textsf{Scorer} library for the performance evaluation.
 Considering the unbalanced sample quantities the Matthews Correlation Coefficient (MCC) was chosen as good score indicator for the evaluation.
 
 \end{document}

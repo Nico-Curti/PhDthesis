@@ -11,7 +11,7 @@ This is one of the most important feature of the contemporary time, the so-calle
 
 It is still difficult to provide a definition of what exactly are the Big Data and we can find many slight different nomenclatures and categories which aim to formulate it.
 Moreover, Big Data does not define a particular data type but more than we normally think sources can be labeled as it.
-The *International Journal of Computer Applications* defined them as "[...] a collection of large and complex datasets that cannot be processed and analyzed using traditional computing techniques. It is not a single technique or a tool, rather it involves many areas of business and technology}.
+The *International Journal of Computer Applications* defined them as "[...] a collection of large and complex datasets that cannot be processed and analyzed using traditional computing techniques. It is not a single technique or a tool, rather it involves many areas of business and technology".
 This definition certainly involves many aspects of Big Data processing but it does not provide any definition about their nature.
 Moreover, it is easy to identify them as "big" and thus difficult to analyze, but they are all around us every day and just using the Internet connection every smart-phone or laptop can extract and visualize our web queries so could be not properly correct to define them in this way.
 However it is certainly sure that the standard computing techniques have to be reviewed to face on this vast amount of data and a even more important attention has to be payed on the algorithm implementations.

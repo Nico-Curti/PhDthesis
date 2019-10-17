@@ -1,6 +1,6 @@
 ## Characterization of signature overlap
 
-In the analysis of the Synapse dataset we used a complex pipeline of cross-validation (ref Fig. [-1](../../../img/distributions.svg)) to obtain a sufficient statistics.
+In the analysis of the Synapse dataset we used a complex pipeline of cross-validation (ref Fig. [-1](../../../../img/distributions.svg)) to obtain a sufficient statistics.
 The DNetPRO algorithm was designed to work on a single dataset since the signature extraction can involve different variables for different data subdivisions.
 In our application we divide the dataset into a training-test subdivision and the signature were extracted along a 10-fold cross-validation over the training set.
 This kind of setup could produce 10 totally different signatures, in the worst case.
@@ -13,7 +13,7 @@ On the other hand the overlap of these signatures could highlight a statistical 
 As case study we analyzed only the KIRC mRNA dataset in which the extracted signatures ranged from 4 to 650 genes ($$\mu=382$$ genes).
 For each gene we counted its occurrences along the 1000 signatures.
 The same analysis was performed taking into account the signatures generated using the `K`-best score variables (ref. [ToyModel](../DNetPRO/ToyModel.md) for further informations) and a random features extraction.
-In Fig. [1](../../../img/DNetPRO_overlap.svg) the genes distribution obtained by the three methods are shown.
+In Fig. [1](../../../../img/DNetPRO_overlap.svg) the genes distribution obtained by the three methods are shown.
 
 ![Signatures overlap obtained in the KIRC mRNA datasets. Genes occurrences of the 1000 DNetPRO signatures extracted from the Synapse pipeline (blue). Genes occurrences of the 1000 `K`-best variables extracted from the Synapse pipeline (red): the number of genes (`K`) is the same of the corresponding DNetPRO signature. Genes occurrences of 1000 random signatures (yellow).](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/DNetPRO_overlap.svg?token=AF4CJX5CU2SS2OSA6BGV7IC5WBL3M&sanitize=true)
 

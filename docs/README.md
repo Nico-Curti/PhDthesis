@@ -25,6 +25,8 @@ In this way all the figure into the `img` directory will be converted into a pdf
 
 Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through model deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
 
+* [Implementation and optimization of algorithms in Biological Big Data Analytics](./README.md)
+
 * [Introduction on Big Data](./Introduction.md)
 
 * [DNetPRO algorithm and Feature Selection](./md/Chapter1/README.md)
@@ -97,5 +99,10 @@ Different topics about Big Data Analytics are discussed in this work, starting f
     * [FiloBlu Service](./md/Appendix/FiloBlu/Service.md)
     * [Data Transmission](./md/Appendix/FiloBlu/CryptoSocket.md)
   * [Appendix F - Bioinformatics Pipeline Profiling](./md/Appendix/Profiling/README.md)
+    * [GATK-LODn pipeline](./md/Appendix/Profiling/Pipeline.md)
+    * [Computational Environments](./md/Appendix/Profiling/Environments.md)
+    * [Pipeline steps](./md/Appendix/Profiling/Step.md)
+    * [Results](./md/Appendix/Profiling/Results.md)
+    * [Conclusions](./md/Appendix/Profiling/Conclusions.md)
 
 
