@@ -1,6 +1,6 @@
 ## Yolo architecture
 
-![Yolo Neural Network scheme.](../../../img/yolonet.png)
+![Yolo Neural Network scheme.](../../../../img/yolonet.png)
 
 The YOLO Neural Network architecture was firstly published in the 2015 but from the first version many improvements were performed and now we have the third revision of it.
 We do not want to recall the history of this model so we will discuss only about the YOLOv3 model (for sake of simplicity we will call it just YOLO).

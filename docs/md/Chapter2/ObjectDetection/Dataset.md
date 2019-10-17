@@ -1,6 +1,6 @@
 ## COCO dataset
 
-![COCO validation set examples.](../../../img/coco.png)
+![COCO validation set examples.](../../../../img/coco.png)
 
 The first issue to take into account when we want to train an object detection model is certainly to provide a good training set.
 The dataset has to include multiple and different prospective of the searching object and all these images has to be manually annotated (ground truth for a supervised learning).

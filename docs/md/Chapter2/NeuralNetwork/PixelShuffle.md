@@ -8,7 +8,7 @@ Then the image, with the same dimensions of the desired output, feeds the model 
 In this way the amount of parameters and moreover the computation required by the training section increase (by a factor equal to the square of the desired up-sampling scale), despite the required image processing is smaller.
 To overcome this problem a Pixel Shuffle transformation, also known as \emph{sub-pixel convolution}, was introduced [[Wenzhe2016Shuffle](https://ui.adsabs.harvard.edu/\#abs/2016arXiv160905158S)]: in this work the authors proved the equivalence between a regular transpose convolution, i.e the previous standard transformation to enlarge the input dimensions, and the sub-pixel convolution transformation without losing any information.
 The Pixel Shuffle transformation reorganize the low-resolution image channels to obtain a bigger image with few channels.
-An example of this transformation is shown in Fig. [1](../../../img/pixel_shuffle.svg).
+An example of this transformation is shown in Fig. [1](../../../../img/pixel_shuffle.svg).
 
 ![Pixel Shuffle transformation. On the left the input image with `scale^2` (:= 9) channels. On the right the result of Pixel Shuffle transformation. Since the number of channels is perfect square the output is a single channel image with the rearrangement of the original ones.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/pixel_shuffle.svg?token=AF4CJXZTOQK46VSQZSNVL7S5WGHT2&sanitize=true)
 

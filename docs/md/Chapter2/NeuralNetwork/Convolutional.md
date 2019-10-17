@@ -40,14 +40,14 @@ Given this theoretical background we can implement the convolution function in m
 The first (naive) approach is to use a brute force technique and implement the direct evaluation of the convolution functions as described above.
 This version is certainly the easier to implement but its computational performances are so worst than for sake of brevity we excluded it from our tests [^2].
 
-![`im2col` algorithm scheme using a `2 x 2` filter on a image with 3 channels. At the end of the `im2col` algorithm the `GEMM` is performed between weights and input image.](../../../img/im2col.png)
+![`im2col` algorithm scheme using a `2 x 2` filter on a image with 3 channels. At the end of the `im2col` algorithm the `GEMM` is performed between weights and input image.](../../../../img/im2col.png)
 
 Taking into account what we have learned from the DNN models, we can re-formulate our problem using an efficient manipulation of the involved matrices to optimize the `GEMM` algorithm.
 A direct convolution on an image of size `(W x H x C)` using a kernel mask of dimensions `(k x k)` requires `O(WHCk^2)` operations and thus many matrix products.
 We can re-arrange the involved data to optimize this computation and thus evaluate a single matrix product: this re-arrangement is called `im2col` (or `im2row`) algorithm.
 The algorithm is just a simple transformation which flats the original input into a bigger matrix where each column carries all the elements which have to be multiplied for the filter mask into a single step [^3].
 In this way we can immediately apply our `GEMM` algorithm on the full image.
-In Fig.[1](../../../img/im2col.png) the main scheme of this algorithm is reported.
+In Fig.[1](../../../../img/im2col.png) the main scheme of this algorithm is reported.
 This kind of algorithm certainly optimize the computation efficiency of the `GEMM` product but in payback we have to store a lot of memory for the input re-organization.
 
 Using the mathematical theory behind the problem a third idea can arise using the well known Convolution Theorem: the Fourier transformation of our functions (that in this case are given by the input image and the weights kernel) can be reinterpreted into a simple matrix product in the frequency space.

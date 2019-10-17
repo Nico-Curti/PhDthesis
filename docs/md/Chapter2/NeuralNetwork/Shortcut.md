@@ -8,12 +8,12 @@ With simple empirical examples we can easily see how the accuracy starts to satu
 Those problems poses a limit to the number of layers usable on a Neural Network model and seem that the shallower networks learn better than their deeper counterparts.
 Keeping this results in mind we can think about a strategy to skip these "extra" layers.
 
-![Scheme of shortcut connections into a deep learning model. Each colored line connects the previous layer block to the following one. The output combination can be customized but the most used one is a simple linear combination of them. A particular attention must be payed with the dimensions management.](../../../img/shortcut_layer.png)
+![Scheme of shortcut connections into a deep learning model. Each colored line connects the previous layer block to the following one. The output combination can be customized but the most used one is a simple linear combination of them. A particular attention must be payed with the dimensions management.](../../../../img/shortcut_layer.png)
 
 
 We can obtain a simple solution to this problem making extra connections between layers called shortcuts or residuals.
 A shortcut is a link between two distant layers without involving the set of layers between them, a so-called "identity shortcut connection".
-A graphical example is show in Fig. [1](../../../img/shortcut_layer.png).
+A graphical example is show in Fig. [1](../../../../img/shortcut_layer.png).
 The authors of [[he2015deep](https://arxiv.org/abs/1512.03385)] argue that stacking layers should not degrade the network performance, because we could simply stack identity mappings (layer that does not do anything) upon the current network, and the resulting architecture would perform the same.
 In the original paper, the shortcut connections perform an operation like:
 

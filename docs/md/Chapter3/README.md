@@ -1,7 +1,7 @@
 # Chapter 3
 ## Biological Big Data - CHIMeRA project
 
-<img src="../../../../img/5v.png" width="400px;"/>
+![Big Data 5 V's](../../../../img/5v.png)
 
 Every second a large quantity of data are produced and shared through Internet and Web-pages.
 Data are collected by social networks, messages, video streaming and images.
