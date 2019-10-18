@@ -27,4 +27,4 @@ In this work we focused only on CPUs computation, but another possibility could 
 Each pipeline work-flow requires its own analyses and tuning to reach the best performances and the right parallelization strategy based on the use which it is intended but a low energy node approach is emerging as a good alternative to the more expensive and common solutions.
 
 
-[**end**](../../README.md)
+[**end**](../../../README.md)

@@ -26,24 +26,23 @@ Each section of the pipeline sends messages to the *Telegraf* daemon independent
 Regardless of the number of cores of each machine we restrict the number of cores used to only two to compare the statistics: this restriction certainly penalize the environment with multiple cores but with a view of maximizing the parallelizations and minimize the energy cost it is the playground to compare all the available environments.
 Another restriction is applied to the chosen architectures: since available low-power machines provides only x86-architectures also the other environments are forced to work in x86 to allow the statistics comparison.
 
-**CLASS**                | **server grade machines** |   | **low power machines** |    | **virtual machine**|
-|:----------------------:|:-------------------------:|:-:|:----------------------:|:--:|:------------------:|
-**CPU**                  | Intel Xeon   | Intel Xeon     | Intel Pentium | Intel Xeon  | AMD Opteron        |
-**version**              | E5-2683v3    | E5-2640v2      | J4205         | D-1540      | 6386 SE            |
-**Microarchitecture**    | Haswell      | Ivy Bridge EP  | Apollo Lake   | Broadwell   | Piledriver         |
-**Launch Date**          | Q3'14        | Q3'13          | Q4'16         | Q1'15       | Q3'12              |
-**Lithography**          | 22 nm        | 22 nm          | 14 nm         | 14 nm       | 32 nm              |
-**Cores/threads**        | 14/28        | 8/16           | 4/4           | 8/16        | 16                 |
-**Base/Max Freq**        | 2.00/3.00    | 2.00/2.50      | 1.50/2.60     | 2.00/2.60   | 2.80/3.50          |
-**L2 Cache**             | 35 MB        | 20 MB          | 2 MB          | 12 MB       | 16 MB              |
-**TDP**                  | 120 W        | 95 W           | 10 W          | 45 W        | 115 W              |
-**Total CPUs**           | 2            | 2              | 1             | 1           | 1                  |
-**total cores/threads**  | 28/56        | 16/32          | 4/4           | 8/16        | 16                 |
-**Total Memory**         | 256 GB       | 252 GB         | 8 GB          | 32 GB       | 60 GB              |
-**System power**         | 240 + 60 W   | 190 + 60 W     | 10 + 2 W      | 45 + 10 W   | 115 + 10 W         |
-**Electrical costs**     | 650 €/year   | 550 €/year     | 26 €/year     | 120 €/year  | 273€ /year         |
-**System price**         | 4000-6000 €  | 3000-5000 €    | 100-130 €     | 900-1200 €  | 2000-3000€         |
-|:----------------------:|:-------------------------:|:-:|:----------------------:|:--:|:------------------:|
+|**CLASS**                | **server grade machines** |   | **low power machines** |    | **virtual machine**|
+|:-----------------------:|:-------------------------:|:-:|:----------------------:|:--:|:------------------:|
+|**CPU**                  | Intel Xeon   | Intel Xeon     | Intel Pentium | Intel Xeon  | AMD Opteron        |
+|**version**              | E5-2683v3    | E5-2640v2      | J4205         | D-1540      | 6386 SE            |
+|**Microarchitecture**    | Haswell      | Ivy Bridge EP  | Apollo Lake   | Broadwell   | Piledriver         |
+|**Launch Date**          | Q3'14        | Q3'13          | Q4'16         | Q1'15       | Q3'12              |
+|**Lithography**          | 22 nm        | 22 nm          | 14 nm         | 14 nm       | 32 nm              |
+|**Cores/threads**        | 14/28        | 8/16           | 4/4           | 8/16        | 16                 |
+|**Base/Max Freq**        | 2.00/3.00    | 2.00/2.50      | 1.50/2.60     | 2.00/2.60   | 2.80/3.50          |
+|**L2 Cache**             | 35 MB        | 20 MB          | 2 MB          | 12 MB       | 16 MB              |
+|**TDP**                  | 120 W        | 95 W           | 10 W          | 45 W        | 115 W              |
+|**Total CPUs**           | 2            | 2              | 1             | 1           | 1                  |
+|**total cores/threads**  | 28/56        | 16/32          | 4/4           | 8/16        | 16                 |
+|**Total Memory**         | 256 GB       | 252 GB         | 8 GB          | 32 GB       | 60 GB              |
+|**System power**         | 240 + 60 W   | 190 + 60 W     | 10 + 2 W      | 45 + 10 W   | 115 + 10 W         |
+|**Electrical costs**     | 650 €/year   | 550 €/year     | 26 €/year     | 120 €/year  | 273€ /year         |
+|**System price**         | 4000-6000 €  | 3000-5000 €    | 100-130 €     | 900-1200 €  | 2000-3000€         |
 
 
 [^1]: Running cost is evaluated as the energy consumption that the node requires per subject, assuming that the consumption scales linearly with the number of cores used in the individual step.

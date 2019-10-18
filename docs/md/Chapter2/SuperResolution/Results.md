@@ -17,9 +17,9 @@ The full validation set comprises 60 images and we compared the efficiency of th
 In Fig. [1](../../../../img/sr_val_psnr.png) we show the score distributions obtained using the three methods over these 60 images.
 
 
-| ![Comparison of performances between the bi-cubic up-sampling and EDSR and WDSR Super Resolution models on the DIV2K validation set. The performances are obtained down-sampling the input images and the re-up-sampled according to the desired scale factor: the chosen scale factor is 4x. **(left)** PSNR score on the 60 validation images.](../../../../img/sr_val_psnr.png) | ![**(right)** SSIM score on the 60 validation images.](../../../../img/sr_val_ssim.png) |
-|:----:|:----:|
+![Comparison of performances between the bi-cubic up-sampling and EDSR and WDSR Super Resolution models on the DIV2K validation set. The performances are obtained down-sampling the input images and the re-up-sampled according to the desired scale factor: the chosen scale factor is 4x. PSNR score on the 60 validation images.](../../../../img/sr_val_psnr.png)
 
+![SSIM score on the 60 validation images.](../../../../img/sr_val_ssim.png)
 
 As can be seen by the two plots in Fig. [1](../../../../img/sr_val_ssim.png) the quality improvement given by the Super Resolution methods against the bi-cubic algorithm is evident.
 On the other hand the gap between the two Super Resolution models is relatively small: the EDSR model performs statistically better than the WDSR one but we have also to take into account that the WDSR model has less than 10% of the EDSR parameters.

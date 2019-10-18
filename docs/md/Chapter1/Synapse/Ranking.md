@@ -7,8 +7,9 @@ Monitoring this trend behavior can be noticed that only a few number of pairs be
 This kind of trend highlight the difficulty on finding informative features inside the huge noise of other variables and it gives us a constrain in the developing of a realistic biological toy model.
 Moreover it confirms us that a putative signature could be made by only a few amount of central genes at least weakly connected with other noise nodes.
 
-| ![Analysis of ranked pairs distributions according to the performance score obtained in the training step. The distribution of plateau lengths is approximately exponential.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/lengths.svg?token=AF4CJX52Y3DRMMJFW3SE2MK5WBK2M&sanitize=true)  | ![Average number of pairs with the same score value: this behavior is typical in ranking order distribution and it can be fitted by the relation $$f(x) = A(M + 1 - r)^b / r^a$$ as shown in [rankfit](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0004791), where `r` is the rank value, `M` its maximum value, `A` a normalization constant and (`a`, `b`) two fitting exponents.]()  |
-|:------:|:------:|
+![Analysis of ranked pairs distributions according to the performance score obtained in the training step. The distribution of plateau lengths is approximately exponential.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/lengths.svg?token=AF4CJX52Y3DRMMJFW3SE2MK5WBK2M&sanitize=true)
+
+![Average number of pairs with the same score value: this behavior is typical in ranking order distribution and it can be fitted by the relation $$f(x) = A(M + 1 - r)^b / r^a$$ as shown in [rankfit](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0004791), where `r` is the rank value, `M` its maximum value, `A` a normalization constant and (`a`, `b`) two fitting exponents.]()
 
 
 As in other cases of ranked values [rankfit](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0004791), we can fit these ranking distributions with a combination of power-law functions obtaining a good agreement with experimental points (Fig. [1](../../../../img/plateaus.svg)(b)).

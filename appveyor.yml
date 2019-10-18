@@ -1,0 +1,30 @@
+
+clone_folder: c:\projects\PhDthesis
+
+environment:
+
+  WORKSPACE: C:\projects
+
+  matrix:
+
+    # For Python versions available on Appveyor, see
+    # https://www.appveyor.com/docs/windows-images-software/#python
+    # The list here is complete (excluding Python 2.6, which
+    # isn't covered by this document) at the time of writing.
+
+    - PYTHON: "C:\\Python36-x64"
+      MINICONDA: C:\Miniconda3-x64
+      VERSION: 36
+      ARCH: x64
+
+build: off
+
+install:
+  - "%PYTHON%\\python.exe --version"
+  - cd %WORKSPACE%\PhDthesis
+  - "conda install -c conda-forge latexmk inkscape"
+
+test_script:
+  - exit 0
+
+

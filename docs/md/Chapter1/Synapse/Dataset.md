@@ -8,7 +8,7 @@ For each cancer type we applied the DNetPRO algorithm on mRNA, miRNA and RPPA da
 
 The summary description of the datasets used is reported in the following Table.
 
-| Cancer |    mRNA                   | miRNA                    | Protein         | Number </br> of samples  |
+| Cancer |    mRNA                   | miRNA                    | Protein         | Number       of samples  |
 |:------:|:-------------------------:|:------------------------:|:---------------:|:------------------------:|
 | GBM    | AgilentG4502A       17814 | H-miRNA_8x15k       533  | RPPA [^a]       |     210                  |
 | KIRC   | HiseV2              20530 | GA+Hiseq            1045 | RPPA       166  |     243                  |

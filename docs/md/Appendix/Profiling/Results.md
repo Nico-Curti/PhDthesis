@@ -14,6 +14,7 @@ This is due to the necessity of loading the whole human reference genome (versio
 All the other steps do not require the human reference genome but can work on the individual reads, allowing greater flexibility in memory allocation.
 
 ![Time elapsed per step of the pipeline, and total elapsed time. In the sorting step, Pentium J is 20 times slower than the reference, probably due to the limited cache size.](../../../../img/time_performances.png)
+
 ![Energy consumption per pipeline step and on the whole pipeline. Energy consumption is estimated as the time taken by the step, multiplied by the number of cores used in the step and the power consumption per core (TDP divided by the available cores).](../../../../img/energy_and_cost.png)
 
 As can be seen in Fig. [2](../../../../img/time_performances.png) and Fig. [3](../../../../img/energy_and_cost.png), this increase of memory consumption does not correspond to a proportional improvement of the time elapsed in the computation.

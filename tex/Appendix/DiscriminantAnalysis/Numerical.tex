@@ -6,12 +6,12 @@
 \markboth{Appendix A}{Numerical Implementation}
 
 From a numeric point of view we can exploit each mathematical information and assumption to simplify the computation and improve the numerical stability of our computation.
-I would remark that this consideration were taken into account in this work only for the \textsf{C++} algorithmic implementation since these methods are already implemented in the high-level programming languages as \textsf{Python} and \emph{Matlab}\footnote{
-  For completeness we have to highlight that for the Matlab case classification functions, i.e \textsf{classify}, is already included in the base packages of the software, i.e no external Toolbox are needed, while for the Python case the most common package which implements these techniques are given by the \textsf{scikit-learn} library.
-  Matlab allows to set the classifier type as input parameter in the function using a simple string which follows the same nomenclature previously proposed.
-  Python has a different import for each classifier type: in this case we find correspondence between our nomenclature and the Python one only in \emph{quadratic} and \emph{linear} cases, while the \emph{Mahalanobis} is not considered a putative classifier.
+I would remark that this consideration were taken into account in this work only for the \textsf{C++} algorithmic implementation since these methods are already implemented in the high-level programming languages as \textsf{Python} and \textsf{Matlab}\footnote{
+  For completeness we have to highlight that for the \textsf{Matlab} case classification functions, i.e \textsf{classify}, is already included in the base packages of the software, i.e no external Toolbox are needed, while for the \textsf{Python} case the most common package which implements these techniques are given by the \textsf{scikit-learn} library.
+  \textsf{Matlab} allows to set the classifier type as input parameter in the function using a simple string which follows the same nomenclature previously proposed.
+  \textsf{Python} has a different import for each classifier type: in this case we find correspondence between our nomenclature and the \textsf{Python} one only in \emph{quadratic} and \emph{linear} cases, while the \emph{Mahalanobis} is not considered a putative classifier.
   The \emph{diagquadratic} classifier is called \textsf{GaussianNB} (\emph{Naive Bayes Classifier}) instead.
-  The last important discrepancy between the two language implementation is in the computation of the variance (and the corresponding covariance matrix): Matlab proposes the variance estimation only in relation to the mean so the normalization coefficient is given by the number of sample except by one ($N-1$), while Python compute the variance with a simple normalization by $N$.
+  The last important discrepancy between the two language implementation is in the computation of the variance (and the corresponding covariance matrix): \textsf{Matlab} proposes the variance estimation only in relation to the mean so the normalization coefficient is given by the number of sample except by one ($N-1$), while \textsf{Python} compute the variance with a simple normalization by $N$.
 }.
 
 In the previous section we highlight that the covariance matrix is a positive semi-definite and symmetric matrix by definition and this properties allows the matrix inversion.

@@ -12,7 +12,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Nico-Curti/PhDthesis.svg?label=Stars&style=social)](https://github.com/Nico-Curti/PhDthesis/stargazers)
 [![GitHub watchers](https://img.shields.io/github/watchers/Nico-Curti/PhDthesis.svg?label=Watch&style=social)](https://github.com/Nico-Curti/PhDthesis/watchers)
 
-<img src="https://cdn.rawgit.com/physycom/templates/697b327d/logo_unibo.png" width="90" height="90">
+<img src="https://cdn.rawgit.com/physycom/templates/697b327d/logo_unibo.png" width="30" height="30">
 
 # PhD Thesis
 
@@ -39,10 +39,10 @@ Different topics about Big Data Analytics are discussed in this work, starting f
     * [Time performances](./md/Chapter1/Implementation/Timing.md)
   * [Benchmark of DNetPRO algorithm](./md/Chapter1/Synapse/README.md)
     * [Synapse dataset](./md/Chapter1/Synapse/Dataset.md)
-    * [mRNA data](./md/Chapter1/Synapse/mRNA.tex)
-    * [miRNA and RPPA data](./md/Chapter1/Synapse/miRNA_RPPA.tex)
-    * [Couple ranking](./md/Chapter1/Synapse/Ranking.tex)
-    * [Characterization of signature overlap](./md/Chapter1/Synapse/Overlap.tex)
+    * [mRNA data](./md/Chapter1/Synapse/mRNA.md)
+    * [miRNA and RPPA data](./md/Chapter1/Synapse/miRNA_RPPA.md)
+    * [Couple ranking](./md/Chapter1/Synapse/Ranking.md)
+    * [Characterization of signature overlap](./md/Chapter1/Synapse/Overlap.md)
   * [Cytokinoma dataset](./md/Chapter1/Cytokinoma/README.md)
     * [Dataset](./md/Chapter1/Cytokinoma/Dataset.md)
     * [Results](./md/Chapter1/Cytokinoma/Results.md)

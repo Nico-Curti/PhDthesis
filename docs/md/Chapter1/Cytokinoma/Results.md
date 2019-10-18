@@ -5,8 +5,7 @@ Its total accuracy on the CTL-AD test set is 65.27% (with 61% CTL and 66% AD cor
 The sensitivity/specificity values for classification is reported in the Table.
 
 
-|       | **Accuracy** | **Sensitivity** | **Specificity** |   | **Prediction** | **Sensitivity** | **Specificity** |
-|       |  AD vs. CTL  |      AD         |     CTL         |   | MCI as non-CTL |      MCI        |      CTL        |
+|| **Accuracy** AD vs. CTL| **Sensitivity** AD | **Specificity** CTL || **Prediction** MCI as non-CTL | **Sensitivity** MCI | **Specificity** CTL |
 |:-----:|:------------:|:---------------:|:---------------:|:-:| :-------------:|:---------------:|:---------------:|
 | Men   |    16/25     |    8/12         |    8/13         |   |      15/26     |    15/26        |      24/36      |
 |       |   (64.00%)   |  (66.67%)       |   (61.54%)      |   |     (57.69%)   |   (57.69%)      |     (66.67%)    |
