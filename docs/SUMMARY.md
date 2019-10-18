@@ -41,7 +41,6 @@
     * [Pixel Shuffle](./md/Chapter2/NeuralNetwork/PixelShuffle.md)
     * [Cost function](./md/Chapter2/NeuralNetwork/Cost.md)
   * [Super Resolution](./md/Chapter2/SuperResolution/README.md)
-    * [Super Resolution](./md/Chapter2/SuperResolution/README.md)
     * [Resampling](./md/Chapter2/SuperResolution/Resampling.md)
     * [Image Quality](./md/Chapter2/SuperResolution/QualityImage.md)
     * [Super Resolution models](./md/Chapter2/SuperResolution/WDSR.md)

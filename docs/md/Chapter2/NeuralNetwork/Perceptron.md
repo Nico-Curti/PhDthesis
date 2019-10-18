@@ -52,14 +52,14 @@ $$
 which looks identical to previous updating rule but in this case we are managing real numbers and not simple class labels.
 Moreover in this way we compute the weight updates according to the full set of training sample and not for each sample (this approach leads to the so-called *batch*-update, i.e small subsets of data).
 
-To implement this kind of model into a pure Python application we do not need extra libraries but we can just use the native keyword of the language.
+To implement this kind of model into a pure `Python` application we do not need extra libraries but we can just use the native keyword of the language.
 A possible implementation of this model was developed and release in a on-line [gist](https://gist.github.com/Nico-Curti/358b7a2ffed1abbb57ee87a5338ca073).
 In this simple snippet we examine the functionality of the Simple Perceptron model across different logical functions and we proof its fast convergence on linear separable datasets [^4].
 
-An equivalent C++ implementation of the model is also provided and can be found in this other [gist](https://gist.github.com/Nico-Curti/856c3baf523bc5d01b1e7dfe2515c0e2).
+An equivalent `C++` implementation of the model is also provided and can be found in this other [gist](https://gist.github.com/Nico-Curti/856c3baf523bc5d01b1e7dfe2515c0e2).
 
 The model is too naive for computational efficiency discussions.
-Thus we can just observe how a learning algorithm could be easily implemented using basic programming language keywords either in Python either in C++.
+Thus we can just observe how a learning algorithm could be easily implemented using basic programming language keywords either in `Python` either in `C++`.
 
 
 [^1]: There are multiple loss functions in the Neural Network world. We will further discuss their use and their effective on a learning model in the next section.

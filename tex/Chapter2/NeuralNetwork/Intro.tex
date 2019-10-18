@@ -12,12 +12,12 @@ After the training section we can verify the efficiency of our training using a 
 If we have prior knowledge about the output of our test set we can compute the accuracy (or more generally the score) of our model; in the other case we will simply have an extrapolation of our data.
 
 A wide range of documentations and implementations have been written on this topic and it is more and more hard to move around the different sources.
-Leader on this topic are became the multiple open-source Python libraries available on-line as \textsf{Tensorflow}~\cite{tensorflow2015-whitepaper}, \textsf{Pytorch}~\cite{paszke2017automatic} and \textsf{Caffe}~\cite{Jia:2014:Caffe}.
-Their portability and efficiency are closely related on the simplicity of the Python language and on the simplicity in writing complex models in a minimum number of code lines.
+Leader on this topic are became the multiple open-source \textsf{Python} libraries available on-line as \textsf{Tensorflow}~\cite{tensorflow2015-whitepaper}, \textsf{Pytorch}~\cite{paszke2017automatic} and \textsf{Caffe}~\cite{Jia:2014:Caffe}.
+Their portability and efficiency are closely related on the simplicity of the \textsf{Python} language and on the simplicity in writing complex models in a minimum number of code lines.
 Only a small part of the research community uses more deeper implementation in \textsf{C++} or other low-level programming languages.
-About them it should be mentioned the \textsf{darknet project} of Redmon J. et al. which created a sort of standard in object detection applications using a pure Ansi-C library\footnote{
+About them it should be mentioned the \textsf{darknet project} of Redmon J. et al. which created a sort of standard in object detection applications using a pure \textsf{Ansi-C} library\footnote{
   \textsf{darknet} is framework for neural network model developing.
-  It is written in pure Ansi-C by a Washington University research group.
+  It is written in pure \textsf{Ansi C} by a Washington University research group.
   The library was developed only for Unix OS but in its many branches (literally \emph{forks}) a complete porting for each operative system was provided.
   The code is particularly optimized for GPUs using the CUDA support, i.e only for NVidia GPUs.
   It is particularly famous for object detection applications since it firstly theorize a novel approach to multi-scale object detections called Yolo (You Only Look Once).
@@ -27,32 +27,32 @@ About them it should be mentioned the \textsf{darknet project} of Redmon J. et a
 
 In this section we firstly retrace the mathematical background of these models.
 To each theoretical explanation we discuss the numerical problems associated and we provide an efficient custom implementation of each algorithm.
-The numerical aspects will be traced following two developed custom libraries: NumPyNet library~\cite{NumPyNet} and Byron library~\cite{Byron}.
+The numerical aspects will be traced following two developed custom libraries: \textsf{NumPyNet} library~\cite{NumPyNet} and \textsf{Byron} library~\cite{Byron}.
 
-NumPyNet was born as educational framework for the study of Neural Network models.
+\textsf{NumPyNet} was born as educational framework for the study of Neural Network models.
 It is written trying to balance code readability and computational performances and it is enriched with a large documentation to better understand the functionality of each script.
-The library is written in pure Python and the only external library used is Numpy~\cite{Numpy} (a based package for the scientific research).
+The library is written in pure \textsf{Python} and the only external library used is \textsf{Numpy}~\cite{Numpy} (a based package for the scientific research).
 
 Despite all common libraries are correlated by a wide documentation is often difficult for novel users to move around the many hyper-links and papers cite in it.
-NumPyNet tries to overcome this problem with a minimal mathematical documentation associated to each script and a wide range of comments inside the code.
+\textsf{NumPyNet} tries to overcome this problem with a minimal mathematical documentation associated to each script and a wide range of comments inside the code.
 
 An other \quotes{problem} to take in count is related to performances.
 Libraries like \textsf{Tensorflow} as certainly efficient by a computational point-of-view and the numerous wrappers (like \emph{Keras} library) guarantees an extremely simple user interface.
 On the other hand the deeper functionality of the code and the implementation strategies used are unavoidably hidden behind tons of code lines.
 In this way the user can performs complex computational tasks using the library as black-box package.
-NumPyNet wants to overcome this problem using simple Python codes with extremely readability also for novel users to better understand the symmetry between mathematical formulas and code.
+\textsf{NumPyNet} wants to overcome this problem using simple \textsf{Python} codes with extremely readability also for novel users to better understand the symmetry between mathematical formulas and code.
 
 The simplicity of this library we will allow to give a first numerical analysis of the model functions and, moreover, to show the results of each function to a simple image to better understand the effects of their applications on real data\footnote{
   Aware of the author no other example implementations have been done.
-  This makes the NumPyNet library a useful tool for neural network study and a virtual laboratory for new neural network functions.
+  This makes the \textsf{NumPyNet} library a useful tool for neural network study and a virtual laboratory for new neural network functions.
 }.
-Each NumPyNet function was tested against the \textsf{Tensorflow} implementation of the same methods with an automatic testing routine through \textsf{PyTest}~\cite{Okken:2017:PTP:3176124}.
+Each \textsf{NumPyNet} function was tested against the \textsf{Tensorflow} implementation of the same methods with an automatic testing routine through \textsf{PyTest}~\cite{Okken:2017:PTP:3176124}.
 The full code is open-source on the \textsf{Github} page of the project.
 Its installation is guaranteed by a continuous integration framework of the code through \textsf{Travis CI} for Unix environments and \textsf{Appevyor CI} for Windows users.
 The library supports \textsf{Python} version $\ge2.6$\footnote{
   The library provides also an \textsf{Image} object to load and process images.
   The object is based on OpenCV API~\cite{OpenCV}.
-  OpenCV does not yet support Python version 2.7 and 3.3 so the whole NumPyNet package does not work on these two version of \textsf{Python}.
+  \textsf{OpenCV} does not yet support \textsf{Python} version 2.7 and 3.3 so the whole \textsf{NumPyNet} package does not work on these two version of \textsf{Python}.
   You can just exclude the \textsf{Image} scripts from the package or use a novel wrap based on different library (e.g \textsf{Pillow}).
 }.
 
@@ -69,7 +69,7 @@ To further reduce the time of thread spawn and so optimize as much as possible t
 
 The \textsf{Byron} library is release under \textsf{MIT} license and public available on the \textsf{Github} page of the project.
 The project also includes a list of common examples like object detection, super resolution, segmentation, ecc. (see the next sections for further details about this models).
-The library is also completely wrapped using \textsf{Cython} to enlarge the range of users also to the Python ones.
+The library is also completely wrapped using \textsf{Cython} to enlarge the range of users also to the \textsf{Python} ones.
 The complete guide to its installation is provided; it can be done using \textsf{CMake}, \textsf{Make} or \textsf{Docker} and the \textsf{Python} version is available with a simple \textsf{setup}.
 The testing of each function is performed using \textsf{Pytest} automatic framework against the \textsf{NumPyNet} implementation (faster and lighter to import than \textsf{Tensorflow}).
 

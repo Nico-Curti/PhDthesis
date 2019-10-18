@@ -12,7 +12,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Nico-Curti/PhDthesis.svg?label=Stars&style=social)](https://github.com/Nico-Curti/PhDthesis/stargazers)
 [![GitHub watchers](https://img.shields.io/github/watchers/Nico-Curti/PhDthesis.svg?label=Watch&style=social)](https://github.com/Nico-Curti/PhDthesis/watchers)
 
-<img src="https://cdn.rawgit.com/physycom/templates/697b327d/logo_unibo.png" width="30" height="30">
+<img src="https://cdn.rawgit.com/physycom/templates/697b327d/logo_unibo.png" width="90" height="90">
 
 # PhD Thesis
 
@@ -64,7 +64,6 @@ Different topics about Big Data Analytics are discussed in this work, starting f
     * [Pixel Shuffle](./md/Chapter2/NeuralNetwork/PixelShuffle.md)
     * [Cost function](./md/Chapter2/NeuralNetwork/Cost.md)
   * [Super Resolution](./md/Chapter2/SuperResolution/README.md)
-    * [Super Resolution](./md/Chapter2/SuperResolution/README.md)
     * [Resampling](./md/Chapter2/SuperResolution/Resampling.md)
     * [Image Quality](./md/Chapter2/SuperResolution/QualityImage.md)
     * [Super Resolution models](./md/Chapter2/SuperResolution/WDSR.md)

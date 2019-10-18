@@ -70,7 +70,6 @@ The on-line version of the thesis can be found on the [gitbook version](https://
     * [Pixel Shuffle](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/NeuralNetwork/PixelShuffle.md)
     * [Cost function](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/NeuralNetwork/Cost.md)
   * [Super Resolution](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/SuperResolution/README.md)
-    * [Super Resolution](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/SuperResolution/README.md)
     * [Resampling](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/SuperResolution/Resampling.md)
     * [Image Quality](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/SuperResolution/QualityImage.md)
     * [Super Resolution models](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter2/SuperResolution/WDSR.md)
