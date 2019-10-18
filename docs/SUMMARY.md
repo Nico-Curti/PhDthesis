@@ -62,6 +62,11 @@
 
 * [Biological Big Data - CHIMeRA project](./md/Chapter3/README.md)
   * [The CHIMeRA project](./md/Chapter3/CHIMeRA/README.md)
+  * [How to find the data - Web Scraping](./md/Chapter3/CHIMeRA/WebScraping.md)
+  * [SymptomsNet](./md/Chapter3/CHIMeRA/SymptomsNet.md)
+  * [Natural Language Processing](./md/Chapter3/CHIMeRA/NLP.md)
+  * [CHIMeRA datasets](./md/Chapter3/CHIMeRA/Dataset.md)
+  * [CHIMeRA as Service](./md/Chapter3/CHIMeRA/CHIMeRA.md)
 
 * [Conclusions](./Conclusions.md)
 

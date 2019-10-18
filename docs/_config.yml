@@ -121,7 +121,11 @@ include:
 
   - md/Chapter3/README.md
   - md/Chapter3/CHIMeRA/README.md
+  - md/Chapter3/CHIMeRA/WebScraping.md
   - md/Chapter3/CHIMeRA/SymptomsNet.md
+  - md/Chapter3/CHIMeRA/NLP.md
+  - md/Chapter3/CHIMeRA/Dataset.md
+  #- md/Chapter3/CHIMeRA/CHIMeRA.md
 
   - md/Appendix/DiscriminantAnalysis/Intro.md
   - md/Appendix/DiscriminantAnalysis/MathematicalBackground.md
