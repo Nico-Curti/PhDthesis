@@ -17,24 +17,32 @@ The summary results obtained by the degree centrality are shown in Tab.~\ref{tab
 
 \begin{table}
 \centering
-\begin{tabular}{lccccccccccccccc}
-\hline \rowcolor{darkgrayrow}
-       & global  & disease &   drug & food & gene & metabolite & phenotype &  SNP & metabolic & disease   & drug-action & drug-metabolism &  signaling       & physiological   & macro   \\
-\rowcolor{darkgrayrow}
-       & degree  &         &        &      &      &            &           &      & pathway   & pathway   & pathway     &  pathway        &  pathway         &  pathway        & pathway \\
-mean   &  121.44 &   18.54 &  93.59 & 0.03 & 1.96 &       0.37 &      5.50 & 0.65 &      0.09 &      0.05 &        0.14 & $6\times10^{-3}$& $4\times10^{-3}$ &$1\times10^{-3}$ &   0.48  \\
-std    &  784.86 &  109.25 & 737.60 & 0.32 &38.81 &     154.73 &    100.09 &21.96 &      2.81 &      1.27 &        6.79 &            0.28 &             0.29 &            0.07 & 106.06  \\
-min    &       1 &       0 &      0 &    0 &    0 &          0 &         0 &    0 &         0 &         0 &           0 &               0 &                0 &               0 &      0  \\
-25\%   &       1 &       0 &      0 &    0 &    0 &          0 &         0 &    0 &         0 &         0 &           0 &               0 &                0 &               0 &      0  \\
-50\%   &       2 &       1 &      0 &    0 &    0 &          0 &         0 &    0 &         0 &         0 &           0 &               0 &                0 &               0 &      0  \\
-75\%   &       7 &       3 &      0 &    0 &    0 &          0 &         0 &    0 &         0 &         0 &           0 &               0 &                0 &               0 &      1  \\
-max    &  108147 &   22911 &  17750 &   12 & 5605 &      85236 &      9732 & 4866 &       594 &       283 &        1006 &              60 &               49 &              13 &  59993  \\
+\begin{tabular}{lccccccc}
+\hline\rowcolor{darkgrayrow}
+                        & mean            &  std    &  min & 25\% & 50\% & 75\% &   max  \\
+
+global degree           & 121.44          &  784.86 &    1 &    1 &    2 &    7 & 108147 \\
+disease                 &  18.54          &  109.25 &    0 &    0 &    1 &    3 &  22911 \\
+drug                    &  93.59          &  737.60 &    0 &    0 &    0 &    0 &  17750 \\
+food                    &   0.03          &    0.32 &    0 &    0 &    0 &    0 &     12 \\
+gene                    &   1.96          &   38.81 &    0 &    0 &    0 &    0 &   5605 \\
+metabolite              &   0.37          &  154.73 &    0 &    0 &    0 &    0 &  85236 \\
+phenotype               &   5.50          &  100.09 &    0 &    0 &    0 &    0 &   9732 \\
+SNP                     &   0.65          &   21.96 &    0 &    0 &    0 &    0 &   4866 \\
+metabolic pathway       &   0.09          &    2.81 &    0 &    0 &    0 &    0 &    594 \\
+disease pathway         &   0.05          &    1.27 &    0 &    0 &    0 &    0 &    283 \\
+drug-action pathway     &   0.14          &    6.79 &    0 &    0 &    0 &    0 &   1006 \\
+drug-metabolism pathway &$6\times10^{-3}$ &    0.28 &    0 &    0 &    0 &    0 &     60 \\
+signaling pathway       &$4\times10^{-3}$ &    0.29 &    0 &    0 &    0 &    0 &     49 \\
+physiological pathway   &$1\times10^{-3}$ &    0.07 &    0 &    0 &    0 &    0 &     13 \\
+macro pathway           &   0.48          &  106.06 &    0 &    0 &    0 &    1 &  59993 \\
 \hline\\
 \end{tabular}
-\caption{
+\caption{%TODO
 }
 \label{tab:chimera_degree}
 \end{table}
+
 
 For each node type we computed the average number of connections and the main important parameters of each distribution (minimum, maximum, standard deviations and percentiles).
 These preliminary results confirm the previous discussion about the network matrix structure: the only node type which has at least one connection is only the disease one (ref. min row in Tab~\ref{tab:chimera_degree}).

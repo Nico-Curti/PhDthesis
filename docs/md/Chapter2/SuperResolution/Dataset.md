@@ -1,6 +1,6 @@
 ## DIV2K dataset
 
-![DIV2K validation set examples.](../../../../img/div2k.PNG)
+![DIV2K validation set examples.](../../../../img/div2k.png)
 
 In our super resolution applications we used as training set the images provided by the DIV2K (*DIVerse 2K resolution high quality images*) dataset [[Agustsson_2017_CVPR_Workshops](www.vision.ee.ethz.ch/~timofter/publications/Agustsson-CVPRW-2017.pdf)].
 This dataset was appositely created for the 2017 NTIRE challenge (*New Trends in Image Restoration and Enhancement*).

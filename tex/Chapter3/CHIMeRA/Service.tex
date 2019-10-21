@@ -38,7 +38,7 @@ We customized our query to extract only the 2-order connections related to these
 The pseudo-code used for our queries is showed in \ref{code:query}.
 
 \lstset{style=Java}
-\begin{lstlisting}[language=C++, caption=DNetPRO signature extraction, label=code:query]
+\begin{lstlisting}[language=Java, caption=CHIMeRA 2-order connections query, label=code:query]
 FOR x IN node_type_vertex
   FILTER x.name LIKE "looking_for_entry"
     FOR v, e, p IN 1..3 ANY x GRAPH "CHIMeRA"
