@@ -4,7 +4,8 @@
 
 \section[SymptomsNet]{SymptomsNet}\label{chimera:symptomsnet}
 
-The relation between symptoms and diseases is a crucial point for medical research and can be used to see analogies and co-occurrences of different pathology, including morbidity and co-morbidity.
+Finding relationships between symptoms and diseases and their reflections on system-wise perspectives such as genomics and metabolomics, thus remains a crucial issue for medical research but nonetheless an open one mainly due to the complexity and the heterogeneity of the available data.
+The relation between symptoms and diseases can be used to see analogies and co-occurrences of different pathology, including morbidity and co-morbidity.
 The construction of a unique and consistent database of these kind of data is an open problem for the research and a crucial task for many actual projects.
 The main problems arise from the complexity and heterogeneity of the available data and from the many nomenclatures used by different public databases.
 In fact, in many cases it is not so clear how to infer about the association between symptoms and diseases, and, in addition, different data sources provide different relations.
@@ -29,13 +30,13 @@ All these three sites provide an organized series of tables which associate a di
 These databases are certainly not robust from a scientific point-of-view and their vulnerability is shown also by a non-rigid labeling of the two classes: in multiple cases we can find a disease as symptom of an other one and in many cases there is not a perfect agreement between the three data sources.
 However, we can ensure that the most part of symptoms-disease association was validated by \quotes{authoritative} agencies in our databases selection.
 
-The data extracted from the three websites cover a wide range of possible diseases and from each of them we obtained a network with a size of few thousand of nodes, our SymptomsNet.
+The data extracted from the three websites cover a wide range of possible diseases and from each of them we obtained a network with a size of few thousand of nodes, our \textsf{SymptomsNet}.
 The overlap of the single words contained in the \quotes{disease-sentences} is quite low so a robust pre-processing was needed.
 The nodes were processed by standard natural language processing techniques and from each name the word stem was extracted to maximize the merging between the different sources.
 If two diseases show different symptoms we decided to concatenate the list of edges to not lose information.
 
 The processing outputs generated a network with 2285 nodes and more than 29k links (only the 1\% of the total number of possible links).
-The final SymptomsNet obtained by the merging of the three database sources is reported in Figure\ref{fig:net} in which the size of nodes is proportional to the degree (Tab.\ref{tab:rank} for the top ranking links).
+The final \textsf{SymptomsNet} obtained by the merging of the three database sources is reported in Figure\ref{fig:net} in which the size of nodes is proportional to the degree (Tab.\ref{tab:rank} for the top ranking links).
 
 \begin{figure}[htbp]
 \centering
@@ -83,8 +84,8 @@ This works allowed also the realization of a novel database obtained by the unio
 The centrality measures extracted by this network can be used as floating point scorers or weight for the corresponding word
 in the diseases association and despite the still there issues it could be consider a valid input for a toy-model text generator.
 
-This results encourage us in the usage of this kind of techniques for further and deeper applications and these ideas brought us to the development of the CHIMeRA project.
+This results encourage us in the usage of this kind of techniques for further and deeper applications and these ideas brought us to the development of the \textsf{CHIMeRA} project.
 If the above results could be reasonably good for the FiloBlu project purposes we could perform better using English data sources and with a better tuning of our natural language processing pipeline.
-In the next section we will discuss about what natural language processing means in the modern researches and we will describe the pipeline and databases using into the CHIMeRA project.
+In the next section we will discuss about what natural language processing means in the modern researches and we will describe the pipeline and databases using into the \textsf{CHIMeRA} project.
 
 \end{document}

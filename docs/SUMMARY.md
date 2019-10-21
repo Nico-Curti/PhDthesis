@@ -66,7 +66,8 @@
   * [SymptomsNet](./md/Chapter3/CHIMeRA/SymptomsNet.md)
   * [Natural Language Processing](./md/Chapter3/CHIMeRA/NLP.md)
   * [CHIMeRA datasets](./md/Chapter3/CHIMeRA/Dataset.md)
-  * [CHIMeRA as Service](./md/Chapter3/CHIMeRA/CHIMeRA.md)
+  * [CHIMeRA analyses](./md/Chapter3/CHIMeRA/Results.md)
+  * [CHIMeRA as Service](./md/Chapter3/CHIMeRA/Service.md)
 
 * [Conclusions](./Conclusions.md)
 

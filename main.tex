@@ -42,6 +42,8 @@ linkcolor=black,
 urlcolor=blue
 }
 
+\usepackage{numprint}
+\npthousandsep{\,}
 
 \usepackage{listings}
 
@@ -87,6 +89,26 @@ urlcolor=blue
     showstringspaces=false,
     showtabs=false,
     tabsize=2
+}
+
+\lstdefinestyle{Java}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{green}\ttfamily,
+    keywordstyle=\color{blue}\ttfamily,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red}\ttfamily,
+    basicstyle=\ttfamily\footnotesize,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    commentstyle=\color{codegray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    basicstyle=\ttfamily,
+    moredelim=[il][\textcolor{codegray}]{$$},
+    moredelim=[is][\textcolor{codegray}]{\%\%}{\%\%}
 }
 
 \usepackage[]{algorithm2e}

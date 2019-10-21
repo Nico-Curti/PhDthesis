@@ -15,7 +15,7 @@ To point out a mobility subnetwork we rank the roads of Venice according to a we
 Thus We define a relevant subnetwork as a connected subnetwork that explains a considerable fraction of the observed mobility.
 In this case each road (identified by two nodes in the poly-line format) represents the link of our weighted graph and we can apply the DNetPRO technique shown in the implementation section to identify the network core with only closed paths [^1].
 
-![From top-left to right-bottom, we plot four mobility subnetworks with increasing number of roads, selected by the DNetPRO algorithm using the Carnival dataset.](../../../../img/venice_step.png)
+![From top-left to right-bottom, we plot four mobility subnetworks with increasing number of roads, selected by the DNetPRO algorithm using the Carnival dataset.](../../../../img/venice_step.PNG)
 
 Starting from the previously evaluated daily flows for each road, we order in a decreasing way the roads according to the observed
 flows.
@@ -24,13 +24,13 @@ At every step the "pruning process" starts on the selected roads cutting the iso
 Therefore the number of nodes of the subnetwork increases in a discontinuous way, when the adding of a new road in the list allows to
 connect several previously selected roads.
 After several parametric scans, we found that the best result for our purposes is achieved by choosing about the 10% of the nodes in the whole Venice road network.
-In Fig. [1](../../../../img/venice_step.png) we show four consecutive selected subnetworks in the case of Carnival dataset to illustrate how the algorithm operates.
+In Fig. [1](../../../../img/venice_step.PNG) we show four consecutive selected subnetworks in the case of Carnival dataset to illustrate how the algorithm operates.
 
-![Picture (a): selected subnetworks (highlighted in purple) from the road network of the Venice historical centre (in the background), that explain 64% of the recorded mobility in the datasets. The top picture refers to the Carnival mobility during 26/02/2017 and corresponds to 13% of the total length of the Venice road network. The picture (b) refers to the *Festa del Redentore* mobility during 15/07/2017 and corresponds to 15% of the total length of the Venice road network.](../../../../img/venice_result.png)
+![Picture (a): selected subnetworks (highlighted in purple) from the road network of the Venice historical centre (in the background), that explain 64% of the recorded mobility in the datasets. The top picture refers to the Carnival mobility during 26/02/2017 and corresponds to 13% of the total length of the Venice road network. The picture (b) refers to the *Festa del Redentore* mobility during 15/07/2017 and corresponds to 15% of the total length of the Venice road network.](../../../../img/venice_result.PNG)
 
 Using the DNetPRO algorithm we are able to extract a subnetwork which explains the 64% of the observed mobility using 13% of the total road network length for the case of the Carnival dataset and 15% of the total length in the case of the *Festa del Redentore* dataset.
 
-The selected road subnetworks are plotted in the Fig. [2](../../../../img/venice_result.png) for both the datasets.
+The selected road subnetworks are plotted in the Fig. [2](../../../../img/venice_result.PNG) for both the datasets.
 As a matter of fact, many of the highlighted paths are also suggested by Internet sites.
 However, we remark some differences that can be related by the different nature of the considered events.
 During the Carnival of Venice the mobility seems to highlight three main directions connecting the railway station and the *Piazzale Roma* (top-left in the map), which are the main access points to the Venice historical centre, with the area around San Marco square, where many activities where planned during 26/02/2017.
