@@ -12,7 +12,7 @@ Moreover, `SQLite` database is hard to share along the Internet: the language su
 
 A more efficient solution is provided by the modern graph databases (GDB).
 GDB are databases which use graph structures to represent and store informations: there are two needed informations for the database given by nodes and edges.
-The key concept behind this kind of storage is the relationship between the entries and they go under the \textsf{NoSQL} database category.
+The key concept behind this kind of storage is the relationship between the entries and they go under the `NoSQL` database category.
 GDBs allow simple and efficient retrieval of complex hierarchical structures by definition and thus they represent the most efficient solution for our `CHIMeRA` database which is born as network-of-networks.
 Multiple different solutions have been proposed to address graphs storage and there are a wide range of possible GDB languages public available on-line (e.g `Neo4j`, `OrientDB`, `Sparksee`, `AllegroGraph`, ...).
 Based on our experience about these topics and driven by the available documentation, we have chosen to use [`ArangoDB`](https://www.arangodb.com/) in our application.
@@ -41,7 +41,7 @@ FOR x IN node_type_vertex
 The query takes the node-collection (`ArangoDB` nomenclature) related to the searched node type (`node_type_vertex` in the code) and filter all the name which satisfy the `LIKE` condition.
 Starting from the founded nodes it returns the output graph preview made by the 1st and 2nd order connections (range of values `1..3` in the code).
 
-We applied this kind of query for the two nodes and we processed the results using `Gephi` as network viewer.
+We applied this kind of query for the two nodes and we processed the results using Gephi as network viewer.
 The obtained results are showed in Fig. [1](../../../../img/leukemia.png) and Fig. [2](../../../../img/PRNP.png) for the *leukemia* (9460 nodes and 26646 links) and *PRNP* (19103 nodes and 139496 links) queries, respectively.
 As can be seen by the two figures, both networks are quite large just considering the 2-order connections and they highlight the biological complexity of these entries.
 

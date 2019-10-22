@@ -74,7 +74,7 @@ In this way the Levenshtein distance between `a` and `b` can be computed evaluat
 Using the Levenshtein equation we evaluated the distance between the two original names and we associate the disease to the higher scorer.
 A summary scheme of our pipeline is shown in Fig. [2](../../../../img/chimera_pipeline.png).
 
-![Scheme of the NLP pipeline developed in the CHIMeRA project. The disease words are processed in multiple step as showed in the example.](../../../../img/chimera_pipeline.png)
+![Scheme of the NLP pipeline developed in the `CHIMeRA` project. The disease words are processed in multiple step as showed in the example.](../../../../img/chimera_pipeline.png)
 
 The described NLP pipeline further increases the overlap between databases (e.g CTD-SNAP 24.17%; DisGenet-RXList 19.78%).
 We manually supervised and checked the merging procedure taking care to reduce the false positive percentage.
@@ -83,7 +83,7 @@ This behavior could be due to two factors: the first case is related to a defici
 We took care of these cases and in our checks we always confirmed the second explanation.
 This was a very encouraging results since it proved the efficiency of our pipeline and at the same time it confirmed that the union of multiple data sources could effectively enlarge our knowledge.
 
-![Graphical rendering of the first version of the CHIMeRA network. The visualization was performed before the inclusion of the DrugBank dataset. For computational issues we have not performed newer image of the global structure. In the image we represented disease nodes (azure), gene nodes (orange), SNP nodes (purple), metabolite nodes (light green), drug nodes (pink) and phenotype nodes (dark green). The visualization was obtained by the *Atlas layout* provided by `Gephi`.](../../../../img/chimera_plot.png)
+![Graphical rendering of the first version of the `CHIMeRA` network. The visualization was performed before the inclusion of the DrugBank dataset. For computational issues we have not performed newer image of the global structure. In the image we represented disease nodes (azure), gene nodes (orange), SNP nodes (purple), metabolite nodes (light green), drug nodes (pink) and phenotype nodes (dark green). The visualization was obtained by the *Atlas layout* provided by Gephi.](../../../../img/chimera_plot.png)
 
 
 The output of our merging procedure allowed the realization of the `CHIMeRA` network, i.e a network with more than $$3.6\times10^5$$ nodes and more than $$3.8\times10^7$$ links (ref. Fig. [3](../../../../img/chimera_plot.png)).

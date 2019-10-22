@@ -23,7 +23,7 @@ These preliminary results confirm the previous discussion about the network matr
 A better visualization of the network structure could be done counting the average number of connections between each group of nodes, i.e the block matrix visualization of the underlying bipartite-graphs.
 In Fig. [1](../../../../img/chimera_net_mat.svg) is shown the block matrix representation.
 
-![Block matrix representation of the `CHIMeRA` network. We computed the average number of connections between each node group and the bipartite-graphs structure is highlight.](../../../../img/chimera_net_mat.svg)
+![Block matrix representation of the `CHIMeRA` network. We computed the average number of connections between each node group and the bipartite-graphs structure is highlight.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/chimera_net_mat.svg?token=AF4CJX52EDAE7D4MPHXZTES5XA7WE&sanitize=true)
 
 In Fig. [1](../../../../img/chimera_net_mat.svg) we can better appreciate the connections between the available informations and moreover we can visualize and quantify them.
 As expected the only node type which is connected to all the others is the *disease* one: the only exception is given by *food* nodes which are not directly connected with the diseases since their informations are available only in the DrugBank database and thus their connections are related only with *drug* nodes.
@@ -43,7 +43,7 @@ However, using more databases source we can easily integrate the missing informa
 To further investigate the informations provided by our network using the computed degree scores, we evaluated the degree distributions of node types.
 In Fig. [2](../../../../img/degree.png) we show the degree distributions obtained considering different node type individually.
 
-![CHIMeRA degree distributions for different node types. The plot is cut for visualization purposes. The maximum degree node informations are highlight in the box.](../../../../img/degree.png)
+![`CHIMeRA` degree distributions for different node types. The plot is cut for visualization purposes. The maximum degree node informations are highlight in the box.](../../../../img/degree.png)
 
 All the distributions showed in Fig. [2](../../../../img/degree.png) have long tails but we cut them for visualization purposes.
 As expected and already highlighted by the previous analyses, the major part of node types have a not negligible amount of nodes with very low connectivity.
@@ -88,9 +88,7 @@ The only thing that remain to discuss is about the usability and release of this
 
 [^1]: We chose the degree centrality rather than other standard measures due to its numerical-simplicity/informative ratio. The `CHIMeRA` network includes a large amount of nodes so the algorithm complexity drastically affect the time performances. The degree centrality is given by the simple sum of the in- out-connections and thus it is faster also with large matrix as in our case.
 
-[^2]: For sake of clarity we have to highlight also the two diagonal blocks in our matrix given by these two node types.
-  They arise from the synonyms and related causes in the first case (informations provided by the synonym dictionaries and from the RXList database), while in the second case they highlight the synergies or not (informations given by the DrugBank database). A network adjacency matrix tends to nullify the diagonal informations and node self-loops to prevent numerical issues and moreover to increase the amount of mathematical theorems for its analysis.
-  We would stress that the showed matrix is not the adjacency matrix of the `CHIMeRA` network but it is an aggregate representation of it. Thus in our network each node has connections only with other nodes and no self-loops are present.
+[^2]: For sake of clarity we have to highlight also the two diagonal blocks in our matrix given by these two node types. They arise from the synonyms and related causes in the first case (informations provided by the synonym dictionaries and from the RXList database), while in the second case they highlight the synergies or not (informations given by the DrugBank database). A network adjacency matrix tends to nullify the diagonal informations and node self-loops to prevent numerical issues and moreover to increase the amount of mathematical theorems for its analysis. We would stress that the showed matrix is not the adjacency matrix of the `CHIMeRA` network but it is an aggregate representation of it. Thus in our network each node has connections only with other nodes and no self-loops are present.
 
 
 [**next >>**](./Service.md)

@@ -5,23 +5,22 @@
 \section*{Data Transmission}\addcontentsline{toc}{section}{Data Transmission}
 \markboth{Appendix E}{CryptoSocket}
 
-In the above configuration we have focused on the pipeline which process the stream of data ignoring the problems about the communication between the external device and the machine which host the service.
-The \emph{FiloBlu} project uses an external App to send data to the main server.
-So we have two systems which have to communicate between them automatically via Internet connection.
-In general we could also manage sensitive data and the Internet communication could became a vulnerability in our application.
+In the above configuration we focused on the pipeline which process the stream of data ignoring any problem about the communication between the external device and the machine which host the service.
+The \emph{FiloBlu} project uses an external App to send data to the main server, so we have two systems which have to communicate between them automatically via Internet connection.
+In general, we could manage sensitive data that could be vulnerable using an Internet communication.
 To face on this problem we developed a simple TCP/IP client-server package which also supports a RSA cryptography, the \textsf{CryptoSocket} package~\cite{CryptoSocket}.
 
-The communication security could be an important point in many research applications and a valid cryptography is essential.
-The RSA cryptography is considered one of the most secure cryptography for data transmission and it is quite easy to implement.
-In this package we implemented a simple wrap around the \textsf{socket} Python library to perform a serialization of our data which will be (optionally) processed by a custom \href{https://en.wikipedia.org/wiki/RSA_(cryptosystem)}{RSA algorithm}.
+The communication security could be an important point in many research applications and a valid cryptography procedure is essential.
+The RSA cryptography is considered one of the most secure cryptography algorithm for data transmission and it is quite easy to implement.
+In the \textsf{CryptoSocket} package we implemented a simple wrap around the \textsf{socket} \textsf{Python} library to perform a serialization of our data which are (optionally) processed by our custom \href{https://en.wikipedia.org/wiki/RSA_(cryptosystem)}{RSA algorithm}.
 In this way different kind of data could be sent by the client at the same time.
-The client script could be adapted with slight modification for any user need and also complex Python structure could be transmitted between two machines.
-The cryptography module was written in pure \textsf{C++} for computational efficiency and a \textsf{Cython} wrap was provided for a pure-Python application.
+The \href{https://github.com/Nico-Curti/CryptoSocket/blob/master/CryptoSocket/examples/client.py}{client} script could be adapted with slight modifications for any user need and also complex \textsf{Python} structures could be transmitted between two machines (to the \href{https://github.com/Nico-Curti/CryptoSocket/blob/master/CryptoSocket/examples/server.py}{server}).
+The cryptography module was written in pure \textsf{C++} for computational efficiency and a \textsf{Cython} wrap was provided for pure-\textsf{Python} applications.
 \textsf{CryptoSocket} has only demonstrative purpose and so it works only for a 1-by-1 data transmission (1 server and 1 client).
 
 Since this second implementation could be used also for other applications it was treated as a separated project and it has its own open-source code.
-The \textsf{CryptoSocket} package can be installed via \href{https://github.com/Nico-Curti/CryptoSocket/blob/master/CMakeLists.txt}{\textsf{CMake}} in any platform and a full list of installation instructions is provided in the project repository.
-The continuous integration of the project is guaranteed by testing the package installation across multiple \textsf{C++} compilers and Unix and Windows platforms.
+The \textsf{CryptoSocket} package can be installed via \href{https://github.com/Nico-Curti/CryptoSocket/blob/master/CMakeLists.txt}{\textsf{CMake}} in any platform and operative system and a full list of installation instructions is provided in the project repository.
+The continuous integration of the project is guaranteed by testing the package installation across multiple \textsf{C++} compilers and platforms via \href{https://github.com/Nico-Curti/CryptoSocket/blob/master/.travis.yml}{Travis CI} and \href{https://github.com/Nico-Curti/CryptoSocket/blob/master/appveyor.yml}{Appveyor CI}.
 
 \end{document}
 

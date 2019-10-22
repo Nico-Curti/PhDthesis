@@ -2,7 +2,7 @@
 
 * [Implementation and optimization of algorithms in Biological Big Data Analytics](./README.md)
 
-* [Introduction on Big Data](./Introduction.md)
+* [Introduction](./Introduction.md)
 
 * [DNetPRO algorithm and Feature Selection](./md/Chapter1/README.md)
   * [DNetPRO algorithm](./md/Chapter1/DNetPRO/README.md)

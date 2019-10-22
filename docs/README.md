@@ -25,7 +25,7 @@ In this way all the figure into the `img` directory will be converted into a pdf
 
 Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through model deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
 
-* [Introduction on Big Data](./Introduction.md)
+* [Introduction](./Introduction.md)
 
 * [DNetPRO algorithm and Feature Selection](./md/Chapter1/README.md)
   * [DNetPRO algorithm](./md/Chapter1/DNetPRO/README.md)

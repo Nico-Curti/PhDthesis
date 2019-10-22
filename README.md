@@ -31,7 +31,7 @@ Different topics about Big Data Analytics are discussed in this work, starting f
 
 The on-line version of the thesis can be found on the [gitbook version](https://app.gitbook.com/@nico-curti2/s/phd-thesis) or via the [github web](https://nico-curti.github.io/PhDthesis).
 
-* [Introduction on Big Data](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/Introduction.md)
+* [Introduction](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/Introduction.md)
 
 * [DNetPRO algorithm and Feature Selection](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/README.md)
   * [DNetPRO algorithm](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/DNetPRO/README.md)
@@ -91,6 +91,12 @@ The on-line version of the thesis can be found on the [gitbook version](https://
 
 * [Biological Big Data - CHIMeRA project](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/README.md)
   * [The CHIMeRA project](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/README.md)
+  * [How to find the data - Web Scraping](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/WebScraping.md)
+  * [SymptomsNet](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/SymptomsNet.md)
+  * [Natural Language Processing](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/NLP.md)
+  * [CHIMeRA datasets](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Datasets.md)
+  * [CHIMeRA analyes](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Results.md)
+  * [CHIMeRA as Service](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Service.md)
 
 * [Conclusions](./Conclusions.md)
 
