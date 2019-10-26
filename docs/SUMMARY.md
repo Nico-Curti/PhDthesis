@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Implementation and optimization of algorithms in Biological Big Data Analytics](./README.md)
+* [Implementation and optimization of algorithms in Biomedical Big Data Analytics](./README.md)
 
 * [Introduction](./Introduction.md)
 
@@ -60,7 +60,7 @@
     * [Results](./md/Chapter2/rFBP/Results.md)
 
 
-* [Biological Big Data - CHIMeRA project](./md/Chapter3/README.md)
+* [Biomedical Big Data - CHIMeRA project](./md/Chapter3/README.md)
   * [The CHIMeRA project](./md/Chapter3/CHIMeRA/README.md)
   * [How to find the data - Web Scraping](./md/Chapter3/CHIMeRA/WebScraping.md)
   * [SymptomsNet](./md/Chapter3/CHIMeRA/SymptomsNet.md)

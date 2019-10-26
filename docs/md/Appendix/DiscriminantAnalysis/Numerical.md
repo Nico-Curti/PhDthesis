@@ -8,7 +8,7 @@ The computation of the inverse-matrix is a well known complex computational step
 Moreover, the usage of a Machine Learning classifier commonly matches the usage of a cross validation method, i.e multiple subdivision of the dataset in training and test sets.
 This involves the computation of multiple inverse matrices and it could represents the performance bottleneck in many real applications (the other computations are quite simple and their algorithmic complexity are certainly less than `O(N^3)`).
 
-Using the mathematical informations about covariance matrix we can find the best numerical solution for its inverse that in this case is given by the Cholesky decomposition algorithm.
+Using the mathematical information about covariance matrix we can find the best numerical solution for its inverse that in this case is given by the Cholesky decomposition algorithm.
 The Cholesky decomposition or Cholesky factorization allows to rewrite a positive-definite matrix into the product of two triangular matrices (the first is the conjugate transposed of the second)
 
 $$

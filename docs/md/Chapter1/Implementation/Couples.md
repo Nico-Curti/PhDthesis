@@ -1,12 +1,12 @@
 ## Combinatorial algorithm
 
-The most computational time expensive step of the algorithm is certainly the couples evaluation.
-From a computation point-of-view this step requires `(O(N^2))` operations for the full set of combination.
-Since we want to perform also an internal Leave-One-Out cross validation for the couple performances estimation we have to add a `(O(S-1))` to the algorithmic complexity.
+The most computational time-expensive step of the algorithm is certainly the couples evaluation.
+From a computation point-of-view this step requires `(O(N^2))` operations for the full set of combinations.
+Since we want to perform also an internal Leave-One-Out cross validation for the couple performances estimation, we have to add a `(O(S-1))` to the algorithmic complexity.
 Let's focused on some preliminary considerations before the implementation discussion:
 
 * **Performances:** we aim to apply our method on large datasets since we have to focused on time performances of the code and particularly on this step (identified as bottleneck).
-  To reduce as much as possible the call stack inside our code we should perform the entire code with the small number of functions as possible and possibly inside a unique main.
+  To reduce as much as possible the call stack inside our code, we should perform the entire code with the small number of functions as preferably and possibly inside a unique main.
   Moreover we can simplify the for loop and take care of the automatic code vectorization performed by the optimizer at compile time (SIMD, *Single Instruction Multiple Data*).
   A further optimization step to take in count is related to the cache accesses: the use of custom objects inside the code should benefit from cache accesses (AoS vs SoA, *Array of Structure* vs *Structure of Arrays*).
 
@@ -14,21 +14,21 @@ Let's focused on some preliminary considerations before the implementation discu
 Thus it can be easily parallelizable to increase speed performance.
 
 * **Simplify:** the use of simple classifier for performance evaluation simplify the computation and the storage of the relevant statistical quantities.
-  In the discussed implementation we focused on a Diag-Quadratic classifier (see Appendix A for further informations) and only means and variances of the data plays a role in its evaluation.
+  In the discussed implementation we focused on a Diag-Quadratic classifier (see Appendix A for further information) in which only means and variances of the data plays a role in its evaluation.
 
 * **Cross Validation:** the use of Leave-One-Out cross validation allows to perform substantially optimizations in the statistical quantities evaluations across the folds (see discussion in [Appendix A - Numerical Implementation](../../Appendix/DiscriminantAnalysis/README.md)).
 
 * **Numerical stability:** we have also to take in care the numerical stability of the statistics since we are working in the assumption of a reasonable small number of samples compared to the amount of variables.
-  This behavior particularly affects the variance estimation: the chose of a numerical stable formula for this quantity play a crucial role for the computation because the classifier score has to be normalized by it.
+  This behavior particularly affects the variance estimation: the chose of a numerical stable formula for this quantity play a crucial role for the computation because the classifier score has to be normalized by this.
 
 
-With these idea in mind we can write a C++ code able to optimize this step of computation in a multi-threading environment with the purpose of testing its scalability over multi-core machines.
+With these ideas in mind we can write a C++ code able to optimize this step of computation in a multi-threading environment with the purpose of testing its scalability over multi-core machines.
 
-Starting from the first discussed point we chose to implement the full code inside a unique main function with the help of only a single SoA custom object and one external function (*sorting algorithm* discussed in the next section).
+Starting from the first discussed point, we chose to implement the full code inside a unique main function with the help of only a single SoA custom object and one external function (*sorting algorithm* discussed in the next section).
 This allows us to implement the code inside a single parallel section reducing the time of thread spawns.
 We chose to import the data from file in sequential mode since the I/O is not affected by parallel optimizations.
 
-Following the instructions suggested in Appendix A - Numerical Implementation we compute the statistic quantities on the full set of data before starting the couples evaluation.
+Following the instructions suggested in Appendix A - Numerical Implementation, we compute the statistic quantities on the full set of data before starting the couples evaluation.
 Taking a look to the variance equation
 
 $$
@@ -41,9 +41,9 @@ At each cross validation we will use the two pre-calculated sums of variables re
 Another precaution to take in care is to add a small epsilon to the variance before its use at denominator inside the classifier function to prevent numerical underflow.
 
 The main role is still given by the couples loop.
-The set of pair variables can be obtained only by two nested for loops in C++ and naive optimization can be obtained by simply reduce the number of iterations following the triangular indexes of the full matrix (by definition the score of the couple `(i, j)` is equal to the score of `(j, i)`).
-This precaution easily allows the parallelization of the external loop and drastically reduce the number of iteration but it also creates a link between the two iteration variables.
-The new release of OpenMP libraries [[OpenMP](https://www.openmp.org/)]  [^2]  (from OpenMP 4.5) introduce a new *keyword* of the language that allows the collapsing of nested for loops in a single one (whose number of iterations is given by the product of the single dimensions) in the only exception of completely independences of iteration variables.
+The set of pair variables can be obtained only by two nested for loops in `C++` and naive optimization can be simply obtained by reducing the number of iterations following the triangular indexes of the full matrix (by definition the score of the couple `(i, j)` is equal to the score of `(j, i)`).
+This precaution easily allows the parallelization of the external loop and drastically reduce the number of iteration, but it also creates a link between the two iteration variables.
+The new release of OpenMP libraries [[OpenMP](https://www.openmp.org/)]  [^2]  (from OpenMP 4.5) introduce a new *keyword* of the language that allows the collapsing of nested for loops in a single one (whose number of iterations is given by the product of the single dimensions), in the only exception of completely independences of iteration variables.
 So the best strategy to use in this case is to perform the full set of `N^2` iterations with a single `collapse` clause in the external loop [^3].
 
 

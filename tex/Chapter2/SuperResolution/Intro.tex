@@ -21,8 +21,8 @@ The Super Resolution (SR) is a slight novel technique based on Neural Network mo
   In this work we are focusing on algorithms and numerical implementation so we will talk about the numerical counterpart of this technique, totally ignoring the original \quotes{hardware} version.
 }.
 
-The first SR methods on digital images estimate the high frequency informations of the images starting from a series of low-resolution (LR) patches and their high-resolution (HR) counterpart.
-These patches (ROIs of the LR image commonly smaller than $50\times50$) were extracted after an edge enhancement procedure or a simple 2D Fourier transform which extract the high frequency informations.
+The first SR methods on digital images estimate the high frequency information of the images starting from a series of low-resolution (LR) patches and their high-resolution (HR) counterpart.
+These patches (ROIs of the LR image commonly smaller than $50\times50$) were extracted after an edge enhancement procedure or a simple 2D Fourier transform which extract the high frequency information.
 Collecting these patches an \quotes{association dictionary} between LR and HR was created.
 This dictionary was so used to learn the correct association between the LR e HR counterpart and then applied on new images.
 The considered images could also be of the same dimensions in these firstly applications, i.e the purpose was only to improve the spatial resolution of the image without changing the sampling step.

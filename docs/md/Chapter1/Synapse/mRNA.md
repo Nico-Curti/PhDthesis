@@ -7,7 +7,7 @@ As expected, performances decrease with the introduction of the second cross val
 
 ![Results obtained by the DNetPRO algorithm pipeline on four mRNA tumor datasets, as from the Synapse database [Yuan2014](https://www.nature.com/articles/nbt.2940). Distributions of AUC values for the tumor datasets. Green boxplots: results using procedure `A` as described in Fig.[-1](../../../../img/dnet_pipe.pdf); yellow boxplots: results obtained using procedure `B`.](../../../../img/mRNA_boxplot.png)
 
-![Comparison of DNetPRO results with the methods used in the paper of Yuan et al.: max AUC values obtained over the 10-Fold cross-validation procedure.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/mRNA_tables.svg?token=AF4CJX6PGROD5AJX4CSQXSK5WBJFG&sanitize=true)
+![Comparison of DNetPRO results with the methods used in the paper of Yuan et al.: max AUC values obtained over the 10-Fold cross-validation procedure.](../../../../img/mRNA_tables.svg)
 
 All results are comparable (LUSC) or better (KIRC, GBM) than the results reported in [Yuan2014](https://www.nature.com/articles/nbt.2940), except for the OV dataset, also with the more conservative approach involving a further cross-validation step.
 The size of the extracted signatures is quite constant, and smaller than 500 genes in each pipeline execution.

@@ -12,7 +12,7 @@ When tested in a larger cohort, these finding lead the possible use of RNA expre
 Such a signature could allow early interventions to reduce the sanitary and economic burden, and to reduce the risk of infection spreading.
 
 In the next sections a description of the dataset and of main DNetPRO results will be discussed.
-Further informations can found in the original paper [[Malvisi2019]()].
+Further information can be found in the original paper [[Malvisi2019]()].
 
 
 [^1]: The enzyme-linked immunosorbent assay. It is a common diagnostic tool as well as a quality control check in various bio-medical industries and in medicine.

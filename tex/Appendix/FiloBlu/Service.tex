@@ -7,10 +7,10 @@
 \markboth{Appendix E}{FiloBlus Service}
 
 In the \emph{FiloBlu} project we have a stream of data provided by an external App that are stored in a central database server.
-The Machine Learning service has to read the informations stored into a database, it process them and finally it write the results into the same database.
+The Machine Learning service has to read the information stored into a database, it process them and finally it write the results into the same database.
 All these operations have to be performed with high frequency since the output results have to be shown in a real-time application.
 This frequency would be the clock-time of the process function, i.e at each time interval (as small as we like) the process task will be called and we will have the desired results in output.
-At the same time we have to take care about the time required by our Machine Learning algorithm: not all the algorithms can process data in real time and the frequency of process function has to be less than the time required by the algorithm or we can lose some informations.
+At the same time we have to take care about the time required by our Machine Learning algorithm: not all the algorithms can process data in real time and the frequency of process function has to be less than the time required by the algorithm or we can lose some information.
 
 We obtain the best efficiency from a service splitting as much as possible the required functionality in small-and-easy tasks.
 Small task can be evaluated as independent functions with an associated frequency that in this case can be reduced as much as possible.

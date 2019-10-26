@@ -18,4 +18,6 @@ The interactive network of cytokines/chemokines, defined as "cytokinome", is ext
 Using the DNetPRO algorithm as statistical feature selection method, we might discriminate the groups and propose a useful tool to follow the progression and evolution of AD from its early stages, also in light of gender differences.
 With this study, we aimed first at the identification of a potential proteins profile able to discriminate AD, MCI and CTL and, therefore identify a potential early and easy to get a diagnostic marker of subjects at risk.
 
+Further information about this work can be found in the original paper [[Boccardi2019]()].
+
 [**next >>**](./Dataset.md)

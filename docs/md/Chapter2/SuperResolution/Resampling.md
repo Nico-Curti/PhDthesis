@@ -17,7 +17,7 @@ Thus we can facilitate the learning choosing a lossless one but in this way we w
 
 The simpler down-sampling algorithm is given by a *nearest interpolation*.
 This algorithm pass a kernel mask over the image and it substitutes each pixel mask to their average [^2].
-This procedure can be achieved using a *Pooling* algorithm (in particular an AveragePooling) (ref. [Pooling](../NeuralNetwork/Pooling.md) for further informations) for the down-sample or we can use an UpSample layer.
+This procedure can be achieved using a *Pooling* algorithm (in particular an AveragePooling) (ref. [Pooling](../NeuralNetwork/Pooling.md) for further information) for the down-sample or we can use an UpSample layer.
 The UpSample function is commonly related to GAN (Generative Adversarial Networks) models in which we have to provide a series of artificial images to a given Neural Network but it is a function which can be introduce inside a Neural Network model to rescale the number of features.
 We mention it in this section since it is not intrinsically related to a Neural Network model but it could be use as image processing technique.
 
@@ -94,7 +94,7 @@ Instead the up-sample function use the stride functionality of the `Numpy` array
 The same functionality can be obtained in the `C++` version of the code provided by the `Byron` library in which we compute the right indexes along a nested sequence of for loops (ref. [on-line](https://github.com/Nico-Curti/Byron/blob/master/src/upsample_layer.cpp)).
 We have to take in care the summation reduction provided by the down-sampling according to the thread concurrency: in this case we can not generalize the loop collapsing to the full set of lops but we have to separately manage the summation in a sequential section.
 
-A more sophisticated interpolation algorithm, which reduce the loosing informations, is provided by the *bicubic interpolation*.
+A more sophisticated interpolation algorithm, which reduce the loosing information, is provided by the *bicubic interpolation*.
 The re-sampling algorithm interpolate the information provided by the nearest pixels using a cubic function.
 Given a pixel, the interpolation function evaluates the 4 pixels around it applying a filter given by the equation:
 
@@ -116,7 +116,7 @@ Also this function was provided into the `Byron` library.
 
 To better understand the told above functions we can consider their application on the simple image given in Fig. [1](../../../../img/up_down_sampling.svg).
 
-![Re-sampling image example. **(left)** The original image. **(up right)** The down-sampled blue-ROIs using different interpolation algorithm (Nearest, Bicubic and Lanczos, respectively). We use a scale factor equal to 2 (half size in down-sampling and double size in up-sampling). The Lanczos interpolation is the lossless algorithm but from a qualitative point-of-view the result is the quite the same of the bicubic one. **(down right)** The up-sampled red-ROIs using the same interpolation algorithm of the upper row. Also in the Up-sampling the Lanczos and bicubic algorithms produces equal qualitative results. The Nearest algorithm produces the worse results in both up- down- cases.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/up_down_sampling.svg?token=AF4CJX52T3AE4J3BGKRVJN25WIDQS&sanitize=true)
+![Re-sampling image example. **(left)** The original image. **(up right)** The down-sampled blue-ROIs using different interpolation algorithm (Nearest, Bicubic and Lanczos, respectively). We use a scale factor equal to 2 (half size in down-sampling and double size in up-sampling). The Lanczos interpolation is the lossless algorithm but from a qualitative point-of-view the result is the quite the same of the bicubic one. **(down right)** The up-sampled red-ROIs using the same interpolation algorithm of the upper row. Also in the Up-sampling the Lanczos and bicubic algorithms produces equal qualitative results. The Nearest algorithm produces the worse results in both up- down- cases.](../../../../img/up_down_sampling.svg)
 
 In the figure the three algorithms were applied over the same image to highlight the differences against the down-sampling and up-sampling.
 The nearest interpolation algorithm produces always the worse results both in up-sampling and down-sampling.

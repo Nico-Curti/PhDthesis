@@ -5,9 +5,9 @@
 \section[DNetPRO algorithm]{DNetPRO algorithm}\label{dnetpro:DNetPRO}
 
 The DNetPRO algorithm generates multivariate signatures starting from all couples of variables tested with Discriminant Analysis.
-For this reason it can be classified as a combinatorial method and the computational time for variable space exploration is proportional to the square of the number of available variables (ranging from $10^3$ to $10^5$ in a typical high-throughput omics study).
-This behavior allows it to overcome some of the limits of single-feature selection methods, and provides a hard-thresholding approach at difference with projection-based variable selection methods.
-Certainly the combination evaluation is the most time expensive step of the algorithm and it needs accurate algorithmic implementation for Big Data applications (see the next section for further informations about the algorithm implementation strategy).
+For this reason, it can be classified as a combinatorial method and the computational time for variable space exploration is proportional to the square of the number of available variables (ranging from $10^3$ to $10^5$ in a typical high-throughput omics study).
+This behavior allows it to overcome some of the limits of single-feature selection methods and provides a hard-thresholding approach at difference with projection-based variable selection methods.
+Certainly the combination evaluation is the most time- expensived step of the algorithm and it needs accurate algorithmic implementation for Big Data applications (see the next section for further information about the algorithm implementation strategy).
 The algorithm can be summarize as shown in~\ref{code:DNetPRO}.
 
 \begin{algorithm}[H]
@@ -30,7 +30,7 @@ The algorithm can be summarize as shown in~\ref{code:DNetPRO}.
   \label{code:DNetPRO}
 \end{algorithm}
 
-So, given an initial dataset, consisting in $S$ \emph{samples} (e.g. cells or patients) with $N$ observations each (our \emph{variables}, e.g. gene or protein expression profiles), the signature identification procedure can be summarized with the following pipeline:
+So, given an initial dataset, that consists in $S$ \emph{samples} (e.g. cells or patients) each one described by $N$ observations (our \emph{variables}, e.g. gene or protein expression profiles), the signature identification procedure can be summarized with the following pipeline:
 
 \begin{itemize}
 
@@ -45,25 +45,25 @@ The performance of each couple constitutes a \emph{weighted link} of a network i
 
 \item (optional) in order to reduce the size of an identified signature, the pendant nodes of the network (i.e. nodes with degree equal to one) can be removed, in a single step or recursively until the core network (i.e. a network with all nodes with at least two links) is reached.
 
-\item all signatures are applied onto the test set to estimate their performance.
+\item all signatures are applied onto the test set to estimate their performances.
 
 \item a further cross validation step is performed (with a further dataset splitting into test and validation sets) to identify the best performing signature.
 
 \end{itemize}
 
-We would stress that this method is completely independent to the chose of the classification algorithm but from a biological point of view a simple one is preferred to preserve an easy interpretability of the results.
-The geometrical simplicity of the resulting class-separation surfaces, in fact, allows an easier interpretation of the results, as compared with very powerful but black-box methods like nonlinear-kernel SVM or Neural Networks.
+We would stress that this method is completely independent to the choose of the classification algorithm, but from a biological point of view a simple one is preferred to preserve an easy interpretability of the results.
+The geometrical simplicity of the resulting class-separation surfaces, in fact, allows an easier interpretation of the results, as compared to very powerful but black-box methods like nonlinear-kernel SVM or Neural Networks.
 Moreover the network interaction of variables can keep an internal ranking score of features importance or possible features cooperation.
-These are the reasons that move us to use very simple classifier methods in our biological application as diag-quadratic Discriminant Analysis or Quadratic Discriminant Analysis (Appendix A for more informations about the mathematical background and implementation in the different languages).
-Both these methods allow fast computation and easy interpretation of the results.
-This linear separation might not be common in some classification problems (e.g. image classification) but it is very plausible in biological systems, in which many responses to perturbation consist in increase or decrease of variable values (e.g. expression of genes or proteins, see Fig.~\ref{fig:example}(b)).
+These are the reasons that move us to use very simple classifier methods in our biological application as diag-quadratic Discriminant Analysis or Quadratic Discriminant Analysis (Appendix A for more information about the mathematical background and implementation in the different languages).
+Both these methods allow fast computation and an easier interpretation of the results.
+This linear separation might not be common in some classification problems (e.g. image classification) but it is very plausible in biological systems, in which many responses to perturbation consist in an increase or decrease of variable values (e.g. expression of genes or proteins, see Fig.~\ref{fig:example}(b)).
 
 In a general classification problem (e.g. image analysis) this could not be the case, since complex non linear separating surfaces may exist among the classes, but we hypothesize (and our results seem to confirm so) that in classification problems based on biological data such as gene expression these situations are not so common.
-This assumption is very plausible for biological data, since genes are in general up- or down-regulated in order to modify their activity, and protein and metabolites most of the times respond consequently.
+This assumption is very plausible for biological data, since genes are in general up- or down-regulated in order to modify their activity and protein and metabolites most of the times respond consequently.
 
 A second direct gain by the couples evaluation is related to the network structure: the DNetPRO network signatures allow a hierarchical ranking of the features according to their centrality compared to possible Kbest signatures.
 This underlying network structure of the signature could suggest further methods for signature dimensionality reduction based on network topological properties to fit real application needs and it could help to evaluate the cooperation of the variables for the class identification.
 
-In the end we remark that the discriminating signatures have a purely statistical relevance, being generated with a purpose of maximal classification performance, but sometimes the selected features (e.g. genes, DNA loci, metabolites) can be of clinical and biological interest, helping to improve knowledge on the mechanism associated to the studied phenomenon~\cite{PMrna, Scotlandi2009, PMgene, Terragna}.
+In the end we remark that the discriminating signatures have a purely statistical relevance by being generated with a purpose of maximal classification performance, but sometimes the selected features (e.g. genes, DNA loci, metabolites) can be of clinical and biological interest, helping to improve knowledge on the mechanism associated to the studied phenomenon~\cite{PMrna, Scotlandi2009, PMgene, Terragna}.
 
 \end{document}

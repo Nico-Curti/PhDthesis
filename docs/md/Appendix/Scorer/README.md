@@ -29,10 +29,10 @@ Since the graph is a direct graph by definition, we can start from the root node
 At each step of the percolation, the incoming nodes identify totally independent quantities.
 This independence means that the nodes-quantities can be potentially computed in parallel.
 To clarify this consideration we can reorganize the graph visualization minimizing the link lengths and obtaining a stratified graph in which each level identifies a potential parallel section.
-A graph with these properties was obtained using the `dot` visualization and it is showed in [Figure](../../../img/scorer_parallel.pdf).
+A graph with these properties was obtained using the `dot` visualization and it is showed in [Figure](../../../img/scorer_parallel.png).
 As can be seen in figure we can identify 7 levels in the graph and thus 7 potential parallel regions for the computation of the full set of functions.
 
-**INSERT FIGURE HERE**
+![Re-organization of the graph in Fig. 1. The rendering was obtained using the `dot` visualization, i.e the minimization of the link lengths. The direct graph identifies the tree of dependencies and each level of the tree represents a set of independent functions that can be potentially computed in parallel. This graph is used as parallel scheme for the `Scorer` library.](../../../img/scorer_parallel.png)
 
 These considerations allow us to create an optimized version of the code of Sepand et al., the `Scorer` library [[Scorer](https://github.com/Nico-Curti/scorer)].
 The `Scorer` library is the `C++` porting of the `PyCM` library of Sepand et al. with a `Cython` wrap for the `Python` compatibility.

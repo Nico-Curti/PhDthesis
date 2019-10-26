@@ -19,7 +19,7 @@ $$
 where the exponent ($$\Delta^2$$) is called *Mahalanobis distance* of vector $$\mathbf{x}$$ from its mean.
 This distance can be reduced to the Euclidean one when the covariance matrix is the identity matrix ($$\mathbf{I}$$).
 
-The covariance matrix is always symmetric and positive semi-definite by definition (useful informations for the next algorithmic strategies) it is invertible.
+The covariance matrix is always symmetric and positive semi-definite by definition (useful information for the next algorithmic strategies) it is invertible.
 If the covariance matrix has only diagonal terms the multidimensional distribution can be expressed as the simple product of `d` mono-dimensional normal distributions.
 In this case the main axes are parallel to the Cartesian axes.
 

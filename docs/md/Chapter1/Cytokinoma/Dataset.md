@@ -3,7 +3,7 @@
 In this case-control observational study, we evaluated 289 old-age subjects referred to our Geriatric Memory Clinic.
 The dataset comprises 189 female and 100 male individuals with a mean age of 78.6 ($$\pm7.5$$) years.
 The date were provided by the co-authors of this project at the Institute of Gerontology and Geriatrics at the University of Perugia (Department of Medicine).
-For each patient a set of 26 cytokine expression level were computed with the additional informations about subject set, age and diagnosis label (AD, MCI or CTL).
+For each patient a set of 26 cytokine expression level were computed with the additional information about subject set, age and diagnosis label (AD, MCI or CTL).
 Of the 289 enrolled subjects, the whole set of cytokines was available for 284 subjects (98%), specifically 87/88 CTL (99%), 70/73 MCI (96%), 127/129 AD (98%).
 
 To approximate normal distribution, plasma cytokines and chemokines were log-transformed for data analyses.

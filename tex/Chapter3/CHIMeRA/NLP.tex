@@ -19,7 +19,7 @@ As of 2018, PubMed comprised more than 29 million citations for biomedical liter
 
 Natural Language Processing (NLP) is a quite novel research field driven by the increasing availability of textual data (ref. Fig.~\ref{fig:pubmed_nlp}).
 As told in the previous sections the incoming of Internet world exponentially increase the amount of data shared by people and the major part of them are textual data, i.e data composed by words, phrases and more in general texts.
-The NLP joins together techniques coming from the linguistic, computer science, information theory and artificial intelligence researches and it concerns the interactions between human languages and computers, or in other words it studies how a computer can analyze a huge amount of natural language data and how it could extract numerical informations from them.
+The NLP joins together techniques coming from the linguistic, computer science, information theory and artificial intelligence researches and it concerns the interactions between human languages and computers, or in other words it studies how a computer can analyze a huge amount of natural language data and how it could extract numerical information from them.
 This is a very hard task to perform since it is not straightforward to teach to a machine how humans communicate between them so a key role is played by the artificial intelligence researches in the developing of new algorithmic techniques.
 The final purpose of the NLP is, in fact, to read, decipher, understand and make sense of the human languages extracting valuable and numerical results.
 
@@ -35,32 +35,80 @@ Since the \textsf{SymptomsNet} project was developed as simple proof of concepts
 We would stress that in our application we were not interested on the understanding of the words meaning but we want to minimize the word heterogeneity maximizing their overlap.
 In this way we can ignore the semantic meaning of the strings and we could focus only on their syntaxes.
 
-Syntax refers to the arrangement of words to make them grammatical sense.
+The syntax is the set of rules, principles, and processes that govern the structure of sentences in a given languages.
 In this way we can create group of words applying grammatical rules: the grammatical rules have to be converted into algorithms which take in input a word and they give in output a processed version of the same word.
 In this case there is not a numerical output but just a reorganization of the string letters and words.
-The most common techniques involved in the syntax analysis are:
+The most common techniques involved in the syntactic analysis are:
 
 \begin{itemize}
 
-  \item \textbf{Lemmatization:} it reduces the inflectional forms of a word into a single form.
-  \item \textbf{Morphological segmentation:} it splits words into individual units called morphemes.
-  \item \textbf{Word segmentation (tokenization):} it splits a large set of continuous text into units.
-  \item \textbf{Part-of-speech tagging:} it identifies the grammatical part of speech for every word.
-  \item \textbf{Parsing:} it provides the grammar analysis of the provided sentence.
   \item \textbf{Sentence breaking:} it divides a continuous text into sentences placing boundaries.
+  \item \textbf{Word segmentation (tokenization):} it splits a large set of continuous text into units.
+  \item \textbf{Parsing:} it provides the grammar analysis of the provided sentence.
+  \item \textbf{Morphological segmentation:} it splits words into individual units called morphemes.
+  \item \textbf{Part-of-speech tagging:} it identifies the grammatical part of speech for every word.
+  \item \textbf{Lemmatization:} it reduces the inflectional forms of a word into a single form.
   \item \textbf{Stemming:} it cuts the inflected words to their root form.
 
 \end{itemize}
 
-Combinations of these algorithms can be find in everyday applications starting from email assistants or website chat box to the more advanced sentimental analyses and fake news identifiers.
-NLP pipelines could be used also in biomedical applications and the modern multinational factories like Amazon, IBM or Google are financing different kinds of research on this topic.
+All these algorithms are very closed each other so to better understand their functionality is useful an example.
+Lets start from a dummy text taken from the NLP \href{https://en.wikipedia.org/wiki/Natural_language_processing}{Wikipedia} web-page:
+
+\lstset{style=snippet}
+\begin{lstlisting}[language=Python, caption=Original text, label=code:orig]
+text = "Natural language processing (NLP) is a subfield of linguistics, computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human (natural) languages, in particular how to program computers to process and analyze large amounts of natural language data. Challenges in natural language processing frequently involve speech recognition, natural language understanding, and natural language generation."
+\end{lstlisting}
+
+First of all we notice that the text is made by two sentences that can be broke using a \emph{sentence breaking} algorithm.
+In this way we obtain a list of two strings given by
+
+\lstset{style=snippet}
+\begin{lstlisting}[language=Python, caption=Sentence breaking, label=code:sentence]
+sentence_1 = "Natural language processing (NLP) is a subfield of linguistics, computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human (natural) languages, in particular how to program computers to process and analyze large amounts of natural language data."
+
+sentence_2 = "Challenges in natural language processing frequently involve speech recognition, natural language understanding, and natural language generation."
+\end{lstlisting}
+
+Now we can divide each sentence into its set of words using a word \emph{tokenization}.
+Focusing only on the first sentence we obtain in output:
+
+\lstset{style=snippet}
+\begin{lstlisting}[language=Python, caption=Tokenization, label=code:token]
+tokens = ['Natural', 'language', 'processing', '(', 'NLP', ')', 'is', 'a', 'subfield', 'of', 'linguistics', ',', 'computer', 'science', ',', 'information', 'engineering', ',', 'and', 'artificial', 'intelligence', 'concerned', 'with', 'the', 'interactions', 'between', 'computers', 'and', 'human', '(', 'natural', ')', 'languages', ',', 'in', 'particular', 'how', 'to', 'program', 'computers', 'to', 'process', 'and', 'analyze', 'large', 'amounts', 'of', 'natural', 'language', 'data', '.']
+\end{lstlisting}
+
+There are multiple useless tokens in the processed list and we can filter them using a type of \emph{part-of-speech tagging} algorithm which removes the so-called \emph{stop words} and punctuations.
+In our example our list of tokens become
+
+\lstset{style=snippet}
+\begin{lstlisting}[language=Python, caption=Filtering stop-words and punctuations, label=code:filter]
+tokens = ['Natural', 'language', 'processing', 'NLP', 'subfield', 'linguistics', 'computer', 'science', 'information', 'engineering', 'artificial', 'intelligence', 'concerned', 'interactions', 'computers','human', 'natural', 'languages', 'particular', 'program', 'computers', 'process', 'analyze', 'large', 'amounts', 'natural', 'language', 'data']
+\end{lstlisting}
+
+A final step could be given by the \emph{stemming} algorithm which extract the root form of each word.
+Using the stemmer on the previous set of words we obtain
+
+\lstset{style=snippet}
+\begin{lstlisting}[language=Python, caption=Stemming, label=code:stem]
+tokens = ['natur', 'languag', 'process', 'nlp', 'subfield', 'linguist', 'comput', 'scienc', 'inform', 'engin', 'artifici', 'intellig', 'concern', 'interact', 'comput', 'human', 'natur', 'languag', 'particular', 'program', 'comput', 'process', 'analyz', 'larg', 'amount', 'natur', 'languag', 'data']
+\end{lstlisting}
+
+As can be seen by this example the stemming algorithm convert in lower case each letter of each words and remove the inflections from each of them.
+This is a very naive example but we can already notice as our processing allow to merge multiple words together.
+In the original sentence we have the word \quotes{\emph{Natural}} (with capital letter) and two occurrences of \quotes{\emph{natural}} (lower case).
+Moreover, we have three occurrences of the \quotes{\emph{computer}} word but only two of them are in singular form.
+The tokenization + stemming processing allows to compare standardize the different word forms making them compatible.
+
+Combinations of these algorithms can be found in everyday applications starting from email assistants or website chat box to the more advanced sentiment analyses and fake news identifiers~\cite{IJST119594, MitaliSentiment2016, sharma2019combating, zhou2018fake}.
+NLP pipelines are used also in biomedical applications and the modern multinational companies like Amazon, IBM or Google are financing different kinds of research on this topic.
 \href{https://aws.amazon.com/it/comprehend/medical/}{Amazon Comprehend Medical} is a NLP service developed by Amazon to extract disease conditions, medications and treatment outcomes from patient notes, electronic health records and other clinical trial reports.
 At the same time also companies like Yahoo and Google based their filters and email classifiers on NLP algorithms to stop spam.
 Also the fake news hot topic of the these years is faced on by NLP pipeline and the NLP Group at MIT is developing new tools to determine if a source is accurate or politically biased based on analyses of texts.
 
 In our applications we constructed a custom pipeline based on part of these algorithms.
 In the following sections we will describe in detail our pipeline which was tuned for our case study: we would stress that the efficiency of our pipeline could not be generalized to other datasets since our purpose was to obtain the best result for our applications.
-In other words we can say that we had over-fitted our data.
+In other words, we can say that we had fine-tuned our pipeline based on the data used in this project.
 Moreover we have to clarify that our pipeline is not fully-automatic but it was made according to a semi-supervised approach: we customize the work-flow following the issues showed by our applications.
 
 

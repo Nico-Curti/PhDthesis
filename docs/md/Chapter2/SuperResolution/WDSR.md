@@ -25,8 +25,8 @@ The tail of the architecture is made by an up-sample block which re-organize the
 The up-sampling follows the scale factor imposed: the model increases the spatial resolution of the image by a fixed scale factor (x2 and x4 in our applications) and each pixel-shuffle application is equivalent to a x2 in the output sizes [^1].
 
 The first convolutional layer extracts the low frequency components of the input image which will be combined to the output of the residual blocks at the end of the model.
-The residual blocks with their relative convolutional layers extract the feature map and the high frequency informations into the LR image: in this way the low- and high-frequency components are "independently" analyzed by the model and then re-combined in the output.
-The last set of up-sampling blocks simply reshape and reorganize the extracted informations according to the desired sizes.
+The residual blocks with their relative convolutional layers extract the feature map and the high frequency information into the LR image: in this way the low- and high-frequency components are "independently" analyzed by the model and then re-combined in the output.
+The last set of up-sampling blocks simply reshape and reorganize the extracted information according to the desired sizes.
 
 The large amount of filters of the up-sampling blocks and the input dimensions drastically affect the computational performances of the model: we numerically evaluated that the most time spent by the processing is related to the tail of the model and thus to the up-sampling blocks.
 

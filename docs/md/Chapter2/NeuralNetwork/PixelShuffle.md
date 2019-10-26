@@ -10,7 +10,7 @@ To overcome this problem a Pixel Shuffle transformation, also known as *sub-pixe
 The Pixel Shuffle transformation reorganize the low-resolution image channels to obtain a bigger image with few channels.
 An example of this transformation is shown in Fig. [1](../../../../img/pixel_shuffle.svg).
 
-![Pixel Shuffle transformation. On the left the input image with `scale^2` (:= 9) channels. On the right the result of Pixel Shuffle transformation. Since the number of channels is perfect square the output is a single channel image with the rearrangement of the original ones.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/pixel_shuffle.svg?token=AF4CJXZTOQK46VSQZSNVL7S5WGHT2&sanitize=true)
+![Pixel Shuffle transformation. On the left the input image with `scale^2` (:= 9) channels. On the right the result of Pixel Shuffle transformation. Since the number of channels is perfect square the output is a single channel image with the rearrangement of the original ones.](../../../../img/pixel_shuffle.svg)
 
 Pixel Shuffle rearranges the elements of the input tensor expressed as `H x W x C^2` to form a `scale x H x scale x W x C` tensor.
 This can be very useful after a convolution process, in which the number of filters chosen drastically increase the number of channels, to "invert" the transformation like a sort of *deconvolution* function.

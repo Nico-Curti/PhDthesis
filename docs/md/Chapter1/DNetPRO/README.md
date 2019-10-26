@@ -3,7 +3,7 @@
 The DNetPRO algorithm generates multivariate signatures starting from all couples of variables tested with Discriminant Analysis.
 For this reason it can be classified as a combinatorial method and the computational time for variable space exploration is proportional to the square of the number of available variables (ranging from `10^3` to `10^5` in a typical high-throughput omics study).
 This behavior allows it to overcome some of the limits of single-feature selection methods, and provides a hard-thresholding approach at difference with projection-based variable selection methods.
-Certainly the combination evaluation is the most time expensive step of the algorithm and it needs accurate algorithmic implementation for Big Data applications (see the next section for further informations about the algorithm implementation strategy).
+Certainly the combination evaluation is the most time expensive step of the algorithm and it needs accurate algorithmic implementation for Big Data applications (see the next section for further information about the algorithm implementation strategy).
 The algorithm can be summarize as shown in the following pseudo-code.
 
 ```
@@ -45,10 +45,10 @@ So, given an initial dataset, consisting in `S` *samples* (e.g. cells or patient
 We would stress that this method is completely independent to the chose of the classification algorithm but from a biological point of view a simple one is preferred to preserve an easy interpretability of the results.
 The geometrical simplicity of the resulting class-separation surfaces, in fact, allows an easier interpretation of the results, as compared with very powerful but black-box methods like nonlinear-kernel SVM or Neural Networks.
 Moreover the network interaction of variables can keep an internal ranking score of features importance or possible features cooperation.
-These are the reasons that move us to use very simple classifier methods in our biological application as diag-quadratic Discriminant Analysis or Quadratic Discriminant Analysis (Appendix A for more informations about the mathematical background and
+These are the reasons that move us to use very simple classifier methods in our biological application as diag-quadratic Discriminant Analysis or Quadratic Discriminant Analysis (Appendix A for more information about the mathematical background and
 implementation in the different languages).
 Both these methods allow fast computation and easy interpretation of the results.
-This linear separation might not be common in some classification problems (e.g. image classification) but it is very plausible in biological systems, in which many responses to perturbation consist in increase or decrease of variable values (e.g. expression of genes or proteins, see Fig.[1](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/expression.svg?token=AF4CJXY7EMQ24VIPT2D6ATC5VYJ2K&sanitize=true)(b)).
+This linear separation might not be common in some classification problems (e.g. image classification) but it is very plausible in biological systems, in which many responses to perturbation consist in increase or decrease of variable values (e.g. expression of genes or proteins, see Fig.[1](../../../../img/expression.svg)(b)).
 
 In a general classification problem (e.g. image analysis) this could not be the case, since complex non linear separating surfaces may exist among the classes, but we hypothesize (and our results seem to confirm so) that in classification problems based on biological data such as gene expression these situations are not so common.
 This assumption is very plausible for biological data, since genes are in general up- or down-regulated in order to modify their activity, and protein and metabolites most of the times respond consequently.

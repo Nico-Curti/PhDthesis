@@ -17,7 +17,7 @@ In the previous sections we have also described the common loss functions used t
 Considering the "simple" segmentation of an object from its background, the ground truth mask, i.e the "label" of the input image, would be a binary matrix.
 In these cases a valid loss function (also used in our applications) could be the *binary cross-entropy* (ref. [Cost](../NeuralNetwork/Cost.md)).
 
-![IoU score example. The IoU score is computed as the area intersection of the two boxes over their union. Starting from the left we can see an increment of the overlap between the two boxes related to an increment in their IoU scores.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/iou_example.svg?token=AF4CJX3CMZQ4FQLJ4RENQJS5WH4G2&sanitize=true)
+![IoU score example. The IoU score is computed as the area intersection of the two boxes over their union. Starting from the left we can see an increment of the overlap between the two boxes related to an increment in their IoU scores.](../../../../img/iou_example.svg)
 
 A word of caution must be spent about the metrics to evaluate the performances of our model.
 Standard metrics, as the *accuracy* [^1], are not good measures to face on the segmentation problem.

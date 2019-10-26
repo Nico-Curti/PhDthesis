@@ -8,7 +8,7 @@ The reduction of feature quantity can also prevent over-fitting problems and it 
 
 Pooling layers are intrinsically related to Convolutional layers.
 The analogy lives in the filter mapping procedure which produces the output in both methods.
-While in the Convolutional layer we map a filter over the input signal and we apply a multiplication of the layer weights and the signal values, in the pooling layer we simply change the filter function keeping the same filter mapping procedure (see section ([convolutional](../Convolutional.md)) for more informations).
+While in the Convolutional layer we map a filter over the input signal and we apply a multiplication of the layer weights and the signal values, in the pooling layer we simply change the filter function keeping the same filter mapping procedure (see section ([convolutional](../Convolutional.md)) for more information).
 The input parameters of the method are the same of the Convolutional one: the input dimensions, the kernel size and (optional) the stride value.
 
 The most common pooling layers are the Average Pool and the Maximum Pool.

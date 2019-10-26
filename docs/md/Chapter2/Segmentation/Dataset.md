@@ -22,7 +22,7 @@ An interpolation of these components was performed to select only the femur comp
 This method worked quite good when we considered the slices far from the femur head: when the acetabular fossa became very close the femur head the two components were not divided.
 An example of this kind of issues is shown in Fig. [2](../../../../img/segmentation_tool.svg).
 
-![Example of automatic segmentation using custom image processing pipeline. Starting from the bottom of femur bone the detection seems good but when the method starts to fail the failure is propagated to the next slices. The method is too naive to perform a good segmentation on the full set of slices. However, it can be useful to reduce the quantity of slices to annotate manually.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/segmentation_tool.svg?token=AF4CJX6CGR5SX3BRB36QGWK5WH4QQ&sanitize=true)
+![Example of automatic segmentation using custom image processing pipeline. Starting from the bottom of femur bone the detection seems good but when the method starts to fail the failure is propagated to the next slices. The method is too naive to perform a good segmentation on the full set of slices. However, it can be useful to reduce the quantity of slices to annotate manually.](../../../../img/segmentation_tool.svg)
 
 This naive approach for the image processing could not solve the full segmentation task but it can be considered as a good preliminary tool to produce annotated image.
 With this approach we reduced the amount of required annotations by more than 50%.

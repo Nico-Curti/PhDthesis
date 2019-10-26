@@ -1,21 +1,21 @@
 ## Pair sort
 
 The sorting algorithm starts at the end of variable couple evaluation and re-order the pairs in ascending order to ease the next steps of signature identification [^1].
-This step is performed in the same code (and same parallel section) of the before section but it deserves an own topic for a better focus on the parallelization strategy chosen.
-Moreover there are many common parallel implementation of sorting algorithm and to reach the best performances we have to chose the appropriated one.
+This step is performed in the same code (and same parallel section) of the previous section but it deserves an own topic for a better focus on the parallelization strategy chosen.
+Moreover, there are many common parallel implementation of sorting algorithm and, to reach the best performances, we have to chose the appropriated one.
 
 The sorting algorithm are already implemented in serial version in the major part of the languages (Python and C++ included).
 The naive version of the algorithms are also quite optimized and they perform the computation with complexity `(O(N log(N)))`[^2].
-In this case we have not to re-invent any sorting technique but only insert as well as possible these algorithms inside a parallel sections and use the variable format chosen for couple performances storage.
+In this case we have not to re-invent any sorting technique, but only insert as well as possible these algorithms inside a parallel sections and use the variable format chosen for couple performances storage.
 Since we are working with SoA objects we need to re-order all the structure arrays in the same way.
-So we can not use the a simple sort function but can compute the set of indexes that allow the re-order of the arrays, the so called `argsort` method.
+So we can not use a simple sort function but can compute the set of indexes that allow the re-order of the arrays, the so called `argsort` method.
 To rearrange the indexes according to a given array of values we can use the templates in C++.
 
-![Parallel merge-sort algorithm scheme. Starting from the original array the master thread splits the work (sub-arrays) along two slave threads (`split` step in the graph). The split recursion is applied until a required size of sub-arrays is reached. Each slave-thread applies a sort function (`sort` step in the graph). Then the full array is recombined following back the thread recursion and applying an `inplace-merge` function (`merge` step in the graph).](../../../../img/merge_sort.png)
+![Parallel merge-sort algorithm scheme. Starting from the original array, the master thread splits the work (sub-arrays) along two slave threads (`split` step in the graph). The split recursion is applied until a required size of sub-arrays is reached. Each slave-thread applies a sort function (`sort` step in the graph). Then, the full array is recombined following back the thread recursion and applying an `inplace-merge` function (`merge` step in the graph).](../../../../img/merge_sort.png)
 
 As parallelization strategy we can yet invoke the new *keywords* of OpenMP libraries and apply a *divide-and-conquer* architecture using a tree of independent `tasks`[^3].
-Using the maximum power of two of the available threads we split the computation in equal size sub-arrays and perform independent `argsort`s.
-Then, going backwards to the subdivisions at each step we merge the sub-arrays two-by-two until the root (ref Fig.[3](../../../../img/merge_sort.png)).
+Using the maximum power of two of the available threads, we split the computation in equal size sub-arrays and perform independent `argsort`s.
+Then, going backwards to the subdivisions at each step, we merge the sub-arrays two-by-two until the root (ref Fig.[3](../../../../img/merge_sort.png)).
 
 
 [^1]: We are talking about couples performances meaning the classification accuracy of the feature pair up to now.

@@ -118,3 +118,30 @@ The on-line version of the thesis can be found on the [gitbook version](https://
     * [Pipeline steps](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Profiling/Step.md)
     * [Results](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Profiling/Results.md)
     * [Conclusions](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/Profiling/Conclusion.md)
+
+
+## License
+
+The `Implementation and optimization of algorithms in Biomedical Big Data Analytics` document is licensed under the MIT "Expat" License. [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Nico-Curti/PhDthesis/blob/master/LICENSE.md)
+
+
+### Acknowledgment
+
+Thanks goes to all contributors of this project.
+
+### Citation
+
+Please cite `Implementation and optimization of algorithms in Biomedical Big Data Analytics` if you use it in your research.
+
+```tex
+@misc{PhDtheis,
+  author = {Nico Curti},
+  title = {Implementation and optimization of algorithms in Biomedical Big Data Analytics},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/Nico-Curti/PhDthesis}},
+}
+```
+
+

@@ -11,7 +11,7 @@ In this case we hypothesize that PP samples will be classified more closely with
 
 ![Plot of the 123-transcript network, with a details of the 10-probe signature (red nodes)](../../../../img/Bovine_signature.png)
 
-![Transcript levels for the 10 genes belonging to the classification signature identified by the combinatorial discriminant analysis (CDA). Some transcripts (EPHX1, RIC8B, IL5RA, ERF, CDC40) show a clear trend  between 5 animals serologically positive to the ELISA test for MAP (PP), 5 exposed serologically negative (NP) and 5 serologically negative unexposed control animals (NN).](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/Bovine_expression_level.svg?token=AF4CJX3TGYCZV6FUBNH4PM25V3KHC&sanitize=true)
+![Transcript levels for the 10 genes belonging to the classification signature identified by the combinatorial discriminant analysis (CDA). Some transcripts (EPHX1, RIC8B, IL5RA, ERF, CDC40) show a clear trend  between 5 animals serologically positive to the ELISA test for MAP (PP), 5 exposed serologically negative (NP) and 5 serologically negative unexposed control animals (NN).](../../../../img/Bovine_expression_level.svg)
 
 Starting from the top-performing couples of transcripts, we obtained an initial signature of 123 different transcripts (Figure(a), all the nodes), capable to correctly classify 4 out of the 5 NN samples (80%) and all 5 NP samples (100% performance).
 The average performance was therefore 90% with Matthews correlation coefficient MCC = 0.82.

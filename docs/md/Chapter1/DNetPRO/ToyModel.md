@@ -23,9 +23,9 @@ However we can reasonably assume that according to the `K`-best interpretation t
 This justify the use of the same number of variables between the two algorithms using the DNetPRO signature as reference.
 In Fig.2 we show the results obtained in our simulations: the results are obtained keeping fixed the number of variables/samples and varying the number of samples/variables, Fig.[2](../../../../img/samples_toy.svg)(a) and Fig.[2](../../../../img/features_toy.svg)(b) respectively.
 
-![Synthetic dataset simulation. Comparison of accuracy performances obtained by the DNetPRO algorithm and the `K`-best algorithm. Performances obtained in function of the number of samples, keeping fixed the number of variables.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/samples_toy.svg?token=AF4CJX4USHI7UZJEGXWVDAK5VYJ6U&sanitize=true)
+![Synthetic dataset simulation. Comparison of accuracy performances obtained by the DNetPRO algorithm and the `K`-best algorithm. Performances obtained in function of the number of samples, keeping fixed the number of variables.](../../../../img/samples_toy.svg)
 
-![Synthetic dataset simulation. Comparison of accuracy performances obtained by the DNetPRO algorithm and the `K`-best algorithm. Performances obtained in function of the number of variables, keeping fixed the number of samples.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/features_toy.svg?token=AF4CJXYWNLWYHWIIEEWMFES5VYJ7Y&sanitize=true)
+![Synthetic dataset simulation. Comparison of accuracy performances obtained by the DNetPRO algorithm and the `K`-best algorithm. Performances obtained in function of the number of variables, keeping fixed the number of samples.](../../../../img/features_toy.svg)
 
 For the same number of variables (Fig.[2](../../../../img/samples_toy.svg)(a)) we can noticed as the two methods performs quite similarly but the DNetPRO is able to reach better performances as the number of samples increase.
 

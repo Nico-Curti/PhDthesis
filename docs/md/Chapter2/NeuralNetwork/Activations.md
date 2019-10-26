@@ -13,9 +13,25 @@ Each one has its pro and cons in some situations so each Neural Network library 
 In the following Table we show the list of activation functions implemented in our libraries with mathematical formulation and corresponding derivative (ref. [`activations.py`](https://github.com/Nico-Curti/NumPyNet/blob/master/NumPyNet/activations.py) for the code implementation).
 An important feature of any activation function, in fact, is that it should be differentiable since the main procedure of model optimization implies the backpropagation of the error gradients.
 
-
-**INSERT TABLE HERE**
-
+| **Name** | **Equation** | **Derivative** |
+|:--------:|:------------:|:--------------:|
+|Linear   |  $$f(x) = x$$                              |  $$f'(x) = 1$$ |
+|Logistic |  $$f(x) = \frac{1}{1 + \exp(-x)}$$         |  $$f'(x) = (1 - f(x)) * f(x)$$ |
+|Loggy    |  $$f(x) = \frac{2}{1 + \exp(-x)} - 1$$     |  $$f'(x) = 2 * (1 - \frac{f(x) + 1}{2}) * \frac{f(x) + 1}{2} $$ |
+|Relu     |  $$f(x) = \max(0, x)$$                     |  $$f'(x) = \left\{\begin{array}{rlr} 1 & \mbox{if} & f(x) > 0 \\ 0 & \mbox{if} & f(x) \leq 0 \end{array}\right.$$  |
+|Elu      |  $$f(x) = \max(\exp(x) - 1, x)$$           |  $$f'(x) = \left\{\begin{array}{rlr} 1 & \mbox{if} & f(x) \geq 0 \\ f(x) + 1 & \mbox{if} & f(x) < 0 \end{array}\right.$$ |
+|Relie    |  $$f(x) = \max(x * 1e-2, x) $$             |  $$f'(x) = \left\{\begin{array}{rlr} 1 & \mbox{if} & f(x) > 0 \\ 1e-2 & \mbox{if} & f(x) \leq 0 \end{array}\right.$$ |
+|Ramp     |  $$f(x) = \left\{\begin{array}{rlr} x^2 + 0.1 * x^2 &  \mbox{if} & x > 0 \\ 0 & \mbox{if} & x \leq 0 \end{array}\right.$$ |  $$f'(x) = \left\{\begin{array}{rlr} f(x) + 1 & \mbox{if} & f(x) > 0 \\ f(x) & \mbox{if} & f(x) \leq 0 \end{array}\right.$$ |
+|Tanh     |  $$f(x) = \tanh(x)$$                       |  $$f'(x) = 1 - f(x)^2$$  |
+|Plse     |  $$f(x) = \left\{\begin{array}{rlr} (x + 4) * 1e-2     & \mbox{if} & x < -4 \\ (x - 4) * 1e-2 + 1 & \mbox{if} & x > 4 \\ x * 0.125 + 5 & \mbox{if} & -4 \leq x \leq 4\end{array}\right.$$ |  $$f'(x) = \left\{\begin{array}{rlr} 1e-2  & \mbox{if } & f(x) < 0 \mbox{ or } f(x) > 1 \\  0.125 & \mbox{if } & 0 \leq f(x) \leq 1 \end{array}\right.$$ |
+|Leaky    |  $$f(x) = \left\{\begin{array}{rlr} x * C &  \mbox{if} & x \leq 0 \\ x     &  \mbox{if} & x > 0\end{array}\right.$$ |  $$f'(x) = \left\{\begin{array}{rlr} 1   & \mbox{if} & f(x) > 0    \\ C   & \mbox{if} & f(x) \leq 0 \end{array}\right.$$           |
+|HardTan  |  $$f(x) = \left\{\begin{array}{rlr} -1 & \mbox{if} &     x < -1 \\ +1 & \mbox{if} &     x > 1  \\  x & \mbox{if} & -1 \leq x \leq 1\end{array}\right.$$ |  $$f'(x) = \left\{\begin{array}{rlr} 0 & \mbox{if} & f(x) < -1 \mbox{ or } f(x) > 1 \\ 1 & \mbox{if} & -1 \leq f(x) \leq 1\end{array}\right.$$                            |
+|LhTan    |  $$f(x) = \left\{\begin{array}{rlr} x * 1e-3           & \mbox{if} &     x < 0  \\ (x - 1) * 1e-3 + 1 & \mbox{if} &     x > 1  \\  x                 & \mbox{if} & 0 \leq x \leq 1\end{array}\right.$$ |  $$f'(x) = \left\{\begin{array}{rlr}  1e-3           & \mbox{if} & f(x) < 0 \mbox{ or } f(x) > 1 \\  1              & \mbox{if} & 0 \leq f(x) \leq 1 \end{array}\right.$$                                  |
+|Selu     |  $$f(x) =\left\{\begin{array}{rlr}  1.0507 * 1.6732 * (e^x - 1) & \mbox{if} &    x < 0  \\  x * 1.0507                  & \mbox{if} &    x \geq 0 \end{array}\right.$$ |  $$f'(x) = \left\{\begin{array}{rlr}  f(x) * 1e-3           & \mbox{if} & f(x) 0    \\  (f(x) - 1) * 1e-3 + 1 & \mbox{if} & f(x) > 1  \\  \end{array}\right.$$                           |
+|SoftPlus |  $$f(x) = log(1 + e^{x})$$                 |  $$f'(x) = \frac{\exp(f(x)}){1 + e^{f(x)}}$$ |
+|SoftSign |  $$f(x) = \frac{x}{|x| + 1}$$              |  $$f'(x) = \frac{1}{(|f(x)| + 1)^{2}}$$ |
+|Elliot   |  $$f(x) = \frac{\frac{1}{2} * S * x}{1 + |x + S|} + \frac{1}{2}$$ |  $$f'(x) = \frac{\frac{1}{2} * S}{(1 + |f(x) + S|)^{2}} $$ |
+|SymmElliot |  $$f(x) = \frac{S * x}{1 + |x * S|}$$    |  $$f'(x) = \frac{S}{(1 + |f(x) * S|)^{2}}$$ |
 
 As can be seen in Table it is easier to compute the activation function derivative as function of it.
 This is a (well known) important type of optimization in computation term since it reduces the number of operations and it allows to apply the backward gradient directly.
@@ -38,7 +54,7 @@ Their diffusion is imputed to their numerical efficiency and to the benefits the
   A dense information representation is considered *entangled* because small differences in input highly modifies the data representation inside the network.
   On the other hand, a sparse representation tends to guarantee a conservation of the learning features.
 
-* Information representation: different inputs can lead different quantities of useful informations.
+* Information representation: different inputs can lead different quantities of useful information.
   The possibility to have null values in output (ref Table) allows a better representation of the representation dimension inside the network.
 
 * Sparsity: sparsity representation of data are exponentially efficient in comparison to dense ones, where the exponential power is given by the number of no-null features [[Glorot2011Relu](http://proceedings.mlr.press/v15/glorot11a.html)].

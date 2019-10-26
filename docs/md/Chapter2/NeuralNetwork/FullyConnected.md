@@ -31,6 +31,6 @@ The fully connected Neural Networks overcome the told above *Perceptron* problem
 
 * We can find multiple weight configurations, i.e `W` matrices, which give us the same mapping function from inputs to outputs.
 
-Given all the theoretical informations about this kind of model we can now pass to practical (numerical) considerations about their implementations.
+Given all the theoretical information about this kind of model we can now pass to practical (numerical) considerations about their implementations.
 
 [**next >>**](./gemm.md)

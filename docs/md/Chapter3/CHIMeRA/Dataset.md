@@ -1,42 +1,57 @@
 ## CHIMeRA datasets
 
-We have seen how we can extract useful informations also from unstructured databases using a web-scraping pipeline.
-The *on-line doctor* web pages could be very useful for a toy model application like the `SymptomsNet` one [^1] but if we want produce scientific relevant results we have to take care about the validity of data.
+We have seen how we can extract useful information also from unstructured databases using a web-scraping pipeline.
+The *on-line doctor* web pages could be very useful for a toy model application like the `SymptomsNet` one but if we want produce scientific relevant results we have to take care about the validity of data.
 Since the English datasets availability is easier than the Italian one we moved to more "robust" databases.
 
 As told in the previous sections, there are a lot of studies performed on the disease associations to other biological compounds and in many cases the resulting datasets are public available on Internet.
-This is the case of the [DisGeNET](https://doi.org/10.1093/nar/gkw943) or [DrugBank](https://doi.org/10.1093/nar/gkx1037) datasets which contain the relationship between a large number of diseases with genes/variants (SNPs) and drugs, respectively.
-The DisGenet allows to download the datasets already stored into a well structured network format (sparse adjacency matrix, with 210498 associations between 117337 SNPs and 10358 diseases) while the DrugBank poses more issues to the treatment of data: the DrugBank database was designed to provide a large set of informations related to each drug inserted using its own website and thus it needs a huge pre-processing of the JSON dataset structure to highlight all the possible network associations (11926 drugs and 18969 drug-targets associations).
+This is the case of the [DisGeNET](https://doi.org/10.1093/nar/gkw943) or [DrugBank](https://doi.org/10.1093/nar/gkx1037) datasets which contain the relationship between a large number of diseases with genes/variants (SNPs) and drugs (and other information), respectively.
+The DisGenet allows to download the datasets already stored into a well structured network format (sparse adjacency matrix, with 210498 associations between 117337 SNPs, 10358 diseases and 17549 genes) while the DrugBank poses more issues to the treatment of data: the DrugBank database was designed to provide a large set of information related to each drug using its own website and thus it needs a huge pre-processing of the JSON dataset structure to highlight all the possible network associations (14812 drugs, 649 metabolite pathways, 3256 gene targets, 40 SNPs targets, and 532 food interactions).
 Using the DisGenet we can connect the diseases to their related genes and variants.
-From the reviewed format of the DrugBank, instead, we can link each disease to the consequential drugs.
-Associated to each drug we have also a list of gene and SNP targets which can be merged to the informations provided by DisGenet.
-Moreover, we can also connect food treatments to each drug and take care to the interactions between drugs (their synergy or not).
-We would stress that, despite the trivial overlaps between the same data sources (genes, diseases and SNPs up to now), just using the rearrangement of these pair of datasets into a network structure, we can already provide a possible extrapolation of the underlying informations using the paths between nodes.
-Starting from a disease inside the DisGenet, using a single-database approach we can study the "causality" relationships with the connected genes.
-Using a multiple-databases approach we can map that disease to other kind of informations like drugs or foods.
-The aim of such a network-of-networks like structure is to unveil relationships hidden by the underwhelming overlap between single-type information across different databases.
-The wide array of different informations merged can thus be exploited for applications such as wide-scale drug effect evaluation and design, addressing general diagnostic questions for systems medicine and diseases etiology expansion.
+From the reviewed format of the DrugBank, instead, we can link each disease to the associated drugs.
+Associated to each drug we have also a list of gene and SNP targets which can be merged to the information provided by DisGenet.
+Moreover, we can insert also food interactions, metabolite pathways and drug interactions (synergy or not) extracted from DrugBank.
+We would stress that, despite the trivial overlaps between the same data sources (genes, diseases and SNPs up to now), just using the rearrangement of these pair of datasets into a network structure, we can already provide a possible extrapolation of the underlying information using the paths between nodes.
+Starting from a disease inside the DisGenet, using a single-database approach we can study the "causality" relationships with the connected genes and SNPs.
+Using a multiple-databases (or a network-of-networks structure) approach we can map that disease to other kinds of information like drugs, foods and metabolite pathways.
+The aim of such a network-of-networks structure is to unveil relationships hidden by the underwhelming overlap between single-type information across different databases.
+The set of different information merged can thus be exploited for applications such as wide-scale drug effect evaluation and design, addressing general diagnostic questions for systems medicine and diseases etiology expansion.
 In other words, a network-of-networks structure allows the inference of missing connections using node contraction.
+A full list of the information collected by our `web-scraping` and rearrangement pipelines is shown in the Table.
 
-To enlarge our disease informations disease we looked for other on-line data sources.
-A very interesting database is given by [HMDB](https://doi.org/10.1093/nar/gkx1089) (*Human Metabolite Data Bank*) which comprises a vast amount of metabolite and metabolite-pathway with the associated drugs and disease (114003 metabolite entries with chemical taxonomies and $$\sim$$25000 human metabolic and disease pathways).
-The interconnection with the previous discussed datasets is straightforward but in this case the data are not public available but we had to apply a web-scraping algorithm to get its informations.
+To enlarge our disease information we looked for other on-line data sources.
+A very interesting database is given by [HMDB](https://doi.org/10.1093/nar/gkx1089) (*Human Metabolite Data Bank*)which comprises a vast amount of metabolites and metabolite-pathways with the associated drugs and diseases (114003 metabolite entries with chemical taxonomies and $$\sim$$25000 human metabolic and disease pathways [^1].
+The interconnections with the previous discussed datasets are straightforward but in this case the data are not public available and thus we had to apply a `web-scraping` algorithm to get its information.
 An analogous procedure was applied to extract the data included into the [RXList](https://www.rxlist.com/script/main/hp.asp) database.
 RXList is an on-line website very similar to the previous discussed auto-diagnosis tools in which we can find associations between diseases and drugs and other several pathogenic associations.
 In this case we have a further distinction between diseases: we have diseases related to drugs and diseases connected to other caused-diseases.
 We can take care of this kind association using directional links [^2].
+We remark that each `web-scraping` pipeline is customized according to a precise website, so for each analyzed case a different code was developed to address the data extraction.
 
-All these informations can enrich our database and the description of a given disease but we have to face on the problem of data merging.
+All these information can enrich our database and the description of a given disease but we have to face on the problem of data merging.
 As previously discussed we do not have a unique nomenclature for diseases and thus we can find analogous names (periphrases or synonyms) which identify the same concept (disease).
 A useful tool to overcome these issues could be given by a synonym dictionary: a powerful example is given by the [CTD](https://doi.org/10.1093/nar/gky868) (*Comparative Toxicogenomics Database*) (7212 diseases with mapped synonyms and 4340 diseases with related phenotypes).
 Using the CTD jointly with the [SNAP](http://snap.stanford.edu/biodata) (*Stanford Large Network Dataset Collection*, 8803 disease terms with related synonyms) database we could enlarge the number of synonyms associated to each disease name.
 
-A full list of the informations collected by our web-scraping and rearrangement pipelines is shown in Fig. [1](../../../../img/Chimera_db_sources.png).
 
-![Description of the data mined by the `CHIMeRA` project before merging. The datasets were collected using custom web-scraping pipelines and by a rearrangement of the public data.](../../../../img/Chimera_db_sources.png)
+|                        | disease             | drug     | food     | gene     | metabolite | phenotype | SNP      | metabolic pathway |
+|:----------------------:|:-------------------:|:--------:|:--------:|:--------:|:----------:|:---------:|:--------:|:-----------------:|
+|disease                 | CTD + RXList + SNAP | RXList   |    x     | DisGeNET |  HMDB      | CTD       | DisGeNET | HMDB              |
+|drug                    |       RXList        | DrugBank | DrugBank |    x     |    x       |    x      |     x    | DrugBank          |
+|food                    |          x          | DrugBank |    x     |    x     |    x       |    x      |     x    |    x              |
+|gene                    |      DisGeNET       |    x     |    x     |    x     |    x       |    x      |     x    |    x              |
+|metabolite              |       HMDB          |    x     |    x     |    x     |    x       |    x      |     x    | HMDB              |
+|phenotype               |        CTD          |    x     |    x     |    x     |    x       |    x      |     x    |    x              |
+|SNP                     |      DisGeNET       |    x     |    x     |    x     |    x       |    x      |     x    |    x              |
+|metabolic pathway       |        HMDB         | DrugBank |    x     |    x     |  HMDB      |    x      |     x    |    x              |
+|# nodes                 |  63974              | 35161    | 532      | 18799    |  114100    | 13214     | 117337   |  1329             |
 
-We remember that the crucial point of our merging procedure is given by the disease nodes since they are the node type shared along all the databases.
-The help given by the synonym dictionaries certainly increase the overlap between the mined datasets but we chose to maximize it using a pre-processing NLP pipeline.
+
+A full list of the information collected by our web-scraping and rearrangement pipelines is shown in Fig. [1](../../../../img/Chimera_db_sources.png).
+
+
+We remember that the crucial point of our merging procedure is given by the disease nodes since they are the node type shared along (almost) all the databases.
+The help given by synonym dictionaries certainly increases the overlap between the mined datasets but we chose to maximize it using a pre-processing NLP pipeline.
 So, we started our pipeline using a word *standardization*, i.e converting all the words into their lower case formats and replacing all the punctuation characters with a unique one [^3].
 Then, we noticed that a not negligible part of words involved into the disease names was useless for the description: words like "syndrome", "disease", "disorder", "deficiency", ... are not descriptive and so we can filter them.
 Now, we could split the disease name into a series of token according to the list of words which compose it (*tokenization*) and sort them.
@@ -44,11 +59,11 @@ Now, we could split the disease name into a series of token according to the lis
 To further increase the overlap we cut the inflected words to their root form using a *stemming* algorithm: the stemmer strength has to be tuned according to the desired result.
 A first processing was performed using a `Lancaster` stemmer (more aggressive).
 If the resulting output was too short to be compared with other names the starting token was processed by a `Porter Snowball` stemmer (less aggressive).
-The stemmer algorithm choice is a very crucial task for NLP because using it we drastically loose informations (it is not reversible).
+The stemmer algorithm choice is a very crucial task for NLP because using it we drastically loose information (it is not reversible).
 Other processing steps were performed for critical cases encountered during the analyses: these steps constrain our pipeline and they tuned it for the underlying application.
 
 
-The work-flow outputs include multiple false-positive matches: the pipeline performs a brute force processing and some informations lost along the steps could be significants.
+The work-flow outputs include multiple false-positive matches: the pipeline performs a brute force processing and some information lost along the steps could be significants.
 In these cases we have multiple processed names belonging to different kind of diseases: an example is shown in Fig. [2](../../../../img/chimera_pipeline.png).
 Considering the original name and the processed one (pipeline output) we merged two names using a score match.
 This can be achieved introducing the standard word metrics: a common distance between words can be evaluated using the *Levenshtein Distance* which follows the equation
@@ -70,6 +85,13 @@ $$
 where `a` and `b` are two strings of length `|a|` and `|b|` respectively.
 The *indicator function* $$1_{(a \neq b)}$$ is equal to `0` when $$a_i = b_j$$ and `1` otherwise.
 In this way the Levenshtein distance between `a` and `b` can be computed evaluating the distance between the first `i` characters of `a` and the first `j` characters of `b`.
+Despite the apparently complex mathematic formulation of this function, the *Levenshtein Distance* is a particular case of the more general *Edit Distance*, i.e a way to quantifying how dissimilar two strings are to one by counting the minimum number of operations required to transform one string into the other.
+Also in this case an example could be explainer: given the two string "*kitten*" and "*sitting*" their *Levenshtein distance* is equal to 3, in fact
+
+1. **k**itten -> **s**itten (substitute "s" for "k")
+2. sitt**e**n -> sitt**i**n (substitute "i" for "e")
+3. sittin -> sittin**g** (insert "g" at the end)
+
 
 Using the Levenshtein equation we evaluated the distance between the two original names and we associate the disease to the higher scorer.
 A summary scheme of our pipeline is shown in Fig. [2](../../../../img/chimera_pipeline.png).
@@ -89,12 +111,12 @@ This was a very encouraging results since it proved the efficiency of our pipeli
 The output of our merging procedure allowed the realization of the `CHIMeRA` network, i.e a network with more than $$3.6\times10^5$$ nodes and more than $$3.8\times10^7$$ links (ref. Fig. [3](../../../../img/chimera_plot.png)).
 In our resulting structure we have 7 node types: disease (63974), drug (35161), gene (18799), SNP (117337), metabolite (114100), phenotype (13214), metabolite-pathway (1329) and food (532).
 The full network adjacency matrix is still a block matrix, i.e we have not all the combinations of information in our databases.
-An emblematic case is given by the food nodes: we have food informations only into the DrugBank dataset and thus they would be connected only with drug types.
+An emblematic case is given by the food nodes: we have food information only into the DrugBank dataset and thus they would be connected only with drug types.
 On the other hand our network architecture could be easily improved adding new data sources: the same food nodes are pendant nodes that could be easily connected to other kind of data introducing novel node types or just filling the available blocks.
 `CHIMeRA` is still a work in progress project so we are still looking for improvements and new databases to add.
 
 
-[^1]: Also because no other databases were provided for the Italian language!
+[^1]: The human metabolite-pathways can be divided into different types according to the informations stored in the HMDB dataset. The interactions between HMDB and DrugBank was already established through a vast series of hyper-links which connect them using metabolites and metabolite-pathways information. In this way we mapped also the information related to the metabolite-pathways types to the DrugBank dataset, obtaining a finer grain nomenclature and classification of these data. These informations can be used to improve our disease information. In the previous Table is showed only the aggregated data.
 
 [^2]: For sake of clarity, we encountered the same issue also into the DrugBank dataset in which we had intra-drug connections.
 

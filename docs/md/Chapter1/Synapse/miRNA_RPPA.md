@@ -2,12 +2,12 @@
 
 The same analysis pipeline presented in the paper about gene expression data from the Synapse dataset is applied in this Section also to the miRNA and RPPA datasets, with the results presented in Fig. [1](../../../../img/RPPA_boxplot.png) and Fig. [2](../../../../img/miRNA_boxplot.png).
 
-![Results obtained by the DNetPRO algorithm pipeline on four miRNA and RPPA tumor datasets, as from the Synapse database [Yuan2014](https://www.nature.com/articles/nbt.2940). Distributions of AUC values for the tumor datasets. Green boxplots: results using procedure `A` as described in Fig.[-1](../../../../img/dnet_pipe.pdf); yellow boxplots: results obtained using procedure `B`.](../../../../img/RPPA_boxplot.png) ![Comparison of DNetPRO results with the methods used in the paper of Yuan et al.: max AUC values obtained over the 10-Fold cross-validation procedure.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/miRNA_tables.svg?token=AF4CJX2UBHQOJAMLOL7O24S5WBJQ6&sanitize=true)
+![Results obtained by the DNetPRO algorithm pipeline on four miRNA and RPPA tumor datasets, as from the Synapse database [Yuan2014](https://www.nature.com/articles/nbt.2940). Distributions of AUC values for the tumor datasets. Green boxplots: results using procedure `A` as described in Fig.[-1](../../../../img/dnet_pipe.pdf); yellow boxplots: results obtained using procedure `B`.](../../../../img/RPPA_boxplot.png) ![Comparison of DNetPRO results with the methods used in the paper of Yuan et al.: max AUC values obtained over the 10-Fold cross-validation procedure.](../../../../img/miRNA_tables.svg)
 
 
 ![Results obtained by the DNetPRO algorithm pipeline on four miRNA and RPPA tumor datasets, as from the Synapse database [Yuan2014](https://www.nature.com/articles/nbt.2940). Distributions of AUC values for the tumor datasets. Green boxplots: results using procedure `A` as described in Fig.[-1](../../../../img/dnet_pipe.pdf); yellow boxplots: results obtained using procedure `B`.](../../../../img/miRNA_boxplot.png)
 
-![Comparison of DNetPRO results with the methods used in the paper of Yuan et al.: max AUC values obtained over the 10-Fold cross-validation procedure.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/mRNA_tables.svg?token=AF4CJX6PGROD5AJX4CSQXSK5WBJFG&sanitize=true)
+![Comparison of DNetPRO results with the methods used in the paper of Yuan et al.: max AUC values obtained over the 10-Fold cross-validation procedure.](../../../../img/mRNA_tables.svg)
 
 
 The results obtained on the miRNA dataset (Figure (a, b)) are comparable to the reference, while for the RPPA dataset only the LUSC tumor shows AUC values comparable with the others.

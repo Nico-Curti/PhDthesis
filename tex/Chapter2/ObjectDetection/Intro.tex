@@ -25,7 +25,7 @@ The list of these regions are then reshaped using a Polling layer and processed 
 The advantages of Faster R-CNN are thus visible: we do not need to feed 2k region proposals to the CNN every time but the feature map is generate once per image using the convolution operation.
 In this way we can also separate the feature map creation to the selective search algorithm.
 
-A key role is played by the \emph{anchor} concept: an \emph{anchor} is essentially a box and it identify the shape of a portion of the input image at different scale level.
+A key role is the \emph{anchor} concept: an \emph{anchor} is essentially a box and it identify the shape of a portion of the input image at different scale level.
 The CNN feature map feeds the Region Proposals Network which uses a sliding window over it generating $k$ anchor boxes.
 These boxes are certainly fewer than the 2k previous cited windows.
 

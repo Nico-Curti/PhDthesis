@@ -28,7 +28,7 @@ We performed 5 independent simulations using the same input image size to test t
 Each simulation performs 100 runs of both the algorithms.
 The results are shown in Fig. [1](../../../../img/byron_timing.svg) where we normalized our times in relation to the `darknet` ones since it is our reference.
 
-![Comparison of time performances between the `Byron` and `darknet` implementations of the YOLO model. The simulations were performed keeping fixed the input image sizes and without the multi-threading support. Each simulation includes 100 runs of both the algorithms. The `Byron` version is approximately 3.8x faster than `darknet` in all the simulations.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/byron_timing.svg?token=AF4CJXZWP4UOE2NBAMX7HKS5WHNUK&sanitize=true)
+![Comparison of time performances between the `Byron` and `darknet` implementations of the YOLO model. The simulations were performed keeping fixed the input image sizes and without the multi-threading support. Each simulation includes 100 runs of both the algorithms. The `Byron` version is approximately 3.8x faster than `darknet` in all the simulations.](../../../../img/byron_timing.svg)
 
 Both the implementations are quite stable across the simulations and our measures shows a very tight variability.
 The differences in time performances are evident and we can summarized them with a 3.8x speedup obtained by the `Byron` implementation against the `darknet` one.

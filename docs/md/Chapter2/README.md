@@ -1,7 +1,7 @@
 # Chapter 2
 ## Deep Learning - Neural Network algorithms
 
-In the first chapter we have discussed about the difficulties on extracting informations from a huge amount of data and we have proposed a novel feature extraction algorithm to face on these problems.
+In the first chapter we have discussed about the difficulties on extracting information from a huge amount of data and we have proposed a novel feature extraction algorithm to face on these problems.
 Those kind of applications go under the wide research field of Machine Learning.
 Machine learning algorithms are closely related to a statistical interpretation of the theoretical background of the available data.
 With the increasing of computational power and the quantity of available data it is not always possible to tune and build an accurate model able to describe the heterogeneity of our samples.

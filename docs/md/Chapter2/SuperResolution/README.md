@@ -1,12 +1,12 @@
 ## Super Resolution
 
-| ![Single Image Super Resolution. Between the red lines the super resolved version of the image.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/sr_wow.svg?token=AF4CJX5LIDY47CZJVU7CUUC5WICF2&sanitize=true) | ![](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/sr_wow2.svg?token=AF4CJX5U2QZBLQSWVYC2YL25WICGC&sanitize=true) |
+| ![Single Image Super Resolution. Between the red lines the super resolved version of the image.](../../../../img/sr_wow.svg) | ![](../../../../img/sr_wow2.svg) |
 |:----:|:-----:|
 
 The Super Resolution (SR) is a slight novel technique based on Neural Network models which aims to improve the spatial resolution of a given image [^1].
 
-The first SR methods on digital images estimate the high frequency informations of the images starting from a series of low-resolution (LR) patches and their high-resolution (HR) counterpart.
-These patches (ROIs of the LR image commonly smaller than `50 x 50`) were extracted after an edge enhancement procedure or a simple 2D Fourier transform which extract the high frequency informations.
+The first SR methods on digital images estimate the high frequency information of the images starting from a series of low-resolution (LR) patches and their high-resolution (HR) counterpart.
+These patches (ROIs of the LR image commonly smaller than `50 x 50`) were extracted after an edge enhancement procedure or a simple 2D Fourier transform which extract the high frequency information.
 Collecting these patches an "association dictionary" between LR and HR was created.
 This dictionary was so used to learn the correct association between the LR e HR counterpart and then applied on new images.
 The considered images could also be of the same dimensions in these firstly applications, i.e the purpose was only to improve the spatial resolution of the image without changing the sampling step.

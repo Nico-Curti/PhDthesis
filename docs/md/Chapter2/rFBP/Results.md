@@ -1,8 +1,8 @@
 ## Results
 
-![Accuracy score obtained on the validation set varying the training set size. We compared the trends of the whole set of classification algorithms used.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/Ale_ACC_confrontoNicoPhD.svg?token=AF4CJX65MHCIPASHKAI6KFS5WH3KC&sanitize=true)
+![Accuracy score obtained on the validation set varying the training set size. We compared the trends of the whole set of classification algorithms used.](../../../../img/Ale_ACC_confrontoNicoPhD.svg)
 
-![Matthews Correlation Coefficient (MCC) score obtained on the validation set varying the training set size. We compared the trends of the whole set of classification algorithms used.](https://raw.githubusercontent.com/Nico-Curti/PhDthesis/master/img/Ale_MCC_confrontoNicoPhD.svg?token=AF4CJX3R2J3HAX2B4NS3CMK5WH3KI&sanitize=true)
+![Matthews Correlation Coefficient (MCC) score obtained on the validation set varying the training set size. We compared the trends of the whole set of classification algorithms used.](../../../../img/Ale_MCC_confrontoNicoPhD.svg)
 
 With the tuned hyper-parameters we performed the training of rFBP algorithm on different percentages of the training set: 25%, 45%, 65% and 85%.
 In the same way we trained also a list of the most common Machine Learning classifiers: single perceptron with floating-point weights (Perc); standard Neural Network with gradient descent as updating rule (MLP); support vector machine with linear kernel (lSVM); support vector machine with radial kernel (rSVM); linear discriminant analysis (LDA); decision tree (DT); random forest (RF); k-nearest neighbors with 2-clusters (kNN); Guassian process (GP); diag-quadratic discriminant analysis (GNB); Bernoulli naive bayes (BNB); AdaBoost (AdaB).
@@ -40,7 +40,7 @@ The rFBP algorithm correctly identified `838/848` significant bases related to t
 In conclusion, we could prove that the rFBP algorithm is able to identify the major part of the significant mutations in the training set.
 However, the use of the only training set to extract the significant weights certainly penalized the rFBP algorithm and a second simulation (without prediction purposes) was performed considering the full set of data, i.e 10 realizations without cross-validation.
 In this second case the rFBP significant weights correctly identified `702/1103` where `696/848` were related to the `-1` class and `6/255` to the `+1` class.
-In both cases we could conclude that the dataset did not contain enough informations for the `+1` class identification for the rFBP algorithm.
+In both cases we could conclude that the dataset did not contain enough information for the `+1` class identification for the rFBP algorithm.
 
 Following the above results, a final training was performed using only the significant bases identified by the rFBP algorithm and only the significant bases extracted by the $$\chi^2$$ multiple test, using the full set of available classifiers.
 We noticed how the performances of all the classifiers are significantly better using the bases extracted by the rFBP algorithm (always over the 87% of accuracy) than the results obtained considering the $$\chi^2$$ significant bases (only few classifier were able to obtain more than 85% of accuracy).
