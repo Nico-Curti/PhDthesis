@@ -46,20 +46,23 @@ A useful tool to overcome these issues could be given by a synonym dictionary: a
 Using the CTD jointly with the SNAP~\cite{biosnapnets} (\emph{Stanford Large Network Dataset Collection}, \numprint{8803} disease terms with related synonyms) database we could enlarge the number of synonyms associated to each disease name.
 
 \begin{table}
-\centering
+\hspace{-2cm}
 \begin{tabular}{lcccccccc}
 \hline\rowcolor{darkgrayrow}
                         & disease             & drug     & food     & gene     & metabolite & phenotype & SNP      & metabolic \\
 \rowcolor{darkgrayrow}
                         &                     &          &          &          &            &           &          & pathway   \\
-disease                 & CTD + RXList + SNAP & RXList   &    x     & DisGeNET &  HMDB      & CTD       & DisGeNET & HMDB      \\
+disease                 & CTD                 & RXList   &    x     & DisGeNET &  HMDB      & CTD       & DisGeNET & HMDB      \\
+                        & RXList              &          &          &          &            &           &          &           \\
+                        & SNAP                &          &          &          &            &           &          &           \\
 drug                    &       RXList        & DrugBank & DrugBank &    x     &    x       &    x      &     x    & DrugBank  \\
 food                    &          x          & DrugBank &    x     &    x     &    x       &    x      &     x    &    x      \\
 gene                    &      DisGeNET       &    x     &    x     &    x     &    x       &    x      &     x    &    x      \\
 metabolite              &       HMDB          &    x     &    x     &    x     &    x       &    x      &     x    & HMDB      \\
 phenotype               &        CTD          &    x     &    x     &    x     &    x       &    x      &     x    &    x      \\
 SNP                     &      DisGeNET       &    x     &    x     &    x     &    x       &    x      &     x    &    x      \\
-metabolic pathway       &        HMDB         & DrugBank &    x     &    x     &  HMDB      &    x      &     x    &    x      \\
+metabolic               &        HMDB         & DrugBank &    x     &    x     &  HMDB      &    x      &     x    &    x      \\
+pathway                 &                     &          &          &          &            &           &          &           \\
 \hline\\
 \# nodes                &  63974              & 35161    & 532      & 18799    &  114100    & 13214     & 117337   &  1329     \\
 \hline\\

@@ -71,7 +71,7 @@
 
 * [Conclusions](./md/Conclusions.md)
 
-* Appendix:
+* Appendix
   * [Appendix A - Discriminant Analysis](./md/Appendix/DiscriminantAnalysis/README.md)
     * [Mathematical background](./md/Appendix/DiscriminantAnalysis/MathematicalBackground.md)
     * [Numerical Implementation](./md/Appendix/DiscriminantAnalysis/Numerical.md)

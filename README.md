@@ -18,18 +18,33 @@
 </div>
 </a>
 
-# PhD Thesis
+# Implementation and optimization of algorithms in Biomedical Big Data Analytics
 
-My PhD thesis in Applied Physics (a.a 2019/2020).
+## Abstract
+
+> The Big Data Analytics poses many challenges to the research community who has to handle several computational problems related to the vast amount of data.
+> An increasing interest involves Biomedical data aiming to obtain the so-called "personalized medicine", where therapy plans are designed on the specific genotype and phenotype of the individual patient.
+> The algorithm optimization plays a key role to this purpose.
+> In this work we discuss about several topics related to the Biomedical Big Data Analytics with a special attention to numerical issues and algorithmic solutions related to them.
+> We introduce a novel feature selection algorithm tailored on *omics* datasets, proving its efficiency on synthetic and real high-throughput genomic datasets.
+> The proposed algorithm is a supervised signature identification method based on a bottom-up combinatorial approach that exploits the discriminant power of all variable pairs.
+> We tested our our algorithm against other state-of-art models and it outperforms existing results or compares to them.
+> We introduce, also, different kinds of deep learning models, highlighting their efficiencies on biomedical image processing tasks.
+> Three custom frameworks for deep learning neural network models development are discussed and used to describe the numerical improvements proposed on the various topics.
+> We show promising results about Super Resolution models on NMR images and we discuss possible improvements in the use of these models in combination with Object Detection ones.
+> The image segmentation problem of femur head on CT images is discussed and the results obtained by our trained deep neural network are showed.
+> The last section of this work introduce a novel biomedical database obtained by the harmonization of multiple data sources.
+> The data involved in this project were mined using web-scraping pipelines and a novel natural language processing pipeline was designed to maximize the overlap between the different sources.
+> We describe the key steps which bring us to the realization of this network-of-networks database and we discuss about the potential applications of it to the scientific research.
+
+## Installation
 
 To compile the project you can use the [`Makefile`](https://github.com/Nico-Curti/PhDthesis/blob/master/Makefile) with the simple `make` command.
 In this way all the figure into the `img` directory will be converted into a pdf_tex and the full Pdf document will be generated.
 
-## Arguments
-
-Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through modern deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
-
 The on-line version of the thesis can be found on the [gitbook version](https://app.gitbook.com/@nico-curti2/s/phd-thesis) or via the [github web](https://nico-curti.github.io/PhDthesis).
+
+## Table of contents
 
 * [Introduction](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Introduction.md)
 
