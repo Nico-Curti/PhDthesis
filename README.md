@@ -42,7 +42,7 @@
 To compile the project you can use the [`Makefile`](https://github.com/Nico-Curti/PhDthesis/blob/master/Makefile) with the simple `make` command.
 In this way all the figure into the `img` directory will be converted into a pdf_tex and the full Pdf document will be generated.
 
-The on-line version of the thesis can be found on the [gitbook version](https://app.gitbook.com/@nico-curti2/s/phd-thesis) or via the [github web](https://nico-curti.github.io/PhDthesis).
+The on-line version of the thesis can be found on the [gitbook version](https://nico-curti2.gitbook.io/phd-thesis/) or via the [github web](https://nico-curti.github.io/PhDthesis).
 
 ## Table of contents
 
@@ -155,7 +155,7 @@ Please cite `Implementation and optimization of algorithms in Biomedical Big Dat
   year = {2019},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/Nico-Curti/PhDthesis}},
+  howpublished = {\url{https://nico-curti2.gitbook.io/phd-thesis/}},
 }
 ```
 

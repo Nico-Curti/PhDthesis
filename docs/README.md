@@ -141,6 +141,6 @@ Please cite `Implementation and optimization of algorithms in Biomedical Big Dat
   year = {2019},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/Nico-Curti/PhDthesis}},
+  howpublished = {\url{https://nico-curti2.gitbook.io/phd-thesis/}},
 }
 ```
