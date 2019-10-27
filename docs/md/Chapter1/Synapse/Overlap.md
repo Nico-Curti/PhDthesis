@@ -1,12 +1,12 @@
 ## Characterization of signature overlap
 
 In the analysis of the Synapse dataset we used a complex pipeline of cross-validation (ref Fig. [-1](../../../../img/distributions.svg)) to obtain a sufficient statistics.
-The DNetPRO algorithm was designed to work on a single dataset since the signature extraction can involve different variables for different data subdivisions.
+The `DNetPRO` algorithm was designed to work on a single dataset since the signature extraction can involve different variables for different data subdivisions.
 In our application, we divide the dataset into a training-test subdivision and the signature were extracted along a 10-fold cross-validation over the training set.
 This kind of setup could produce 10 totally different signatures, in the worst case.
 Moreover, we replicated our simulation for 100 repetitions and thus a set of 1000 totally independent signatures were extracted.
 
-Starting from this large subset of variables, we can evaluate the robustness of the DNetPRO algorithm in the variable identifications studying the overlap between these signatures.
+Starting from this large subset of variables, we can evaluate the robustness of the `DNetPRO` algorithm in the variable identifications studying the overlap between these signatures.
 From a statistical point-of-view it is quite unlikely that the same set of variables were included into all the extracted signatures, especially on this application, in which the variable roles are assumed by genes.
 On the other hand, the overlap of these signatures could highlight a statistical significance of some variables and thus genes related to the understudied tumors.
 
@@ -15,12 +15,12 @@ For each gene we counted its occurrences along the 1000 signatures.
 The same analysis was performed taking into account the signatures generated using the `K`-best score variables (ref. [ToyModel](../DNetPRO/ToyModel.md) for further information) and a random features extraction.
 In Fig. [1](../../../../img/DNetPRO_overlap.svg) the genes distribution obtained by the three methods are shown.
 
-![Signatures overlap obtained in the KIRC mRNA datasets. Genes occurrences of the 1000 DNetPRO signatures extracted from the Synapse pipeline (blue). Genes occurrences of the 1000 `K`-best variables extracted from the Synapse pipeline (red): the number of genes (`K`) is the same of the corresponding DNetPRO signature. Genes occurrences of 1000 random signatures (yellow).](../../../../img/DNetPRO_overlap.svg)
+![Signatures overlap obtained in the KIRC mRNA datasets. Genes occurrences of the 1000 `DNetPRO` signatures extracted from the Synapse pipeline (blue). Genes occurrences of the 1000 `K`-best variables extracted from the Synapse pipeline (red): the number of genes (`K`) is the same of the corresponding `DNetPRO` signature. Genes occurrences of 1000 random signatures (yellow).](../../../../img/DNetPRO_overlap.svg)
 
-Both DNetPRO and `K`-best feature extraction algorithms identified a core set of genes common to the full set of signatures.
-The `K`-best algorithm appears more stable than the DNetPRO algorithm and it is easier to find the same genes along the extracted signatures.
-This behavior could be associated to the problems highlighted also in the toy model simulations (ref.[ToyModel](../DNetPRO/ToyModel.md)): the DNetPRO algorithm is able to identify only one signature but the informative features (genes) could not co-operate in the same network-signature and thus they could be discarded.
-The DNetPRO signatures are, in fact, very small compared to the number of variables and thus only small network components were extracted, which are very closed to star-networks.
+Both `DNetPRO` and `K`-best feature extraction algorithms identified a core set of genes common to the full set of signatures.
+The `K`-best algorithm appears more stable than the `DNetPRO` algorithm and it is easier to find the same genes along the extracted signatures.
+This behavior could be associated to the problems highlighted also in the toy model simulations (ref.[ToyModel](../DNetPRO/ToyModel.md)): the `DNetPRO` algorithm is able to identify only one signature but the informative features (genes) could not co-operate in the same network-signature and thus they could be discarded.
+The `DNetPRO` signatures are, in fact, very small compared to the number of variables and thus only small network components were extracted, which are very closed to star-networks.
 Despite the discrepancy between the signatures we have a core of 18 genes which occurs in at least the 95% of both signatures and 8 of them are in the 99% of both signatures.
 
 The common genes were also mapped on public databases (TISIDB, [10.1093/bioinformatics/btz210](https://doi.org/10.1093/bioinformatics/btz210)) and [Oncotarget](), which link tumors to related genes.

@@ -5,7 +5,7 @@
 
 \subsection[Pipeline]{DNetPRO in Snakemake}\label{implementation:snakemake}
 
-The starting (silent) hypothesis done until now is that we are running the DNetPRO algorithm on a single dataset (or better on a single Hold-Out subdivision of our data).
+The starting (silent) hypothesis done until now is that we are running the \textsf{DNetPRO} algorithm on a single dataset (or better on a single Hold-Out subdivision of our data).
 On this configuration it is legal to stress as much as possible the available computational resources and parallel processing each step of the algorithm.
 
 If we want to introduce our algorithm inside a larger pipeline, in which we compare the resulting obtained over a Cross-Validation of our datasets we have to re-think about the parallelization done.
@@ -21,7 +21,7 @@ It is widely used for bioinformatic pipeline parallelization since it can easily
 \begin{figure}[htbp]
 \hspace{-2cm}
 \includegraphics[width=1.3\textwidth]{qdanet_pipe_single.pdf}
-\caption{Example of DNetPRO pipeline on a single cross validation.
+\caption{Example of \textsf{DNetPRO} pipeline on a single cross validation.
 It is highlighted the independence of each fold from each other.
 This scheme shows a possible distribution of the jobs on a multi-threading architecture or for a distributed computing architecture.
 The second case allows further parallelization scheme (hidden in the graph) for each internal step (e.g. the evaluation of each pair of genes).

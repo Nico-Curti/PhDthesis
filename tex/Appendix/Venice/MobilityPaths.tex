@@ -19,7 +19,7 @@ if you do not have a map.
 Therefore people with a limited knowledge of the road network move according to paths suggested by Internet sites or following the signs on the roads.
 To point out a mobility subnetwork we rank the roads of Venice according to a weight proportional to the number of mobility paths passing through each road.
 Thus We define a relevant subnetwork as a connected subnetwork that explains a considerable fraction of the observed mobility.
-In this case each road (identified by two nodes in the poly-line format) represents the link of our weighted graph and we can apply the DNetPRO technique shown in~\ref{implementation:network} to identify the network core with only closed paths\footnote{
+In this case each road (identified by two nodes in the poly-line format) represents the link of our weighted graph and we can apply the \textsf{DNetPRO} technique shown in~\ref{implementation:network} to identify the network core with only closed paths\footnote{
   Pendant nodes are unphysical solutions in our model since we are interested on the pedestrian mobility paths that bring people from one location to an other.
 }.
 
@@ -27,7 +27,7 @@ In this case each road (identified by two nodes in the poly-line format) represe
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{venice_step.png}
-\caption{From top-left to right-bottom, we plot four mobility subnetworks with increasing number of roads, selected by the DNetPRO algorithm using the Carnival dataset.
+\caption{From top-left to right-bottom, we plot four mobility subnetworks with increasing number of roads, selected by the \textsf{DNetPRO} algorithm using the Carnival dataset.
 }
 \label{fig:venice_step}
 \end{figure}
@@ -35,7 +35,7 @@ In this case each road (identified by two nodes in the poly-line format) represe
 
 Starting from the previously evaluated daily flows for each road, we order in a decreasing way the roads according to the observed
 flows.
-The DNetPRO algorithm scrolls down the list adding the road to a temporary list.
+The \textsf{DNetPRO} algorithm scrolls down the list adding the road to a temporary list.
 At every step the \quotes{pruning process} starts on the selected roads cutting the isolated roads in order to get a connected subnetwork\footnote{
   Since we are interested on the largest connected component the \emph{merging} parameter is off.
 }.
@@ -56,7 +56,7 @@ The picture (b) refers to the \emph{Festa del Redentore} mobility during 15/07/2
 \end{figure}
 \end{center}
 
-Using the DNetPRO algorithm we are able to extract a subnetwork which explains the 64\% of the observed mobility using 13\% of the total road network length for the case of the Carnival dataset and 15\% of the total length in the case of the \emph{Festa del Redentore} dataset.
+Using the \textsf{DNetPRO} algorithm we are able to extract a subnetwork which explains the 64\% of the observed mobility using 13\% of the total road network length for the case of the Carnival dataset and 15\% of the total length in the case of the \emph{Festa del Redentore} dataset.
 
 The selected road subnetworks are plotted in Fig~\ref{fig:venice_result} for both the datasets.
 As a matter of fact, many of the highlighted paths are also suggested by Internet sites.

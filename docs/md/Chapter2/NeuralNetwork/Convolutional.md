@@ -126,7 +126,7 @@ In our `Byron` library we provide its implementation for kernel sizes equal to 3
 
 To test which algorithm could be more appropriated for Neural Network models we tested their computational time efficiency on different random images.
 The tests were performed on a classical bioinformatics server (128 GB RAM memory and 2 CPU E5-2620, with 8 cores each) and we considered only kernel sizes equal to 3 (`Winograd` constrain) varying the input dimensions and the number of filters.
-In Fig.[1]() we show the result of our simulations using the `im2col` values as reference [^6].
+In Fig.[1](../../../../img/winograd_timing.svg) we show the result of our simulations using the `im2col` values as reference [^6].
 
 ![Time performances of different convolution algorithms: `im2col` (orange, reference), `FFTW3` (green, fast Fourier transformation using the `FFTW3` library) and `Winograd` (blue). The values are normalized according to the `im2col` results since it is the most common convolution algorithm. The tests were performed on different input sizes (width/height), keeping fixed the number of channels and the number of filters. The tests were performed using a `C++` implementation of the three methods.](../../../../img/winograd_timing.svg)
 

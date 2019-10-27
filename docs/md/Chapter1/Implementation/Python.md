@@ -1,16 +1,16 @@
 ## DNetPRO in Python
 
-Up to now we are focusing on the algorithm performances, leaving out the usability of the DNetPRO algorithm for the (research) community.
+Up to now we are focusing on the algorithm performances, leaving out the usability of the `DNetPRO` algorithm for the (research) community.
 Despite the `C++` is one of the most efficient and old programming language[^1], the `Python` language users are increasing in the last few years.
 `Python` is becoming a leader in scientific research publications and the large part of Machine Learning analysis are performed using Python libraries (in particular `scikit-learn` library).
 So we have to reach a compromise between the performances and usability of new developed codes and it can be reached using the `Cython` [[behnel2010cython](https://cython.org/)] framework.
 
 `Cython` "language"[^2] allows an easy interface between `C++` codes and `Python` language.
 With a relatively simple wrapping of the `C++` functions, they can be used inside a pure `Python` code preserving as much as possible the computational performances of the pure `C++` version.
-In this way we can create a simple `Python` object which performs the full set of DNetPRO steps and, moreover, which is compatible with the functions provided by the other machine learning libraries.
+In this way we can create a simple `Python` object which performs the full set of `DNetPRO` steps and, moreover, which is compatible with the functions provided by the other machine learning libraries.
 
 With this purposes we chose to operate a double wrap of the `C++` functions to separate as much as possible the `C++` component from the `Python` one[^3].
-The [`Python` object](https://github.com/Nico-Curti/DNetPRO/blob/master/DNetPRO/DNetPRO.py) was written considering a full compatibility with the `scikit-learn` library to allow the use of the DNetPRO feature selection as an alternative component of other Machine Learning pipelines.
+The [`Python` object](https://github.com/Nico-Curti/DNetPRO/blob/master/DNetPRO/DNetPRO.py) was written considering a full compatibility with the `scikit-learn` library to allow the use of the `DNetPRO` feature selection as an alternative component of other Machine Learning pipelines.
 
 
 [^1]: Still in common use in scientific research groups.

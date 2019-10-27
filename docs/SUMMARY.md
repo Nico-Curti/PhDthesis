@@ -2,7 +2,7 @@
 
 * [Implementation and optimization of algorithms in Biomedical Big Data Analytics](./README.md)
 
-* [Introduction](./Introduction.md)
+* [Introduction](./md/Introduction.md)
 
 * [DNetPRO algorithm and Feature Selection](./md/Chapter1/README.md)
   * [DNetPRO algorithm](./md/Chapter1/DNetPRO/README.md)
@@ -69,7 +69,7 @@
   * [CHIMeRA analyses](./md/Chapter3/CHIMeRA/Results.md)
   * [CHIMeRA as Service](./md/Chapter3/CHIMeRA/Service.md)
 
-* [Conclusions](./Conclusions.md)
+* [Conclusions](./md/Conclusions.md)
 
 * Appendix:
   * [Appendix A - Discriminant Analysis](./md/Appendix/DiscriminantAnalysis/README.md)

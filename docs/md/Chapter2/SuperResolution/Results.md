@@ -1,7 +1,7 @@
 ## Results
 
 As discussed in the previous sections we implemented the EDSR and WDSR models into our custom `Byron` library but we did not re-trained the models.
-The trained weights used in this work were taken from the official implementation of the models public available on the corresponding Github pages([EDSR]() and [WDSR]()). %TODO insert ref
+The trained weights used in this work were taken from the official implementation of the models public available on the corresponding Github pages([EDSR](https://github.com/thstkdgus35/EDSR-PyTorch) and [WDSR](https://github.com/JiahuiYu/wdsr_ntire2018)).
 
 First of all we tested our implementation in terms of execution time.
 The official implementations are written using `Tensorflow` and `PyTorch` frameworks and they are usable only with a GPU support.

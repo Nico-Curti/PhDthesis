@@ -21,7 +21,7 @@ The major part of the test slices obtained a IoU score greater then 0.8 which co
 Only a 20% (10/40 slices) of the test slices showed a IoU score less than 0.8 and thus a binary mask quite different from the desired output.
 In Fig. [3](../../../../img/IoU_score_out_good_logs_noaug.svg) we show some of the good results obtained using our trained model.
 
-![Output mask of trained U-Net model and corresponding ground-truth and IoU score. **(first column)** U-Net model output after a thresholding equal to `10^{-2}`. **(second column)** Superposition of the original image with the generated binary mask. **(third column)** Corresponding ground truth of the CT slice. **(fourth column)** IoU (Intersection Over Union) score between the model output and ground truth slice.]()
+![Output mask of trained U-Net model and corresponding ground-truth and IoU score. **(first column)** U-Net model output after a thresholding equal to `10^{-2}`. **(second column)** Superposition of the original image with the generated binary mask. **(third column)** Corresponding ground truth of the CT slice. **(fourth column)** IoU (Intersection Over Union) score between the model output and ground truth slice.](../../../../img/IoU_score_out_good_logs_noaug.svg)
 
 Despite the first slice shown in Fig. [3](../../../../img/IoU_score_out_good_logs_noaug.svg) could be easily segmented also by our custom image processing pipeline (the bone extraction in this case is quite easy) the second two slices show more difficult tasks in which it is hard to discriminate between the femur head and the acetabular fossa.
 In all these case the U-Net model was able to discriminate between the bones with a good agreement with our naive ground truth.

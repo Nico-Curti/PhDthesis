@@ -7,7 +7,7 @@
 In the context of high-throughput data analysis, a challenge is the search for an optimal choice of variables (a \quotes{signature}) to classify groups of samples or regress trends with optimal performance and minimum dimensionality.
 Usually high-throughput omics data (e.g. transcriptomics, ge-nomics, methylomics) provide datasets with few tens to hundreds of samples, and often 1000 times larger numbers of variables.
 The objective of dimensionality reduction through the choice of an optimal signature is twofold: 1) the identification of relevant variables, that should separate the signal from the noise (i.e. variables not significantly associated to, or descriptive of the studied process); 2) in a practical context, it is important to establish future diagnostic criteria that can be implemented in cheap and simple toolkits, such as PCR cards or dedicated microarray chips, that usually test a small number of transcripts (ranging from tens to hundreds, at most).
-The quantity of samples compared to the available features of this work, join with the final purposes of this kind of analysis, set the well-known ill-posed problem conditions for which the DNetPRO algorithm was thought.
+The quantity of samples compared to the available features of this work, join with the final purposes of this kind of analysis, set the well-known ill-posed problem conditions for which the \textsf{DNetPRO} algorithm was thought.
 
 Since the number of sample is drastically small no robust cross-validation procedure can be applied.
 So we focused on the identification of a putative gene-signature able to discriminate between NN and NP samples, leaving the PP data as validation set.
@@ -53,14 +53,14 @@ Interestingly within the set of 10 discriminating transcripts, in addition to CD
 These genes potentially have functions related to the biology of progression of JD.
 Also for the other genes of the final 10-transcript signature a possible biological interpretation related to JD was given (see the original paper for further descriptions).
 
-In conclusion, the DNetPRO algorithm identified a set of 10 genes, the expression levels of which could discriminate between the exposed and sero-converted animals.
+In conclusion, the \textsf{DNetPRO} algorithm identified a set of 10 genes, the expression levels of which could discriminate between the exposed and sero-converted animals.
 These finding lead the possible use of RNA expression analysis as new diagnostic test for JD.
 In particular the approach may be able to identify infected animals prior to sero-conversion, prior to a positive ELISA test result.
 However, further tests for specificity and validation in a larger cohort are required.
 
 
 %Description of the bovine dataset with biological background.
-%Application of the DNetPRO on the Bovine dataset with the description of the two singatures extracted.
+%Application of the \textsf{DNetPRO} on the Bovine dataset with the description of the two singatures extracted.
 %Discussion on biological interpretation of the genes.
 
 % cite and describe BlendNet repo in the signature figure

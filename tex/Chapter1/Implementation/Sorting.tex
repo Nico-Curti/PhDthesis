@@ -10,7 +10,7 @@ The sorting algorithm starts at the end of variable couple evaluation and re-ord
   In some cases the simple accuracy is useless, especially when we are working with unbalanced population classes.
   In this case we can use a statistical score which takes in count the balanced between the right classifications of our samples (e.g Matthews Correlation coefficient, MCC).
   The developed code evaluate either the global accuracy of classification either the MCC and, with slight changes allows to perform the re-ordering of feature pair according to the desired score.
-  Since in the next section we will discuss the application of the DNetPRO algorithm to real data using only the classification accuracy as score, we focused only on it in the next sections.
+  Since in the next section we will discuss the application of the \textsf{DNetPRO} algorithm to real data using only the classification accuracy as score, we focused only on it in the next sections.
 }.
 This step is performed in the same code (and same parallel section) of the previous section but it deserves an own topic for a better focus on the parallelization strategy chosen.
 Moreover, there are many common parallel implementation of sorting algorithm and, to reach the best performances, we have to chose the appropriated one.

@@ -1,6 +1,6 @@
 ## Algorithm implementation
 
-The DNetPRO algorithm is made by a sequence of different steps which have to be performed sequentially for a signature extraction.
+The `DNetPRO` algorithm is made by a sequence of different steps which have to be performed sequentially for a signature extraction.
 For this purpose each step can be optimized independently using the full set of available computational resources[^1].
 In this section will be analyzed each part of the pipeline focusing on the optimization strategies used for the algorithm implementation.
 

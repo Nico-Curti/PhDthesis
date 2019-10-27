@@ -8,7 +8,7 @@ As benchmark dataset was chosen the core sets extracted from the The Cancer Geno
 This allowed us to compare our results to a large set of commonly used classification methods, by using their performance validation pipeline (accession number \href{https://www.synapse.org/#!Synapse:syn1710282/wiki/27303}{syn1710282, doi:10.7303/syn1710282}).
 
 The Synapse dataset is composed by four tumors datasets: kidney renal clear cell carcinoma (KIRC), glioblastoma multiforme (GBM), ovarian serous cystadenocarcinoma (OV) and lung squamous cell carcinoma (LUSC).
-For each cancer type we applied the DNetPRO algorithm on mRNA, miRNA and RPPA data and we compare the performances results with the Yuan et al. ones.
+For each cancer type we applied the \textsf{DNetPRO} algorithm on mRNA, miRNA and RPPA data and we compare the performances results with the Yuan et al. ones.
 
 The summary description of the datasets used is reported in the Tab.~\ref{tab:synapse}.
 
@@ -57,7 +57,7 @@ The final multidimensional signatures were tested by a Discriminant Analysis wit
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{dnet_pipe.pdf}
-\caption{Scheme of DNetPRO algorithm.
+\caption{Scheme of \textsf{DNetPRO} algorithm.
 On the \quotes{training set}, all possible couples of variables are used for Discriminant Analysis, generating the fully connected network weighted by classification performance.
 Thresholding ranked couples, several signatures can result (as connected components) and their performance is evaluated on the \quotes{whole test set} (procedure $A$).
 % Signatures are given by the connected components created by all couples with scorer greater than a chosen threshold.
@@ -68,7 +68,7 @@ A unique best signature can be identified on a \quotes{validation set} and teste
 \end{figure}
 \end{center}
 
-We remark that DNetPRO can provide more than one signature as a final outcome, given by all the connected components found in the variable network, or a unique top-performing signature can be obtained by a further cross-validation step (procedure $A$ and procedure $B$ in Fig.~\ref{fig:dnet_pipe}, respectively).
+We remark that \textsf{DNetPRO} can provide more than one signature as a final outcome, given by all the connected components found in the variable network, or a unique top-performing signature can be obtained by a further cross-validation step (procedure $A$ and procedure $B$ in Fig.~\ref{fig:dnet_pipe}, respectively).
 
 In the single cross validation configuration (procedure $A$ in Fig.~\ref{fig:dnet_pipe}), the best signature was extracted as the one reaching the highest accuracy score during the training step.
 This best signature was then tested over the available test set.

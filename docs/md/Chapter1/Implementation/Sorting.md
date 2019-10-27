@@ -22,7 +22,7 @@ Then, going backwards to the subdivisions at each step, we merge the sub-arrays 
   In some cases the simple accuracy is useless, especially when we are working with unbalanced population classes.
   In this case we can use a statistical score which takes in count the balanced between the right classifications of our samples (e.g Matthews Correlation coefficient, [MCC](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient)).
   The developed code evaluate either the global accuracy of classification either the MCC and, with slight changes allows to perform the re-ordering of feature pair according to the desired score.
-  Since in the next section we will discuss the application of the DNetPRO algorithm to real data using only the classification accuracy as score, we focused only on it in the next sections.
+  Since in the next section we will discuss the application of the `DNetPRO` algorithm to real data using only the classification accuracy as score, we focused only on it in the next sections.
 
 [^2]: We are considering only un-stable sort in which the preserving order of equivalent elements in the array is not guaranteed.
 

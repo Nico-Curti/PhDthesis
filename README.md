@@ -27,11 +27,11 @@ In this way all the figure into the `img` directory will be converted into a pdf
 
 ## Arguments
 
-Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through model deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
+Different topics about Big Data Analytics are discussed in this work, starting from Feature Selection problem, passing through modern deep learning Neural Network models until a novel approach to Big Data database merging via Natural Language Processing techniques.
 
 The on-line version of the thesis can be found on the [gitbook version](https://app.gitbook.com/@nico-curti2/s/phd-thesis) or via the [github web](https://nico-curti.github.io/PhDthesis).
 
-* [Introduction](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/Introduction.md)
+* [Introduction](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Introduction.md)
 
 * [DNetPRO algorithm and Feature Selection](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/README.md)
   * [DNetPRO algorithm](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/DNetPRO/README.md)
@@ -98,7 +98,7 @@ The on-line version of the thesis can be found on the [gitbook version](https://
   * [CHIMeRA analyes](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Results.md)
   * [CHIMeRA as Service](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Service.md)
 
-* [Conclusions](./Conclusions.md)
+* [Conclusions](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Conclusions.md)
 
 * Appendix:
   * [Appendix A - Discriminant Analysis](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Appendix/DiscriminantAnalysis/README.md)

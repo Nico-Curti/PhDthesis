@@ -5,19 +5,80 @@
 \chapter*{Introduction}\label{Introduction}\addcontentsline{toc}{chapter}{Introduction}
 \markboth{Introduction}{Introduction}
 
-Biomedical data are growing both in size and breath of possible uses.
-Of special importance are the so called biomedical big data, blanket term describing data generated from several machines and used to describe the health state of a person:
-\begin{enumerate}
-\item\textbf{Next generation sequencing NGS} NGS technology. RNA-seq: experimental procedure, challenges and opportunities in statistical data analysis. ChIP-Seq: experimental procedure and statistical data analysis.
-\item\textbf{Proteomics and Metabolomics} LC/MS technology, challenges in data processing. Biological pathways.
-\item\textbf{Biomedical imaging} Imaging techniques, acquisition methods and data structures/characteristics for different imaging modalities.
-\item\textbf{Statistical Analysis of Imaging Data} Data processing techniques, study designs, analysis strategies, research questions and goals. Radiomics.
-\item\textbf{Brain Networks and Imaging Genetics} The importance of brain networks in differentiating between healthy and mentally ill subjects, methods on how to estimate the brain network which may or may not rely on additional clinical, demographic and genetic information.
-\item\textbf{Molecular genetics and population genetics} Biological backgrounds for statistical genetics, concepts from population genetics that are most relevant to association analysis.
-\item\textbf{Genetic association studies} Tests for association, challenges especially in the context of genome-wide association studies (GWAS), including how to correct for population stratification and multiple testing.
-\end{enumerate}
+Big Data: these two words are at the heart of many contemporary researches.
+Nevertheless, it is yet a blanket term and no exhaustive description has been provided.
+We commonly associate this term to the description of data generated from several machines and used to describe very complex system.
+We can find Big Data associated to multiple kinds of modern researches which use this term to highlight the complexity of their projects.
+The use of Big Data, in fact, is closely related to the Complexity term (intended with its physical meaning) and to the major part of Artificial Intelligence researches since they seem to be the only way to overcome these problems.
+As anticipated, it is difficult to find a satisfactory definition about them and the common sense tends to identify them as simply a vast amount of data.
+However, this is just a broadly description of them and it simplifies too much their usage and power.
+We can find Big Data in more applications and fields than we usually think and a prominent research field is the Biomedical one.
 
-These datasets are known to contain vast amount of information, especially when connected together to enhance the power of the biological modeling~\cite{Pooley2005, Castellani2016}.
+Biomedical data are growing both in size and breath of possible uses.
+This growth is driven by the development of newer and cheaper technologies for the acquisition of data which enlarge the availability of them.
+At the same time, also the computational power is increasing and we can take advantage of more efficient and complex algorithms and pipelines for the analysis of a such amount of data.
+Unfortunately, this second growth is not enough fast to tackle these problems and the development of novel techniques of processing and, moreover, algorithms able to extract informative portions of data is essential in the so-called Big Data Analytics.
+This is even more true when we talk about Biomedical Big Data and thus data related to health-care studies which aim to identify the variable responsible for more or less complex diseases or to give a description of the more complex biological processes.
+In addition to the novel \emph{Next Generation Sequencing} (NGS) technologies related to the analysis of biological structures like DNA and RNA, the so-called \emph{omics} researches involve a large part of contemporary biomedical researches.
+The term \emph{omic} data, also in this case, refers to the wide range of biological studies ending in -omics, like \emph{genomics}, \emph{proteomics} or \emph{metabolomics} which aim to describe and quantify biological processes at different scale levels.
+The analysis of these kinds of data poses many challenges to the research community, especially for the vast amount of variable involved.
+For all we may work with Big Data, the biological research field is used to analyze only few samples compared to the number of variables involved: this is exactly the opposite behavior of common statistical analyses and, moreover, of physic research.
+The ability to extract information and reduce the problem dimensionality is crucial to address these problems.
+
+More complex analyses related to high dimensional problems are the image processing ones.
+Biomedical imaging is another of the most prominent kind of analysis for the development of novel medical treatments.
+The many differences between acquisition methods and data structures/characteristics for different imaging modalities create a zoo of possible studies and analyses.
+At the same time, the dimensionality of the involved images requires an adequate computational effort.
+These characteristics satisfy all the requirements pose by the modern deep learning training.
+It is not always possible create an appropriated mathematical model to describe the underlying dataset and in many cases there is the need to handle more general applications.
+Standard machine learning methods can not keep up such requirements and they are giving way to deep learning models.
+In many applications these models are used as black-boxes and their complexity does not always allow a complete understanding about their learning.
+Nevertheless, their efficiency is overcoming standard methods in a vast amount of applications and they are the only tools which provide the semblance of an artificial intelligence.
+
+All these data and analyses involve multiple scientific researches which driven by them are becoming more accurate but, at the same time, also more specialized.
+With a such heterogeneity of data, we can handle very useful analyses of any biological compound with a payback of a loss about the system complexity and interactions.
+The absence of a standardized system for sharing biomedical information contributes to the difficulty about merging results provided by different studies.
+Several European project about health-care research has been financed aiming to develop an harmonization between biomedical data sources.
+The principal issues about this topic are related to a non rigid nomenclature of medical keywords and data formats.
+Relational databases have efficiently driven Big Data research up to now, but the increasing demand of non-trivial connections between different kind of entries is paving the way to different kind of approaches and data management.
+At the same time, also the research about novel natural language processing methods are becoming very popular in these applications.
+
+This work of thesis started from these multiple issues about Big Data and it focus on different Biomedical topics.
+In each chapter we are going to handle a different aspect of Big Data research and a different kind of data.
+For each topic we provide a balanced description between the mathematical/theoretical background and numerical issues/solutions of it.
+The main focus of each application remains its algorithmic description and the numerical solutions developed to handle the underlying problem.
+
+We start our trip across Biomedical Big Data introducing a novel feature selection algorithm.
+The proposed algorithm is tailored for gene expression analyses and in the various sections we provide a description of all its pros and cons.
+The algorithm was already used in previous scientific publications but, for the first time, a deeper analysis of all its characteristics either from a numerical either from a algorithmic point-of-views is provided.
+The algorithm has also undergone an intensive optimization procedure to make it able to handle Big Data problems in a reasonable computational time.
+We firstly test our method against a custom toy model and only later we compare its efficiency against state-of-art equivalent models and data.
+We also show some applications of it to different kind of data, starting from gene expression datasets, passing to protein expression levels until non-biological data proving its efficiency in all these topics.
+Within the limits of our knowledge about biological process we provide also an interpretation about the obtained results where it is possible.
+
+Then, we will move to more numerical expensive analyses with the help of modern deep learning models.
+Starting from a brief introduction about neural network models we shall look at the different functions/layers included in the later discussed models.
+For each of them we provide a theoretical explanation about the mathematical functions and, also in this case, we deeply focus on their numerical implementation.
+Three custom libraries are introduced to help us in the description of these models and their results are discussed against other state-of-art implementations.
+We use deep learning neural network models to handle different kind of image processing analyses with a particular attention to biomedical images.
+As previous discussed, there are multiple image formats in the biomedical field and in our applications we use NMR and CT images.
+Starting from modern Super Resolution algorithms we show their application on NMR image proving how they can help to increase the biomedical image quality and how they can be also used to improve object detection tasks.
+Other kinds of applications are also showed to prove the versatility of such methods in several biomedical tasks.
+
+We conclude our discussion introducing a novel database obtained by the harmonization of public available datasets.
+A global description about Big Data sources and how we can handle problems related to the data extraction is discussed before our pipeline of processing.
+A key role in our work is played by natural language processing methods and, thus, starting from a brief introduction about them we focus on the developed pipeline.
+The work concerned the merging of multiple datasets into a unique network structure ables to manage the interactions between different biomedical compounds.
+The network-of-networks structure generated during this project allows a wider overview of several diseases pointing out their association to genes, drugs and other biological data.
+We also discuss about how this large amount of information can be managed using modern database languages and about the chosen strategy to share our results to the scientific community.
+
+For sake of brevity, not all the developed projects are discussed and some of the remaining ones are bounded in the Appendix of this text.
+However, the principal contributions of this work are related to the developed codes.
+All the code described in this work are, in fact, public available on-line on Github.
+We have paid special attention to the development of our codes, carefully managing their testing and availability.
+Each code has been enriched by an adequate on-line documentation either about its usage either about its installation and performances.
+A small part of the codes have been written in pure-\textsf{Python} while the major part has been written in \textsf{C++}: for this reason a continuous integration of them is essential to ensure their usability.
+We remark that also the current text is public available on Github as \textsf{Latex} code and to facilitate its reading and its hyper-link connections we have converted it also into a \textsf{Gitbook} version available at \url{https://nico-curti.gitbook.io/phdthesis/}.
 
 
 % take something from the EuroPar18 introduction

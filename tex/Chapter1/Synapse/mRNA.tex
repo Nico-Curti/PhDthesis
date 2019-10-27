@@ -15,9 +15,9 @@ As expected, performances decrease with the introduction of the second cross val
 \centering
 \def\svgwidth{0.45\textwidth}
 \input{./img/mRNA_tables.pdf_tex}
-\caption{Results obtained by the DNetPRO algorithm pipeline on four mRNA tumor datasets, as from the Synapse database~\cite{Yuan2014}.
+\caption{Results obtained by the \textsf{DNetPRO} algorithm pipeline on four mRNA tumor datasets, as from the Synapse database~\cite{Yuan2014}.
 \textbf{(a)} Distributions of AUC values for the tumor datasets. Green boxplots: results using procedure $A$ as described in Fig.~\ref{fig:dnet_pipe}; yellow boxplots: results obtained using procedure $B$.
-\textbf{(b)} Comparison of DNetPRO results with the methods used in the paper of Yuan et al.: max AUC values obtained over the 10-Fold cross-validation procedure.
+\textbf{(b)} Comparison of \textsf{DNetPRO} results with the methods used in the paper of Yuan et al.: max AUC values obtained over the 10-Fold cross-validation procedure.
 }
 \label{fig:dnet_results}
 \end{figure}
@@ -28,6 +28,6 @@ The size of the extracted signatures is quite constant, and smaller than 500 gen
 To test the robustness of our method, since each cross-validation procedure may generate different signatures, we measured the overlap of the genes belonging to each mRNA signature over 100 simulations with different training-test data splitting.
 We observed an average overlap ranging from 40\% to 60\%, with a smaller group of genes found across all the 100 cross-validation iterations.
 
-In this application the DNetPRO algorithm has several advantages: easy scalability on parallel architectures, simple signature interpretation allowing a valuable application in a biomedical context and a significant robustness in a highly noisy environment such as genomics measurements.
+In this application the \textsf{DNetPRO} algorithm has several advantages: easy scalability on parallel architectures, simple signature interpretation allowing a valuable application in a biomedical context and a significant robustness in a highly noisy environment such as genomics measurements.
 
 \end{document}

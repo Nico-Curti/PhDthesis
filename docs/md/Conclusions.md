@@ -4,8 +4,8 @@ We have concluded our trip about the applications of Big Data Analytics to Biome
 In this work we have touched multiple and different topics related to this theme.
 
 In the first chapter we have focused on the difficulty about information extraction analyzing high-throughput datasets.
-The so-called -omics datasets are becoming a very interesting research field in biology and medicine since, using modern data acquisition techniques, they are capable to give us a wide range of useful data for the analysis of multiple diseases.
-A crucial role on this topic is still given by tumors and using omic data we can design novel methods to identify those responsible for these diseases.
+The so-called *omics* datasets are becoming a very interesting research field in biology and medicine since, using modern data acquisition techniques, they are capable to give us a wide range of useful data for the analysis of multiple diseases.
+A crucial role on this topic is still given by tumors and using *omic* data we can design novel methods to identify those responsible for these diseases.
 The amount of these data, or more in general of Biomedical Big Data, poses new challenges to the scientific research since we have to convert them into useful information or, in other words, we have to be able to identify their informative core.
 To this purpose we have designed the new `DNetPRO` algorithm as novel feature selection method.
 
