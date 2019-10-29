@@ -16,7 +16,7 @@ This is also the case related to our `CHIMeRA` project, in which we have a huge 
 
 First of all we have to take care that each human language has its own characteristics and thus it is harder to create to a pipeline ables to process all the languages at the same time while it is easier to tune an algorithm on a particular language.
 In our work we were focused on the Italian language (`SymptomsNet`) and on the English language (`CHIMeRA` Network).
-Since the SymptomsNet project was developed as simple proof of concepts, the developed Italian pipeline was really naive and for sake of brevity we will focus only on the `CHIMeRA` pipeline, i.e the English one.
+Since the `SymptomsNet` project was developed as simple proof of concepts, the developed Italian pipeline was really naive and for sake of brevity we will focus only on the `CHIMeRA` pipeline, i.e the English one.
 We would stress that in our application we were not interested on the understanding of the words meaning but we want to minimize the word heterogeneity maximizing their overlap.
 In this way we can ignore the semantic meaning of the strings and we could focus only on their syntaxes.
 

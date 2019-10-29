@@ -45,16 +45,13 @@ Each step performs its independent logging on a single shared file.
 If an error occurs the service logs an appropriated message and it saves the current log-file in a different location to prevent possible log-cleaning (optional step).
 Then the service restarts.
 
-% \begin{figure}[htbp]
-% \centering
-% \def\svgwidth{0.8\textwidth}
-% \input{./img/FiloBlu.pdf_tex}
-% \caption{
-% }
-% \label{fig:FiloBlu}
-% \end{figure}
-
-%The above computational scheme of the service is shown in Fig.~\ref{fig:FiloBlu}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{FiloBluService.png}
+\caption{FiloBlu Service computation scheme.
+}
+\label{fig:FiloBlu}
+\end{figure}
 
 We implemented this type of service in pure \textsf{Python} and the code is public available on Github~\cite{FiloBlu}.
 The developed service was customized according to the server requirements of the project\footnote{

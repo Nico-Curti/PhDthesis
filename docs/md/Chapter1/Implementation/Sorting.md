@@ -4,7 +4,7 @@ The sorting algorithm starts at the end of variable couple evaluation and re-ord
 This step is performed in the same code (and same parallel section) of the previous section but it deserves an own topic for a better focus on the parallelization strategy chosen.
 Moreover, there are many common parallel implementation of sorting algorithm and, to reach the best performances, we have to chose the appropriated one.
 
-The sorting algorithm are already implemented in serial version in the major part of the languages (Python and C++ included).
+The sorting algorithm are already implemented in serial version in the major part of the languages (`Python` and `C++` included).
 The naive version of the algorithms are also quite optimized and they perform the computation with complexity `(O(N log(N)))`[^2].
 In this case we have not to re-invent any sorting technique, but only insert as well as possible these algorithms inside a parallel sections and use the variable format chosen for couple performances storage.
 Since we are working with SoA objects we need to re-order all the structure arrays in the same way.

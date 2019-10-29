@@ -22,13 +22,13 @@ Thus it can be easily parallelizable to increase speed performance.
   This behavior particularly affects the variance estimation: the chose of a numerical stable formula for this quantity play a crucial role for the computation because the classifier score has to be normalized by this.
 
 
-With these ideas in mind we can write a C++ code able to optimize this step of computation in a multi-threading environment with the purpose of testing its scalability over multi-core machines.
+With these ideas in mind we can write a `C++` code able to optimize this step of computation in a multi-threading environment with the purpose of testing its scalability over multi-core machines.
 
 Starting from the first discussed point, we chose to implement the full code inside a unique main function with the help of only a single SoA custom object and one external function (*sorting algorithm* discussed in the next section).
 This allows us to implement the code inside a single parallel section reducing the time of thread spawns.
 We chose to import the data from file in sequential mode since the I/O is not affected by parallel optimizations.
 
-Following the instructions suggested in Appendix A - Numerical Implementation, we compute the statistic quantities on the full set of data before starting the couples evaluation.
+Following the instructions suggested in [Appendix A - Numerical Implementation](../Appendix/README.md), we compute the statistic quantities on the full set of data before starting the couples evaluation.
 Taking a look to the variance equation
 
 $$
@@ -90,15 +90,15 @@ if __name__ == '__main__':
 
 ```
 
-In this section we also provide an "equivalent" Python implementation with the use of common machine learning libraries and parallel settings (ref. [code](https://github.com/Nico-Curti/DNetPRO/blob/master/timing/timing.py)).
-In the next sections we will discuss the computational performances of this naive implementation with C++ one discussed above.
+In this section we also provide an "equivalent" `Python` implementation with the use of common machine learning libraries and parallel settings (ref. [code](https://github.com/Nico-Curti/DNetPRO/blob/master/timing/timing.py)).
+In the next sections we will discuss the computational performances of this naive implementation with `C++` one discussed above.
 
 
 
 [^1]: To facilitate the SIMD optimization the code is written using only float (single precision) and integer variables.
   This precaution takes in care the register alignment inside the loops and facilitate the compile time optimizer.
 
-[^2]: The OpenMP library is the most common non-standard library for C++ multi-threading applications.
+[^2]: The OpenMP library is the most common non-standard library for `C++` multi-threading applications.
 
 [^3]: Obviously the iteration where the inner loop variable is lower than the outer one will be skipped by an if condition.
 

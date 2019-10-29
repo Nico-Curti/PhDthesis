@@ -19,7 +19,7 @@ The summary results obtained by the degree centrality are shown in Table.
 
 
 For each node type we computed the average number of connections and the main important parameters of each distribution (minimum, maximum, standard deviations and percentiles).
-This preliminary analysis confirms what we have already discussed during the creation of the CHIMeRA structure and thus that the each data type has at least one connection with a disease node (ref. min row in the Table): disease nodes are the core of our network-of-networks model while the other node types could have just single connections to the others.
+This preliminary analysis confirms what we have already discussed during the creation of the `CHIMeRA` structure and thus that the each data type has at least one connection with a disease node (ref. min row in the Table): disease nodes are the core of our network-of-networks model while the other node types could have just single connections to the others.
 Using the finer grain distinction between the metabolite pathways (obtained by the information available in HMDB) we can also noticed that the major part of their connections concern the *macro pathway* category as expected: *macro pathway*s identify the more general category in our nomenclature and they include biological processes like `apoptosis process`, `dna replication fork` and `phosphatidylethanolamine biosynthesis`.
 A better visualization of the network structure could be done counting the average number of connections between each group of nodes, i.e the block matrix visualization of the underlying bipartite-graphs.
 In Fig. [1](../../../../img/chimera_net_mat.svg) is shown the block matrix representation.
@@ -56,7 +56,7 @@ In a not negligible number of cases the HMDB does not provide a disease associat
 A more interesting result is obtained considering the most central nodes, i.e the node related to the maximum degree score.
 This information could be used also as validity check of the structured.
 As in the `SymptomsNet` case (ref. [SymptomsNet](./SymptomsNet.md)), we expect a reasonable interpretation of the most central nodes.
-These results are showed in the yellow box in Fig. [2](../../../../img/degree.png).
+These results are shown in the yellow box in Fig. [2](../../../../img/degree.png).
 
 The most central node for the SNP node type is the [rs113488022](https://www.ncbi.nlm.nih.gov/snp/rs113488022), well known gene-mutation validated by 72 public research.
 This SNP is related to a wide range of cancer diseases and its clinical significance has been proved in different studies.

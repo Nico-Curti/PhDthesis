@@ -23,7 +23,7 @@ This behavior could be associated to the problems highlighted also in the toy mo
 The `DNetPRO` signatures are, in fact, very small compared to the number of variables and thus only small network components were extracted, which are very closed to star-networks.
 Despite the discrepancy between the signatures we have a core of 18 genes which occurs in at least the 95% of both signatures and 8 of them are in the 99% of both signatures.
 
-The common genes were also mapped on public databases (TISIDB, [10.1093/bioinformatics/btz210](https://doi.org/10.1093/bioinformatics/btz210)) and [Oncotarget](), which link tumors to related genes.
+The common genes were also mapped on public databases (TISIDB, [10.1093/bioinformatics/btz210](https://doi.org/10.1093/bioinformatics/btz210)) and [Oncotarget](http://www.oncotarget.com/index.php?journal=oncotarget&page=article&op=view&path[]=9487&path[]=16272), which link tumors to related genes.
 We found 14/18 genes as informative probes for the KIRC tumor in the TISIDB and 7 of them were also found in the Oncotarget database [^1].
 Taking into account the core set of 8 genes, we found 3 of them on Oncotarget database and 7 of them on the TISIDB.
 The only exception was given by the LOC388796 gene, which was not found in any database.

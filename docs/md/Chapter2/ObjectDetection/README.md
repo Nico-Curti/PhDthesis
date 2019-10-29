@@ -37,7 +37,7 @@ Finally these bounding boxes are filtered according to their probability and a c
 One of the most bigger limitation of this model is that it struggles with small objects.
 This is due to the spatial constraints of the algorithm.
 Fortunately, in the previous section we have already discussed on how we can overcome this kind of problem using Super Resolution.
-In the next section we will discuss about further characteristics of the YOLO model and about its implementation into the Byron library and its efficiency against the original implementation.
+In the next section we will discuss about further characteristics of the YOLO model and about its implementation into the `Byron` library and its efficiency against the original implementation.
 Finally we will join the efficiency of the previous Super Resolution models to the performances of our custom implementation of YOLO.
 
 

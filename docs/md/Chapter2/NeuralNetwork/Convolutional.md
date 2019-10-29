@@ -136,12 +136,12 @@ However, it is interesting notice how the `fftw` implementation is able to reach
 
 We can conclude that the `Winograd` algorithm is certainly the best choice when we have to perform a 2D convolution.
 The payback of this method is given by the rigid constrains related to the mask sizes and strides: when it is possible it remains the best solution but in all the other cases the `im2col` implementation is a relatively good alternative.
-The efficiency of Byron library follows the efficiency of the `Winograd` algorithm since the major part of layers in modern deep learning Neural Network models are Convolutional layers with size equal to 3 and unitary stride.
+The efficiency of `Byron` library follows the efficiency of the `Winograd` algorithm since the major part of layers in modern deep learning Neural Network models are Convolutional layers with size equal to 3 and unitary stride.
 
 
 [^1]: If we consider a simple image `224 x 224` with `3` color channels we obtain a set of `150'528` features. A classical DNN layer with this input size should have `1024` nodes for a total of more than `150` million weights to tune.
 
-[^2]: Compared to the other implementations the direct (brute force) convolution algorithm exceeds the computational time of order of magnitudes. For this reason it is not taken into account during our tests. A possible implementation in `C++` is however provided into the [Byron library](https://github.com/Nico-Curti/Byron/blob/master/utility/winograd_test.cpp).
+[^2]: Compared to the other implementations the direct (brute force) convolution algorithm exceeds the computational time of order of magnitudes. For this reason it is not taken into account during our tests. A possible implementation in `C++` is however provided into the [`Byron` library](https://github.com/Nico-Curti/Byron/blob/master/utility/winograd_test.cpp).
 
 [^3]: We work under the assumption that the weights matrix is already a flatten array and thus each row of the weights matrix represents the full mask.
 

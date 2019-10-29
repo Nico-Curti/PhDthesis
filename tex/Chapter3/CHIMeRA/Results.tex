@@ -37,17 +37,19 @@ physiological pathway   &$1\times10^{-3}$ &    0.07 &    0 &    0 &    0 &    0 
 macro pathway           &   0.48          &  106.06 &    0 &    0 &    0 &    1 &  59993 \\
 \hline\\
 \end{tabular}
-\caption{%TODO
+\caption{Degree connection statistics related to each node type stored in the \textsf{CHIMeRA} database.
+For each node type is reported the average, standard deviation, minimum value, maximum value and percentiles of the degree distribution.
+The first row shows the aggregated value of degree scores.
 }
 \label{tab:chimera_degree}
 \end{table}
 
 
 For each node type we computed the average number of connections and the main important parameters of each distribution (minimum, maximum, standard deviations and percentiles).
-This preliminary analysis confirms what we have already discussed during the creation of the CHIMeRA structure and thus that the each data type has at least one connection with a disease node (ref. min row in Tab~\ref{tab:chimera_degree}): disease nodes are the core of our network-of-networks model while the other node types could have just single connections to the others.
+This preliminary analysis confirms what we have already discussed during the creation of the \textsf{CHIMeRA} structure and thus that the each data type has at least one connection with a disease node (ref. min row in Tab~\ref{tab:chimera_degree}): disease nodes are the core of our network-of-networks model while the other node types could have just single connections to the others.
 Using the finer grain distinction between the metabolite pathways (obtained by the information available in HMDB) we can also noticed that the major part of their connections concern the \emph{macro pathway} category as expected: \emph{macro pathway}s identify the more general category in our nomenclature and they include biological processes like \textsf{apoptosis}, \textsf{dna replication fork} and \textsf{phosphatidylethanolamine biosynthesis}.
 A better visualization of the network structure could be done counting the average number of connections between each node group, i.e the block matrix visualization of the underlying bipartite-graphs.
-In Fig.~\ref{fig:chimera_bipartite} is showed the block matrix representation.
+In Fig.~\ref{fig:chimera_bipartite} is shown the block matrix representation.
 
 \begin{figure}[htbp]
 \centering
@@ -86,7 +88,7 @@ In Fig.~\ref{fig:chimera_degree} we show the degree distributions obtained consi
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.8\linewidth]{degree.png}
-\caption{CHIMeRA degree distributions for different node types.
+\caption{\textsf{CHIMeRA} degree distributions for different node types.
 The plot is cut for visualization purposes.
 The maximum degree node information are highlight in the box.
 }
@@ -103,7 +105,7 @@ In a not negligible number of cases the HMDB does not provide a disease associat
 A more interesting result is obtained considering the most central nodes, i.e the node related to the maximum degree score.
 This information could be used also as validity check of the structured.
 As in the \textsf{SymptomsNet} case (ref. \ref{chimera:symptomsnet}), we expect a reasonable interpretation of the most central nodes.
-These results are showed in the yellow box in Fig.~\ref{fig:chimera_degree}.
+These results are shown in the yellow box in Fig.~\ref{fig:chimera_degree}.
 
 The most central node for the SNP node type is the \href{https://www.ncbi.nlm.nih.gov/snp/rs113488022}{\textsf{rs113488022}}, well known gene-mutation validated by 72 public research.
 This SNP is related to a wide range of cancer diseases and its clinical significance has been proved in different studies.

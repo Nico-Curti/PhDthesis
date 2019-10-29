@@ -58,7 +58,7 @@ Three custom libraries are introduced to help us in the description of these mod
 We use deep learning neural network models to handle different kind of image processing analyses with a particular attention to biomedical images.
 As previous discussed, there are multiple image formats in the biomedical field and in our applications we use NMR and CT images.
 Starting from modern Super Resolution algorithms we show their application on NMR image proving how they can help to increase the biomedical image quality and how they can be also used to improve object detection tasks.
-Other kinds of applications are also showed to prove the versatility of such methods in several biomedical tasks.
+Other kinds of applications are also shown to prove the versatility of such methods in several biomedical tasks.
 
 We conclude our discussion introducing a novel database obtained by the harmonization of public available datasets.
 A global description about Big Data sources and how we can handle problems related to the data extraction is discussed before our pipeline of processing.

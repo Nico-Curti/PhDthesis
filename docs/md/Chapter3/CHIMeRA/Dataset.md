@@ -101,9 +101,10 @@ A summary scheme of our pipeline is shown in Fig. [2](../../../../img/chimera_pi
 The described NLP pipeline further increases the overlap between databases (e.g CTD-SNAP 24.17%; DisGenet-RXList 19.78%).
 We manually supervised and checked the merging procedure taking care to reduce the false positive percentage.
 In some cases the overlap percentage remained low also after the application of our pipeline (e.g. RXList-HMDB 8.03%; SNAP-HMDB 0.39%).
-This behavior could be due to two factors: the first case is related to a deficiency of our pipeline in processing the contained names; in the second case it proved that we were working with complementary databases and thus the real information overlap should be reasonably low.
-We took care of these cases and in our checks we always confirmed the second explanation.
-This was a very encouraging results since it proved the efficiency of our pipeline and at the same time it confirmed that the union of multiple data sources could effectively enlarge our knowledge.
+Different data sources could be focused on different types of information and it is therefore reasonable to assume that in some cases the overlap is low.
+We supervised these critical cases with a manual check and we demonstrated our hypothesis.
+This behavior supports our databases choice: they include complementary information which could improve the informative efficiency of our structure.
+At the same time this result also proved the efficiency of our pipeline and it confirmed that the union of multiple data sources could effectively enlarge our knowledge about biomedical compounds.
 
 ![Graphical rendering of the first version of the `CHIMeRA` network. The visualization was performed before the inclusion of the DrugBank dataset. For computational issues we have not performed newer image of the global structure. In the image we represented disease nodes (azure), gene nodes (orange), SNP nodes (purple), metabolite nodes (light green), drug nodes (pink) and phenotype nodes (dark green). The visualization was obtained by the *Atlas layout* provided by Gephi.](../../../../img/chimera_plot.png)
 
@@ -116,7 +117,7 @@ On the other hand our network architecture could be easily improved adding new d
 `CHIMeRA` is still a work in progress project so we are still looking for improvements and new databases to add.
 
 
-[^1]: The human metabolite-pathways can be divided into different types according to the informations stored in the HMDB dataset. The interactions between HMDB and DrugBank was already established through a vast series of hyper-links which connect them using metabolites and metabolite-pathways information. In this way we mapped also the information related to the metabolite-pathways types to the DrugBank dataset, obtaining a finer grain nomenclature and classification of these data. These informations can be used to improve our disease information. In the previous Table is showed only the aggregated data.
+[^1]: The human metabolite-pathways can be divided into different types according to the informations stored in the HMDB dataset. The interactions between HMDB and DrugBank was already established through a vast series of hyper-links which connect them using metabolites and metabolite-pathways information. In this way we mapped also the information related to the metabolite-pathways types to the DrugBank dataset, obtaining a finer grain nomenclature and classification of these data. These informations can be used to improve our disease information. In the previous Table is shown only the aggregated data.
 
 [^2]: For sake of clarity, we encountered the same issue also into the DrugBank dataset in which we had intra-drug connections.
 

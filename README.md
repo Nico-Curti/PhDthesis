@@ -22,20 +22,24 @@
 
 ## Abstract
 
-> The Big Data Analytics poses many challenges to the research community who has to handle several computational problems related to the vast amount of data.
-> An increasing interest involves Biomedical data aiming to obtain the so-called "personalized medicine", where therapy plans are designed on the specific genotype and phenotype of the individual patient.
-> The algorithm optimization plays a key role to this purpose.
-> In this work we discuss about several topics related to the Biomedical Big Data Analytics with a special attention to numerical issues and algorithmic solutions related to them.
-> We introduce a novel feature selection algorithm tailored on *omics* datasets, proving its efficiency on synthetic and real high-throughput genomic datasets.
+> Big Data Analytics poses many challenges to the research community who has to handle several computational problems related to the vast amount of data.
+> An increasing interest involves Biomedical data aiming to obtain the so-called \quotes{personalized medicine}, where therapy plans are designed on the specific genotype and phenotype of the individual patient and algorithm optimization plays a key role to this purpose.
+> In this work we discuss about several topics related to Biomedical Big Data Analytics with a special attention to numerical issues and algorithmic solutions related to them.
+> We introduce a novel feature selection algorithm tailored on \emph{omics} datasets, proving its efficiency on synthetic and real high-throughput genomic datasets.
 > The proposed algorithm is a supervised signature identification method based on a bottom-up combinatorial approach that exploits the discriminant power of all variable pairs.
-> We tested our our algorithm against other state-of-art models and it outperforms existing results or compares to them.
-> We introduce, also, different kinds of deep learning models, highlighting their efficiencies on biomedical image processing tasks.
-> Three custom frameworks for deep learning neural network models development are discussed and used to describe the numerical improvements proposed on the various topics.
-> We show promising results about Super Resolution models on NMR images and we discuss possible improvements in the use of these models in combination with Object Detection ones.
-> The image segmentation problem of femur head on CT images is discussed and the results obtained by our trained deep neural network are showed.
-> The last section of this work introduce a novel biomedical database obtained by the harmonization of multiple data sources.
-> The data involved in this project were mined using web-scraping pipelines and a novel natural language processing pipeline was designed to maximize the overlap between the different sources.
-> We describe the key steps which bring us to the realization of this network-of-networks database and we discuss about the potential applications of it to the scientific research.
+> We tested our algorithm against other state-of-art models and it outperforms existing results or compares to them.
+
+> We also implement and optimize different types of deep learning models, testing their efficiency on biomedical image processing tasks.
+> Three customized frameworks for deep learning neural network models development are discussed and used to describe the numerical improvements proposed on the various topics.
+> In the first implementation we optimize two Super Resolution models and we show their results on NMR images, proving their efficiency in generalization tasks without a retraining.
+> The second optimization involves a state-of-art Object Detection neural network architecture, obtaining a significant speedup in computational performance.
+> We also highlight how Super Resolution models are able to overcome object detection issues and increase detection performance.
+> In the third application we discuss about femur head segmentation problem on CT images: a semi-automated pipeline for the image annotation is proposed and a deep learning neural network model trained on these images.
+
+> The last section of this work is the implementation of a novel biomedical database obtained by the harmonization of multiple data sources.
+> The data involved in this project were mined using web-scraping methods, and a novel natural language processing pipeline was designed to maximize the overlap between the different data sources.
+> We describe the key steps which lead us to the realization of this network-of-networks database and we discuss its potential applications to biomedical research.
+
 
 ## Installation
 

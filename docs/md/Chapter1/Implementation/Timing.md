@@ -17,7 +17,7 @@ In each plot, we fixed two variables and we evaluated the remaining one.
 
 ![Execution time of `DNetPRO` algorithm. We compare the execution time between pure-`Python` (orange) and `Cython` (blue, `C++` wrap) implementation. Execution time in function of the number of threads (the number of variables and the number of samples are kept fixed).](../../../../img/nth_timing.svg)
 
-In all our simulations, the efficiency of the (optimized) Cython version is easily visible and the gap between the two implementations reached more than `10^4` seconds.
+In all our simulations, the efficiency of the (optimized) `Cython` version is easily visible and the gap between the two implementations reached more than `10^4` seconds.
 On the other hand, it is important to highlight the scalability of the codes against the various parameters.
 While the code performances scales quite well with the number of features (Fig. [1](../../../../img/features_timing.svg)) in both the implementations, we have a different trend varying the number of samples (Fig. [2](../../../../img/samples_timing.svg)): the `Cython` trend starts to saturate almost immediately while the computational time of the `Python` implementation continues to grow.
 This behavior highlights the results of the optimizations performed on the `Cython` implementation which allows the application of the `DNetPRO` algorithm also to larger datasets without loosing performances.
@@ -27,7 +27,7 @@ The above results are computed considering a number of features equal to 90 and,
 Despite of this, the computational efficiency of the `Cython` implementation is much better than the `Python` one, of which the usage is indisputable.
 
 
-[^1]: We would stress that we can use the `timing` `Python` package only because we provided a `Cython` wrap of our `DNetPRO` algorithm implementation. We would also highlight that, albeit minimal, the Python superstructure penalizes the computational performances and the best results can be obtained using the pure C++ version of the code.
+[^1]: We would stress that we can use the `timing` `Python` package only because we provided a `Cython` wrap of our `DNetPRO` algorithm implementation. We would also highlight that, albeit minimal, the `Python` superstructure penalizes the computational performances and the best results can be obtained using the pure `C++` version of the code.
 
 [^2]: The optimal result should be a linear scalability with the number of threads but it is always difficult to reach this efficiency. Thus, a reasonable good result is given by a progressive decrease with increasing the number of threads.
 

@@ -29,6 +29,61 @@ The statistical influence of the swapped data is quite low and the covariance ma
 A second step of optimization can be performed computing the original full-covariance matrix of the whole set of data (`O(N^2)`) and modify it into the right $k$ indexes at each cross-validation step (`O(N*k)`) that in the Leave-One-Out become a single editing case.
 This second optimization  can also be performed in the Diag-Quadratic case substituting the covariance matrix with the simpler variance vector.
 
+In the following snippet the implementation of Cholesky decomposition used to invert the covariance matrix is shown.
+
+```c++
+#include <iostream>
+#include <cmath>
+
+void Cholesky (const int & n, float * mat, float * p)
+{
+  for (int i = 0; i < n; ++i)
+    for (int j = i; j < n; ++j)
+    {
+      const int idx = i * n + j;
+      float sum = mat[i * n + j];
+
+      for (int k = i - 1; k >= 0; --k)
+        sum -= mat[i * n + k] * mat[j * n + k];
+
+      if (i == j)
+      {
+        if ( sum <= 0.f )
+        {
+          std :: cerr << "Matrix is not positive definite" << std :: endl;
+          std :: exit(1);
+        }
+
+        p[i] = 1.f / std :: sqrt(sum);
+      }
+      else
+        mat[j * n + i] = sum * p[i];
+    }
+}
+
+void CholeskyInv (const int & n, float * mat, float * mat_inv)
+{
+  float * p = new float[n];
+  std :: copy_n(mat, n*n, mat_inv);
+
+  Cholesky(n, mat_inv, p);
+  for (int i = 0; i < n; ++i)
+  {
+    mat_inv[i * n + i] = p[i];
+
+    for (int j = i + 1; j < n; ++j)
+    {
+      float sum = 0.f;
+
+      for (int k = i; k < j; ++k)
+        sum -= mat_inv[j * n + k] * mat_inv[k * n + i];
+
+      mat_inv[j * n + i] = sum * p[j];
+    }
+  }
+}
+```
+
 Both these two techniques have been used in the \textsf{C++} implementation of the Quadratic Discriminant Analysis classifier and in the Diag-Quadratic Discriminant Analysis classifier used in the `DNetPRO` algorithm implementation (see Chapter [1](../../Chapter1/DNetPRO/README.md)).
 
 

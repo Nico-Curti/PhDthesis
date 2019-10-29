@@ -12,7 +12,7 @@ Thus, while the $K$-best algorithm scaled according to the number of variables, 
 
 We developed a toy model simulation to compare the performances of the standard $K$-best algorithm with the \textsf{DNetPRO} one, considering either the number of samples either the number of variables.
 Since the \textsf{DNetPRO} algorithm was designed to gene expression dataset applications, our toy model should consider a large number of variables with only a relative small number of samples.
-To simulate a so like synthetic dataset we used the toy model generator provided by the \href{https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html}{scikit-learn package}.
+To simulate a so like synthetic dataset we used the toy model generator provided by the \href{https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html}{\textsf{scikit-learn} package}.
 This model generator allows to set a precise number of classes and distinguish between \emph{informative features}, i.e. features which easily separate the class populations, and \emph{redundant features}, i.e. features which represent noise in our problem.
 The number of informative features should be realistically small compared to the noise, so in our simulations we chose to introduce a maximum of 1\% informative features in each simulation.
 

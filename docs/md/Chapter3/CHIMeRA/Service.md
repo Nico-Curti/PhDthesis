@@ -52,7 +52,7 @@ The query takes the node-collection (`ArangoDB` nomenclature) related to the sea
 Starting from the founded nodes it returns the output graph preview made by the 1st and 2nd neighbors (range of values `1..3` in the code).
 
 We applied this kind of query for the *leukemia* node and we processed the results using `Gephi` as network viewer.
-The obtained network is showed in Fig. [2](../../../../img/leukemia.png): the network involves 9460 nodes and 26646 links.
+The obtained network is shown in Fig. [2](../../../../img/leukemia.png): the network involves 9460 nodes and 26646 links.
 As can be seen by the plot, just considering the 2nd neighbors the obtained subnetwork is quite large and it highlights the biological complexity of this disease.
 
 ![Output of *leukemia* query obtained by `CHIMeRA` graph database using the previous pseudo code. The subnetwork is made by the 2nd neighbors starting from all the nodes which include "leukemia" in their names. The subnetwork includes 291 different types of leukemias clustered into 82 connected components. The giant components is made by 9108 nodes. `CHIMeRA` query is able to give a panoramic biomedical overview of the *leukemia* diseases mapping 838 diseases, 2463 genes, 5195 SNPs, 154 metabolite pathways, 40 metabolites and 5 drugs associated to them.](../../../../img/leukemia.png)

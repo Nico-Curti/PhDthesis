@@ -42,14 +42,14 @@ In a mathematical formulation of \emph{factor graphs} there are different kinds 
 The focus of our analysis was not on mathematical formalism of these kind of graphs but we aimed to a visualization of function interactions and an analysis of the numerical improvements derived from it.
 
 In the work of Sepand et al. the authors identify three function classes: common statistics, class statistics and overall stats.
-In Fig.~\ref{fig:scorer_net} the interaction graph of these three classes is showed.
+In Fig.~\ref{fig:scorer_net} the interaction graph of these three classes is shown.
 The figure shows deep interactions between the three function classes and it highlights the dependencies of the different quantities involved.
 We can also use this kind of visualization to formulate computational considerations about the order in which these quantities could be evaluated.
 Since the graph is a direct graph by definition, we can start from the root node (the node without links which bring to it) and cross the network until the leaf nodes (nodes without link which go out from them) like in a tree-graph.
 At each step of the percolation, the incoming nodes identify totally independent quantities.
 This independence means that the nodes-quantities can be potentially computed in parallel.
 To clarify this consideration we can reorganize the graph visualization minimizing the link lengths and obtaining a stratified graph in which each level identifies a potential parallel section.
-A graph with these properties was obtained using the \textsf{dot} visualization and it is showed in Fig.~\ref{fig:scorer_parallel}.
+A graph with these properties was obtained using the \textsf{dot} visualization and it is shown in Fig.~\ref{fig:scorer_parallel}.
 As can be seen in figure we can identify 7 levels in the graph and thus 7 potential parallel regions for the computation of the full set of functions.
 
 \begin{center}

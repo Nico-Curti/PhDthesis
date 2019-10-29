@@ -19,6 +19,6 @@ The image annotation is one of the most hardest and boring step of image segment
 In this chapter we introduce a particular neural network model commonly used in image segmentation problems and we will describe its characteristics and performances.
 We applied this model to a novel dataset of CT images.
 The dataset annotation was performed by a custom semi-supervised pipeline of image processing and the neural network model was trained and tested on this dataset.
-The original data are taken from [here]() and the corresponding annotations are released on [here]().
+The original data are taken from [here](https://mrl.sci.utah.edu/software/normal-hip-image-data/) [[doi:10.1002/jor.22040](https://onlinelibrary.wiley.com/doi/abs/10.1002/jor.22040)] and the corresponding annotations are released on [here]().
 
 [**next >>**](./UNet.md)

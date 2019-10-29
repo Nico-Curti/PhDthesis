@@ -20,7 +20,7 @@ From this starting implementation many improvements was performed in this resear
 Modern models simply have a greater number of layers, due to the increasing computational power availability, and they used appropriate workaround to overcome the (large-)parameters tuning problem.
 
 In the next sections we will show the super resolution technique step-by-step starting from the image pre-processing until the most modern algorithmic solutions.
-At the end of this chapter the NumPyNet and Byron implementation of some modern models will be presented and applied over biomedical images.
+At the end of this chapter the `NumPyNet` and `Byron` implementation of some modern models will be presented and applied over biomedical images.
 
 [^1]: The best-known "implementation" of Super Resolution concerns the microscopy super-resolution. In this work we are focusing on algorithms and numerical implementation so we will talk about the numerical counterpart of this technique, totally ignoring the original "hardware" version.
 

@@ -10,7 +10,7 @@ The theoretical optimization strategies, described until now, have to be proved 
 
 We tested the computational performances of our \textsf{Cython} (\textsf{C++} wrap) implementation against the pure \textsf{Python} (naive) implementation shown in \ref{code:py_couples}.
 The time evaluation was performed using the \textsf{timing} \textsf{Python} package in which we can easily simulate multiple run of a given algorithm\footnote{
-  We would stress that we can use the \textsf{timing} \textsf{Python} package only because we provided a Cython wrap of our \textsf{DNetPRO} algorithm implementation.
+  We would stress that we can use the \textsf{timing} \textsf{Python} package only because we provided a \textsf{Cython} wrap of our \textsf{DNetPRO} algorithm implementation.
   We would also highlight that, albeit minimal, the \textsf{Python} superstructure penalizes the computational performances and the best results can be obtained using the pure \textsf{C++} version of the code.
 }.
 In our simulations, we monitored the three main parameters related to the algorithm efficiency: the number of samples, the number of variables and (as we provided a parallel multi threading implementation) the number of threads used.
@@ -32,7 +32,7 @@ In each plot, we fixed two variables and we evaluated the remaining one.
 \def\svgwidth{0.7\textwidth}
 \input{./img/nth_timing.pdf_tex}
 \caption{Execution time of \textsf{DNetPRO} algorithm.
-We compare the execution time between pure-\textsf{Python} (orange) and Cython (blue, \textsf{C++} wrap) implementation.
+We compare the execution time between pure-\textsf{Python} (orange) and \textsf{Cython} (blue, \textsf{C++} wrap) implementation.
 \textbf{(a - left)} Execution time in function of the number of variables (the number of samples and the number of threads are kept fixed).
 \textbf{(b - right)} Execution time in function of the number of samples (the number of variables and the number of threads are kept fixed).
 \textbf{(c - bottom)} Execution time in function of the number of threads (the number of variables and the number of samples are kept fixed).
@@ -40,7 +40,7 @@ We compare the execution time between pure-\textsf{Python} (orange) and Cython (
 \label{fig:dnetpro_timing}
 \end{figure}
 
-In all our simulations, the efficiency of the (optimized) Cython version is easily visible and the gap between the two implementations reached more than $10^4$ seconds.
+In all our simulations, the efficiency of the (optimized) \textsf{Cython} version is easily visible and the gap between the two implementations reached more than $10^4$ seconds.
 On the other hand, it is important to highlight the scalability of the codes against the various parameters.
 While the code performances scales quite well with the number of features (Fig.~\ref{fig:dnetpro_timing}(a)) in both the implementations, we have a different trend varying the number of samples (Fig.~\ref{fig:dnetpro_timing}(b)): the \textsf{Cython} trend starts to saturate almost immediately while the computational time of the \textsf{Python} implementation continues to grow.
 This behavior highlights the results of the optimizations performed on the \textsf{Cython} implementation which allows the application of the \textsf{DNetPRO} algorithm also to larger datasets without loosing performances.

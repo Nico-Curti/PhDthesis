@@ -78,7 +78,7 @@ The list of presented loss function was related to the implementation of the `da
 A full list of available loss functions can be found in the [on-line](https://github.com/Nico-Curti/Byron/blob/master/src/cost_layer.cpp) version of the libraries with a list of easily visual examples.
 
 A further improvements was given from a numerical point-of-view: many mathematical formulas needs expensive math operations as logarithms and trigonometric functions.
-An efficient (but approximated) math formulas was implemented both in the `C++` and Python to reach faster computational performances.
+An efficient (but approximated) math formulas was implemented both in the `C++` and `Python` to reach faster computational performances.
 These numerical math operations are widely used into the `Byron` library to increase the performances despite their used can be turned off by user at compile time in `Byron`.
 The full set of functions, in fact, is enclosed into a `macro` definition (`__fmath__`) that can be enabled at compile-time.
 

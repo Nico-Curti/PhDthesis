@@ -37,6 +37,8 @@ Each step performs its independent logging on a single shared file.
 If an error occurs the service logs an appropriated message and it saves the current log-file in a different location to prevent possible log-cleaning (optional step).
 Then the service restarts.
 
+![FiloBlu Service computation scheme.](../../../../img/FiloBluService.png)
+
 We implemented this type of service in pure `Python` [[FiloBluService](https://github.com/Nico-Curti/FiloBluService)] and the code is public available on Github.
 The developed service was customized according to the server requirements of the project [^2].
 We chose the `Python` language either for its simplicity in the code writing either for its thread native module which ensures a total thread-safety of each variable.

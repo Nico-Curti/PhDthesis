@@ -87,14 +87,14 @@ The list of presented loss function was related to the implementation of the \te
 A full list of available loss functions can be found in the \href{https://github.com/Nico-Curti/Byron/blob/master/src/cost_layer.cpp}{on-line} version of the libraries with a list of easily visual examples.
 
 A further improvements was given from a numerical point-of-view: many mathematical formulas needs expensive math operations as logarithms and trigonometric functions.
-An efficient (but approximated) math formulas was implemented both in the \textsf{C++} and Python to reach faster computational performances.
+An efficient (but approximated) math formulas was implemented both in the \textsf{C++} and \textsf{Python} to reach faster computational performances.
 These numerical math operations are widely used into the \textsf{Byron} library to increase the performances despite their used can be turned off by user at compile time in \textsf{Byron}.
 The full set of functions, in fact, is enclosed into a \textsf{macro} definition (\textsf{\_\_fmath\_\_}) that can be enabled at compile-time.
 
 A classical example of this faster math operation is given by the \emph{fast inverse square root} algorithm, firstly introduced in 1999 in the source code of \emph{Quake III Arena}, a first-person shooter video game.
 The method is based on a Newton algorithm which can be stopped at the desired precision order: less precision is associated to faster execution, obviously.
 In our \textsf{fast math} implementation we provide a set of Newton algorithms associated to the most common mathematical operations, like \textsf{exp}, \textsf{log}, \textsf{sqrt} and so on.
-We tested these implementations against the common standards (\textsf{Numpy} package for Python and \textsf{std::} for \textsf{C++}) and we compare the time execution performances (we required a precision of at least $10^-4$).
+We tested these implementations against the common standards (\textsf{Numpy} package for \textsf{Python} and \textsf{std::} for \textsf{C++}) and we compare the time execution performances (we required a precision of at least $10^-4$).
 The obtained results are shown in Fig.~\ref{fig:fmath} where we normalized the execution time taking \textsf{Numpy} implementation as reference.
 
 \begin{figure}[htbp]

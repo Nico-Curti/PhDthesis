@@ -59,7 +59,7 @@ The developed \textsf{CHIMeRA} project could be used to contribute to this kind 
 Thus, we decided to formulate our first query about the \emph{leukemia} disease.
 
 We customized our query to extract only the 2nd neighbors related to this node.
-The pseudo-code used for our queries is showed in \ref{code:query}.
+The pseudo-code used for our queries is shown in \ref{code:query}.
 
 \lstset{style=Java}
 \begin{lstlisting}[language=Java, caption=CHIMeRA 2nd neighbors query, label=code:query]
@@ -73,7 +73,7 @@ The query takes the node-collection (\textsf{ArangoDB} nomenclature) related to 
 Starting from the found nodes it returns the output graph preview made by the 1st and 2nd neighbors (range of values \textsf{1..3} in the code).
 
 We applied this kind of query for the \emph{leukemia} node and we processed the results using \textsf{Gephi} as network viewer.
-The obtained network is showed in Fig.\ref{fig:leukemia}: the network involves \numprint{9460} nodes and \numprint{26646} links.
+The obtained network is shown in Fig.\ref{fig:leukemia}: the network involves \numprint{9460} nodes and \numprint{26646} links.
 As can be seen by the plot, just considering the 2nd neighbors the obtained subnetwork is quite large and it highlights the biological complexity of this disease.
 
 \begin{figure}[htbp]

@@ -31,7 +31,7 @@ We would stress that it does not put a limit into the input dimensions since the
 However, our tests highlight that the best results are obtained rescaling the image to `608 x 608`.
 
 The original implementation of the YOLO model (provided by Redmon J. in his [web-page](https://pjreddie.com/darknet/yolo)) provides a pre-trained version of the model to the COCO dataset.
-For our applications we do not re-trained the model [^4], but we converted the available weights to the Byron format.
+For our applications we do not re-trained the model [^4], but we converted the available weights to the `Byron` format.
 
 
 [^1]: COCO dataset is considered as a sort of standard in object detection applications and every new proposed model provides its performances against it.

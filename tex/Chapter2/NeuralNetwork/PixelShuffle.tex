@@ -44,8 +44,8 @@ Moreover, each library implements the transformation following its own data orga
 For this reason we proposed in our libraries a dynamic version of the algorithm in \textsf{C++} able to perform both versions of the algorithm.
 
 The algorithmic implementation of the pixel-shuffle transformation is essentially a re-indexing of the input values.
-While in a \textsf{C++} implementation of the algorithm we could obtain the desired result inside a sequence of nested for loops playing with the loop indexes, for an efficient Python version we used a sequence of transposition and reshaping to rearrange the input values.
-The following snippet shows the NumPyNet version of this algorithm.
+While in a \textsf{C++} implementation of the algorithm we could obtain the desired result inside a sequence of nested for loops playing with the loop indexes, for an efficient \textsf{Python} version we used a sequence of transposition and reshaping to rearrange the input values.
+The following snippet shows the \textsf{NumPyNet} version of this algorithm.
 
 \lstset{style=snippet}
 \begin{lstlisting}[language=Python, caption=NumPyNet version of Pixel-Shuffle function, label=code:py_shuffle]

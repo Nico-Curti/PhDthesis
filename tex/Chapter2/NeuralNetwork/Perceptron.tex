@@ -64,7 +64,7 @@ $$
 which looks identical to previous updating rule but in this case we are managing real numbers and not simple class labels.
 Moreover in this way we compute the weight updates according to the full set of training sample and not for each sample (this approach leads to the so-called \emph{batch}-update, i.e small subsets of data).
 
-To implement this kind of model into a pure Python application we do not need extra libraries but we can just use the native keyword of the language.
+To implement this kind of model into a pure \textsf{Python} application we do not need extra libraries but we can just use the native keyword of the language.
 A possible implementation of this model was developed and release in a on-line \href{https://gist.github.com/Nico-Curti/358b7a2ffed1abbb57ee87a5338ca073}{gist}.
 In this simple snippet we examine the functionality of the Simple Perceptron model across different logical functions and we prooved its fast convergence on linear separable datasets\footnote{
   We proof the non-linear separable convergence introducing an extra stop criteria during the weights tuning given by a maximum number of step.

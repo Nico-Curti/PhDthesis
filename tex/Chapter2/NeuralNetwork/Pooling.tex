@@ -39,7 +39,7 @@ In particular we would to show the efficient implementation provided into \texts
 
 In the previous sections we introduced the \textsf{im2col} algorithm which is an efficient method to re-organize the input data.
 The same algorithm can also be applied for Pooling layers and thus evaluate the Pooling function (avg, max, etc.) on each row of the re-arranged matrix.
-The implementation of the \textsf{im2col} algorithm in Python requires the evaluation of multiple indexes using complex formulas.
+The implementation of the \textsf{im2col} algorithm in \textsf{Python} requires the evaluation of multiple indexes using complex formulas.
 Since the \textsf{NumPyNet} library was founded on the \textsf{Numpy} package we can provide an alternative implementation using the \textsf{view} functionality of the library.
 A \textsf{view} of a given array is simply another way of viewing its data: technically that means that the data of both objects is shared and thus no copies are created.
 In particular we can use the deeper functions of the \textsf{Numpy} package to create a re-organization of our data according to the desired output\footnote{

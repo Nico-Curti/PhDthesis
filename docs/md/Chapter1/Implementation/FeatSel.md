@@ -12,7 +12,7 @@ The load of all the node pairs into the same graph can slow down the computation
 An iterative method (with stop criteria) can perform better in the large case of samples and only in worst cases the full set of pair will be loaded.
 
 Since the described algorithm step does not require particular performance efficiency now, the main code used in our simulation was written in pure Python.
-A C++ implementation of the same algorithm was developed with the help of the Boost Graph Library [[BGL](http://www.boost.org/libs/graph/)], but to not overweight the code installation, it was reserved just for a style exercise.
+A `C++` implementation of the same algorithm was developed with the help of the Boost Graph Library [[BGL](http://www.boost.org/libs/graph/)], but to not overweight the code installation, it was reserved just for a style exercise.
 In this section we discuss about this second version and also about the strategies chosen to implement an efficiency version of it.
 This version of the algorithm was also used as stand alone method for other applications that will be presented later.
 

@@ -13,7 +13,7 @@ Despite the \textsf{C++} is one of the most efficient and old programming langua
 \textsf{Python} is becoming a leader in scientific research publications and the large part of Machine Learning analysis are performed using \textsf{Python} libraries (in particular \textsf{scikit-learn} library).
 So we have to reach a compromise between the performances and usability of new developed codes and it can be reached using the \textsf{Cython}~\cite{behnel2010cython} framework.
 
-Cython \quotes{language}\footnote{
+\textsf{Cython} \quotes{language}\footnote{
   It is not a real programming language since it is based on \textsf{Python}.
   However it has its own syntax and keywords which are different either from \textsf{Python} either from \textsf{C++}.
   In the end it needs a compiler to run and it is certainly different from \textsf{Python}.
@@ -22,11 +22,11 @@ With a relatively simple wrapping of the \textsf{C++} functions, they can be use
 In this way we can create a simple \textsf{Python} object which performs the full set of \textsf{DNetPRO} steps and, moreover, which is compatible with the functions provided by the other machine learning libraries.
 
 With this purposes we chose to operate a double wrap of the \textsf{C++} functions to separate as much as possible the \textsf{C++} component from the \textsf{Python} one\footnote{
-  Cython wrap are very powerful tools for \textsf{C++} integration into \textsf{Python} code but, by experience, they are difficult to manage by pure-\textsf{Python} users.
-  A simple workaround is to perform a first wrap of the \textsf{C++} function inside a Cython object and a second wrap of it into a pure-\textsf{Python} one.
+  \textsf{Cython} wrap are very powerful tools for \textsf{C++} integration into \textsf{Python} code but, by experience, they are difficult to manage by pure-\textsf{Python} users.
+  A simple workaround is to perform a first wrap of the \textsf{C++} function inside a \textsf{Cython} object and a second wrap of it into a pure-\textsf{Python} one.
   This two-steps wrap certainly gets worse the computational performances but it allows a complete separation between the compiled part of the code (\textsf{Cython}) and the interpreted (\textsf{Python}) one.
   Moreover we can leave back all the checks on input parameters
-  in the \textsf{C++} version since they will be performed at run time in the Python wrap.
+  in the \textsf{C++} version since they will be performed at run time in the \textsf{Python} wrap.
 }.
 The \href{https://github.com/Nico-Curti/DNetPRO/blob/master/DNetPRO/DNetPRO.py}{\textsf{Python} object} was written considering a full compatibility with the \textsf{scikit-learn} library to allow the use of the \textsf{DNetPRO} feature selection as an alternative component of other Machine Learning pipelines.
 
