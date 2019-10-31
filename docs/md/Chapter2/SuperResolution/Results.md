@@ -1,7 +1,7 @@
 ## Results
 
 As discussed in the previous sections we implemented the EDSR and WDSR models into our custom `Byron` library but we did not re-trained the models.
-The trained weights used in this work were taken from the official implementation of the models public available on the corresponding Github pages([EDSR](https://github.com/thstkdgus35/EDSR-PyTorch) and [WDSR](https://github.com/JiahuiYu/wdsr_ntire2018)).
+The trained weights used in this work were taken from the official implementation of the models publicly available on the corresponding Github pages([EDSR](https://github.com/thstkdgus35/EDSR-PyTorch) and [WDSR](https://github.com/JiahuiYu/wdsr_ntire2018)).
 
 First of all we tested our implementation in terms of execution time.
 The official implementations are written using `Tensorflow` and `PyTorch` frameworks and they are usable only with a GPU support.
@@ -53,7 +53,7 @@ The results obtained by the 2x and 4x up-sampling are shown in Fig. [4](../../..
 
 In both cases the Super Resolution models over-performed the bi-cubic algorithm in the major part of the slices.
 The only exception is given by the 2x results in which there were a set of slice in which the bi-cubic efficiency was higher than the super resolution one in term of SSIM quality score.
-As can be seen in Fig. [4](../../../../img/sr_psnr_ssim_x2.svg) the efficiency of the EDSR model decreased in the first and last parts of the acquisition: the corresponding slices are highlighted in the plot and we can easily noticed that they corresponded to the less informative portions of the brain.
+As can be seen in Fig. [4](../../../../img/sr_psnr_ssim_x2.svg) the efficiency of the EDSR model decreased in the first and last parts of the acquisition: the corresponding slices are highlighted in the plot and we can easily notice that they corresponded to the less informative portions of the brain.
 The most central and thus informative from a bio-medical point-of-view part was better reconstructed by the Super Resolution models.
 We would stress that an increment of 0.25 in the PSNR score is visible by naked eyes.
 The images shown at the beginning of this section (ref. Fig. [-1](../../../../img/sr_wow.svg)) were obtained using the WDSR model over our images and they visibly highlight the efficiency of our Super Resolution models.

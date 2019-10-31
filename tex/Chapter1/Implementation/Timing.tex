@@ -3,18 +3,18 @@
 
 \begin{document}
 
-\subsection[Time performances]{Time performances}\label{implementation:timing}
+\subsection[Time performance]{Time performance}\label{implementation:timing}
 
 As described in the above sections, the \textsf{DNetPRO} is a combinatorial algorithm and thus it requires a particular accuracy in the code implementation to optimize as much as possible the computational performances.
-The theoretical optimization strategies, described until now, have to be proved by quantitative measures.
+The theoretical optimization strategies, described up to now, have to be proved by quantitative measures.
 
-We tested the computational performances of our \textsf{Cython} (\textsf{C++} wrap) implementation against the pure \textsf{Python} (naive) implementation shown in \ref{code:py_couples}.
-The time evaluation was performed using the \textsf{timing} \textsf{Python} package in which we can easily simulate multiple run of a given algorithm\footnote{
+We tested the computational performances of our \textsf{Cython} (\textsf{C++} wrap) implementation against the pure \textsf{Python} (naive) implementation showed in \ref{code:py_couples}.
+The time evaluation was performed using the \textsf{timing} \textsf{Python} package in which we can easily simulate multiple runs of a given algorithm\footnote{
   We would stress that we can use the \textsf{timing} \textsf{Python} package only because we provided a \textsf{Cython} wrap of our \textsf{DNetPRO} algorithm implementation.
   We would also highlight that, albeit minimal, the \textsf{Python} superstructure penalizes the computational performances and the best results can be obtained using the pure \textsf{C++} version of the code.
 }.
-In our simulations, we monitored the three main parameters related to the algorithm efficiency: the number of samples, the number of variables and (as we provided a parallel multi threading implementation) the number of threads used.
-For each combination of parameters we performed 30 runs of both algorithms and we extracted the minimum execution time.
+In our simulations, we monitored the three main parameters related to the algorithm efficiency: the number of samples, the number of variables and (as we provided a parallel multi-threading implementation) the number of threads used.
+For each combination of parameters, we performed 30 runs of both algorithms and we extracted the minimum execution time.
 The tests were performed on a classical bioinformatics server (128~GB RAM memory and 2 CPU E5-2620, with 8 cores each).
 The obtained results are shown in Fig.~\ref{fig:dnetpro_timing}.
 In each plot, we fixed two variables and we evaluated the remaining one.
@@ -32,7 +32,7 @@ In each plot, we fixed two variables and we evaluated the remaining one.
 \def\svgwidth{0.7\textwidth}
 \input{./img/nth_timing.pdf_tex}
 \caption{Execution time of \textsf{DNetPRO} algorithm.
-We compare the execution time between pure-\textsf{Python} (orange) and \textsf{Cython} (blue, \textsf{C++} wrap) implementation.
+We compare the execution time between pure-\textsf{Python} (orange) and \textsf{Cython} (blue, \textsf{C++} wrap) implementations.
 \textbf{(a - left)} Execution time in function of the number of variables (the number of samples and the number of threads are kept fixed).
 \textbf{(b - right)} Execution time in function of the number of samples (the number of variables and the number of threads are kept fixed).
 \textbf{(c - bottom)} Execution time in function of the number of threads (the number of variables and the number of samples are kept fixed).
@@ -42,14 +42,14 @@ We compare the execution time between pure-\textsf{Python} (orange) and \textsf{
 
 In all our simulations, the efficiency of the (optimized) \textsf{Cython} version is easily visible and the gap between the two implementations reached more than $10^4$ seconds.
 On the other hand, it is important to highlight the scalability of the codes against the various parameters.
-While the code performances scales quite well with the number of features (Fig.~\ref{fig:dnetpro_timing}(a)) in both the implementations, we have a different trend varying the number of samples (Fig.~\ref{fig:dnetpro_timing}(b)): the \textsf{Cython} trend starts to saturate almost immediately while the computational time of the \textsf{Python} implementation continues to grow.
-This behavior highlights the results of the optimizations performed on the \textsf{Cython} implementation which allows the application of the \textsf{DNetPRO} algorithm also to larger datasets without loosing performances.
-An opposite behavior is found monitoring the number of threads (ref Fig.~\ref{fig:dnetpro_timing}(c)): the \textsf{Python} version scales quite well with the number of threads\footnote{
+While the code performances scale quite well with the number of features (Fig.~\ref{fig:dnetpro_timing}~(a)) in both the implementations, we have a different trend varying the number of samples (Fig.~\ref{fig:dnetpro_timing}~(b)): the \textsf{Cython} trend starts to saturate almost immediately, while the computational time of the \textsf{Python} implementation continues to grow.
+This behavior highlights the results of the optimizations performed on the \textsf{Cython} version which allows the application of the \textsf{DNetPRO} algorithm also to larger datasets without loosing performances.
+An opposite behavior is found monitoring the number of threads (ref Fig.~\ref{fig:dnetpro_timing}~(c)): the \textsf{Python} version scales quite well with the number of threads\footnote{
   The optimal result should be a linear scalability with the number of threads but it is always difficult to reach this efficiency.
-  Thus, a reasonable good result is given by a progressive decrease with increasing the number of threads.
+  Thus, a reasonable good result is given by a progressive decrease increasing the number of threads.
 }, while \textsf{Cython} trend is more unstable.
-This behavior is probably due to a not optimized schedule in the parallel section: the work is not equally distributed along the available threads and it penalizes the code efficiency creating a bottleneck related to the slowest thread.
+This behavior is probably due to a non-optimal schedule in the parallel section: the work is not equally distributed along the available threads and it penalizes the code efficiency, creating a bottleneck related to the slowest thread.
 The above results are computed considering a number of features equal to 90 and, thus, the parallel section distributes the 180 ($N\times N$) iterations along the available threads: when the number of iterations is proportional to the number of threads used (12, 20 and 30 in our case), we have a maximization of the time performances.
-Despite of this, the computational efficiency of the \textsf{Cython} implementation is much better than the \textsf{Python} one, of which the usage is indisputable.
+Despite of this, the computational efficiency of the \textsf{Cython} implementation is so much better than the \textsf{Python} one that its usage is indisputable.
 
 \end{document}

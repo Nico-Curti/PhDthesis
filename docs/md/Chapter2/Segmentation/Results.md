@@ -26,7 +26,7 @@ In Fig. [3](../../../../img/IoU_score_out_good_logs_noaug.svg) we show some of t
 Despite the first slice shown in Fig. [3](../../../../img/IoU_score_out_good_logs_noaug.svg) could be easily segmented also by our custom image processing pipeline (the bone extraction in this case is quite easy) the second two slices show more difficult tasks in which it is hard to discriminate between the femur head and the acetabular fossa.
 In all these case the U-Net model was able to discriminate between the bones with a good agreement with our naive ground truth.
 However, the model still produces some false positive segmentations also in these cases: the output could be corrected re-applying our image processing pipeline and thus filtering the bone identifications outside in disagreement with the connected components centroids obtained by the previous slice.
-To completely prove our results we need of more data and certainly more annotation slices but we these preliminary results encourage us to use Neural Network model like the U-Net one to face on the segmentation problems also in bio-medical imaging.
+To completely prove our results we need of more data and certainly more annotation slices but we these preliminary results encourage us to use Neural Network model like the U-Net one to face the segmentation problems also in bio-medical imaging.
 
 
 

@@ -10,7 +10,7 @@ The set of training images could not be made by high quality images but the most
 
 During a training section we have also to take in count that a part of the available data has to "discard" and used as test set so the number of sample has to be sufficient for both steps.
 The YOLO model has more than 62 million of parameters to be tuned and a sufficient number of annotated samples to train it is hard to produce.
-Fortunately, there are different public available datasets designed to face on object detection training problem.
+Fortunately, there are different publicly available datasets designed to face object detection training problem.
 One of the most popular one is the COCO dataset.
 
 COCO dataset is a large-scale open source dataset designed for multiple deep learning training tasks.

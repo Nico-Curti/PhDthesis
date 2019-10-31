@@ -1,9 +1,9 @@
 ## Data Transmission
 
 In the above configuration we focused on the pipeline which process the stream of data ignoring any problem about the communication between the external device and the machine which host the service.
-The *FiloBlu* project uses an external App to send data to the main server, so we have two systems which have to communicate between them automatically via Internet connection.
+The *FiloBlu* project uses an external APP to send data to the main server, so we have two systems which have to communicate between them automatically via Internet connection.
 In general, we could manage sensitive data that could be vulnerable using an Internet communication.
-To face on this problem we developed a simple TCP/IP client-server package which also supports a RSA cryptography, the `CryptoSocket` package [[CryptoSocket](https://github.com/Nico-Curti/CryptoSocket)].
+To face this problem we developed a simple TCP/IP client-server package which also supports a RSA cryptography, the `CryptoSocket` package [[CryptoSocket](https://github.com/Nico-Curti/CryptoSocket)].
 
 The communication security could be an important point in many research applications and a valid cryptography procedure is essential.
 The RSA cryptography is considered one of the most secure cryptography algorithm for data transmission and it is quite easy to implement.

@@ -18,8 +18,8 @@ All the small-graphs showed in this work are made using this tool and in particu
 `Blender` is now a standard for 3D rendering and it is commonly used in a wide range of graphical applications, starting from the simpler 3D dynamics to video-game applications.
 `Blender` is certainly more than a simple graphical viewer but it provide an easy `Python` interface and a wide on-line documentation which make it a useful tool for graphical representation of 3D structures.
 
-We are forced to use the `Python` version provided by `Blender` to use its APIs and any extra-package required by our application have to be installed with the appropriated `pip`.
-We use the `networkx` `Python` library for node coordinates computation and thus we have to update our `Python`-`Blender` with the appropriated packages.
+We are forced to use the `Python` version provided by `Blender` to use its APIs and any extra-package required by our application have to be installed with the appropriate `pip`.
+We use the `networkx` `Python` library for node coordinates computation and thus we have to update our `Python`-`Blender` with the appropriate packages.
 Moreover, since the code can be difficult to manage for non-expert users we have written an easy command-line interface to set the whole set of parameters required by the graph viewer that can be piloted via [`Makefile`](https://github.com/Nico-Curti/BlendNet/blob/master/Makefile) rules.
 The list of nodes and edges can be passed via command-line with relative filenames, in the same format of the concurrent graph viewers (e.g *Gephi* software, the other graph viewer used in this work to generate the larger network structures of the `CHIMeRA` project).
 

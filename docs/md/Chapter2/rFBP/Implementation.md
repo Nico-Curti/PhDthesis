@@ -9,7 +9,7 @@ A first implementation of the algorithm was proposed in the original paper [[Bal
 The original version of the code was written in `Julia` language and despite it is a quite efficient implementation the `Julia` programming language stays on difficult and far from many users.
 To broaden the scope and use of the method, a `C++` implementation was developed with a joint `Cython` wrap for `Python` users.
 The `C++` language guarantees better computational performances against the `Julia` implementation and the `Python` version enlarge its usability.
-This implementation is optimized for parallel computing and is endowed with a custom `C++` library called `Scorer` (see Appendix D for further details), which is able to compute a large number of statistical measurements based on a hierarchical graph scheme.
+This implementation is optimized for parallel computing and is endowed with a custom `C++` library called `Scorer` (see [Appendix D](../../Appendix/Scorer/README.md) for further details), which is able to compute a large number of statistical measurements based on a hierarchical graph scheme.
 With this optimized implementation we try to encourage researchers to approach these alternative algorithms and to use them more frequently on real context.
 
 As the `Julia` implementation also the `C++` one provides the entire `rFBP` framework in a single library callable via a command line interface.

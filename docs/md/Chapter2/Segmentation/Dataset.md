@@ -9,7 +9,7 @@ The project was developed in collaboration with the Engineering group of the pro
 In this work no data were provided by the Rizzoli Hospital and it is hard to find annotated biomedical images (public) on-line, especially about the region of our interest.
 We found only few samples of femur CT images (4 patients) and these they are certainly not enough for an accurate training of the model.
 To overcome this issue we applied a huge data augmentation pre-processing: each image was randomly rotated, shifted and mirrored.
-Moreover we had to face on the problem of data annotation which is always a difficult and time expensive task: we did not have accurate medical annotation so we had to perform them by ourself.
+Moreover we had to face the problem of data annotation which is always a difficult and time expensive task: we did not have accurate medical annotation so we had to perform them by ourself.
 
 ![Naive segmentation pipeline applied to a series of CT slices. The thresholding algorithm combined with morphological operations allow to obtained a naive segmentation of the femur bone. The centroid of the segmented connected components is used to filter the false positive results. This pipeline was used to simplify the annotation procedure of the CT dataset.](../../../../img/3D_tool.png)
 
@@ -28,7 +28,7 @@ This naive approach for the image processing could not solve the full segmentati
 With this approach we reduced the amount of required annotations by more than 50%.
 The other part of the images were manually annotated.
 The manual annotation was performed without any medical background and thus we can not ensure the goodness of our results.
-This work only aims to prove the possibility of using deep learning techniques to face on segmentation problems.
+This work only aims to prove the possibility of using deep learning techniques to face segmentation problems.
 
 Following this approach we were able to annotate 104 CT images randomly sampled from the 4 patient slices.
 In particular we extracted 40 slices from a single patient and 96 from the remaining three.

@@ -17,7 +17,7 @@ A more efficient solution is provided by the modern graph databases (GDB).
 GDB are databases which use graph structures to represent and store information: there are two needed information for the database given by nodes and edges.
 They go under the `NoSQL` (*not SQL*, or better "*Not only SQL*") database category which storage data according to more sophisticated models than simple tabular relations (typical model of `SQL` databases)
 GDBs allow simple and efficient retrieval of complex hierarchical structures by definition and thus they represent the most efficient solution for our `CHIMeRA` database which is born as a network-of-networks architecture.
-Multiple different solutions have been proposed to address graph storages and there are a wide range of possible GDB languages public available on-line (e.g `Neo4j`, `OrientDB`, `Sparksee`, `AllegroGraph`, ...).
+Multiple different solutions have been proposed to address graph storages and there are a wide range of possible GDB languages publicly available on-line (e.g `Neo4j`, `OrientDB`, `Sparksee`, `AllegroGraph`, ...).
 Based on our experience about these topics and driven by the available documentation, we have chosen to use [`ArangoDB`](https://www.arangodb.com/) in our application.
 `ArangoDB` is an open-source and free software released on Github for multi-model database management with a unified query language `AQL` (*ArangoDB Query Language*).
 `ArangoDB` database system is `NoSQL` but its queries are very closed to `SQL` ones and thus are easier to write also by no-expert users.
@@ -26,7 +26,7 @@ Moreover, it provides also a user-friendly web interface for network visualizati
 The possibility to have a web interface allows an easy way to share our database on Internet as service increasing the usability of our tool.
 Moreover, the query outputs can be also downloaded and used by external tools.
 Thus, using `ArangoDB` as service management we can provide a *Software as a Service* (SaaS) interface of our `CHIMeRA` database.
-This project is still in work in progress and this SaaS is not yet public available [^2].
+This project is still in work in progress and this SaaS is not yet publicly available [^2].
 
 We re-formatted the `CHIMeRA` network following the `ArangoDB` requirements and we created the graph database structure of our data.
 Using this database we were able to perform the first queries and discuss about the results.

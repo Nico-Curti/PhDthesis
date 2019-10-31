@@ -1,7 +1,7 @@
 ## Mathematical background
 
-The exact knowledge of prior probabilities and conditional probabilities are generally hard to evaluate thus a parametric approach is often needed.
-A parametric approach aim to create reasonable hypothesis about the distribution under analysis and its fundamental parameters (e.g mean, variance, ...).
+TThe exact knowledge of prior probabilities and conditional probabilities are generally hard to evaluate thus a parametric approach is often needed.
+A parametric approach aim to create reasonable hypothesis about the data distribution and its fundamental parameters (e.g mean, variance, ...).
 In the following discussion, we are going to focus only on normal distributions for mathematical convenience but the results could be easily generalized.
 
 Given the multi-dimensional form of Gauss distribution:
@@ -19,8 +19,8 @@ $$
 where the exponent ($$\Delta^2$$) is called *Mahalanobis distance* of vector $$\mathbf{x}$$ from its mean.
 This distance can be reduced to the Euclidean one when the covariance matrix is the identity matrix ($$\mathbf{I}$$).
 
-The covariance matrix is always symmetric and positive semi-definite by definition (useful information for the next algorithmic strategies) it is invertible.
-If the covariance matrix has only diagonal terms the multidimensional distribution can be expressed as the simple product of `d` mono-dimensional normal distributions.
+The covariance matrix is always symmetric and positive semi-definite by definition (useful information for the next algorithmic strategies) so it is invertible.
+If the covariance matrix has only diagonal terms the multidimensional distribution can be expressed as the simple product of $$d$$ mono-dimensional normal distributions.
 In this case the main axes are parallel to the Cartesian axes.
 
 Starting from a multi-variate Gaussian distribution [^1], the Bayesian rule for classification problems can be rewritten as:
@@ -50,7 +50,7 @@ The dependency by the covariance matrix allows 5 different cases:
   g_i(\mathbf{x})=-\frac{1}{2\sigma^2}(\mathbf{x^Tx}-2{\mu_i}^T\mathbf{x} + {\mu_i}^T\mu_i) + \log P(w_i)
   $$
 
-  and removing all the constant $$\mathbf{x^Tx}$$ terms for each class
+  and removing all the $$\mathbf{x^Tx}$$ constant terms for each class
 
   $$
   g_i(\mathbf{x}) = -\frac{1}{2\sigma^2}(-2{\mu_i}^T\mathbf{x}+{\mu_i}^T\mu_i)+\log P(w_i) = \mathbf{w_i}^T\mathbf{x}+\mathbf{w_0}
@@ -72,7 +72,7 @@ The dependency by the covariance matrix allows 5 different cases:
   ![(diagonal matrix) - Linear Classifier.](../../../../img/case2.png)
 
   In this case the classes have same covariances but each feature has its own different variance.
-  After the $$\Sigma$$ substitution in the equation, we obtain
+  After the substitution of $$\Sigma$$ in the equation, we obtain
 
   $$
   g_i(\mathbf{x}) = -\frac{1}{2}\sum_{k=1}^{s}\frac{(\mathbf{x_k}-\mu_{i,k})^2}{\sigma_k}^2-\frac{1}{2}\log\prod_{k=1}^{s}{\sigma_k}^2+\log P(w_i)
@@ -102,7 +102,7 @@ The dependency by the covariance matrix allows 5 different cases:
 
   where the quadratic term is the above told *Mahalanobis distance*, i.e a normalization of the distance according to the inverse of the covariance matrix.
   We can prove that expanding the scalar product and removing the constant $$\mathbf{x^T\Sigma^{-1}x}$$ term, we still obtain a linear discriminant function with the same properties of the previous case.
-  In this case the hyper-ellipsoids have axes aligned according to the eigenvectors of the $$\Sigma$$ matrix.
+  In this case the hyper-ellipsoids have axes aligned to the eigenvectors of the $$\Sigma$$ matrix.
 
 
 * **$$\Sigma_i = {\sigma_i}^2I$$ - DiagQuadratic Classifier**

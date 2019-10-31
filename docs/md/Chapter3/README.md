@@ -14,7 +14,7 @@ Moreover, Big Data does not define a particular data type but more than we norma
 The *International Journal of Computer Applications* defined them as "[...] a collection of large and complex datasets that cannot be processed and analyzed using traditional computing techniques. It is not a single technique or a tool, rather it involves many areas of business and technology".
 This definition certainly involves many aspects of Big Data processing but it does not provide any definition about their nature.
 Moreover, it is easy to identify them as "big" and thus difficult to analyze, but they are all around us every day and just using the Internet connection every smart-phone or laptop can extract and visualize our web queries so could be not properly correct to define them in this way.
-However, it is sure that standard computing techniques have to be reviewed to face on this vast amount of data and a even more important attention has to be payed on the implementation of algorithms.
+However, it is sure that standard computing techniques have to be reviewed to face this vast amount of data and a even more important attention has to be payed on the implementation of algorithms.
 
 While a global definition of them is evidently difficult, we can provide a description of them using some of their "essential" features.
 One of the most common and used set of labels for this purpose is given by the so-called 5 V's of Big Data: volume, velocity, variety, veracity and value.
@@ -37,11 +37,11 @@ The last and probably most important feature is certainly their *value*: it is g
 In this vast amount of data only a small part of them can be considered as informative and it is always harder to extract this core of information from them.
 Moreover, we have to take into account also the difficulties about the management of these data and their more or less complex structure.
 However, also in this case, it is hard to generalize this property to all the amount of data contained in Internet: every day we see a large quantity of useless information in the Web and it is hard to figure out that some of them can be useful for research applications.
-A key role is played by the *questions* which we ask: for every data source there is always an appropriated question which can be answer using it and that can give a value to it and vice versa.
-In this way also the seemingly useless datasets can acquire importance for an appropriated research project.
+A key role is played by the *questions* which we ask: for every data source there is always an appropriate question which can be answer using it and that can give a value to it and vice versa.
+In this way also the seemingly useless datasets can acquire importance for an appropriate research project.
 
 In this chapter we are going to discuss about one of the latest project developed during my PhD and which is still in work in progress: the `CHIMera` (*Complex Human Interactions in MEdical Records and Atlases*) project.
-The project is founded on Big Data applications and it is accidentally born as separated branch of the INFN FiloBlu project (ref. next sections and Appendix E for further information about the FiloBlu project) which financed my last PhD year.
+The project is founded on Big Data applications and it is accidentally born as separated branch of the INFN FiloBlu project (ref. next sections and [Appendix E](../../Appendix/FiloBlu/README.md) for further information about the FiloBlu project) which financed my last PhD year.
 `CHIMeRA` aims to create a unified database of biomedical records using Natural Language processing techniques.
 Its final purpose is to merge multiple data sources available on-line into a single network structure which highlights the relevant interactions between biomedical information, i.e starting from diseases to the biological agents and compounds involved into their causes and consequences.
 The realization of the first version of `CHIMeRA` required a lot of time and the development of novel pipelines of data processing.

@@ -27,7 +27,7 @@ These boxes are certainly fewer than the 2k previous cited windows.
 
 A breakthrough idea on the real-time object detection was the introduction of the YOLO model.
 The model was developed by Redmon et al. at Washington University and it is probably the state-of-art on object detection, especially for its very incredible speed (it can reach 45 FPS on modern GPUs!).
-Certainly it is the faster method public available but its popularity is due also to its innovative strategy in object detection.
+Certainly it is the faster method publicly available but its popularity is due also to its innovative strategy in object detection.
 Despite all the other algorithms use regions to localize the object into the image, the YOLO network does not look at the complete image but only on a parts of it which has the higher probability to contain an object.
 In YOLO a single CNN predicts the bounding boxes and the class probabilities of them.
 YOLO slit a single image into a `S x S` grid and on each grid `m` bounding boxes are taken.

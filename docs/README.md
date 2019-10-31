@@ -17,9 +17,9 @@
 # Implementation and optimization of algorithms in Biomedical Big Data Analytics
 
 > Big Data Analytics poses many challenges to the research community who has to handle several computational problems related to the vast amount of data.
-> An increasing interest involves Biomedical data aiming to obtain the so-called \quotes{personalized medicine}, where therapy plans are designed on the specific genotype and phenotype of the individual patient and algorithm optimization plays a key role to this purpose.
+> An increasing interest involves Biomedical data aiming to get the so-called "personalized medicine", where therapy plans are designed on the specific genotype and phenotype of the individual patient and algorithm optimization plays a key role to this purpose.
 > In this work we discuss about several topics related to Biomedical Big Data Analytics with a special attention to numerical issues and algorithmic solutions related to them.
-> We introduce a novel feature selection algorithm tailored on \emph{omics} datasets, proving its efficiency on synthetic and real high-throughput genomic datasets.
+> We introduce a novel feature selection algorithm tailored on *omics* datasets, proving its efficiency on synthetic and real high-throughput genomic datasets.
 > The proposed algorithm is a supervised signature identification method based on a bottom-up combinatorial approach that exploits the discriminant power of all variable pairs.
 > We tested our algorithm against other state-of-art models and it outperforms existing results or compares to them.
 
@@ -30,9 +30,9 @@
 > We also highlight how Super Resolution models are able to overcome object detection issues and increase detection performance.
 > In the third application we discuss about femur head segmentation problem on CT images: a semi-automated pipeline for the image annotation is proposed and a deep learning neural network model trained on these images.
 
-> The last section of this work is the implementation of a novel biomedical database obtained by the harmonization of multiple data sources.
-> The data involved in this project were mined using web-scraping methods, and a novel natural language processing pipeline was designed to maximize the overlap between the different data sources.
-> We describe the key steps which lead us to the realization of this network-of-networks database and we discuss its potential applications to biomedical research.
+> The last section of this work is the implementation of a novel biomedical database obtained by the harmonization of multiple data sources that provide network-like relationship between biomedical entities.
+> The data involved in this project related to diseases, symptoms and other biological relates were mined using web-scraping methods, and a novel natural language processing pipeline was designed to maximize the overlap between the different data sources.
+> We describe the key steps which lead us to this network-of-networks database and we discuss its potential applications to biomedical research.
 
 ## Table of contents
 
@@ -43,11 +43,11 @@
   * [Synthetic dataset benchmark](./md/Chapter1/DNetPRO/ToyModel.md)
   * [Algorithm implementation](./md/Chapter1/Implementation/README.md)
     * [Combinatorial algorithm](./md/Chapter1/Implementation/Couples.md)
-    * [Pair sort](./md/Chapter1/Implementation/Sorting.md)
+    * [Pair sorting](./md/Chapter1/Implementation/Sorting.md)
     * [Network signature](./md/Chapter1/Implementation/FeatSel.md)
     * [DNetPRO in Python](./md/Chapter1/Implementation/Python.md)
     * [DNetPRO in Snakemake](./md/Chapter1/Implementation/Pipeline.md)
-    * [Time performances](./md/Chapter1/Implementation/Timing.md)
+    * [Time performance](./md/Chapter1/Implementation/Timing.md)
   * [Benchmark of DNetPRO algorithm](./md/Chapter1/Synapse/README.md)
     * [Synapse dataset](./md/Chapter1/Synapse/Dataset.md)
     * [mRNA data](./md/Chapter1/Synapse/mRNA.md)
@@ -101,7 +101,7 @@
   * [Natural Language Processing](./md/Chapter3/CHIMeRA/NLP.md)
   * [CHIMeRA datasets](./md/Chapter3/CHIMeRA/Dataset.md)
   * [CHIMeRA analyses](./md/Chapter3/CHIMeRA/Results.md)
-  * [CHIMeRA as Service](./md/Chapter3/CHIMeRA/Service.md)
+  * [CHIMeRA as a Service](./md/Chapter3/CHIMeRA/Service.md)
 
 * [Conclusions](./md/Conclusions.md)
 
@@ -131,7 +131,8 @@ The `Implementation and optimization of algorithms in Biomedical Big Data Analyt
 
 ### Acknowledgment
 
-Thanks goes to all contributors of this project.
+The authors acknowledge EU IMI2 - HARMONY Healthcare Alliance for Resourceful Medicines Offensive against Neoplasms in HematologY n. 116026, EU COMPARE COllaborative Management Platform for detection and Analyses of (Re-) emerging and foodborne outbreaks in Europe n. 643476 and EU VEO - Versatile Emerging infectious disease Observatory n. 874735 for their support on biomedical analyses.
+A special thank goes to INFN Gruppo V AIM - Artificial Intelligence in Medicine, Progetto FILO-BLU Bando Lazio POR-FESR 2014-2020 LIFE2020 and EU ETN-ITN ImforFuture - Innovative training in methods for future data n. 721815 for what concern the development of machine learning and deep learning analyses show in this thesis.
 
 ### Citation
 

@@ -130,7 +130,8 @@ urlcolor=blue
 %% Epigraph
 \chapter*{}
 \pagenumbering{gobble}% Remove page numbers (and reset to 1)
-\epigraph{""\emph{No one know nothing,\\everyone know something,\\but something is nothing to someone,\\while\\something is important to everybody}''}{Daudi, Manyara}
+\epigraph{\quotes{\emph{No one know nothing,\\everyone know something,\\but something is nothing to someone,\\while\\something is important to everybody}}}{Daudi, Manyara}
+%\epigraph{\quotes{\emph{Software is like sex:\\it's better when it's free}}{Linus Torvalds}}
 
 %% Abstract
 \pagenumbering{gobble}% Remove page numbers (and reset to 1)
@@ -191,10 +192,21 @@ urlcolor=blue
 
 \input{./tex/Conclusions.tex}
 
+%% Acknowledgment
+
+\pagenumbering{gobble}% Remove page numbers (and reset to 1)
+\input{./tex/Acknowledgment.tex}
+
 %% Appendix
 
 \input{./tex/Appendix/appendix.tex}
 % reference to the studies about performances of the developed algorithms.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+
+\input{./tex/Relazione.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 
@@ -202,10 +214,6 @@ urlcolor=blue
 \bibliographystyle{abbrv}
 \bibliography{biblio}
 
-%% Acknowledgment
-
-\pagenumbering{gobble}% Remove page numbers (and reset to 1)
-\input{./tex/Acknowledgment.tex}
 
 
 \end{document}

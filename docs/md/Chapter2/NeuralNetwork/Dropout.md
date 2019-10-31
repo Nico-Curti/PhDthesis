@@ -53,7 +53,7 @@ Despite this straightforward implementation we have to carefully manage some cru
 The `Byron` library works into a single parallel region so after the (sequential) initialization of the layer object the forward/backward phases are evaluated by all the available threads in parallel.
 This bring us to a standard problem in multi-threading programming: the generation of independent random numbers among threads.
 Inside a parallel region all the declared variables are (by definition) shared among all the available threads.
-Thus, if we simply create a random number generator we have to face on the thread-concurrency.
+Thus, if we simply create a random number generator we have to face the thread-concurrency.
 As consequence the random number generated will not be independent but (most probably [^1]) repeated by each thread.
 The simple workaround implemented into the `Byron` library is given by assigning a random number generator to each thread (with its own seed and indexed by the thread ID).
 In this way we can ensure a totally independence of the random numbers generated during the forward phase (ref. [on-line](https://github.com/Nico-Curti/Byron/blob/master/src/dropout_layer.cpp)).

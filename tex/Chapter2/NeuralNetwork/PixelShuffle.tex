@@ -4,16 +4,16 @@
 
 % https://medium.com/@hirotoschwert/introduction-to-deep-super-resolution-c052d84ce8cf
 
-\subsection[Pixel Shuffle]{Pixel Shuffle}\label{NN:shuffler}
+\subsection[Pixel Shuffling]{Pixel Shuffling}\label{NN:shuffler}
 
 Pixel Shuffle layer is one of the most recent layer type introduced in modern deep learning Neural Network.
-Its application is closely related to the single-image super-resolution (SISR) research, i.e the ensemble techniques which aim at restoring a high-resolution image from a single low-resolution one (see section~\ref{SR:sr} for further details).
+Its application is closely related to the single-image super-resolution (SISR) research, i.e the ensemble techniques which aim to restore a high-resolution image from a single low-resolution one (see section~\ref{SR:sr} for further details).
 
-The first SISR Neural Networks start with a preprocessing of low-resolution images in input with a bi-cubic up-sampling.
-Then the image, with the same dimensions of the desired output, feeds the model which aim to increase the resolution and fix its details.
-In this way the amount of parameters and moreover the computation required by the training section increase (by a factor equal to the square of the desired up-sampling scale), despite the required image processing is smaller.
+The first SISR Neural Networks started with a preprocessing of low-resolution images in input with a bi-cubic up-sampling.
+Then the image, with the same dimensions of the desired output, fed the model which aimed to increase the resolution and fixed its details.
+In this way the amount of parameters, and moreover the computation required by the training section, increased (by a factor equal to the square of the desired up-sampling scale), despite the required image processing was smaller.
 To overcome this problem a Pixel Shuffle transformation, also known as \emph{sub-pixel convolution}, was introduced~\cite{Wenzhe2016Shuffle}: in this work the authors proved the equivalence between a regular transpose convolution, i.e the previous standard transformation to enlarge the input dimensions, and the sub-pixel convolution transformation without losing any information.
-The Pixel Shuffle transformation reorganize the low-resolution image channels to obtain a bigger image with few channels.
+The Pixel Shuffle transformation reorganizes the low-resolution image channels to obtain a bigger image with few channels.
 An example of this transformation is shown in Fig.~\ref{fig:pixel_shuffle}.
 
 \begin{figure}[htbp]
@@ -29,11 +29,11 @@ Since the number of channels is perfect square the output is a single channel im
 \end{figure}
 
 Pixel Shuffle rearranges the elements of the input tensor expressed as $H \times W \times C^2$ to form a $scale \cdot H \times scale \cdot W \times C$ tensor.
-This can be very useful after a convolution process, in which the number of filters chosen drastically increase the number of channels, to \quotes{invert} the transformation like a sort of \emph{deconvolution} function.
+This can be very useful after a convolution process, in which the number of filters chosen drastically increases the number of channels, to \quotes{invert} the transformation like a sort of \emph{deconvolution} function.
 
 The main gain in using this transformation is the increment of computational efficiency of the Neural Network model.
-The introduction of Pixel Shuffle transformation in the Neural Network tail, i.e after a sequence of small processing steps which increase the number of features, reorganize the set of features into a single bigger image, i.e the desired output in a SISR application.
-The feature processing steps, which generally are faced on with convolutional layers, can be performed with smaller images in input and thus can be obtained faster since the up-scaling task will be performed by a single Pixel Shuffle transformation.
+The introduction of Pixel Shuffle transformation in the Neural Network tail, i.e after a sequence of small processing steps which increase the number of features, reorganizes the set of features into a single bigger image, i.e the desired output in a SISR application.
+The feature processing steps, which generally are faced with convolutional layers, can be performed with smaller images in input and thus can be obtained faster, since the up-scaling task will be performed by a single Pixel Shuffle transformation.
 
 Despite this transformation has became a standard in super-resolution applications and thus it can be found into the most common deep learning libraries (e.g \textsf{Pytorch} and \textsf{Tensorflow}) a \textsf{C++} implementation is hard to find.
 Moreover, each library implements the transformation following its own data organization\footnote{
@@ -41,10 +41,10 @@ Moreover, each library implements the transformation following its own data orga
   \textsf{Tensorflow} has a \quotes{standard} input assessment as $H \times W \times C$.
   \textsf{Pytorch} has a so-called channel-first implementation and so the input tensor is organized as $C \times H \times W$.
 }.
-For this reason we proposed in our libraries a dynamic version of the algorithm in \textsf{C++} able to perform both versions of the algorithm.
+For this reason we proposed in our libraries a dynamic version of the algorithm in \textsf{C++} ables to perform both versions of the algorithm.
 
 The algorithmic implementation of the pixel-shuffle transformation is essentially a re-indexing of the input values.
-While in a \textsf{C++} implementation of the algorithm we could obtain the desired result inside a sequence of nested for loops playing with the loop indexes, for an efficient \textsf{Python} version we used a sequence of transposition and reshaping to rearrange the input values.
+While in a \textsf{C++} implementation of the algorithm we could obtain the desired result inside a sequence of nested for loops playing with the loop indexes, for an efficient \textsf{Python} version we need to use a sequence of transposition and reshaping to rearrange the input values.
 The following snippet shows the \textsf{NumPyNet} version of this algorithm.
 
 \lstset{style=snippet}
@@ -119,24 +119,24 @@ class Shuffler_layer(object):
 The two functions \textsf{\_phase\_shift} and \textsf{\_reverse}\footnote{
   These function are \quotes{private} function of the object class.
 }
-produce the re-arrangement of the indexes according to the pixel-shuffle transformation and its inversion\footnote{
+produce the rearrangement of the indexes according to the pixel-shuffle transformation and its inversion\footnote{
   During the back-propagation, in fact, we have to apply the reverse transformation to the gradient.
 }.
 In the forward function we apply the \textsf{\_phase\_shift} to the sequence of channels (in the right order) and then we concatenate the results into a single tensor (output).
-The backward function instead needs a re-ordering of channel sequence after the concatenation.
+The backward function, instead, needs a reordering of channel sequence after the concatenation.
 
 As told above, in the \textsf{C++} implementation provided into the \textsf{Byron} library we can compute the desired re-indexing using a series of nested for loops.
 An equivalent solution can be obtained also by the contraction of the loops into a single one using divisions to obtain the right indexes.
-This solution was taken in count into the first version of the library but the amount of required divisions weights on the computational performances.
-The division operations are the most computationally expensive operations in terms of CPU clock-time.
-The old versions of OpenMP multi-threading library forced the users to spend time in the evaluation of the \quotes{loop-contraction} to obtain the better performances by a single parallel for loop.
+This solution was taken into account in the first version of the library but the amount of required divisions weights on the computational performances.
+The division operations are the most computationally expensive operations in terms of CPU clock-cycles.
+The old versions of OpenMP multi-threading library forced the users to spend time in the evaluation of \quotes{loop-contraction} to obtain the better performances by a single parallel for loop.
 The new features of OpenMP library provide the very powerful \textsf{collapse} keyword which performs an automatic loop-contraction.
 The keyword can be applied only with a series of independent and perfectly nested\footnote{
   Two for loops are perfectly nested if there are not other code lines between them.
 }
 for loops which is exactly our case.
-Moreover we have not to take in care any thread concurrency trouble since the iterations, as the output indexes, are totally independent.
-We widely used the \textsf{collapse} keyword in the \textsf{Byron} library to simplify the code and the function evaluation but the Pixel-Shuffle case is one of the most efficient one, since we could collapse six nested loops\footnote{
+Moreover, we have not to take in care any thread concurrency trouble since the iterations, as the output indexes, are totally independent.
+We widely used the \textsf{collapse} keyword in the \textsf{Byron} library to simplify the code and the function evaluation, but the Pixel-Shuffle case is one of the most efficient one, since we could collapse six nested loops\footnote{
   In the Pixel-Shuffle we have to loop over batch, width, height, channels plus a couple of loops over the scale factor that we want to apply.
   In total we have to manage six dimensions that can be easily collapsed into a single one given by their product.
 } (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/shuffler_layer.cpp}{on-line}.

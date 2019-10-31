@@ -4,7 +4,7 @@ We have seen how we can extract useful information also from unstructured databa
 The *on-line doctor* web pages could be very useful for a toy model application like the `SymptomsNet` one but if we want produce scientific relevant results we have to take care about the validity of data.
 Since the English datasets availability is easier than the Italian one we moved to more "robust" databases.
 
-As told in the previous sections, there are a lot of studies performed on the disease associations to other biological compounds and in many cases the resulting datasets are public available on Internet.
+As told in the previous sections, there are a lot of studies performed on the disease associations to other biological compounds and in many cases the resulting datasets are publicly available on Internet.
 This is the case of the [DisGeNET](https://doi.org/10.1093/nar/gkw943) or [DrugBank](https://doi.org/10.1093/nar/gkx1037) datasets which contain the relationship between a large number of diseases with genes/variants (SNPs) and drugs (and other information), respectively.
 The DisGenet allows to download the datasets already stored into a well structured network format (sparse adjacency matrix, with 210498 associations between 117337 SNPs, 10358 diseases and 17549 genes) while the DrugBank poses more issues to the treatment of data: the DrugBank database was designed to provide a large set of information related to each drug using its own website and thus it needs a huge pre-processing of the JSON dataset structure to highlight all the possible network associations (14812 drugs, 649 metabolite pathways, 3256 gene targets, 40 SNPs targets, and 532 food interactions).
 Using the DisGenet we can connect the diseases to their related genes and variants.
@@ -21,14 +21,14 @@ A full list of the information collected by our `web-scraping` and rearrangement
 
 To enlarge our disease information we looked for other on-line data sources.
 A very interesting database is given by [HMDB](https://doi.org/10.1093/nar/gkx1089) (*Human Metabolite Data Bank*)which comprises a vast amount of metabolites and metabolite-pathways with the associated drugs and diseases (114003 metabolite entries with chemical taxonomies and $$\sim$$25000 human metabolic and disease pathways [^1].
-The interconnections with the previous discussed datasets are straightforward but in this case the data are not public available and thus we had to apply a `web-scraping` algorithm to get its information.
+The interconnections with the previous discussed datasets are straightforward but in this case the data are not publicly available and thus we had to apply a `web-scraping` algorithm to get its information.
 An analogous procedure was applied to extract the data included into the [RXList](https://www.rxlist.com/script/main/hp.asp) database.
 RXList is an on-line website very similar to the previous discussed auto-diagnosis tools in which we can find associations between diseases and drugs and other several pathogenic associations.
 In this case we have a further distinction between diseases: we have diseases related to drugs and diseases connected to other caused-diseases.
 We can take care of this kind association using directional links [^2].
 We remark that each `web-scraping` pipeline is customized according to a precise website, so for each analyzed case a different code was developed to address the data extraction.
 
-All these information can enrich our database and the description of a given disease but we have to face on the problem of data merging.
+All these information can enrich our database and the description of a given disease but we have to face the problem of data merging.
 As previously discussed we do not have a unique nomenclature for diseases and thus we can find analogous names (periphrases or synonyms) which identify the same concept (disease).
 A useful tool to overcome these issues could be given by a synonym dictionary: a powerful example is given by the [CTD](https://doi.org/10.1093/nar/gky868) (*Comparative Toxicogenomics Database*) (7212 diseases with mapped synonyms and 4340 diseases with related phenotypes).
 Using the CTD jointly with the [SNAP](http://snap.stanford.edu/biodata) (*Stanford Large Network Dataset Collection*, 8803 disease terms with related synonyms) database we could enlarge the number of synonyms associated to each disease name.

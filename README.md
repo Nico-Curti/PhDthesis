@@ -23,9 +23,9 @@
 ## Abstract
 
 > Big Data Analytics poses many challenges to the research community who has to handle several computational problems related to the vast amount of data.
-> An increasing interest involves Biomedical data aiming to obtain the so-called \quotes{personalized medicine}, where therapy plans are designed on the specific genotype and phenotype of the individual patient and algorithm optimization plays a key role to this purpose.
+> An increasing interest involves Biomedical data aiming to get the so-called "personalized medicine", where therapy plans are designed on the specific genotype and phenotype of the individual patient and algorithm optimization plays a key role to this purpose.
 > In this work we discuss about several topics related to Biomedical Big Data Analytics with a special attention to numerical issues and algorithmic solutions related to them.
-> We introduce a novel feature selection algorithm tailored on \emph{omics} datasets, proving its efficiency on synthetic and real high-throughput genomic datasets.
+> We introduce a novel feature selection algorithm tailored on *omics* datasets, proving its efficiency on synthetic and real high-throughput genomic datasets.
 > The proposed algorithm is a supervised signature identification method based on a bottom-up combinatorial approach that exploits the discriminant power of all variable pairs.
 > We tested our algorithm against other state-of-art models and it outperforms existing results or compares to them.
 
@@ -36,10 +36,9 @@
 > We also highlight how Super Resolution models are able to overcome object detection issues and increase detection performance.
 > In the third application we discuss about femur head segmentation problem on CT images: a semi-automated pipeline for the image annotation is proposed and a deep learning neural network model trained on these images.
 
-> The last section of this work is the implementation of a novel biomedical database obtained by the harmonization of multiple data sources.
-> The data involved in this project were mined using web-scraping methods, and a novel natural language processing pipeline was designed to maximize the overlap between the different data sources.
-> We describe the key steps which lead us to the realization of this network-of-networks database and we discuss its potential applications to biomedical research.
-
+> The last section of this work is the implementation of a novel biomedical database obtained by the harmonization of multiple data sources that provide network-like relationship between biomedical entities.
+> The data involved in this project related to diseases, symptoms and other biological relates were mined using web-scraping methods, and a novel natural language processing pipeline was designed to maximize the overlap between the different data sources.
+> We describe the key steps which lead us to this network-of-networks database and we discuss its potential applications to biomedical research.
 
 ## Installation
 
@@ -57,11 +56,11 @@ The on-line version of the thesis can be found on the [gitbook version](https://
   * [Synthetic dataset benchmark](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/DNetPRO/ToyModel.md)
   * [Algorithm implementation](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/README.md)
     * [Combinatorial algorithm](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/Couples.md)
-    * [Pair sort](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/Sorting.md)
+    * [Pair sorting](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/Sorting.md)
     * [Network signature](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/FeatSel.md)
     * [DNetPRO in Python](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/Python.md)
     * [DNetPRO in Snakemake](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/Pipeline.md)
-    * [Time performances](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/Timing.md)
+    * [Time performance](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Implementation/Timing.md)
   * [Benchmark of DNetPRO algorithm](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Synapse/README.md)
     * [Synapse dataset](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Synapse/Dataset.md)
     * [mRNA data](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter1/Synapse/mRNA.md)
@@ -115,7 +114,7 @@ The on-line version of the thesis can be found on the [gitbook version](https://
   * [Natural Language Processing](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/NLP.md)
   * [CHIMeRA datasets](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Datasets.md)
   * [CHIMeRA analyes](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Results.md)
-  * [CHIMeRA as Service](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Service.md)
+  * [CHIMeRA as a Service](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Chapter3/CHIMeRA/Service.md)
 
 * [Conclusions](https://github.com/Nico-Curti/PhDthesis/blob/master/docs/md/Conclusions.md)
 

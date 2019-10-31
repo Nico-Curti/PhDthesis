@@ -20,7 +20,7 @@ The summary results obtained by the degree centrality are shown in Table.
 
 For each node type we computed the average number of connections and the main important parameters of each distribution (minimum, maximum, standard deviations and percentiles).
 This preliminary analysis confirms what we have already discussed during the creation of the `CHIMeRA` structure and thus that the each data type has at least one connection with a disease node (ref. min row in the Table): disease nodes are the core of our network-of-networks model while the other node types could have just single connections to the others.
-Using the finer grain distinction between the metabolite pathways (obtained by the information available in HMDB) we can also noticed that the major part of their connections concern the *macro pathway* category as expected: *macro pathway*s identify the more general category in our nomenclature and they include biological processes like `apoptosis process`, `dna replication fork` and `phosphatidylethanolamine biosynthesis`.
+Using the finer grain distinction between the metabolite pathways (obtained by the information available in HMDB) we can also notice that the major part of their connections concern the *macro pathway* category as expected: *macro pathway*s identify the more general category in our nomenclature and they include biological processes like `apoptosis process`, `dna replication fork` and `phosphatidylethanolamine biosynthesis`.
 A better visualization of the network structure could be done counting the average number of connections between each group of nodes, i.e the block matrix visualization of the underlying bipartite-graphs.
 In Fig. [1](../../../../img/chimera_net_mat.svg) is shown the block matrix representation.
 

@@ -1,6 +1,6 @@
 ## Results
 
-The original implementation of the YOLO model was provided by Redmon et al. and it is public available in his official [web-page](https://pjreddie.com/darknet/yolo) of `darknet` project.
+The original implementation of the YOLO model was provided by Redmon et al. and it is publicly available in his official [web-page](https://pjreddie.com/darknet/yolo) of `darknet` project.
 The code is written in Ansi C and it is designed and, only thank to the many branches developed by the Github community, it can be compiled on all the OS.
 The `Ansi C` language is a very low level programming language and it is hard to obtain better performances rewriting the code.
 This guaranteed its supremacy in terms of speed in the research community.

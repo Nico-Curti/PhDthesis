@@ -14,11 +14,11 @@ The project was financed by Lazio region and it was developed to work at the San
 This constrain drastically affects the data availability which are very hard to find on-line.
 The text messages analysis concerns the evaluation of critical keywords and medical terms so we faced on this problem generating a diseases ontology.
 In particular we were interesting in the relation between symptoms, diseases and their mutual interactions for the realization of our score function.
-More details about the pipeline used for the message processing are given in Appendix E.
+More details about the pipeline used for the message processing are given in [Appendix E](../../Appendix/FiloBlu/README.md).
 
 The English is becoming the predominant language in the research community and it is really hard to find (enough) data in other languages: everyone who wants to share his data and information via Internet have to provide them in English if he wants to increase its visibility and availability.
 The Italian constrain posed by the project drastically limits the data sources and no public database was found.
-We would stress that as database we consider a public available set of structured data which can be downloaded and easily used.
+We would stress that as database we consider a publicly available set of structured data which can be downloaded and easily used.
 
 Surfing on Internet many web pages can be found about diseases and their interactions with symptoms and causes, the so-called *on-line doctor* [^1]  (or Medical Services) pages.
 An on-line doctor is a querable Internet service which allows to provide user auto-diagnosis based on the information provided.

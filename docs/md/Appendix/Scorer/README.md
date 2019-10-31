@@ -8,7 +8,7 @@ Given a set of patterns and its corresponding (true) labels we can evaluate the 
 There are a lot of different score functions that can be computed and any of them evaluates some aspects of the model efficiency.
 Any paper author choses the score that better highlights the advantages of its model and it is difficult to move around this large zoo of indicators.
 Moreover, (it is quite a constant in scientific research) when a paper is send to a peer-review, in many cases the reviewers suggest to check if other performance indicators are good enough for the showed results.
-This means that a lot of large simulations should be performed again and the appropriated variables recomputed to obtain the requested scores.
+This means that a lot of large simulations should be performed again and the appropriate variables recomputed to obtain the requested scores.
 
 At this point the main question is: are these scores totally independent one from each other?
 The brief answer is simply no.
@@ -23,9 +23,9 @@ The focus of our analysis was not on mathematical formalism of these kind of gra
 
 In the work of Sepand et al. the authors identify three function classes: common statistics, class statistics and overall stats.
 In Fig. [1](../../../../img/scorer_net.png) the interaction graph of these three classes is shown.
-The figure shows deep interactions between the three function classes and it highlights the dependencies of the different quantities involved
+The figure shows deep interactions between the three function classes and it highlights the dependencies of the different quantities involved.
 We can also use this kind of visualization to formulate computational considerations about the order in which these quantities could be evaluated.
-Since the graph is a direct graph by definition, we can start from the root node (the node without links which bring to it) and cross the network until the leaf nodes (nodes without link which go out from them) like in a tree-graph.
+Since the graph is a direct graph by definition, we can start from the root node (the node without links which bring to it) and cross the network up to the leaf nodes (nodes without link which go out from them) like in a tree-graph.
 At each step of the percolation, the incoming nodes identify totally independent quantities.
 This independence means that the nodes-quantities can be potentially computed in parallel.
 To clarify this consideration we can reorganize the graph visualization minimizing the link lengths and obtaining a stratified graph in which each level identifies a potential parallel section.
@@ -37,10 +37,10 @@ As can be seen in figure we can identify 7 levels in the graph and thus 7 potent
 These considerations allow us to create an optimized version of the code of Sepand et al., the `Scorer` library [[Scorer](https://github.com/Nico-Curti/scorer)].
 The `Scorer` library is the `C++` porting of the `PyCM` library of Sepand et al. with a `Cython` wrap for the `Python` compatibility.
 Following the above told graph the computation of score quantities are performed in parallel according to the 7 levels found.
-The parallelization strategy chosen uses the `section` keywords of OpenMP library to perform no-wait tasks that are computed by each thread of the parallel region
+The parallelization strategy chosen uses the `section` keywords of OpenMP library to perform no-wait tasks that are computed by each thread of the parallel region.
 
 The extracted graph includes more than 100 different quantities so writing the full set of parallel sections becomes an hard (boring) work in `C++`.
-MMoreover, update the graph with new quantities brings to a consequential update of the full code and also of the parallelization strategy.
+Moreover, update the graph with new quantities brings to a consequential update of the full code and also of the parallelization strategy.
 Each function was written as an anonymous-struct, i.e a functor, with an appropriate operator overloading.
 Each functor has a name given by a pre-determined regex (`get_{function}}`) and the list of arguments follows the same nomenclature [^2].
 With these expedients we created a fully automated `C++` script which parses the list of functors, it computes the dependency graph and the parallelization levels and it gives back a compilable `C++` script with the desired characteristics.

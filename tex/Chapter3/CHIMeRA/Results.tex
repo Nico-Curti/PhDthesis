@@ -4,16 +4,15 @@
 
 \section[CHIMeRA analyses]{CHIMeRA analyses}\label{chimera:res}
 
-The large amount of information provided by the \textsf{CHIMeRA} network has to be analyzed to prove its efficiency.
+The large amount of information provided by \textsf{CHIMeRA} network has to be analyzed to prove its efficiency.
 A preliminary analysis was performed evaluating the node degree centrality (the number of links associated to each node).
-The degree centrality is the simpler measure to quantify the importance of a node inside a network and since our network-of-networks structure includes multiple node types we monitored it for each of them\footnote{
-  We chose the degree centrality rather than other standard measures due to its numerical-simplicity/informative ratio.
-  The \textsf{CHIMeRA} network includes a large amount of nodes so the algorithm complexity drastically affect the time performances.
-  The degree centrality is given by the simple sum of the in- out-connections and thus it is faster also with large matrix as in our case.
+The degree centrality is the simpler measure to quantify the importance of a node into a network: since our network-of-networks structure includes multiple node types we monitored it for each of them\footnote{
+  We have chosen the degree centrality rather than other standard measures due to its numerical-simplicity/informative ratio.
+  \textsf{CHIMeRA} network includes a large amount of nodes, so the algorithmic complexity drastically affects the time performance.
+  Degree centrality is given by summing the in- out-connections and thus it is the faster solution also with large matrix as in our case.
 }.
-First of all we evaluated the number of connections of each node unpacking the value according to the possible node types.
 In this way we can perform a preliminary overview of the full set of information in the network.
-The summary results obtained by the degree centrality are shown in Tab.~\ref{tab:chimera_degree}.
+The results obtained by this test on degree centrality are shown in Tab.~\ref{tab:chimera_degree}.
 
 \begin{table}
 \centering
@@ -38,18 +37,17 @@ macro pathway           &   0.48          &  106.06 &    0 &    0 &    0 &    1 
 \hline\\
 \end{tabular}
 \caption{Degree connection statistics related to each node type stored in the \textsf{CHIMeRA} database.
-For each node type is reported the average, standard deviation, minimum value, maximum value and percentiles of the degree distribution.
+For each node type the average, standard deviation, minimum value, maximum value and percentiles of the degree distribution are reported.
 The first row shows the aggregated value of degree scores.
 }
 \label{tab:chimera_degree}
 \end{table}
 
-
-For each node type we computed the average number of connections and the main important parameters of each distribution (minimum, maximum, standard deviations and percentiles).
-This preliminary analysis confirms what we have already discussed during the creation of the \textsf{CHIMeRA} structure and thus that the each data type has at least one connection with a disease node (ref. min row in Tab~\ref{tab:chimera_degree}): disease nodes are the core of our network-of-networks model while the other node types could have just single connections to the others.
-Using the finer grain distinction between the metabolite pathways (obtained by the information available in HMDB) we can also noticed that the major part of their connections concern the \emph{macro pathway} category as expected: \emph{macro pathway}s identify the more general category in our nomenclature and they include biological processes like \textsf{apoptosis}, \textsf{dna replication fork} and \textsf{phosphatidylethanolamine biosynthesis}.
+For each node type we computed the average number of connections and the most important parameters of each distribution (minimum, maximum, average, standard deviations and percentiles).
+This preliminary analysis confirms what we have already discussed during the creation of the \textsf{CHIMeRA} structure and thus that the minimum number of connections is just $1$ (ref. min row in Tab~\ref{tab:chimera_degree}): disease nodes are the core of our network-of-networks model but they do not have a direct link with food nodes; at the same time, drug nodes, which are connected to the several other types do not include all of them.
+Using the finer grain distinction between the metabolite-pathways (obtained by the information provided by HMDB) we noticed that the major part of their connections concern the \emph{macro pathway} category as expected: \emph{macro pathway}s identify the more general category in our nomenclature, including biological processes like \textsf{apoptosis}, \textsf{dna replication fork} and \textsf{phosphatidylethanolamine biosynthesis}.
 A better visualization of the network structure could be done counting the average number of connections between each node group, i.e the block matrix visualization of the underlying bipartite-graphs.
-In Fig.~\ref{fig:chimera_bipartite} is shown the block matrix representation.
+In Fig.~\ref{fig:chimera_bipartite} is shown this block matrix representation.
 
 \begin{figure}[htbp]
 \centering
@@ -61,29 +59,29 @@ We computed the average number of connections between each node group and the bi
 \label{fig:chimera_bipartite}
 \end{figure}
 
-In Fig.~\ref{fig:chimera_bipartite} we can better appreciate the connections between the available information and, moreover, we can visualize and quantify them.
-As expected the only node type which is connected to all the others is the \emph{disease} one: the only exception is given by \emph{food} nodes which are not directly connected with diseases since their information are available only in the DrugBank database and thus their connections are related only to \emph{drug} nodes.
+In Fig.~\ref{fig:chimera_bipartite} we can better appreciate the connections between the available information, visualizing and quantifying them.
+As expected, the only node type which is connected to all the others is the \emph{disease} one: the only exception is given by \emph{food} nodes for the previously discussed reasons.
 Our network-of-networks structure is very sparse and we have not direct information of the major part of combinations (null blocks).
-The only two node types which show a reasonably good interaction with the other blocks are the \emph{disease} and \emph{drug} ones\footnote{
+The only two node types which show a reasonably good interaction with other blocks are the \emph{disease} and \emph{drug} ones\footnote{
   For sake of clarity we have to highlight also the two diagonal blocks in our matrix, given by these two node types.
-  They arise from the synonyms and related causes in the first case (information provided by the synonym dictionaries and the RXList database), while in the second case they highlight the synergies or not (information given by the DrugBank database).
-  A network adjacency matrix tends to nullify the diagonal information and node self-loops to prevent numerical issues and moreover to increase the amount of mathematical theorems for its analysis.
-  We would stress that the showed matrix is not the adjacency matrix of the \textsf{CHIMeRA} network but it is an aggregate representation of it.
+  They arise from the synonyms and related causes in the first case (information provided by synonym dictionaries and RXList), while in the second case they highlight the synergies or not (information given by DrugBank).
+  A network adjacency matrix tends to nullify diagonal information and node self-loops to prevent numerical issues and to increase the amount of mathematical theorems for its analysis.
+  We would stress that the showed matrix is not the adjacency matrix of \textsf{CHIMeRA} network but it is an aggregate representation of it.
   Thus, in our network each node has connections only with other nodes and no self-loops are present.
 }.
 
 The sparsity of \textsf{CHIMeRA} network-of-networks highlights all the pros and cons of our work.
-More a matrix is sparse and more its management could be efficient from a numerical point-of-view: we are able to use a wide range of algorithms developed and tuned according to the sparse algebra; also the memory occupation could be optimized and it is a crucial task when we work with such a big quantity of data.
-At the same time, it also highlights the potentiality of our work: each block connection derives from a single database evaluation (in first approximation) and we can reasonably assume that each block represents a possible output of query performed on that database.
-In our global database we have the join merging of all these information and using at least the 2nd neighbors of a node (the nearest neighbors of each nearest neighbor of a node) we could obtain a mapping of all the available information about it.
-Moving along the matrix blocks, in fact, we can start from a gene an we can only see the associated disease information which is comparable to a single-database query; since each disease is connected to all the other node types, its 2nd neighbors give us a panoramic view of all the biological compounds associated to that gene.
-This process is equivalent to an inference procedure of the missing blocks: if a gene is connected only to disease types, since all the other blocks are null, we could infer the missing blocks using the links provided by the disease nodes.
-This is the real power of such a network-of-networks structure.
-We would stress that the inference procedure could bring to incorrect biological associations since it represents only an hypothesis unbacked up by data.
-However, using more database sources we can easily integrate the missing information using the developed processing pipeline and, thus, increase the reliability of our hypothesis.
+More a matrix is sparse and more its management could be efficient from a numerical point-of-view: we are able to use a wide range of algorithms developed and tuned by sparse algebra; also the memory occupation could be optimized and it is a crucial task when we work with such a big quantity of data.
+At the same time, it highlights the potentiality of our work: each block connection derives from a single database evaluation (in first approximation), and we can reasonably assume that each block represents a possible output of a query performed on that database.
+In our global database we have the union of all these information and using at least the 2nd neighbors of a node (the nearest neighbors of each nearest neighbor of a node) we could obtain a mapping of all available information about it.
+Moving along the matrix blocks, in fact, we can start from a gene and see only the associated diseases, which is comparable to a single-database query; since each disease is connected to all the other node types, the 2nd neighbors of our gene give a panoramic overview of all the biomedical agents associated to it.
+This process is equivalent to an inference of missing blocks: if a gene is connected only to disease types, since all the other blocks are null, we can infer missing blocks using the links provided by disease nodes.
+This is the real power of a such network-of-networks structure.
+We would stress that the inference procedure could lead to incorrect biological associations, since it represents only an hypothesis unbacked up by data.
+However, using more database sources we can easily integrate missing information using the developed processing pipeline and, thus, increase the reliability of our hypothesis.
 
-To further investigate the information provided by our network using the computed degree scores, we evaluated the degree distributions of each node type.
-In Fig.~\ref{fig:chimera_degree} we show the degree distributions obtained considering the different node type individually.
+To further investigate the information provided by our network using the computed degree scores, we evaluated degree distributions of each node type.
+In Fig.~\ref{fig:chimera_degree} we show the degree distributions obtained considering the different node types individually.
 
 \begin{figure}[htbp]
 \centering
@@ -99,44 +97,45 @@ All the distributions showed in Fig.~\ref{fig:chimera_degree} have long tails bu
 As expected and already highlighted by the previous analyses, the major part of node types have a not negligible amount of nodes with very low connectivity.
 Many node types have also isolated elements, i.e nodes with $0$ degree.
 This behavior could be due to two possible causes: 1) our pipeline tends to remove some information and, thus, some true positive associations; 2) there are some missing information in the original databases that could not be overcome by our merging.
-Since the most part of isolated nodes are given by \emph{metabolites} (ref. Fig.~\ref{fig:chimera} in which the green dots around the plot are isolated metabolite nodes) we checked into the HMDB database the origin of this issues.
-In a not negligible number of cases the HMDB does not provide a disease association to a given metabolite and it proves our second hypothesis, preserving the efficiency of our pipeline.
+Since the most part of isolated nodes are given by \emph{metabolites} (ref. Fig.~\ref{fig:chimera} in which the green dots around the plot are isolated metabolite nodes) we checked into HMDB the origin of these issues.
+In a not negligible number of cases, HMDB does not provide a disease association to a given metabolite and it proves our second hypothesis, preserving the efficiency of our pipeline.
 
 A more interesting result is obtained considering the most central nodes, i.e the node related to the maximum degree score.
-This information could be used also as validity check of the structured.
+This information could be used also as validity check of the structure.
 As in the \textsf{SymptomsNet} case (ref. \ref{chimera:symptomsnet}), we expect a reasonable interpretation of the most central nodes.
-These results are shown in the yellow box in Fig.~\ref{fig:chimera_degree}.
+These results are shown in the yellow box of Fig.~\ref{fig:chimera_degree}.
 
-The most central node for the SNP node type is the \href{https://www.ncbi.nlm.nih.gov/snp/rs113488022}{\textsf{rs113488022}}, well known gene-mutation validated by 72 public research.
+The most central node for the SNP node type is \href{https://www.ncbi.nlm.nih.gov/snp/rs113488022}{\textsf{rs113488022}}, well known gene-mutation, validated by more than 70 public researches.
 This SNP is related to a wide range of cancer diseases and its clinical significance has been proved in different studies.
-It is always hard to discuss about the more or less importance of a SNP mutation compared to the others, but its relation to many cancer types confirms its centrality score in our network structure.
-A more easy interpretable results is given by the most central gene, the \href{https://ghr.nlm.nih.gov/gene/TP53}{\textsf{TP53}}.
-The \textsf{TP53} is a crucial gene in many tumor diseases and its importance is well mirrored in our network structure.
-The major part of diseases inserted into public databases are related to tumor researches and thus it was quite obvious to obtain a most centrality of this gene in our network.
-For the same reasons also the most central node for the \emph{phenotype} type should be a tumor related characteristics: as expected the most central node in this case is given by the \textsf{apoptotic process}, i.e the process which regulates the programmed cell death, which is largely involved in tumor diseases.
+It is always hard to discuss about the more or less importance of a SNP compared to the others, but its relation to several cancer types confirms its centrality score in our network structure.
+A more easily interpreted result is given by the most central gene, the \href{https://ghr.nlm.nih.gov/gene/TP53}{\textsf{TP53}}.
+\textsf{TP53} is a crucial gene in many tumor diseases and its importance is well mirrored in our network structure.
+The major part of diseases inserted into public databases are related to tumor researches, and thus it was quite obvious to obtain a high centrality of this gene in our network.
+For the same reasons also the most central node for the \emph{phenotype} type should be a tumor related characteristic: as expected, the most central node in this case is given by the \textsf{apoptotic process}, i.e the process which regulates the programmed cell death, which is largely involved in tumor diseases.
 
-As previously discussed about the \emph{disease} and \emph{drug} types, we have to consider a large set of available connections and, thus, we could expect that a central node in these cases would be given by a quite generic entry.
-For the \emph{disease} type, in fact, we found as most central node the \href{https://en.wikipedia.org/wiki/3-Methylglutaconic_aciduria}{\textsf{3-methylglutaconic aciduria}}, a congenital metabolism anomaly related to leukemia.
-Despite this disease could be considered quite rare its importance in our network structure is certainly given by the large amount of metabolite connections (we remember that the HMDB database provide a very large amount of \emph{metabolite} nodes that overcome the number of all the other node types, except by the SNPs).
-The large quantity of metabolites in our structure certainly weights on the number of disease connections and it proves the more centrality of a metabolic disease despite a genetic one.
-Moreover, we have also to take into account that this disease is also related to the leukemia disease, so we would have also a large set of genes and SNPs associated to it.
+As previously discussed about \emph{disease} and \emph{drug} types, we have to consider a large set of available connections for them.
+Thus, we expected that a central node in these cases would be given by a quite generic entry.
+About \emph{disease} type, in fact, we found as most central node the \href{https://en.wikipedia.org/wiki/3-Methylglutaconic_aciduria}{\textsf{3-methylglutaconic aciduria}}, a congenital metabolism anomaly related to leukemia.
+Despite this disease could be considered quite rare, its importance in our network structure is certainly given by the large amount of metabolite connections (we remember that HMDB provide a very large amount of \emph{metabolite} nodes that overcome the number of all the other node types, except by SNPs).
+The large quantity of metabolites in our structure weights on the number of disease connections and it proves the high centrality of a metabolic disease despite a genetic one.
+Moreover, we have also to take into account that this disease is related to leukemia, so we would have also a large set of genes and SNPs associated to this.
 
-Considering the \emph{drug} type we obtained a very common drug as expected, given by the \href{https://en.wikipedia.org/wiki/Ibuprofen}{\emph{Ibuprofene}}.
-\emph{Ibuprofene} is a very common anti-inflammatory drug that is used for treating pain, fever and inflammation which are all very general disease symptoms associated to wide range of possible diseases.
-Thus, it is reasonable to assume that its number of connections is greater than other (more selective) drugs.
+Considering the \emph{drug} type, we obtained a very common drug as expected, given by the \href{https://en.wikipedia.org/wiki/Ibuprofen}{\emph{Ibuprofene}}.
+\emph{Ibuprofene} is a very common anti-inflammatory drug that is used for treating pain, fever and inflammation which are all very general symptoms associated to a wide range of possible diseases.
+Thus, it is reasonable to assume that its number of connections is greater than other (more target specific) drugs.
 
-A key note has to be spent for the \emph{metabolite pathway} type in which there are not apparently reasonable explanations which prefer the found \textsf{lipid metabolism} to other macro-metabolite pathways.
-To explain its centrality we, once more time, come back to the original databases and to the HMDB in this case.
-By a deep inspection of HMDB we noticed that the major part of them are studied using NMR chemical shift procedure.
-The NMR chemical shift is a very common spectroscopy procedure to analyze biological compounds but its signal is hardly related to particular nucleus types (e.g $^1H$, $^{13}C$, $^{15}N$, $\cdots$).
-We could broadly describe this technique saying that as much hydrogen-like or carbonic-like structures are found into the biological sample and much the signal should be easy to analyze.
-The metabolite relation to the lipid metabolism is thus easy to study than other metabolism kinds due to the large quantity of resonant nuclei involved\footnote{
+A more in-depth explanation must be provided for the \emph{metabolite pathway} type, where there are no seemingly reasonable explanations that prefer the found \textsf{lipid metabolism} to other macro-metabolite pathways.
+To explain its centrality we, once more time, come back to the original databases and to HMDB in this case.
+From a thorough inspection of HMDB we noticed that the most of them were studied using NMR chemical shift procedure.
+NMR chemical shift is a very common spectroscopy procedure to analyze biological compounds, but its signal is hardly related to particular nucleus types (e.g $^1H$, $^{13}C$, $^{15}N$, $\cdots$).
+We could broadly describe this technique saying that as much hydrogen-like or carbonic-like structures are into the biological sample and much the signal should be easy to analyze.
+The metabolite relation to lipid metabolism is thus easy to study than other metabolism kinds, due to the large quantity of resonant nuclei involved\footnote{
   Fatty acids in lipid mixtures are widely studied using NMR chemical shift since their molecular structure involves multiple resonant nuclei suck $^{13}$C, $^{31}$P and $^1$H.
 }.
-This proved the most centrality of the \textsf{lipid metabolism} regard other metabolite pathways.
+This proves the high centrality of \textsf{lipid metabolism} regard other metabolite pathways.
 
-These results are only preliminary analyses of the \textsf{CHIMeRA} network-of-networks structure, but they are already able to clarify some potentiality usage of our work.
-The only thing that remain to discuss is about the usability and release of this new database to the research community.
+These results are only preliminary analyses of \textsf{CHIMeRA} network-of-networks structure, but they are already able to clarify some potential use of our work.
+The only things that remain to be discussed are the usability and release of this new database to the research community.
 
 
 \end{document}

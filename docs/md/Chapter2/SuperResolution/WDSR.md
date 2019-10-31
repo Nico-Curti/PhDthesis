@@ -62,7 +62,7 @@ We would stress that our could be the first `C++` implementation of these models
 
 [^1]: It is straightforward that adding multiple up-sampling blocks and thus pixel-shuffle functions we can train the model according to every desired upscale.
 
-[^2]: We have to mention also that the public available implementation of these models are developed only in `Tensorflow` and `PyTorch` but the major part of them does not work in CPU environments without heavy modifications.
+[^2]: We have to mention also that the publicly available implementation of these models are developed only in `Tensorflow` and `PyTorch` but the major part of them does not work in CPU environments without heavy modifications.
 
 
 [**next >>**](./Dataset.md)

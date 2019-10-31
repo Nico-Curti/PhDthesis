@@ -12,7 +12,7 @@ This is an hot topic especially for self-driving car applications in which we ha
 Moreover, all these applications require fast algorithm as much as possible closed to real-time.
 
 This kind of task can be performed using a pipeline of image processing functions or by training a neural network model.
-In the first case we have to stack a series of function to process the input image: it has to filters and extracts the useful information about the searched object but most of all it has to be as most general as possible to face on the common heterogeneity of samples.
+In the first case we have to stack a series of function to process the input image: it has to filters and extracts the useful information about the searched object but most of all it has to be as most general as possible to face the common heterogeneity of samples.
 In the second case we leave to the neural network model parameters the searching of optimal combination of function but we have to provide a supervised input pattern, i.e a combination of input and annotated pixel-wise mask of each image.
 The image annotation is one of the most hardest and boring step of image segmentation and for these reasons is very hard to find public dataset usable.
 

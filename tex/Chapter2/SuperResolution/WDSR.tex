@@ -8,7 +8,7 @@
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{SR_models.png}
-\caption{Super Resolution models analyzed in this word.
+\caption{Super Resolution models analyzed in this work.
 \textbf{(left)} EDSR model.
 The model is a modified version of the ResNet architecture designed for SISR applications.
 The architecture is made by a sequential CNN framework which processes the input image.
@@ -51,7 +51,7 @@ The first model is called EDSR (\emph{Enhanced Deep Super Resolution}) and was f
 The EDSR model structure could be broadly summarized as an updated version of the SRResNet model which is already a modified version of the classical ResNet (standard CNN based on multiple residual blocks).
 The major updates concern a series of optimization to improve the training speed and the quality of the output image.
 In particular, the batch normalization steps are removed to improve the algorithm speed: it was proved that in low-level vision tasks as the super resolution one, i.e without complex evaluations as object detection, a wide and dynamic range of outputs can be useful~\cite{edsr}.
-A scheme of the EDSR architecture is shown in Fig.~\ref{fig:sr_models}(a) and the full set of parameters are reported in Tab.~\ref{tab:edsr}: the EDSR model has more than 43 million of parameters in total.
+A scheme of the EDSR architecture is shown in Fig.~\ref{fig:sr_models}~(a) and the full set of parameters are reported in Tab.~\ref{tab:edsr}: the EDSR model has more than 43 million of parameters in total.
 
 A first convolutional layer takes the LR image which is processed using 256 filters.
 Then a set of 32 residual blocks (convolution with 256 filters + ReLU activation + convolution with 256 filters + linear combination of the output with the input) process the feature map.
@@ -70,10 +70,10 @@ The second analyzed and implemented model is the WDSR (\emph{Wide Deep Super Res
 The WDSR model is a modified version of the EDSR one.
 The improvements principally concern two aspects: the network structure and the residual blocks.
 
-As shown in Fig.~\ref{fig:sr_models}(b), the WDSR simplifies the network architecture removing the convolutional layers after the pixel-shuffle ones.
+As shown in Fig.~\ref{fig:sr_models}~(b), the WDSR simplifies the network architecture removing the convolutional layers after the pixel-shuffle ones.
 Moreover, if the EDSR applies a x2 up-sampling every pixel-shuffle layer, in the WDSR a single pixel-shuffle function performs a x4 up-sampling.
 This update drastically reduce the computational time and the amount of parameters.
-Furthermore, the combination between low- and high- frequency components in this case are processed separately (two different branches) and only at the end they are re-combined (ref. Fig.~\ref{fig:sr_models}(b)).
+Furthermore, the combination between low- and high- frequency components in this case are processed separately (two different branches) and only at the end they are re-combined (ref. Fig.~\ref{fig:sr_models}~(b)).
 
 \begin{table}[htbp]
 \centering
@@ -108,7 +108,7 @@ In this work we used pre-trained models so we could not change the network struc
 For this reason we could use only a x2, x4 EDSR model and a x4 WDSR model.
 The weights were converted to the \textsf{Byron} format and our custom implementation of the network used for the applications.
 We would stress that our could be the first \textsf{C++} implementation of these models and probably the first optimized version for CPUs environment\footnote{
-  We have to mention also that the public available implementation of these models are developed only in \textsf{Tensorflow} and \textsf{PyTorch} but the major part of them does not work in CPU environments without heavy modifications.
+  We have to mention also that the publicly available implementation of these models are developed only in \textsf{Tensorflow} and \textsf{PyTorch} but the major part of them does not work in CPU environments without heavy modifications.
 }.
 
 \end{document}

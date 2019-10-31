@@ -75,7 +75,7 @@ class Avgpool_layer(object):
 ```
 
 A key role in this implementation is played by the `_asStride` function: it returns a view of the original array in which all the masks are organized into a single list.
-Using this data re-arrangement we can easily compute the desired pooling function (average in this example) according to the appropriated axes.
+Using this data re-arrangement we can easily compute the desired pooling function (average in this example) according to the appropriate axes.
 We would stress that no copies are produced during this computation and thus we can obtain a faster execution than other possible implementations (e.g `im2col`).
 
 

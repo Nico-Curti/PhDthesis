@@ -5,7 +5,7 @@ The relation between symptoms and diseases can be used to see analogies and co-o
 The construction of a unique and consistent database of these kind of data is an open problem for the research and a crucial task for many actual projects.
 The main problems arise from the complexity and heterogeneity of the available data and from the many nomenclatures used by different public databases.
 In fact, in many cases it is not so clear how to infer about the association between symptoms and diseases, and, in addition, different data sources provide different associations.
-These information are stored as sentences and periods, of variable length and we have to face on the problem of the different synonyms and periphrases used to describe the same concept.
+These information are stored as sentences and periods, of variable length and we have to face the problem of the different synonyms and periphrases used to describe the same concept.
 
 In our work we used large-scale public on-line databases to construct a bipartite network of human symptoms-diseases.
 A bipartite network (or *bigraph*) is a graph whose nodes can be divided into two disjoint and independent sets: the underlying adjacent matrix is rectangular and it describes the connections between the `N` elements of the first set and the `M` elements of the second one.
@@ -24,7 +24,7 @@ Thus for each web page taken into account a relative web-scraper was developed.
 As discussed above the Italian data sources are quite fewer than the English ones so only three web pages were involved into our analysis: [My PersonalTrainer](https://m.my-personaltrainer.it/) (Arnoldo Mondadori Editore S.p.A.), [SaniHelp](http://www.sanihelp.it/) ([terms-and-conditions](https://www.iubenda.com/terms-and-conditions/210132)) and [Sapere.it](http://www.sapere.it/) (De Agostini Group).
 All these three sites provide an organized series of tables which associate a disease to the corresponding symptoms  and thus are easily to treat with web-scraping algorithms.
 These databases are not reliable from a scientific point-of-view and their vulnerability is shown also by a non-rigid labeling of the two classes: in multiple cases we can find a disease as symptom of a different one and in many cases there is not a perfect agreement between the three data sources.
-Possible issues related to an incorrect disease information could not be attributed to our `web-scraping` pipeline, but they should be already present into the original data which, we want remark it, they are the only Italian datasets public available and found.
+Possible issues related to an incorrect disease information could not be attributed to our `web-scraping` pipeline, but they should be already present into the original data which, we want remark it, they are the only Italian datasets publicly available and found.
 
 The data extracted from the three websites cover a wide range of possible diseases and from each of them we obtained a network with a size of few thousand of nodes, our `SymptomsNet`.
 The overlap of the single words contained in the "disease-sentences" is quite low so a robust pre-processing was needed.
@@ -58,7 +58,7 @@ However, the project purposes was to create a reasonably good diseases ontology 
 In fact, this kind of occurrences allow to consider a wide range of possible synonyms in the scorer attribution and so they can enforce the text analyses required by the FiloBlu project: the node degree can be used as weight (1/degree) for text words and thus we can obtain a simple score for the message given by the sum of the mapped keywords.
 
 We conclude that from this very simple and preliminary work we are able to propose a novel symptoms-disease network based on Italian public databases and far as the author knows no other equivalent results are reported in literature.
-This work allowed also the realization of a novel database obtained by the union of public available data.
+This work allowed also the realization of a novel database obtained by the union of publicly available data.
 The extracted centrality measures can be used as weights for the corresponding symptoms/diseases and a valid input to model the word frequency/importance in text analyses.
 
 The developed network is based on a bipartite graph which associates disease nodes to symptom ones.

@@ -6,7 +6,7 @@
 \section*{FiloBlu Service}\addcontentsline{toc}{section}{FiloBlu Service}
 \markboth{Appendix E}{FiloBlus Service}
 
-In the \emph{FiloBlu} project we have a stream of data provided by an external App that are stored in a central database server.
+In the \emph{FiloBlu} project we have a stream of data provided by an external APP that are stored in a central database server.
 The Machine Learning service has to read the information stored into a database, it process them and finally it write the results into the same database.
 All these operations have to be performed with high frequency since the output results have to be shown in a real-time application.
 This frequency would be the clock-time of the process function, i.e at each time interval (as small as we like) the process task will be called and we will have the desired results in output.
@@ -19,13 +19,13 @@ To further improve the service efficiency we give each (independent) step to a d
 The whole set of tasks are piloted by a master thread given by the service itself.
 In this way the service is computational efficient and moreover it does not weight on the computer performances.
 We have to take in mind that the computer which host the service has to be effected by the daemon process as less as possible either in memory either on computational efficiency.
-The last step is the synchronization of the previous tasks with appropriated clock frequencies.
+The last step is the synchronization of the previous tasks with appropriate clock frequencies.
 
 Let's start from the data reading function.
 Since our data are assumed to be stored into a database, this function has to perform a simple query and extract the latest data inserted.
 Obviously the efficiency of the step is based on the efficiency of the chosen query.
 The data extracted are saved in a common container shared between the list of threads and thus it belongs to the master.
-The choice of an appropriated container is a second point to carefully take in mind.
+The choice of an appropriate container is a second point to carefully take in mind.
 This container should be light an thread-safe to avoid thread concurrency.
 While the second request is implementation dependent, the first one can be faced on using a \textsf{FIFO} container\footnote{
   FIFO container, i.e \emph{First-In-First-Out}, is a special data structure in which the first element added will be processed as first and then automatically removed from it.
@@ -42,18 +42,18 @@ Also in this case the frequency is given by the efficiency of the chosen query.
 The last two steps can be executed without press time requirements and they are useful only on a large time scale.
 
 Each step performs its independent logging on a single shared file.
-If an error occurs the service logs an appropriated message and it saves the current log-file in a different location to prevent possible log-cleaning (optional step).
+If an error occurs the service logs an appropriate message and it saves the current log-file in a different location to prevent possible log-cleaning (optional step).
 Then the service restarts.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{FiloBluService.png}
+\includegraphics[width=.9\linewidth]{FiloBluService.png}
 \caption{FiloBlu Service computation scheme.
 }
 \label{fig:FiloBlu}
 \end{figure}
 
-We implemented this type of service in pure \textsf{Python} and the code is public available on Github~\cite{FiloBlu}.
+We implemented this type of service in pure \textsf{Python} and the code is publicly available on Github~\cite{FiloBlu}.
 The developed service was customized according to the server requirements of the project\footnote{
   The FiloBlu service is a Windows service and it can not run on Unix machines.
   Moreover, the database used in the project is a \textsf{MySQL} one so the queries and the libraries used are compatible only with this kind of database.

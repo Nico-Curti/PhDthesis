@@ -4,22 +4,22 @@
 
 \subsection[Pooling function]{Pooling function}\label{NN:pooling}
 
-Output Neural Network feature maps often suffer of sensitivity on feature location in the input.
-One possible approach to overcome this problem is to down sample the feature maps making the resulting feature map more robust to changes in the position.
-Pooling functions perform this kind of down sample and they reduce the spatial dimension (but not depth) of the input.
-Their use represents an important computational performance improver tool (less feature, less operations) and a useful dimensionality reduction method.
+Output Neural Network feature maps often suffer of sensitivity about features location in the input.
+One possible approach to overcome this problem is to down-sample the feature maps, making the resulting feature map more robust to changes in the position.
+Pooling functions perform this kind of down-sampling and they reduce the spatial dimension (but not depth) of the input.
+Their use represent an important computational performance improver (less feature, less operations) and a useful dimensionality reduction method.
 The reduction of feature quantity can also prevent over-fitting problems and it improves the classification performances.
 
 Pooling layers are intrinsically related to Convolutional layers.
 The analogy lives in the filter mapping procedure which produces the output in both methods.
 While in the Convolutional layer we map a filter over the input signal and we apply a multiplication of the layer weights and the signal values, in the pooling layer we simply change the filter function keeping the same filter mapping procedure (see section~\ref{NN:convolutional} for more information).
-The input parameters of the method are the same of the Convolutional one: the input dimensions, the kernel size and (optional) the stride value.
+The method parameters are the same of the Convolutional one: the input dimensions, the kernel size and (optional) the stride value.
 
 The most common pooling layers are the Average Pool and the Maximum Pool.
-The Average Pool layer performs a down sampling on the batch of images.
-It slides a 2D kernel of arbitrary size over the image and the output is the mean value of the pixels inside the kernel.
-In Fig.~\ref{fig:avgpool} are shown some results obtained by performing an average pool with different kernel sizes.
-Also in this case this test was obtained using our \textsf{NumPyNet} library.
+The Average Pool layer performs a down-sampling on the batch of images.
+It slides a 2D kernel of arbitrary size over the image and the output is the mean value of the pixels underlying the kernel.
+In Fig.~\ref{fig:avgpool} are shown some results obtained by an average pooling, with different kernel sizes.
+Also in this case the test was obtained using our \textsf{NumPyNet} library.
 
 \begin{center}
 \begin{figure}[htbp]
@@ -35,14 +35,14 @@ Also in this case this test was obtained using our \textsf{NumPyNet} library.
 \end{center}
 
 If in the Convolutional layers a key role was played by the matrix product, in the Pooling layers we have to carefully manage the mapping operations to obtain optimal results.
-In particular we would to show the efficient implementation provided into \textsf{NumPyNet}.
+In particular, we discuss about the optimized implementation provided into \textsf{NumPyNet}.
 
-In the previous sections we introduced the \textsf{im2col} algorithm which is an efficient method to re-organize the input data.
-The same algorithm can also be applied for Pooling layers and thus evaluate the Pooling function (avg, max, etc.) on each row of the re-arranged matrix.
+In the previous sections we introduced the \textsf{im2col} algorithm which is an efficient method to reorganize the input data.
+The same algorithm can also be applied for Pooling layers, evaluating the Pooling function (avg, max, etc.) on each row of the rearranged matrix.
 The implementation of the \textsf{im2col} algorithm in \textsf{Python} requires the evaluation of multiple indexes using complex formulas.
-Since the \textsf{NumPyNet} library was founded on the \textsf{Numpy} package we can provide an alternative implementation using the \textsf{view} functionality of the library.
-A \textsf{view} of a given array is simply another way of viewing its data: technically that means that the data of both objects is shared and thus no copies are created.
-In particular we can use the deeper functions of the \textsf{Numpy} package to create a re-organization of our data according to the desired output\footnote{
+Since the \textsf{NumPyNet} was founded on the \textsf{Numpy} package, we can provide an alternative implementation using the \textsf{view} functionality of the library.
+A \textsf{view} of a given array is simply another way of viewing its data: technically it means that the data of both objects (original array and the viewed one) is shared and thus no copies are created.
+In particular, we can use the deeper functions of the \textsf{Numpy} package to create a reorganization of our data according to the desired output\footnote{
   The same technique was also used for the implementation of the Convolutional layer in the \textsf{NumPyNet} library.
 }.
 In the following code we show our implementation of the Average Pooling layer:
@@ -92,8 +92,8 @@ class Avgpool_layer(object):
 
 \end{lstlisting}
 
-A key role in this implementation is played by the \textsf{\_asStride} function: it returns a view of the original array in which all the masks are organized into a single list.
-Using this data re-arrangement we can easily compute the desired pooling function (average in this example) according to the appropriated axes.
+A key role in this snippet is played by the \textsf{\_asStride} function: it returns a view of the original array in which all the masks are organized into a single list.
+Using this data rearrangement we can easily compute the desired pooling function (average in this example) according to the appropriate axis.
 We would stress that no copies are produced during this computation and thus we can obtain a faster execution than other possible implementations (e.g \textsf{im2col}).
 
 \end{document}

@@ -1,33 +1,32 @@
 ## Network signature
 
 After the rearrangement of feature pairs in ascending order we can start to create the variable network and looking for its connected components as putative signatures.
-Each feature will be represent a node in the network and a given pair will be a connection between them.
+Each feature represents a node in the network and a given pair is a connection between them (link).
 Since the full storage of the network would require a matrix `(N x N)`, we have to chose a better strategy for the processing[^1].
 
 The ordered set of couples computed in the previous section represents a so-called *COO sparse matrix* (Coordinate Format sparse matrix) and we can reasonable assume that the desired signature will be composed by the top ranking of them.
-So, the first step will be to cut a reasonable percentage of the full set of pairs and process only them.
+So, in the first step we cut a reasonable percentage of available pairs, focusing only on them.
 
-Moreover, we are interested in a small set of variables unknown a prior.
-The load of all the node pairs into the same graph can slow down the computation.
-An iterative method (with stop criteria) can perform better in the large case of samples and only in worst cases the full set of pair will be loaded.
+Moreover, we are interested in a small set of variables unknown at prior.
+Loading all the node pairs into the same graph can slow down the computation.
+An iterative method (with stop criteria) can perform better and only in worst cases the full set of pair will be loaded.
 
-Since the described algorithm step does not require particular performance efficiency now, the main code used in our simulation was written in pure Python.
+Since the described algorithm step does not require particular performance efficiency, the main code used in our simulations was written in pure `Python`.
 A `C++` implementation of the same algorithm was developed with the help of the Boost Graph Library [[BGL](http://www.boost.org/libs/graph/)], but to not overweight the code installation, it was reserved just for a style exercise.
-In this section we discuss about this second version and also about the strategies chosen to implement an efficiency version of it.
-This version of the algorithm was also used as stand alone method for other applications that will be presented later.
+In this section we discuss about this second version and also about the strategies chosen to implement an efficient version of it.
+This version of the algorithm was also used, as stand alone method, for other applications that are discussed in the Appendix of this work.
 
-BGL is a very wide framework for graph analysis based on template structures.
-The library efficiency discourage the users to re-implement the same algorithms and, for the current purposes, it was resulted more than sufficient.
-
+BGL is a very wide framework for graph analyses based on `template` structures.
+The library efficiency discourages users to re-implement the same algorithms and, for the current purpose, it was resulted more than sufficient.
 Starting from the top scorer feature pairs, we progressively add each couple of nodes to an empty graph.
-At each iteration step, the number of connected components is evaluated until a desired number of nodes (greater or equal) is not reached[^2].
-Two degree of freedom are left to the user: in order, `pruning` and `merging`.
+At each iteration step, the number of connected components is evaluated up to a desired number of nodes (greater or equal) is not reached[^2].
+Two degrees of freedom are left to the user: in order, `pruning` and `merging`.
 The first one performs an iteratively remotion of nodes with degree equal (or lower) than 1, i.e pendant nodes, until the graph core is not filtered.
-The `merging` clause choose between the biggest connected component or the the set of all the disjoint connect components as putative signature.
-The output of `merging` step determine the number of nodes in the graph which have been considered for the stop criteria.
+The `merging` clause chooses between the biggest connected component, or the set of all the disjoint connect components, as putative signature.
+The output of `merging` step determines the number of nodes in the graph which have to be considered by the stop criteria.
 
-A crucial role in the optimization of the algorithm is played by the chosen BGL graph structure.
-Since the two degree of freedom imply a continuous rearrangement of the graph nodes, the strategy chosen is to apply a filter mask over the main graph structure that highlights the only part of interest.
+A crucial role in the algorithm optimization is played by the chosen of the BGL graph structure.
+Since the two degrees of freedom imply a continuous rearrangement of the graph nodes, we have chosen to apply a filter mask over the main graph structure that highlights the only part of interest.
 This can be done using the `boost :: filtered_graph` object of BGL.
 In the following code the `C++` snippet is shown.
 
@@ -112,9 +111,9 @@ std :: vector < int > FeatureSelection (int ** couples, const int & min_size, bo
 }
 ```
 
-In the above description, it should be clear that, given any set of ordered (in ascending order) couples of variables, this algorithm allows to extract the core network independently by the procedure which generate them.
-So it can be used as dimensionality reduction algorithm of general purpose network structures.
-An example of this kind of application was reported in [Appendix B - Venice Road Network](../../Appendix/Venice/README.md) in which we summarized the results of [[Mizzi2018](https://doi.org/10.1140/epjds/s13688-018-0168-2), [CurtiSDPS2018](https://www.sdpsnet.org/sdps/documents/sdps-2018/SDPS%202018%20proceedings%20ver%205.pdf)].
+In the above description, it should be clear that, given any set of ordered (in ascending order) couples of variables, this algorithm allows to extract the core network, independently by the procedure which generate them.
+So, it can be used as dimensionality reduction algorithm of general purpose network structures.
+An example of this kind of application was reported in [Appendix B - Venice Road Network](../../Appendix/Venice/README.md) in which we summarized the results published in [[Mizzi2018](https://doi.org/10.1140/epjds/s13688-018-0168-2), [CurtiSDPS2018](https://www.sdpsnet.org/sdps/documents/sdps-2018/SDPS%202018%20proceedings%20ver%205.pdf)].
 
 
 [^1]: We are working in the hypothesis of very large `N`.

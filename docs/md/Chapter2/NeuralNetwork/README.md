@@ -46,7 +46,7 @@ This gap discourage multiple research groups on the use of such computational in
 `Byron` works in a fully parallel section in which is single computational function is performed using the full set of available cores.
 To further reduce the time of thread spawn and so optimize as much as possible the code performances, the library works using a single parallel section which is opened at the beginning of the computation and closed at the end[^4].
 
-The `Byron` library is release under MIT license and public available on the Github page of the project.
+The `Byron` library is release under MIT license and publicly available on the Github page of the project.
 The project also includes a list of common examples like object detection, super resolution, segmentation, ecc. (see the next sections for further details about this models).
 The library is also completely wrapped using `Cython` to enlarge the range of users also to the `Python` ones.
 The complete guide to its installation is provided; it can be done using `CMake`, `Make` or `Docker` and the `Python` version is available with a simple `setup`.

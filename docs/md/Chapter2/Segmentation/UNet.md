@@ -20,7 +20,7 @@ In these cases a valid loss function (also used in our applications) could be th
 ![IoU score example. The IoU score is computed as the area intersection of the two boxes over their union. Starting from the left we can see an increment of the overlap between the two boxes related to an increment in their IoU scores.](../../../../img/iou_example.svg)
 
 A word of caution must be spent about the metrics to evaluate the performances of our model.
-Standard metrics, as the *accuracy* [^1], are not good measures to face on the segmentation problem.
+Standard metrics, as the *accuracy* [^1], are not good measures to face the segmentation problem.
 If we want to identify and segment an object into an image we can reasonably assume that the number of pixels concerning the object would be very few against the number of pixels related to the background.
 Thus the told above binary mask would be a matrix with a large amount of zeros and only few ones.
 In this case the standard metric functions have to consider an unbalanced number of samples: if the model outputs a matrix of all zeros the accuracy of it will be high despite the informative values are only the few pixel equals to one.

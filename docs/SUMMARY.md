@@ -9,11 +9,11 @@
   * [Synthetic dataset benchmark](./md/Chapter1/DNetPRO/ToyModel.md)
   * [Algorithm implementation](./md/Chapter1/Implementation/README.md)
     * [Combinatorial algorithm](./md/Chapter1/Implementation/Couples.md)
-    * [Pair sort](./md/Chapter1/Implementation/Sorting.md)
+    * [Pair sorting](./md/Chapter1/Implementation/Sorting.md)
     * [Network signature](./md/Chapter1/Implementation/FeatSel.md)
     * [DNetPRO in Python](./md/Chapter1/Implementation/Python.md)
     * [DNetPRO in Snakemake](./md/Chapter1/Implementation/Pipeline.md)
-    * [Time performances](./md/Chapter1/Implementation/Timing.md)
+    * [Time performance](./md/Chapter1/Implementation/Timing.md)
   * [Benchmark of DNetPRO algorithm](./md/Chapter1/Synapse/README.md)
     * [Synapse dataset](./md/Chapter1/Synapse/Dataset.md)
     * [mRNA data](./md/Chapter1/Synapse/mRNA.md)
@@ -67,7 +67,7 @@
   * [Natural Language Processing](./md/Chapter3/CHIMeRA/NLP.md)
   * [CHIMeRA datasets](./md/Chapter3/CHIMeRA/Dataset.md)
   * [CHIMeRA analyses](./md/Chapter3/CHIMeRA/Results.md)
-  * [CHIMeRA as Service](./md/Chapter3/CHIMeRA/Service.md)
+  * [CHIMeRA as a Service](./md/Chapter3/CHIMeRA/Service.md)
 
 * [Conclusions](./md/Conclusions.md)
 

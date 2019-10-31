@@ -4,21 +4,21 @@
 
 \subsection[Dropout function]{Dropout function}\label{NN:dropout}
 
-Many times along this work we have been talked about the \emph{over-fitting} problem.
-The over-fitting problems arise when the complexity of our model becomes too high regard the amount of available data, i.e when the number of parameters of our model is comparable to the number of available data.
+Many times along this work we have talked about the \emph{over-fitting} problem.
+Over-fitting problems arise when the complexity of our model becomes too high regard the amount of available data, i.e when the number of parameters of our model is comparable to the number of available data.
 A classical example is given by the polynomial fitting problem.
-Given an initial set of $N$ data points we can always find a polynomial curve of degree equal to $N-1$ which can perfectly fit our data.
-In this case the model flexibility is minimum and new additional data points difficulty lies on the same curve.
-In other words we tuned each model parameter according to the given data set but we completely lose the possibility of generalization.
+Given an initial set of $N$ data points we can always find a polynomial curve of degree equal to $N-1$, which can perfectly fits our data.
+In this case the model flexibility is minimum and new additional data points difficulty lie on the same curve.
+In other words, we have tuned each model parameter according to the given dataset, but we have completely lost the possibility of generalization.
 
-In Neural Network models we have to manage a large quantities of parameters and it is quite easy to stumble on this problem.
-Possible workaround could be given by the regularization techniques told in the previous section (ref. \ref{NN:batchnorm} for further information) or by a Dropout function.
-This function simply dropping out some neuron units into a Neural Network during the training phase.
-Ignore some neurons means that they will not be considered during a particular (single) forward/backward step.
-So, given a set of neurons we have a probability $p$ to keep the neuron and $1-p$ to remove it.
-In this way we can reduce the co-dependency of nearest neurons inside the network and so reduce the possibility of over-fitting.
+In Neural Network models we have to manage a large quantity of parameters and it is quite easy to stumble on this problem.
+Possible workaround could be given by the regularization techniques described in the previous section (ref. \ref{NN:batchnorm} for further information) or by a Dropout function.
+This second function simply drops out some neuron units into a Neural Network during the training phase.
+Ignore some neurons means that they will not be considered during a (single) forward/backward step.
+So, given a set of neurons, we have a probability $p$ to update (keep) the neuron and $1-p$ to ignore (remove) it.
+In this way, we can reduce the co-dependency of nearest neurons inside the network and reduce the possibility of over-fitting.
 
-The above description bring us to a straightforward implementation of the algorithm into the \textsf{NumPyNet} library (ref. \ref{code:py_dropout}).
+The above description lead us to a straightforward implementation of the algorithm into the \textsf{NumPyNet} library (ref. \ref{code:py_dropout}).
 
 \lstset{style=snippet}
 \begin{lstlisting}[language=Python, caption=NumPyNet version of Dropout function, label=code:py_dropout]
@@ -50,20 +50,20 @@ class Dropout_layer(object):
 
 \end{lstlisting}
 
-The above code numerically reproduce the theoretical formulation given.
-After the initialization of the private object variables, the forward function generates a set of random positions and apply them (if they are less than the given probability) to the output: these positions will be turned off and the others will be multiply by a scale probability factor to increase their importance.
-The backward function simply invert the transformation on the back-propagated gradient \textsf{delta}.
+The above code numerically reproduces the theoretical formulation given.
+After the initialization of the private object variables, the forward function generates a set of random positions and it applies them (if they are less than the given probability) to the output: these positions will be turned off and the others will be multiply by a scale probability factor to increase their importance.
+The backward function simply inverts the transformation on the back-propagated gradient \textsf{delta}.
 
-Despite this straightforward implementation we have to carefully manage some crucial points into the \textsf{C++} equivalent.
-The \textsf{Byron} library works into a single parallel region so after the (sequential) initialization of the layer object the forward/backward phases are evaluated by all the available threads in parallel.
-This bring us to a standard problem in multi-threading programming: the generation of independent random numbers among threads.
+Despite this straightforward implementation, we have to carefully manage some crucial points into the \textsf{C++} equivalent.
+The \textsf{Byron} library works into a single parallel region, so, after the (sequential) initialization of the layer object, the forward/backward phases are evaluated by all the available threads in parallel.
+This lead us to a standard problem in multi-threading programming: the generation of independent random numbers among threads.
 Inside a parallel region all the declared variables are (by definition) shared among all the available threads.
-Thus, if we simply create a random number generator we have to face on the thread-concurrency.
-As consequence the random number generated will not be independent but (most probably\footnote{
+Thus, if we simply create a random number generator we have to face the thread-concurrency.
+As consequence, the random number generated will not be independent but (most probably\footnote{
   The deterministic generation of random number is hard to reproduce into a parallel environment despite the seed initialization.
   The \quotes{probability} of repeating the same sequence is related to the affinity of each thread to the given process.
 }) repeated by each thread.
-The simple workaround implemented into the \textsf{Byron} library is given by assigning a random number generator to each thread (with its own seed and indexed by the thread ID).
+The simpler workaround, implemented into the \textsf{Byron} library, is given by assigning a random number generator to each thread (with its own seed initialized by the thread ID).
 In this way we can ensure a totally independence of the random numbers generated during the forward phase (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/dropout_layer.cpp}{on-line}).
 
 \begin{figure}[htbp]
@@ -72,17 +72,16 @@ In this way we can ensure a totally independence of the random numbers generated
 \input{./img/dropout_layer.pdf_tex}
 \caption{Dropout function applied on a testing image.
 The 10\% of image pixels are turned off by the forward function.
-The corresponding gradient is back-propagated only on the previously activated pixels.
+The output of the back-propagation is computed considering a uniform (white pixels) image: in this way we can notice that only the previously activated pixels allow the gradient passing.
+In this way the dropout function allows to update only a part of the model parameters (turned on pixels).
 }
 \label{fig:dropout}
 \end{figure}
 
-As visualization example we can use our simple test image and apply our transformation (see Fig.\ref{fig:dropout}).
+As visualization example, we can use our simple test image and apply the dropout transformation (see Fig.\ref{fig:dropout}).
 Our input image shows many pixel turned off according to the given probability, as expected.
-On the other hand, the backward output turns on only the same pixel\footnote{
-  For visualization purposes we manually set the gradient to a uniform value.
-}.
+On the other hand, the backward output turns on only the same pixel: for visualization purposes we manually set the gradient to a uniform value.
 
-A usage example of this functions is provided into the \textsf{NumPyNet} \href{https://github.com/Nico-Curti/NumPyNet/tree/master/examples}{examples}: in those simple examples we can easily compare the learning performances of standard neural network models with and without the Dropout function on classical datasets.
+An usage example of this functions is provided into the \textsf{NumPyNet} \href{https://github.com/Nico-Curti/NumPyNet/tree/master/examples}{examples}: in those simple examples we compare the learning performances of standard neural network models with and without the Dropout function on classical datasets.
 
 \end{document}

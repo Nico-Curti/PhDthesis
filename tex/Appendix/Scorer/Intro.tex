@@ -23,7 +23,7 @@ Given a set of patterns and its corresponding (true) labels we can evaluate the 
 There are a lot of different score functions that can be computed and any of them evaluates some aspects of the model efficiency.
 Any paper author choses the score that better highlights the advantages of its model and it is difficult to move around this large zoo of indicators.
 Moreover, (it is quite a constant in scientific research) when a paper is send to a peer-review, in many cases the reviewers suggest to check if other performance indicators are good enough for the showed results.
-This means that a lot of large simulations should be performed again and the appropriated variables recomputed to obtain the requested scores.
+This means that a lot of large simulations should be performed again and the appropriate variables recomputed to obtain the requested scores.
 
 At this point the main question is: are these scores totally independent one from each other?
 The brief answer is simply no.
@@ -45,7 +45,7 @@ In the work of Sepand et al. the authors identify three function classes: common
 In Fig.~\ref{fig:scorer_net} the interaction graph of these three classes is shown.
 The figure shows deep interactions between the three function classes and it highlights the dependencies of the different quantities involved.
 We can also use this kind of visualization to formulate computational considerations about the order in which these quantities could be evaluated.
-Since the graph is a direct graph by definition, we can start from the root node (the node without links which bring to it) and cross the network until the leaf nodes (nodes without link which go out from them) like in a tree-graph.
+Since the graph is a direct graph by definition, we can start from the root node (the node without links which bring to it) and cross the network up to the leaf nodes (nodes without link which go out from them) like in a tree-graph.
 At each step of the percolation, the incoming nodes identify totally independent quantities.
 This independence means that the nodes-quantities can be potentially computed in parallel.
 To clarify this consideration we can reorganize the graph visualization minimizing the link lengths and obtaining a stratified graph in which each level identifies a potential parallel section.
