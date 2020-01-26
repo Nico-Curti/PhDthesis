@@ -1,0 +1,85 @@
+\mode<presentation>
+
+\usefonttheme{serif}
+
+% Requirement
+\RequirePackage{tikz}
+
+% image folder
+\graphicspath{{img/}}
+
+% Settings
+\useinnertheme{unibo}
+\useoutertheme{unibo}
+\usecolortheme{unibo}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\def\supervisor{\@dblarg\beamer@supervisor}
+\long\def\beamer@supervisor[#1]#2{%
+  \def\insertsupervisor{\def\inst{\beamer@insttitle}\def\and{\beamer@andtitle}#2}%
+  \def\beamer@shortsupervisor{#1}%
+  \ifbeamer@autopdfinfo%
+    \def\beamer@andstripped{}%
+    \beamer@stripands#2 \and\relax
+    {\let\inst=\@gobble\let\thanks=\@gobble\def\and{, }\hypersetup{pdfauthor={\beamer@andstripped}}}
+  \fi%
+}
+
+\def\cosupervisor{\@dblarg\beamer@cosupervisor}
+\long\def\beamer@cosupervisor[#1]#2{%
+  \def\insertcosupervisor{\def\inst{\beamer@insttitle}\def\and{\beamer@andtitle}#2}%
+  \def\beamer@shortsupervisor{#1}%
+  \ifbeamer@autopdfinfo%
+    \def\beamer@andstripped{}%
+    \beamer@stripands#2 \and\relax
+    {\let\inst=\@gobble\let\thanks=\@gobble\def\and{, }\hypersetup{pdfauthor={\beamer@andstripped}}}
+  \fi%
+}
+
+% the "thank you" page
+\def\makethanks{%
+  \begin{frame}
+   \frametitle{\@thanksauthors}
+   \@thanksgroup
+  \end{frame}
+
+%  \begin{frame}
+%    \frametitle{\@thankstitle}
+%    \@thanksmessage
+%  \end{frame}
+}
+
+\def\thankstitle#1{\def\@thankstitle{#1}}
+\def\thanksauthors#1{\def\@thanksauthors{#1}}
+\def\thanksmessage#1{\def\@thanksmessage{#1}}
+\def\thanksgroup#1{\def\@thanksgroup{#1}}
+
+\thankstitle{\hspace{2.6cm} Acknowledgment}
+\thanksauthors{\hspace{1.cm} Thanks to the research group}
+
+\thanksmessage{ \centering \Large \textbf{\textcolor{red}{Thank for your attention!}} \\ %
+\bigskip %
+\begin{columns}[onlytextwidth]
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{sleep.png}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \Large \textbf{Hope you slept comfortably!}
+  \end{column}
+\end{columns}
+}
+
+\thanksgroup{ %
+\begin{figure}
+  \centering
+  \includegraphics[width=0.65\textwidth]{net_group.png}
+\end{figure}
+}
+
+
+\mode<all>

@@ -8,10 +8,10 @@ After the training section we can verify the efficiency of our training using a 
 If we have prior knowledge about the output of our test set we can compute the accuracy (or more generally the score) of our model; in the other case we will simply have an extrapolation of our data.
 
 A wide range of documentations and implementations have been written on this topic and it is more and more hard to move around the different sources.
-Leader on this topic are became the multiple open-source `Python` libraries available on-line as [[Tensorflow](http://tensorflow.org/)], [[Pytorch](http://tensorflow.org/)] and [[Caffe](http://doi.acm.org/10.1145/2647868.2654889)].
+Leader on this topic are became the multiple open-source `Python` libraries available on-line as [[Tensorflow](http://tensorflow.org/)], [[Pytorch](http://pytorch.org/)] and [[Caffe](http://doi.acm.org/10.1145/2647868.2654889)].
 Their portability and efficiency are closely related on the simplicity of the `Python` language and on the simplicity in writing complex models in a minimum number of code lines.
 Only a small part of the research community uses more deeper implementation in `C++` or other low-level programming languages.
-About them it should be mentioned the *darknet project* of Redmon J. et al. which created a sort of standard in object detection applications using a pure Ansi-C library[^1].
+About them it should be mentioned the *darknet project* of Redmon J. et al. which created a sort of standard in object detection applications using a pure `Ansi-C` library[^1].
 
 
 In this section we firstly retrace the mathematical background of these models.
@@ -26,8 +26,8 @@ Despite all common libraries are correlated by a wide documentation is often dif
 `NumPyNet` tries to overcome this problem with a minimal mathematical documentation associated to each script and a wide range of comments inside the code.
 
 An other "problem" to take in count is related to performances.
-Libraries like `Tensorflow` as certainly efficient by a computational point-of-view and the numerous wrappers (like `Keras` library) guarantees an extremely simple user interface.
-On the other hand the deeper functionality of the code and the implementation strategies used are unavoidably hidden behind tons of code lines.
+Libraries like `Tensorflow` are certainly efficient by a computational point-of-view and the numerous wrappers (like `Keras` library) guarantees an extremely simple user interface.
+On the other hand the deeper functionalities of the code and the implementation strategies used are unavoidably hidden behind tons of code lines.
 In this way the user can performs complex computational tasks using the library as black-box package.
 `NumPyNet` wants to overcome this problem using simple `Python` codes with extremely readability also for novel users to better understand the symmetry between mathematical formulas and code.
 
@@ -43,7 +43,7 @@ We deeply use the `C++17` functionality to reach the better performances and fle
 What makes `Byron` an efficient alternative to the competition is the complete multi-threading environment in which it works.
 Despite the most common Neural Network libraries are optimized for GPU environments, there are only few code implementations which exploit the fully functionality of a multiple CPUs architecture.
 This gap discourage multiple research groups on the use of such computational intensive models in their applications.
-`Byron` works in a fully parallel section in which is single computational function is performed using the full set of available cores.
+`Byron` works in a fully parallel section in which each single computational function is performed using the full set of available cores.
 To further reduce the time of thread spawn and so optimize as much as possible the code performances, the library works using a single parallel section which is opened at the beginning of the computation and closed at the end[^4].
 
 The `Byron` library is release under MIT license and publicly available on the Github page of the project.
@@ -58,21 +58,11 @@ Two machines will be used in the computational testing: a common laptop (8 GB RA
 Starting from the next section we introduce the fundamental Neural Network model, the so-called *Simple Perceptron*.
 From the simplest model we will add complexity layers to overcome the relative problems (mathematical and numerical), introducing the main functionality of the modern Neural Network architectures.
 
-[^1]: `Darknet` is framework for neural network model developing.
-  It is written in pure Ansi-C by a Washington University research group.
-  The library was developed only for Unix OS but in its many branches (literally *forks*) a complete porting for each operative system was provided.
-  The code is particularly optimized for GPUs using the CUDA support, i.e only for NVidia GPUs.
-  It is particularly famous for object detection applications since it firstly theorize a novel approach to multi-scale object detections called Yolo (You Only Look Once).
-  The library developed in this work are all inspired on it.
-  The large part of the original work developed is related to a deep optimization of this library either in terms of functionality and issues either in terms of computational performances.
+[^1]: `Darknet` is framework for neural network model developing. It is written in pure `Ansi-C` by a Washington University research group. The library was developed only for Unix OS but in its many branches (literally *forks*) a complete porting for each operative system was provided. The code is particularly optimized for GPUs using the CUDA support, i.e only for NVidia GPUs. It is particularly famous for object detection applications since it firstly theorize a novel approach to multi-scale object detections called Yolo (You Only Look Once). The library developed in this work are all inspired on it. The large part of the original work developed is related to a deep optimization of this library either in terms of functionality and issues either in terms of computational performances.
 
-[^2]: Aware of the author no other example implementations have been done.
-  This makes the `NumPyNet` library a useful tool for neural network study and a virtual laboratory for new neural network functions.
+[^2]: Aware of the author no other example implementations have been done. This makes the `NumPyNet` library a useful tool for neural network study and a virtual laboratory for new neural network functions.
 
-[^3]: The library provides also an `Image` object to load and process images.
-  The object is based on `OpenCV` API [[OpenCV](https://github.com/opencv/opencv)].
-  `OpenCV` does not yet support `Python` version 2.7 and 3.3 so the whole `NumPyNet` package does not work on these two version of `Python`.
-  You can just exclude the `Image` scripts from the package or use a novel wrap based on different library (e.g `Pillow`).
+[^3]: The library provides also an `Image` object to load and process images. The object is based on `OpenCV` API [[OpenCV](https://github.com/opencv/opencv)]. `OpenCV` does not yet support `Python` version 2.7 and 3.3 so the whole `NumPyNet` package does not work on these two version of `Python`. You can just exclude the `Image` scripts from the package or use a novel wrap based on different library (e.g `Pillow`).
 
 [^4]: For real-time applications also the time required for the thread spawn must be taken into account.
 

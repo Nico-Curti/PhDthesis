@@ -1,0 +1,73 @@
+\mode<presentation>
+
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \fill[color=white] (0,2) rectangle(\the\paperwidth,\the\paperheight);
+    \fill[color=darkred] (0,\the\paperheight) rectangle(0.35, 7.0); % left band
+    \fill[color=darkgray] (0,7) rectangle(\the\paperwidth - 50.0, 7.05); % gray horizontal band
+    \fill[color=darkred] (0,0) rectangle(\the\paperwidth, 0.75); % bottom band
+    \fill[color=white] (\the\paperwidth - 48.0, 0.75) rectangle(\the\paperwidth - 50, 0.2); % white vertical band
+    \fill[color=darkgray] (\the\paperwidth - 48.0, 0.75) rectangle(\the\paperwidth - 50, 1.25); % gray vertical band
+
+    \node[inner sep=0pt] (logo) at (1.1,\the\paperheight-40.725)
+    {\includegraphics[scale=.145]{logo.png}};
+
+    \node[anchor=west, white, font=\scriptsize] (alma) at (1.8, 0.5)
+    {\textbf{\textsc{ALMA MATER STUDIORUM $\cdot$ UNIVERSIT\`A DI BOLOGNA}}}; % bottom tag
+
+    \node[anchor=west, black] (Alma) at (1.8, \the\paperheight - 20)
+    {\textbf{\textsc{Alma Mater Studiorum $\cdot$ Università di Bologna}}}; % header
+
+    \node[anchor=west, black] (school) at (3.5, \the\paperheight - 40)
+    {\scriptsize{\textsc{Dipartimento di Fisica e Astronomia - DIFA}}}; % sub header
+
+    \ifx\insertsubtitle\@empty
+    \else%
+      \node[anchor=center, black, align=center, text width=10cm] (school) at (\the\paperwidth * .5, \the\paperheight - 60)
+      {\insertsubtitle}; % subtitle
+    \fi
+
+    \node[anchor=center, black, align=center, text width=10cm] (author) at (\the\paperwidth * .5, \the\paperheight - 170)
+    {\insertauthor}; % author
+
+    \ifx\insertsupervisor\@empty
+    \else%
+      \node[anchor=east, black, text width=5cm, align=left] (supervisor) at (\the\paperwidth * .5, \the\paperheight - 200)
+      {\scriptsize{\textbf{Supervisor:}\\\emph{\textsf{\insertsupervisor}}}}; % Supervisor
+    \fi
+
+    \ifx\cosupervisor\@empty
+    \else%
+      \node[anchor=east, black, text width=5cm, align=left] (cosupervisor) at (\the\paperwidth * 1.1, \the\paperheight - 200)
+      {\scriptsize{\textbf{Co-Supervisor:}\\\emph{\textsf{\insertcosupervisor}}}}; % Co-Supervisor
+    \fi
+
+
+
+    \ifx\insertinstitute\@empty
+    \else%
+      \node[anchor=center, black, text width=10cm] (institute) at (\the\paperwidth * .5, \the\paperheight - 200)
+      {\scriptsize{\emph{\textsf{\insertinstitute}}}}; % institute
+    \fi
+    \node[anchor=center, black] (date) at (\the\paperwidth * .5, \the\paperheight - 240)
+    {\small{\insertdate}}; % date
+
+    %\fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.);
+    \ifnum\thepage>1\relax%
+      \fill[white, opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \fi
+  \end{tikzpicture}
+}
+
+% Title page
+\defbeamertemplate*{title page}{unibo}[1][]
+{
+  \vskip2cm%
+    \begin{beamercolorbox}[center]{title page header}
+      \usebeamerfont{title}\textbf{\inserttitle}\par%
+    \end{beamercolorbox}%
+  \vfill
+}
+
+\mode<all>

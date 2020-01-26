@@ -18,7 +18,7 @@ The \emph{FiloBlu} required functionality can be reviewed as a sequence of 3 fun
 To further improve the service efficiency we give each (independent) step to a different thread.
 The whole set of tasks are piloted by a master thread given by the service itself.
 In this way the service is computational efficient and moreover it does not weight on the computer performances.
-We have to take in mind that the computer which host the service has to be effected by the daemon process as less as possible either in memory either on computational efficiency.
+We have to take in mind that the computer which host the service has to be affected by the daemon process as less as possible either in memory either on computational efficiency.
 The last step is the synchronization of the previous tasks with appropriate clock frequencies.
 
 Let's start from the data reading function.
@@ -33,13 +33,13 @@ While the second request is implementation dependent, the first one can be faced
 In this way we can ensure that the application will save a fixed amount of data and it will not occupy large portion of memory (RAM).
 
 The second task is identified by the Machine Learning function which processes the data.
-The algorithm takes the data from the FIFO container of the previous step (if there is) and it saves the results into a second FIFO container for the next step.
+The algorithm takes the data from the \textsf{FIFO} container of the previous step (if there is) and it saves the results into a second \textsf{FIFO} container for the next step.
 The time frequency of the step is given by the time required by the Machine Learning algorithm.
 
-The third step keeps the data from the second FIFO container (if there is) and it performs a second query (a writing one in this case) to the database.
+The third step takes the data from the second \textsf{FIFO} container (if there is) and it performs a second query (a writing one in this case) to the database.
 Also in this case the frequency is given by the efficiency of the chosen query.
 
-The last two steps can be executed without press time requirements and they are useful only on a large time scale.
+The last two steps can be executed without time requirements and they are useful only on a large time scale.
 
 Each step performs its independent logging on a single shared file.
 If an error occurs the service logs an appropriate message and it saves the current log-file in a different location to prevent possible log-cleaning (optional step).

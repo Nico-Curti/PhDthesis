@@ -11,7 +11,7 @@ As can be seen in the left plot of Fig. [1](../../../../img/training_perf_good_l
 We would stress that the accuracy metric is not a good indicator for segmentation applications and it can be proved by the right plot of Fig. [1](../../../../img/training_perf_good_logs_noaug.svg) in which the accuracy value starts from more than 93% in the first iteration, i.e when the model weights are completely random.
 
 Using the tuned weights obtained by the training step we validate our model on the 40 images which compose the test set.
-We fed our Neural Network model with each CT slice and we filtered the output [^2] using a thresholding of `10^-2`, i.e the value less or equal to the threshold were turned off.
+We fed our Neural Network model with each CT slice and we filtered the output [^2] using a thresholding of `10^-2`, i.e values less or equal to the threshold were turned off.
 From each slice the IoU score was computed with the corresponding ground truth, i.e the binary mask extracted with our semi-automatic (and not medically accurate) pipeline.
 In Fig. [2](../../../../img/IoU_good_logs_noaug.svg) we show the distribution of IoU score over the 40 test images.
 

@@ -107,7 +107,7 @@ k(x) = \frac{1}{6} \left\{ \begin{array}{rc}
   \right.
 $$
 
-where `x` identify each pixel below the filter.
+where `x` identifies each pixel below the filter.
 Commonly values used for the filter parameters are `B=0` and `C=0.75` (used by `OpenCV` library) or `B=0` and `C=0.5` used by `Matlab`[^3].
 Despite this function was also implemented in the most common library in `Python` we provide an efficient multi-threading implementation in the `Byron` library.
 

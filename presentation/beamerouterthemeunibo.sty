@@ -1,0 +1,47 @@
+\mode<presentation>
+
+% Frame bottom bar
+\setbeamertemplate{footline}
+{
+  \begin{beamercolorbox}[wd=\paperwidth, ht=1.8cm]{framenote}
+    \begin{tikzpicture}
+
+      \fill[color=darkred] (0,0) rectangle(\the\paperwidth, 0.75); % bottom band
+      \fill[color=white] (\the\paperwidth - 48.0, 0.75) rectangle(\the\paperwidth - 50, 0.2); % white vertical band
+      \fill[color=darkgray] (\the\paperwidth - 48.0, 0.75) rectangle(\the\paperwidth - 50, 1.25); % gray vertical band
+
+      \node[anchor=west, white, font=\tiny] (alma) at (1.8, 0.4)
+      {\textbf{\textsc{ALMA MATER STUDIORUM $\cdot$ UNIVERSIT\`A DI BOLOGNA}}}; % bottom tag
+
+      \ifnum\thepage>1\relax%
+        \node[anchor=west, white, font=\tiny] (alma) at (11.5, 0.4)
+        {\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}};
+      \fi
+
+    \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+
+% Frame title
+\defbeamertemplate*{frametitle}{unibo}[1][]
+{
+  \begin{beamercolorbox}[wd=\paperwidth, ht=1.8cm]{frametitle}
+    \begin{tikzpicture}
+      \fill[color=darkred] (0,\the\paperheight) rectangle(0.3, 7.7); % left band
+      \fill[color=darkgray] (0,7.7) rectangle(\the\paperwidth - 50.0, 7.725); % gray horizontal band
+
+      \node[inner sep=0pt] (logo) at (0.9,\the\paperheight-27.6)
+      {\includegraphics[scale=.115]{logo.png}};
+
+      \ifx\insertframesubtitle\@empty%
+        {\node[anchor=west, black, font=\Large] at (1.5,\the\paperheight - 13.61){\textbf{\insertframetitle}};}
+      \else%
+        {\node[anchor=west, black, font=\Large] at (1.5,\the\paperheight - 13.81){\textbf{\insertframetitle}};%
+         \node[anchor=west, black, font=\small] at (1.55,\the\paperheight - 33.81){\insertframesubtitle};}%
+      \fi
+    \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\mode<all>

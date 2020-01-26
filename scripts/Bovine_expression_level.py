@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
   fig, axes = plt.subplots(nrows=2, ncols=5, figsize=(14, 8), sharex=True)
   fig.subplots_adjust(left=0.05, right=0.95, top=0.8,  bottom=0.1,
-                      hspace=0.7)
+                      hspace=0.7, wspace=0.5)
   x = np.arange(0, Nsample)
 
   for ax, expr, name in zip(axes.ravel(), signature, probe):
@@ -48,10 +48,11 @@ if __name__ == '__main__':
     ax.scatter(x[ 5:10], expr[ 5:10], marker=points[1], s=size, edgecolors=colors[1], facecolors='none', linewidth=2)
     ax.scatter(x[10:15], expr[10:15], marker=points[2], s=size, edgecolors=colors[2], facecolors='none', linewidth=2)
 
-    ax.axes.get_yaxis().set_visible(False)
+#    ax.axes.get_yaxis().set_visible(False)
     ax.axes.get_xaxis().set_ticks(range(0, Nsample + 1, 5))
+    ax.axes.tick_params(labelsize=16)
 
-    sns.despine(ax=ax, offset=10, top=True, right=True, bottom=False, left=False)
+    sns.despine(ax=ax, offset=3, top=True, right=True, bottom=False, left=False)
 
   fig.text(0.5, 0.02,
            'Samples',
@@ -60,8 +61,8 @@ if __name__ == '__main__':
            #weigth='semibold',
            color='k')
 
-  fig.text(0.03, 0.5,
-           'Expression level',
+  fig.text(-0.01, 0.5,
+           'Expression level as $\log_2(CPM)$',
            horizontalalignment='right',
            verticalalignment='center',
            size=24,
@@ -69,11 +70,11 @@ if __name__ == '__main__':
            #weigth='semibold',
            color='k')
 
-  fig.text(0.0, 0.9, 'b',
-           size=30,
-           color='k',
-           #weight='bold'
-           )
+#  fig.text(0.0, 0.9, 'b',
+#           size=30,
+#           color='k',
+#           #weight='bold'
+#           )
 
   fig.legend(str_label, scatterpoints=1,
              fontsize=24, ncol=3)

@@ -9,9 +9,12 @@
 *.toc
 *.synctex.gz
 *.tex.backup
+*.nav
 
 # directories
 [Rr]ef*/
 [Ii]mg/*.pdf*
 [Ss]cripts/*.txt
 [Ss]cripts/merge_sort.dot
+[Pp]resentation/scripts/config.json
+[Pp]resentation/scripts/test_sr_image.jpg
