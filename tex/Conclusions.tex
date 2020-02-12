@@ -5,61 +5,61 @@
 \chapter*{Conclusions}\label{conclusions}\addcontentsline{toc}{chapter}{Conclusions}
 \markboth{Conclusions}{Conclusions}
 
-We have concluded our discussion about applications of Big Data Analytics to Biomedical data.
+We have concluded our discussion about the applications of Big Data Analytic algorithms to Biomedical data.
 In this work we have touched several and different topics related to this theme.
 
 In the first chapter we have focused on the difficulties about information extraction, analyzing high-throughput datasets.
-The so-called \emph{omics} datasets are becoming a very interesting research field in biology and medicine, since, using modern data acquisition techniques, they are capable to give a wide range of useful data for the analysis of multiple diseases.
-A crucial role on this topic is given by tumors and, using \emph{omic} data, we can design novel methods to identify those responsible for these diseases.
-Biomedical Big Data pose new challenges to the scientific research, since we have to convert them into useful information or, in other words, we have to be able to identify their informative core.
+The so-called \emph{omics} datasets are becoming a very interesting research field in biology and medicine since, using modern data acquisition techniques, they are capable to give a wide range of useful data for the analysis of multiple diseases.
+A crucial role on this topic is given by tumors and, using \emph{omic} data, we can design novel methods to identify the agents responsible for these diseases.
+Biomedical Big Data pose new challenges to the scientific research, since we have to convert them into useful information or, in other words, we have to be able to identify their informative cores.
 To this purpose we have designed the new \textsf{DNetPRO} algorithm as a novel feature selection method.
 
-We have tried to show all the pros and cons about the proposed algorithm, since before a application on real data we have always to take care (and eventually tune) about the limits of our model.
-Only knowing its limits we could be able to provide a reasonable interpretation about its results.
+We have tried to show all the pros and cons about the proposed algorithm.
+Only knowing its limits we could be able to provide a reasonable interpretation about its results and for this reason we firstly tested our method on synthetic data.
 The proposed \textsf{DNetPRO} pipeline was tailored on gene expression applications and we have shown its application on real data, comparing its efficiency against other state-of-art models in which it is able to outperform them in the major part of the analyzed cases.
-All these results are also already published or they are under press.
-We would remark that \textsf{DNetPRO} could be used also as standalone feature selection algorithm, but, for sake of brevity, we have discussed its application on non-biological data only in the Appendix of this work.
+Some these results are already published in international papers or they are in press.
+We would remark that \textsf{DNetPRO} could be used also as standalone feature selection algorithm, but, for sake of brevity, we have discussed its application on non-biological data only in the Appendices of this work.
 
-In the second chapter we have moved to more numerical applications in the deep learning research field.
+In the second chapter we have moved to numerical applications in the deep learning research field.
 We have paid particular attention to the description and optimization of some state-of-art deep learning models.
-In this chapter we have also introduced three new custom libraries about this topic, which have been developed with different purposes: the \textsf{NumPyNet} is essentially an educational framework for the development of neural network model, while the \textsf{Byron} library is focused on the numerical performances; the \textsf{rFBP} library was designed for very particular applications and in this work we have briefly shown one.
-Starting from the bases of neural network models, we have discussed about different kind of functions (more or less straightforward) which are commonly involved in the construction of a deep learning neural network architecture.
-For each function, we have only summarily described its mathematical background, focusing instead on the critical points related to its algorithmic version.
+In this chapter we have also introduced three new custom libraries about this topic, which have been developed with different purposes: the \textsf{NumPyNet} is essentially an educational framework for the development of neural network models, while the \textsf{Byron} library is focused on the numerical performances; the \textsf{rFBP} library was designed for very particular applications and in this work we have just briefly shown one of them.
+Starting from the bases of neural network models, we have discussed about different kinds of functions (more or less straightforward) which are commonly involved in the construction of a deep learning neural network architecture.
+For each function, we have only summarily described its mathematical background, focusing instead on the critical points related to its algorithmic implementation.
 
 We have used the two developed libraries (\textsf{NumPyNet} and \textsf{Byron}) to highlight possible ways to overcome these numerical issues.
-For sake of brevity, it has not been possible to go in deeper details about the numerical improvements performed, but all the developed codes have been shared and they are publicly available on Github.
+For sake of brevity, it has not been possible to go in deeper details about the numerical improvements performed, but all the developed codes have been shared and they are publicly available on the author's Github page.
 The modern scientific research, in fact, is not made only by papers and publications but it is acquiring even more importance the code development and, thus, its public availability.
-By sharing our code on the Internet we want to encourage the research community to take in consideration also our promising results about this topic.
-We have faced on different state-of-art models and implementations of them along our discussion, and in all the analyzed cases our results overcome them with not negligible results.
+By sharing our code on the Internet, we want to encourage the research community to take in consideration also our promising results about these topics.
+We have touched different state-of-art models and implementations of them along our discussion and in all the analyzed cases our results overcome them with not negligible results.
 
 The results obtained using Super Resolution and Segmentation models are very promising for the analysis of biomedical images.
 Moreover, we have shown that deep learning models are capable of a very efficient generalization due to their vast amount of parameters and a well-programmed training section.
-In particular, our Super Resolution models were trained on general-purpose images, but they are, however, able to reconstruct biomedical NMR images better than standard methods.
-This, already discussed, result is due to the ability of the model to identify analogous textures and patterns between the training and validation images without it needs a tailored retrain.
+In particular, our Super Resolution models were trained on general-purpose (natural) images, but they are, however, able to reconstruct biomedical NMR images better than standard methods.
+This, already discussed, result is due to the ability of the model in the identification of analogous textures and patterns between the training and validation images, without need of a tailored retrain.
 We have also seen how we can improve object detection efficiency using a pre - Super Resolution - processing: we could not show biomedical results on this topic due to lack of data and privacy reasons, but we have shown how a people-counting problem (Complex System task) is improved by this.
 
-We would remark that our work was focused on the optimization of that codes only for CPU usages and thus we can not compare them to the wide world of GPU deep learning models.
-We would, however, stress that we have intentionally chosen to focus only on these computational environments, aiming to increase the usage of this kind of models also to research fields which do not need GPUs in their everyday works.
-There are, in fact, a lot of scientific applications which are tailored on CPUs architecture and which are pushed out to the deep learning researches, or which do not even try to use deep learning models afraid by their intensive computational demand.
+We would remark that our work was focused on the optimization of those codes only for CPU usages and, thus, we can not compare them to the wide world of GPU deep learning models.
+We would, however, stress that we have intentionally chosen to focus only on these computational environments, aiming to increase the usage of this kind of models also in research fields which do not need GPUs in their everyday works.
+There are, in fact, a lot of scientific applications which are tailored on CPUs architectures and which are pushed out to the deep learning researches, or which do not even try to use deep learning models afraid by their intensive computational demand.
 We developed the \textsf{Byron} library to overcome these issues and to highlight how a well-thought-out algorithmic implementation can overcome also the more computational expensive applications.
 
-All the developed algorithms were intensively profiled against other state-of-art implementations, and their pros and cons have been examined in order to find the best solution for a given problem.
+All the developed algorithms were intensively profiled against other state-of-art implementations and their pros and cons have been examined in order to find the best solution for a given problem.
 Code testing has been performed also on different operative systems, since how well an algorithm is made, it is useless if it works only on a well-defined machine.
 A continuous integration of our codes has been at the basis of all the proposed libraries, as much as a reliable and user-friendly code documentation.
 
-We have concluded our discussion introducing the \textsf{CHIMeRA} project which, even though the analysis of its results is still in work in progress, gives us multiple discussion points about Biomedical Big Data.
+We have concluded our discussion introducing the \textsf{CHIMeRA} project which, even though the analysis of its results is still in work in progress, gives us multiple points of discussion about Biomedical Big Data.
 There is an increasing interest about database harmonization in the last years and its need is given by the growing amount of publicly available data.
-The research community is still trying to keep up with the new demand for data analysis and an increasingly important role is played by the development of new computational strategies and techniques.
+The research community is still trying to keep up with the new demand of data analysis and an increasingly important role is played by the development of new computational strategies and techniques.
 Many European projects financed by the Horizon 2020 Research and Innovation program are focused on this topic and a particular attention is paid on the health-care research.
 
-The \textsf{CHIMeRA} project could not be compared to such big research programs but it is driven by the same kind of ideas.
+The \textsf{CHIMeRA} project could not be compared to such big research programs, but it is driven by the same kind of ideas.
 Its final purpose, in fact, is to use the wide range of available information and results, obtained by independent research studies, and combine them into a unique framework of analysis.
 Observational databases differ in both purposes and designs: they have been collected for different purposes and the logical organizations as much the medical terminologies can vary from source to source.
 A \emph{Common Data model} (CDM) is designed to overcome these issues and to offer a unique solution for the information storage in the same way as our \textsf{CHIMeRA} project merges together information provided by multiple on-line databases.
 Unfortunately, the research community is developing a wide range of CDMs and as long as a single solution is not taken as standard, the problem can not be solved.
 Also in this case, we have not developed \textsf{CHIMeRA} as putative alternative to this purpose, but it is simply a temporary solution which allows us to perform a panoramic overview of biomedical agents.
 
-We have highlighted multiple possible usages of the developed \textsf{CHIMeRA} network-of-networks structure and we hope it can be useful as an integrative tool also for the biggest projects like HARMONy.
+We have highlighted multiple possible usages of the developed \textsf{CHIMeRA} network-of-networks structure and we hope it can be useful as an integrative tool also for the biggest projects like the HARMONY one.
 In this work we have focused on the key steps which lead us to the ideas behind the \textsf{CHIMeRA} project and, moreover, we have described difficulties and their relative proposed solutions about the creation of a such network-of-networks database.
 Despite the work has been intense up to now, the more interesting part from a scientific point-of-view is just began.
 The \textsf{CHIMeRA} database is the only \quotes{code} discussed in this work which is not yet publicly available, due to its embryonic stage, but hopefully we can provide its first release as soon as possible.

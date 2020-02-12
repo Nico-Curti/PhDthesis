@@ -5,20 +5,20 @@
 
 \subsection[Network Signature]{Network signature}\label{implementation:network}
 
-After the rearrangement of feature pairs in ascending order we can start to create the variable network and looking for its connected components as putative signatures.
+After the rearrangement of feature pairs in ascending order, we can start to create the variable network and looking for its connected components as putative signatures.
 Each feature represents a node in the network and a given pair is a connection between them (link).
-Since the full storage of the network would require a matrix $(N\times N)$, we have to chose a better strategy for the processing\footnote{
+Since the full storage of the network would require a matrix $(N\times N)$, we need to chose a better strategy for the processing\footnote{
   We are working in the hypothesis of very large $N$.
 }.
 
-The ordered set of couples computed in the previous section represents a so-called \emph{COO sparse matrix} (Coordinate Format sparse matrix) and we can reasonable assume that the desired signature will be composed by the top ranking of them.
+The ordered set of couples computed in the previous section represents a so-called \emph{COO sparse matrix} (Coordinate Format sparse matrix) and we can reasonably assume that the desired signature will be composed by the top ranking of them.
 So, in the first step we cut a reasonable percentage of available pairs, focusing only on them.
 
 Moreover, we are interested in a small set of variables unknown at prior.
 Loading all the node pairs into the same graph can slow down the computation.
-An iterative method (with stop criteria) can perform better and only in worst cases the full set of pair will be loaded.
+An iterative method (with stop criteria) can perform better and only in worst cases the full set of pairs will be loaded.
 
-Since the described algorithm step does not require particular performance efficiency, the main code used in our simulations was written in pure \textsf{Python}.
+Since the described algorithm does not require particular performances efficiency, the main code used in our simulations was written in pure \textsf{Python}.
 A \textsf{C++} implementation of the same algorithm was developed with the help of the Boost Graph Library~\cite{BGL} (BGL), but to not overweight the code installation, it was reserved just for a style exercise.
 In this section we discuss about this second version and also about the strategies chosen to implement an efficient version of it.
 This version of the algorithm was also used, as stand alone method, for other applications that are discussed in the Appendix of this work.
@@ -30,12 +30,12 @@ At each iteration step, the number of connected components is evaluated up to a 
   This procedure is quite similar to put a threshold value on the couple performances or to highlight inside the full network the components linked by weights greater than a given value.
 }.
 Two degrees of freedom are left to the user: in order, \textsf{pruning} and \textsf{merging}.
-The first one performs an iteratively remotion of nodes with degree equal (or lower) than $1$, i.e pendant nodes, until the graph core is not filtered.
-The \textsf{merging} clause chooses between the biggest connected component, or the set of all the disjoint connect components, as putative signature.
+The first one performs an iterative remotion of nodes with degree equal (or lower) than $1$, i.e pendant nodes, until the graph core is not filtered.
+The \textsf{merging} clause chooses between the biggest connected component, or the set of all the disjointed connect components, as putative signature.
 The output of \textsf{merging} step determines the number of nodes in the graph which have to be considered by the stop criteria.
 
 A crucial role in the algorithm optimization is played by the chosen of the BGL graph structure.
-Since the two degrees of freedom imply a continuous rearrangement of the graph nodes, we have chosen to apply a filter mask over the main graph structure that highlights the only part of interest.
+Since the two degrees of freedom imply a continuous rearrangement of the graph nodes, we have chosen to apply a filter mask over the main graph structure that highlights the only parts of interest.
 This can be done using the \textsf{boost :: filtered\_graph} object of BGL.
 In ~\ref{code:featuresel} the \textsf{C++} snippet is shown.
 
@@ -123,7 +123,7 @@ std :: vector < int > FeatureSelection (int ** couples, const int & min_size, bo
 
 In the above description, it should be clear that, given any set of ordered (in ascending order) couples of variables, this algorithm allows to extract the core network, independently by the procedure which generate them.
 So, it can be used as dimensionality reduction algorithm of general purpose network structures.
-An example of this kind of application was reported in Appendix B - Venice Road Network in which we summarized the results published in~\cite{Mizzi2018, CurtiSDPS2018}.
+An example of this kind of application is reported in Appendix B - Venice Road Network in which we summarize the results published in~\cite{Mizzi2018, CurtiSDPS2018}.
 
 \end{document}
 

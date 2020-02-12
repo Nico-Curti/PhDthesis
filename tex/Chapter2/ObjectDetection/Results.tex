@@ -5,10 +5,10 @@
 \subsection[Results]{Results}\label{obj_detection:results}
 
 The original implementation of the YOLO model was provided by Redmon et al. and it is publicly available in his official \href{https://pjreddie.com/darknet/yolo}{web page} of the \textsf{darknet} project.
-The code is written in \textsf{Ansi-C} and it is designed and, only thank to the many branches developed by the Github community, it can be compiled on all the OS.
+The code is written in \textsf{Ansi-C} and, only thank to the many branches developed by the \textsf{Github} community, it can be compiled on all the OS.
 The \textsf{Ansi-C} language is a very low-level programming language and it is hard to obtain better performances rewriting the code.
 This guarantees its supremacy in terms of speed in the research community.
-The code is particularly optimized for GPU applications: the \textsf{darknet} library provides an efficient CUDA support and it can be optimally used only with NVIDIA GPUs.
+The code is particularly optimized for GPU applications: the \textsf{darknet} library provides an efficient \textsf{CUDA} support and it can be optimally used only with NVIDIA GPUs.
 
 The proposed \textsf{Byron} library has been developed following the backbone and innovative ideas provided by the \textsf{darknet} project.
 The main difference between them is the programming language chosen: \textsf{Byron} is written in pure \textsf{C++}, a \quotes{higher}-level programming language.
@@ -37,8 +37,8 @@ The results are shown in Fig.~\ref{fig:yolo_time}, where we have normalized our 
 \def\svgwidth{0.85\textwidth}
 \input{./img/byron_timing.pdf_tex}
 \caption{Comparison of time performances between the \textsf{Byron} and \textsf{darknet} implementations of YOLO model.
-Simulations were performed keeping fixed the input image sizes and wit any multi-threading support.
-Each simulation includes $100$ runs of both algorithms.
+Simulations were performed keeping fixed the input image sizes and without any multi-threading support.
+Each simulation includes $100$ runs of both the algorithms.
 The \textsf{Byron} version is approximately $3.8$x faster than \textsf{darknet} in all the simulations.
 }
 \label{fig:yolo_time}
@@ -80,7 +80,7 @@ YOLO is not still able to detect the smaller (far) persons.
 
 On the first image (left of Fig.~\ref{fig:yolo_sr}) we show only a small ROI of a (larger) input image, where YOLO is able to find only few people.
 We would remark that the detected people are all in the bottom part of the image, where person \quotes{sizes} are bigger.
-Using a standard bicubic up-sampling (center of Fig.~\ref{fig:yolo_sr}) detection performances are the same, proving as standard up-sampling methods are not appropriate to overcome this task.
+Using a standard bi-cubic up-sampling (center of Fig.~\ref{fig:yolo_sr}) detection performances are the same, proving as standard up-sampling methods are not appropriate to overcome this task.
 The application of EDSR model (right of Fig.~\ref{fig:yolo_sr}) is able to improve the quality of the image and ease the YOLO work.
 In this case the detection is more than twice of the previous case.
 The issue remains for the top part of the image, where only few pixels identify a person.
@@ -101,7 +101,7 @@ The bi-cubic up-sampling allows the detection of only 2 persons against the 7 ob
 \end{figure}
 
 The task in this case is certainly harder and also human eyes hardly count the number of persons into the image.
-With the raw image, YOLO is able to find anything and also with the bicubic up-sampling only 1 person is recognized by the model.
+With the raw image, YOLO is not able to find anything and also with the bi-cubic up-sampling only 1 person is recognized by the model.
 With the EDSR pre-processing, the detection performance increases and $7$ persons are recognized.
 Certainly, the people count is underestimated, but Super Resolution pre-processing seems to be the only available solution to improve YOLO performances on these critical cases.
 

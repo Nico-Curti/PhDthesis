@@ -7,7 +7,7 @@
 A machine learning algorithm is used to minimize or maximize a cost function.
 In other words, when we implement a machine learning algorithm we want to know how good is our result according to prior knowledge about the desired results.
 So, we have to establish a function ables to represent the error of our model.
-This kind of function are commonly called \emph{error functions} or \emph{loss functions} or just simply \emph{cost function}.
+This kind of functions are commonly called \emph{error functions} or \emph{loss functions} or just simply \emph{cost function}.
 In the previous sections, we have shown many algorithms used into a Neural Network model and we have talked about how to update the functional parameters according to the evaluated error.
 This error is provided by the cost function.
 
@@ -23,20 +23,20 @@ Since in this work we are focusing only on classification problems we will only 
 The most common cost function is given by the \emph{Mean Square Error} (MSE) or \emph{L2 loss} (very closed to the regularization function hinted at the end of \ref{NN:batchnorm}).
 Its mathematical formulation is quite simple and it is given by
 
-$$
+\begin{equation}
 MSE = \frac{\sum_{i=1}^{N}\left( y - t \right)^2}{N}
-$$
+\end{equation}
 \\
 where we follow the nomenclature given in \ref{NN:perceptron} and $N$ is the number of outputs, which is equivalent to the number of classes.
 It is one of the most used cost function due to its simplicity either from a mathematical and numerical point-of-view.
-The possible output values range from 0 to $\infty$.
+The possible output values range from $0$ to $\infty$.
 With MSE function, the predictions which are far away from actual values are heavily penalized, due to the squaring.
 
 A slight different function is given by the \emph{Mean Absolute Error} (MAE) or \emph{L1 loss} in which we replace the squaring with a module of the error.
 
-$$
+\begin{equation}
 MAE = \frac{\sum_{i=1}^{N}|\left( y - t \right)|}{N}
-$$
+\end{equation}
 
 With MAE we loose the information about the error direction (preserved by the squaring in MSE) and just simply evaluate the absolute value of it.
 
@@ -48,16 +48,16 @@ A problem related to the MAE function arises during the gradient evaluation.
 Its gradient, in fact, is the same throughout, which means that we will have large gradient values also with small differences which is a worse configuration during training.
 A simple possible workaround is given by the introduction of a shrinking parameter, given by a dynamic learning rate, when we move closer to the minimum.
 
-When we have to manage multi-class problems there are other common cost functions based on likelihood scores.
+When we have to manage multi-classes problems there are other common cost functions based on likelihood scores.
 The simpler one is the \emph{Cross Entropy loss} or \emph{Log loss}:
 
-$$
+\begin{equation}
 CrossEntropyLoss = -(y\cdot\log(t) + (1 - y)\cdot\log(1 - t))
-$$
+\end{equation}
 
-This function just multiply the log of the actual predicted probability by the ground truth class.
+This function just multiplies the log of the actual predicted probability by the ground truth class.
 In this way, when we have two classes (e.g $t \in [0, 1]$), we can alternatively nullify the two parts of the function\footnote{
-  When the actual label is equal to $1$, i.e $y=1$, the second half of the Log Loss function disappears whereas in case of actual label is equal to $0$ the first half is null.
+  When the actual label is equal to $1$, i.e $y=1$, the second half of the Log Loss function disappears, whereas in case of the actual label is equal to $0$ the first half is null.
 }.
 In this way, the loss function heavily penalizes the predictions that are confident but wrong.
 This function works with binary classification problems where the output classes are binned in $[0, 1]$.
@@ -70,9 +70,9 @@ For this reason in our implementation of the algorithm we have chosen to merge t
 
 A last duty to mention loss function is the extension of the Log loss to multiple classes, the so-called \emph{Categorical Cross Entropy Loss}.
 
-$$
+\begin{equation}
 CategoricalCrossEntropyLoss = -\sum{i=1}^{N}\left( y\cdot\log(t) \right)
-$$
+\end{equation}
 
 This function generalized the previous one for multiple-classes, i.e for problems where the correct output can be only one.
 The loss compare the distribution of the predictions, i.e output of the model, with the prior known distribution.
@@ -82,14 +82,14 @@ In particular, this function commonly works jointly to a softmax activation func
 As in the previous case we have chosen to implement this loss function in a separated object associated to the softmax transformation.
 
 Many other loss functions can be mentioned to overcome different kind of problems.
-The list of presented loss function is related to the implementation of the \textsf{darknet}-like libraries which are ported also into the \textsf{NumPyNet} and \textsf{Byron} libraries, i.e either in \textsf{Python} and \textsf{C++}.
-\textsf{NumPyNet} and \textsf{Byron} libraries provide an optimize version of this function (fixing also some \textsf{darknet} issues) and they include also other kind of loss functions to improve the library usability.
+The list of presented loss functions is related to the implementation of the \textsf{darknet}-like libraries which are ported also into the \textsf{NumPyNet} and \textsf{Byron} libraries, i.e either in \textsf{Python} and \textsf{C++}.
+\textsf{NumPyNet} and \textsf{Byron} libraries provide an optimized version of these functions (fixing also some \textsf{darknet} issues) and they include also other kind of loss functions to improve the library usability.
 A full list of available loss functions can be found in the \href{https://github.com/Nico-Curti/Byron/blob/master/src/cost_layer.cpp}{on-line} version of the libraries with a list of easily visual examples.
 
 A further improvement has been performed from a numerical point-of-view: many mathematical formulas need expensive math operations as logarithms and trigonometric functions.
 An efficient (but approximated) math formula has been implemented both in \textsf{C++} and \textsf{Python} to reach faster computational performances.
-These numerical math operations are widely used into the \textsf{Byron} library to increase computational performances, despite their used can be turned off by user at compile time.
-The full set of functions, in fact, is enclosed into a \textsf{macro} definition (\textsf{\_\_fmath\_\_}) that can be enabled at compile-time.
+These numerical math operations are widely used into the \textsf{Byron} library to increase computational performances, despite their usage can be turned off by user at compile time.
+The full set of functions, in fact, is enclosed into a \textsf{macro} definition (\textsf{\_\_fmath\_\_}) that can be enabled/disabled at compile-time.
 
 A classical example of this faster math operation is given by the \emph{fast inverse square root} algorithm, firstly introduced in 1999 in the source code of \emph{Quake III Arena}, a first-person shooter video game.
 The method is based on a Newton algorithm, which can be stopped at the desired precision order: less precision is associated to faster execution, obviously.

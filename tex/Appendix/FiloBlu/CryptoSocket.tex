@@ -5,15 +5,15 @@
 \section*{Data Transmission}\addcontentsline{toc}{section}{Data Transmission}
 \markboth{Appendix E}{CryptoSocket}
 
-In the above configuration we focused on the pipeline which process the stream of data ignoring any problem about the communication between the external device and the machine which host the service.
+In the above configuration we focused on the pipeline which processes the stream of data, ignoring any problem about the communication between the external device and the machine which hosts the service.
 The \emph{FiloBlu} project uses an external APP to send data to the main server, so we have two systems which have to communicate between them automatically via Internet connection.
-In general, we could manage sensitive data that could be vulnerable using an Internet communication.
+In general, we could manage sensitive data, that could be vulnerable using an Internet communication.
 To face this problem we developed a simple TCP/IP client-server package which also supports a RSA cryptography, the \textsf{CryptoSocket} package~\cite{CryptoSocket}.
 
 The communication security could be an important point in many research applications and a valid cryptography procedure is essential.
 The RSA cryptography is considered one of the most secure cryptography algorithm for data transmission and it is quite easy to implement.
 In the \textsf{CryptoSocket} package we implemented a simple wrap around the \textsf{socket} \textsf{Python} library to perform a serialization of our data which are (optionally) processed by our custom \href{https://en.wikipedia.org/wiki/RSA_(cryptosystem)}{RSA algorithm}.
-In this way different kind of data could be sent by the client at the same time.
+In this way different kinds of data could be sent by the client at the same time.
 The \href{https://github.com/Nico-Curti/CryptoSocket/blob/master/CryptoSocket/examples/client.py}{client} script could be adapted with slight modifications for any user need and also complex \textsf{Python} structures could be transmitted between two machines (to the \href{https://github.com/Nico-Curti/CryptoSocket/blob/master/CryptoSocket/examples/server.py}{server}).
 The cryptography module was written in pure \textsf{C++} for computational efficiency and a \textsf{Cython} wrap was provided for pure-\textsf{Python} applications.
 \textsf{CryptoSocket} has only demonstrative purpose and so it works only for a 1-by-1 data transmission (1 server and 1 client).

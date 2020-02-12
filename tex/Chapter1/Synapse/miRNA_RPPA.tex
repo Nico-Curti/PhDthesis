@@ -31,11 +31,16 @@ The results obtained on the miRNA dataset (Fig.~\ref{fig:other_results} (a, b)) 
 Moving from the procedure $A$ to the procedure $B$, i.e. adding a second cross-validation step, the RPPA performances drastically decrease for the KIRC and OV, while their remain quite stable for the LUSC dataset.
 The same behavior is shown in the miRNA datasets in which however both performances are still comparable or better (KIRC, GBM, LUSC) than the reference ones.
 
-These results are not so good as the mRNA ones and this behavior highlights some limitations of the algorithm.
-In the mRNA dataset we hypothesized a monotonic behavior of genes (up- or down-regulation of gene expression level) and this model is very likely.
+The obtained results show the efficiency of the DNetPRO algorithm also in applications very far from the mRNA one.
+Despite the good performances we have to better clarify the biological background of these data: in the mRNA dataset we hypothesized a monotonic behavior of genes (up- or down-regulation of gene expression level) and this model is very likely.
 An analogous model for the miRNA data has not yet been demonstrated.
-We can guess that the low performances obtained on the RPPA were related to the intrinsic nature of these data and to the experimental difficulties about data interpretation.
-We have to consider also the technique used to acquire these kind of data which is different from the mRNA one: different experiments can introduce different noise sources which can affect our model performances.
+This behavior is even more true when we consider RPPA data.
+RPPA data are often affected by a wide series of experimental difficulties about data interpretation.
+In biological applications we have to consider often the technique used to acquire data: different experiments can introduce different noise sources which can affect our model performances and thus the DNetPRO application and interpretation.
+
+We conclude this section by remarking that the signatures obtained by the DNetPRO algorithm aim to identify a set of significant statistical variables.
+The network structure of the signature is designed to simplify a possible interpretation of the variables involved, but no prior biological knowledge is taken into account in our algorithm.
+Therefore, a biological interpretation of the DNetPRO signature could be proved only occasionally.
 
 
 \end{document}

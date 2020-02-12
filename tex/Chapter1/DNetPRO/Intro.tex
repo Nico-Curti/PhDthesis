@@ -5,9 +5,9 @@
 \section[DNetPRO algorithm]{DNetPRO algorithm}\label{dnetpro:DNetPRO}
 
 The \textsf{DNetPRO} algorithm produces multivariate signatures starting from all the couples of variables analyzed by a Discriminant Analysis.
-For this reason, it can be classified as a combinatorial method and the computational time for the exploration of variable space is proportional to the square of the number of underlying variables (ranging from $10^3$ to $10^5$ in a typical high-throughput omics study).
-This behavior allows to overcome some of the limits of single-feature selection methods and it provides a hard-thresholding approach compared to projection-based variable selection methods.
-The combinatorial evaluation is the most time-expensive step of the algorithm and it needs an accurate algorithmic implementation for Big Data applications (see the next section for further information about the algorithm implementation strategy).
+For this reason, it can be classified as a combinatorial method and the computational time for the exploration of variables' space is proportional to the square of the number of the underlying variables (ranging from $10^3$ to $10^5$ in a typical high-throughput omics study).
+This behavior allows to overcome some of the limits of single-feature selection methods and it provides a hard-thresholding approach compared to projection-based variables selection methods.
+The combinatorial evaluation is the most time-expensive step of the algorithm and it needs an accurate algorithmic implementation for Big Data applications (see the next section for further information about the algorithmic implementation strategy).
 A summary of the algorithm is shown in~\ref{code:DNetPRO}.
 
 \begin{algorithm}[H]
@@ -52,14 +52,14 @@ The performance of each couple constitutes a \emph{weighted link} of a network, 
 \end{itemize}
 
 We would stress that this method is completely independent to the choose of the classification algorithm, but, from a biological point-of-view, a simple one is preferable to keep an easy interpretability of the results.
-The geometrical simplicity of the resulting class-separation surfaces, in fact, allows an easier interpretation of the results, as compared to very powerful but black-box methods like nonlinear-kernel SVM or Neural Networks.
+The geometrical simplicity of the resulting class-separation surfaces, in fact, allows an easier interpretation of the results, as compared to very powerful, but black-box, methods like nonlinear-kernel SVM or Neural Networks.
 These are the reasons which lead us to use very simple classifier methods in our biological applications as diag-quadratic Discriminant Analysis or Quadratic Discriminant Analysis (Appendix A for more information about the mathematical background and their respectively implementations).
 Both these methods allow fast computation and an easy interpretation of the results.
 A linear separation might not be common in some classification problems (e.g. image classification), but it is very likely in biological systems, where many responses to perturbation consist in an increase or decrease of variable values (e.g. expression of genes or proteins, see Fig.~\ref{fig:example}~(b)).
 This assumption is very plausible for biological data, since genes are in general up- or down-regulated in order to modify their activity and protein and metabolites most of the times respond consequently.
 
-A second direct gain by the couples evaluation is related to the network structure: the \textsf{DNetPRO} network signatures allow a hierarchical ranking of features according to their centrality compared to other methods.
-The underlying network structure of the signature could suggests further methods to improve its dimensionality reduction based on network topological properties to fit real application needs, and it could help to evaluate the cooperation of variables for the class identification.
+A second direct gain by the couples evaluation is related to the network structure: the \textsf{DNetPRO} network signatures allow a hierarchical ranking of the features according to their centrality compared to other methods.
+The underlying network structure of the signature could suggest further methods to improve its dimensionality reduction based on network topological properties to fit real application needs, and it could help to evaluate the cooperation of variables for the class identification.
 
 In the end, we remark that our signatures have a purely statistical relevance by being generated with a purpose of maximal classification performance, but sometimes the selected features (e.g. genes, DNA loci, metabolites) can be of clinical and biological interest, helping to improve knowledge on the mechanism associated to the studied phenomenon~\cite{PMrna, Scotlandi2009, PMgene, Terragna}.
 

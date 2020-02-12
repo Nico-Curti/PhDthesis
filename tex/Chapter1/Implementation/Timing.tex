@@ -14,7 +14,7 @@ The time evaluation was performed using the \textsf{timing} \textsf{Python} pack
   We would also highlight that, albeit minimal, the \textsf{Python} superstructure penalizes the computational performances and the best results can be obtained using the pure \textsf{C++} version of the code.
 }.
 In our simulations, we monitored the three main parameters related to the algorithm efficiency: the number of samples, the number of variables and (as we provided a parallel multi-threading implementation) the number of threads used.
-For each combination of parameters, we performed 30 runs of both algorithms and we extracted the minimum execution time.
+For each combination of parameters, we performed $30$ runs of the both algorithms and we extracted the minimum execution time.
 The tests were performed on a classical bioinformatics server (128~GB RAM memory and 2 CPU E5-2620, with 8 cores each).
 The obtained results are shown in Fig.~\ref{fig:dnetpro_timing}.
 In each plot, we fixed two variables and we evaluated the remaining one.
@@ -46,10 +46,10 @@ While the code performances scale quite well with the number of features (Fig.~\
 This behavior highlights the results of the optimizations performed on the \textsf{Cython} version which allows the application of the \textsf{DNetPRO} algorithm also to larger datasets without loosing performances.
 An opposite behavior is found monitoring the number of threads (ref Fig.~\ref{fig:dnetpro_timing}~(c)): the \textsf{Python} version scales quite well with the number of threads\footnote{
   The optimal result should be a linear scalability with the number of threads but it is always difficult to reach this efficiency.
-  Thus, a reasonable good result is given by a progressive decrease increasing the number of threads.
-}, while \textsf{Cython} trend is more unstable.
-This behavior is probably due to a non-optimal schedule in the parallel section: the work is not equally distributed along the available threads and it penalizes the code efficiency, creating a bottleneck related to the slowest thread.
-The above results are computed considering a number of features equal to 90 and, thus, the parallel section distributes the 180 ($N\times N$) iterations along the available threads: when the number of iterations is proportional to the number of threads used (12, 20 and 30 in our case), we have a maximization of the time performances.
+  Thus, a reasonable good result is given by a progressive decrease, increasing the number of threads.
+}, while the \textsf{Cython} trend is more unstable.
+This behavior is probably due to a non-optimal scheduling in the parallel section: the work is not equally distributed along the available threads and it penalizes the code efficiency, creating a bottleneck related to the slowest thread.
+The above results are computed considering a number of features equal to $90$ and, thus, the parallel section distributes the $180$ ($N\times N$) iterations along the available threads: when the number of iterations is proportional to the number of threads used ($12$, $20$ and $30$ in our case), we have a maximization of the time performances.
 Despite of this, the computational efficiency of the \textsf{Cython} implementation is so much better than the \textsf{Python} one that its usage is indisputable.
 
 \end{document}

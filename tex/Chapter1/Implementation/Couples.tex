@@ -12,44 +12,44 @@ Let's focused on some preliminary considerations before discuss about the propos
 
 \begin{itemize}
 
-\item \textbf{Performance:} we aim to apply our method on large datasets and thus we have to take care about code time-performances of this step (identified as bottleneck).
+\item \textbf{Performance:} we aim to apply our method on large datasets and thus we have to take care about the time-performances of this step (identified as bottleneck).
 To reduce as much as possible the call stack inside our code, we should perform the entire code with the smaller number of functions as possibly.
-Moreover, we have to simplify for loops and take care about the automatic code vectorization performed by the optimizer at compile time (SIMD, \emph{Single Instruction Multiple Data}).
-A further optimization step to take in count is related to the cache accesses: the use of custom objects inside the code should benefit from cache accesses (AoS vs SoA, \emph{Array of Structure} vs \emph{Structure of Arrays}).
+Moreover, we have to simplify \textsf{for} loops and take care about the automatic code vectorization performed by the optimizer at compile time (SIMD, \emph{Single Instruction Multiple Data}).
+A further optimization step to take into account is related to the cache accesses: the use of custom objects inside the code should benefit from cache accesses (AoS vs SoA, \emph{Array of Structure} vs \emph{Structure of Arrays}).
 
-\item \textbf{Interdependence:} the variable couple performances evaluation is a set of completely independent computational processes and it can be faced on as $N^2$ separately tasks.
+\item \textbf{Interdependence:} the performances evaluation is a set of completely independent computational processes and it can be faced on as $N^2$ separately tasks.
 Thus, it can be easily parallelizable to increase speed performance.
 
-\item \textbf{Simplify:} the use of a simple classifier for performance evaluation simplifies the computation and the storage of the relevant statistical quantities.
+\item \textbf{Simplify:} the use of a simple classifier for performances evaluation simplifies the computation and the storage of the relevant statistical quantities.
 In the discussed implementation, we focused on a Diag-Quadratic classifier (see Appendix A for further information) in which only means and variances of data play a role in its computation.
 
 \item \textbf{Cross Validation:} the use of a Leave-One-Out cross validation allows to perform substantially optimizations in the statistical quantities evaluations across the folds (see discussion in Appendix A - Numerical Implementation).
 
-\item \textbf{Numerical stability:} we have also to take in care about the numerical stability of the statistic quantities, since we are working under the assumption of a reasonable small number of samples compared to the amount of variables.
-This hypothesis affects the variance estimation: the chose of a numerical stable formula for this quantity plays a crucial role for the computation because the classifier score has to be normalized by this.
+\item \textbf{Numerical stability:} we have also to take in care about the numerical stability of the statistical quantities, since we are working under the assumption of a reasonable small number of samples compared to the amount of variables.
+This hypothesis affects the variance estimation: the chose of a numerically stable formula for this quantity plays a crucial role for the computation, because the classifier score has to be normalized by it.
 
 \end{itemize}
 
-With these ideas in mind, we have written a \textsf{C++} code ables to optimize this step in a multi-threading environment, aiming to test its scalability over multi-core machines.
+With these ideas in mind, we have written a \textsf{C++} code ables to optimize this step in a multi-threading environment, aiming to test its scalability over multi-cores machine.
 
-Starting from the first discussed point, we have chosen to implement the full code inside a unique main function with the help of only a single SoA custom object and one external function (\emph{sorting algorithm} discussed in the next section).
+Starting from the first discussed point, we chose to implement the full code inside a single main function, with the help of only a single SoA custom object and one external function (\emph{sorting algorithm} discussed in the next section).
 This allows us to implement the code inside a single parallel section, reducing the time of thread spawning.
-We have chosen to import the data from file in sequential mode, since the I/O is not (particularly) affected by parallel optimizations (in our simulations).
+We chose to import the data from file in sequential mode, since the I/O is not (particularly) affected by parallel optimizations (in our simulations).
 
 Following the instructions suggested in Appendix A - Numerical Implementation, we compute the statistical quantities on the full set of data before starting the couples evaluation.
 Taking a look to the variance equation
 
-$$
+\begin{equation}
 \sigma^2 = \frac{\sum_{i=1}^{S}(x_i - \mu)^2} {S - 1} = \frac{\sum_{i=1}^{S}({x_i}^2)} {S - 1} - \mu^2
-$$
+\end{equation}
 \\
 we can see that the first equation involves the mean computation as a simple sum of elements, using a large number of subtractions that are numerically unstable for data outliers (moreover because they are elevated to square).
-The better choice, in this case, is given by the second formula that allows to compute the both quantities in the formula inside a single parallel loop\footnote{
+The better choice, in this case, is given by the second formula, that allows to compute both quantities in the formula inside a single parallel loop\footnote{
   To facilitate the SIMD optimization the code is written using only float (single precision) and integer variables.
   This precaution takes in care the register alignment inside the loops and it facilitates the compiler-optimizer.
 }.
-At each cross validation, we used the two pre-computed sums of variables, removing the only data points excluded by the Leave-One-Out.
-Another precaution to take in care is to add a small epsilon to the variance before its use in the denominator into the classifier function to prevent numerical underflow.
+At each cross validation, we use the two pre-computed sums of variables, removing the only data points excluded by the Leave-One-Out.
+Another precaution to take in care is to add a small epsilon to the variance before its usage in the denominator of the classifier function to prevent numerical underflow.
 
 The set of pair variables can be obtained only by two nested for loops in \textsf{C++} and a naive optimization can be simply obtained by reducing the number of iterations following the triangular indexes of the full matrix (by definition the score of the couple $(i, j)$ is equal to the score of $(j, i)$).
 This precaution easily allows the parallelization of the external loop and drastically reduce the number of iterations, but it also creates a link between the two iteration variables.
@@ -57,7 +57,7 @@ The new release of OpenMP libraries~\cite{OpenMP}\footnote{
   The OpenMP library is the most common non-standard library for \textsf{C++} multi-threading applications.
 } (from OpenMP 4.5) introduces a new \emph{keyword} in the language, that allows the collapsing of nested for loops into a single one (whose number of iterations is given by the product of the single dimensions), in the only exception of a completely independence of iteration variables.
 So, the best strategy to use in this case is to perform the full set of $N^2$ iterations with a single \textsf{collapse} clause in the external loop\footnote{
-  Obviously the iteration where the inner loop variable is lower than the outer one will be skipped by an if condition.
+  Obviously the iterations where the inner loop variable is lower than the outer one will be skipped by an if condition.
 }.
 
 \lstset{style=snippet}

@@ -13,11 +13,22 @@ Moreover, it confirms that a putative signature could be made by only a few cent
 
 \begin{figure}[htbp]
 \centering
-\def\svgwidth{0.4\textwidth}
-\input{./img/lengths.pdf_tex}
-\qquad\qquad
-\def\svgwidth{0.4\textwidth}
-\input{./img/plateaus.pdf_tex}
+\begin{subfigure}[t]{0.03\textwidth}
+  \textbf{a}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+  \def\svgwidth{\linewidth}
+  \def\svgvalign{t}
+  \input{./img/lengths.pdf_tex}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.03\textwidth}
+  \textbf{b}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+  \def\svgwidth{\linewidth}
+  \def\svgvalign{t}
+  \input{./img/plateaus.pdf_tex}
+\end{subfigure}
 \caption{Analysis of ranked pairs distributions according to the performance score obtained in the training step.
 (\textbf{a}) The distribution of plateau lengths is approximately exponential.
 (\textbf{b}) Average number of pairs with the same score value: this behavior is typical in ranking order distribution and it can be fitted by the relation $f(x) = A(M + 1 - r)^b / r^a$ as shown in~\cite{rankfit}, where $r$ is the rank value, $M$ its maximum value, $A$ a normalization constant and ($a$, $b$) two fitting exponents.}

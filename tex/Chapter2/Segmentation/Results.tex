@@ -15,15 +15,15 @@ The training performances in terms of loss (\emph{binary CrossEntropy}) and accu
 \def\svgwidth{0.85\textwidth}
 \input{./img/training_perf_good_logs_noaug.pdf_tex}
 \caption{U-Net training scores in terms of loss (binary cross-entropy) and accuracy score.
-After approximately only 40 epochs both the measures reached their plateaus.
-In the same way also the validation scores (computed over the test set) saturate.
+After approximately only $40$ epochs both the measures reached their plateaus.
+In the same way also the validation score (computed over the test set) saturates.
 }
 \label{fig:seg_train}
 \end{figure}
 
-As can be seen in the left plot of Fig.~\ref{fig:seg_train} the binary cross-entropy loss tends to saturate just after the $40$th training epoch and in the same way also the accuracy score reaches its plateau (notice that the starting value of accuracy score is more than $93$\% and it proves the incompatibility of this metrics for segmentation problems).
+As can be seen in the left plot of Fig.~\ref{fig:seg_train} the binary cross-entropy loss tends to saturate just after the $40$th training epoch and in the same way also the accuracy score reaches its plateau (notice that the starting value of the accuracy score is more than $93$\% and it proves the incompatibility of this metric for segmentation problems).
 
-Using weights obtained by the training step we validated our model on the $40$ test images.
+Using the weights obtained by the training step we validated our model on the $40$ test images.
 We fed our Neural Network model with each CT slice and we filtered the output\footnote{
   The model output is a floating point images with values ranging from $0$ to $1$.
   To compare the output with a binary mask we have to apply a thresholding procedure to binarize the image.
@@ -38,14 +38,14 @@ In Fig.~\ref{fig:seg_iou} we show the distribution of IoU score over the $40$ te
 \caption{IoU (\emph{Intersection over Union}) distribution obtained on the test set.
 The IoU score quantifies the agreement between U-Net output binary mask and the corresponding ground truth.
 A perfect match corresponds to an IoU score equal to $1$ and a completely disagreement is given by a null value of IoU score.
-The 80\% of the test set has obtained a IoU score greater than $0.8$ and thus a good correspondence between our results and the ground truth.
+The $80$\% of the test set has obtained a IoU score greater than $0.8$ and thus a good correspondence between our results and the ground truth.
 We would stress that the ground truth was obtained applying a custom semi-automatic image processing pipeline which has not validated from a biomedical point-of-view.
 }
 \label{fig:seg_iou}
 \end{figure}
 
 The major part of the test slices obtained a IoU score greater then $0.8$ which corresponds to a good agreement between U-Net output binary mask and the corresponding ground truth.
-Only a 20\% (10/40 slices) of the test slices have shown a IoU score less than $0.8$ and thus a binary mask quite different from the desired output.
+Only a $20$\% ($10$/$40$ slices) of the test slices have shown a IoU score less than $0.8$ and thus a binary mask quite different from the desired output.
 In Fig.~\ref{fig:seg_res} we show some of the \quotes{good} results obtained using our trained model.
 
 \begin{figure}[htbp]
@@ -61,10 +61,10 @@ In Fig.~\ref{fig:seg_res} we show some of the \quotes{good} results obtained usi
 \label{fig:seg_res}
 \end{figure}
 
-Despite the first slice showed in Fig.~\ref{fig:seg_res} could be easily segmented also by our custom image processing pipeline (the bone extraction in this case is quite easy) the second two slices show more difficult tasks, where it is hard to discriminate between femur head and acetabular fossa.
-In all these case the U-Net model is able to discriminate between the two bones with a good agreement with our naive ground truth.
-The model still produces some false positive segmentations also in these cases: the output could be corrected reapplying our image processing pipeline and thus filtering out the bone identifications in disagreement with the connected components centroids obtained by the previous slice.
-To completely prove our results we need of more data and certainly more annotated slices, but these preliminary results encourage us to use Neural Network models, as U-Net, to face also this task.
+Despite the first slice showed in Fig.~\ref{fig:seg_res} could be easily segmented also by our custom image processing pipeline (the bone extraction in this case is quite easy) the second two slices show more issues: it is hard to discriminate between femur head and acetabular fossa when the two components are so much close each other.
+In all these cases the U-Net model is able to discriminate between the two bones with a good agreement with our naive ground truth.
+The model still produces some false positive segmentations in these cases: the output could be corrected reapplying our image processing pipeline and thus filtering the bone identifications in disagreement with the connected components centroids obtained by the previous slice.
+To completely proof our results we need of more data and certainly more annotated slices, but these preliminary results encourage us to use Neural Network models, as U-Net, to face also this task.
 
 
 \end{document}

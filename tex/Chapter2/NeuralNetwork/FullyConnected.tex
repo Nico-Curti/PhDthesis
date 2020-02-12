@@ -4,42 +4,42 @@
 
 \subsection[Fully Connected Neural Network]{Fully Connected Neural Network}\label{NN:connected}
 
-To overcome problems arising from the Simple Perceptron model we can join together multiple Perceptron units into a more complex network of interaction, in which the output of a neuron feeds-forward the input of the next one.
+To overcome problems arising from the Simple Perceptron model we can join together multiple Perceptron units into a more complex network of interactions, in which the output of a neuron feeds-forward the input of the next one.
 This is the Multi-layers Perceptron (MLP) configuration and, if the graph is fully connected, i.e each neuron is connected to all the others, we talk about \emph{fully connected neural networks} (or \emph{dense} neural network, DNN).
 
 Given the Perceptron formulas, the extrapolation to the MLP architecture is straightforward and given by
 
-$$
+\begin{equation}
 y = \sigma\left(X \cdot W + W_0 \right)
-$$
+\end{equation}
 \\
 where we simply pass from the vector formulation to the matrix one.
 The updating rule consequentially becomes
 
-$$
+\begin{equation}
 \delta W = \delta W + X^T \cdot \left( \frac{\partial f(y)}{\partial y} \cdot \delta^l \right) \quad\quad \delta W_0 = \sum_{i=0}^{m}\frac{\partial f(y)}{\partial y_i} \cdot \delta_i^l
-$$
+\end{equation}
 \\
 where, also in this case, we simply pass to the matrix formalism and we convert the discrete format to a continuous one, i.e with continuous values we convert the error to a partial derivative.
 In the above equation $\delta^l$ represents the error passed from the \quotes{next} layer in the network structure\footnote{
-  In the Back-Propagation Algorithm the error is passed by each layer to the previous one, starting from the output error computed according to chosen loss function.
+  In the Back-Propagation Algorithm the error is passed by each layer to the previous one, starting from the output error computed according to the chosen loss function.
 }.
 
 From the reiteration of such structures we can join together multiple fully connected layers and obtain multiple neuron layers jointly together with different levels of complexity and units (an input layer followed by multiple \emph{hidden} layers).
 
-Fully connected Neural Networks overcome the told above \emph{Perceptron} problems using a combination of linear functions (single \emph{Perceptron} units) and they gain more useful properties:
+Fully connected Neural Networks overcome the above told \emph{Perceptron} problems using a combination of linear functions (single \emph{Perceptron} units) and they gain more useful properties:
 
 \begin{itemize}
 
-\item If the activation functions of \emph{all} the hidden units in the Neural Network are linear, then the network architecture is equivalent to a network without hidden units.
+\item If the activation functions of \emph{all} the hidden units in the Neural Network is linear, then the network architecture is equivalent to a network without hidden units.
 
-\item If the number of hidden units is smaller than either the number of input units either the number of output ones, then the network can generate transformations from inputs to outputs as much general as possible since the information is lost in the dimensionality reduction performed by the hidden units.
+\item If the number of hidden units is smaller than either the number of input units either the number of output ones, then the network can generate transformations from inputs to outputs as much general as possible, since the information are lost in the dimensionality reduction performed by the hidden units.
 
 \item We can find multiple weight configurations, i.e $W$ matrices, which give us the same mapping function from inputs to outputs.
 
 \end{itemize}
 
-Given all the theoretical information about this kind of model we can now pass to practical (numerical) considerations about their implementations.
+Given all the theoretical information about this kind of model, we can now pass to practical (numerical) considerations about their implementations.
 
 
 \end{document}

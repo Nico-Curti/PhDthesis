@@ -26,12 +26,12 @@ We compared the trends of the whole set of classification algorithms used.
 \end{figure}
 
 With the tuned hyper-parameters we performed the training of rFBP algorithm on different percentages of the training set: $25\%$, $45\%$, $65\%$ and $85\%$.
-In the same way we trained also a list of the most common Machine Learning classifiers: single perceptron with floating-point weights (Perc); standard Neural Network with gradient descent as updating rule (MLP); support vector machine with linear kernel (lSVM); support vector machine with radial kernel (rSVM); linear discriminant analysis (LDA); decision tree (DT); random forest (RF); k-nearest neighbors with 2-clusters (kNN); Guassian process (GP); diag-quadratic discriminant analysis (GNB); Bernoulli naive bayes (BNB); AdaBoost (AdaB).
-For each training percentage we performed the hyper-parameters optimization of each classifier with the same number of optimization steps.
+In the same way we trained also a list of the most common Machine Learning classifiers: simple Perceptron with floating-point weights (Perc); standard Neural Network with gradient descent as updating rule (MLP); support vector machine with linear kernel (lSVM); support vector machine with radial kernel (rSVM); linear discriminant analysis (LDA); decision tree (DT); random forest (RF); k-nearest neighbors with 2-clusters (kNN); Guassian process (GP); diag-quadratic discriminant analysis (GNB); Bernoulli naive bayes (BNB); AdaBoost (AdaB).
+For each training percentage we performed the optimization of the hyper-parameters of each classifier with the same number of optimization steps.
 In Fig.~\ref{fig:confronto_bestclassificatoriACC}~\ref{fig:confronto_bestclassificatoriMCC} the accuracies and MCC results are shown, respectively.
 
 From this analysis we can conclude that the rFBP algorithm shows comparable performances with the other classifiers.
-These performances globally grow with the training set size but only the rFBP was able to reach a \quotes{perfect learning} configuration, i.e accuracy of 100\% and MCC=1.
+These performances globally grow with the training set size, but only the rFBP was able to reach a \quotes{perfect learning} configuration, i.e accuracy of 100\% and MCC=1.
 We have also noticed that the rFBP classifier and the GNB were the only two algorithms which qualitatively does not show performance saturation on their training.
 
 A second analysis was performed on the data distribution using a multiple $\chi^2$-test.
@@ -62,7 +62,7 @@ From this comparison we noticed a good agreement between the two sets: the major
 In particular, we found that $838/841$ bases were significant for both the methods.
 The rFBP algorithm correctly identified $838/848$ significant bases related to the $-1$ class and only $3/255$ bases related to the $+1$ class.
 
-In conclusion, we could prove that the rFBP algorithm is able to identify the major part of the significant mutations in the training set.
+In conclusion, we could prove that the rFBP algorithm is able to identify the major part of the significant polymorphisms in the training set.
 However, the use of the only training set to extract the significant weights certainly penalized the rFBP algorithm and a second simulation (without prediction purposes) was performed considering the full set of data, i.e 10 realizations without cross-validation.
 In this second case the rFBP significant weights correctly identified $702/1103$ where $696/848$ were related to the $-1$ class and $6/255$ to the $+1$ class.
 In both cases we could conclude that the dataset did not contain enough information for the $+1$ class identification for the rFBP algorithm.

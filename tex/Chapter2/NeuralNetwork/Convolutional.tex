@@ -12,43 +12,43 @@ A big revolution into the Neural Network research field has been given by the in
 Convolutional Neural Network (CNN) are particularly designed for image analyses.
 Convolution is the mathematical integration of two functions in which the second one is translated by a given value:
 
-$$
+\begin{equation}
 (f * g)(t) = \int_{-\infty}^{+\infty} f(\tau)g(t - \tau)d\tau
-$$
+\end{equation}
 
 In signal processing, this operation is also called \emph{crossing correlation} ad it is equivalent to the \emph{autocorrelation} function computed at a given point.
 In image processing the first function is represented by the image $I$ and the second one is a kernel $k$ (or filter), which shifts along the image.
 In this case we have a 2D discrete version of the formula given by:
 
-$$
+\begin{equation}
+\begin{aligned}
 C = k * I
-$$
-
-$$
-C[i, j] = \sum_{u=-N}^{N} \sum_{v=-M}^{M} k[u, v] \cdot I[i - u, j - v]
-$$
 \\
-where $C[i, j]$ is the pixel value of the resulting image and $N$, $M$ are kernel dimensions.
+C[i, j] = \sum_{u=-N}^{N} \sum_{v=-M}^{M} k[u, v] \cdot I[i - u, j - v]
+\end{aligned}
+\end{equation}
+\\
+where $C[i, j]$ is the pixel value of the resulting image and $N$, $M$ are the kernel dimensions.
 
 The use of CNN in modern image analyses can be traced back to multiple causes.
 First of all the image dimensions are increasingly bigger and thus the number of variables/features, i.e pixels, is often too big to manage with standard DNN\footnote{
-  If we consider a simple image $224\times224$ with $3$ color channels we obtain a set of $150'528$ features.
+  If we consider a simple image $224\times224$ with $3$ color channels we obtain a set of \numprint{150528} features.
   A classical DNN layer with this input size should have $1024$ nodes for a total of more than $150$ million weights to tune.
 }.
 Moreover, if we consider detection problems, i.e the problem of detecting a set of features (or an object) into a larger pattern, we want a system ables to recognize the object regardless of where it appears into the picture.
 In other words, we want that our model would be independent by simple translations.
 
 Both the above problems can be overcame by CNN models using a small kernel, i.e weight mask, which maps the full input.
-A CNN is able to successfully capture the spatial and temporal dependencies in an signal through the application of relevant filters.
+A CNN is able to successfully capture the spatial and temporal dependencies in a signal through the application of relevant filters.
 
-The main parameter of this function are given by the input dimensions and the filter/kernel dimensions, i.e the number of weight which we have to tune during the training.
-This is the basic idea behind the convolution function, but in many cases (especially in modern deep learning Neural Network) we can sophisticate it, playing with the possible movements of the filter mask.
+The main parameters of this function are given by the input dimensions and the filter/kernel dimensions, i.e the number of weights which we have to tune during the training.
+This is the basic idea behind the convolution function, but in many cases (especially in modern deep learning Neural Networks) we can sophisticate it, playing with the possible movements of the filter mask.
 In particular, aside the kernel mask-size, we can force the filter to jump along the image, i.e a discontinuous movement of the filter excluding some pixels.
 This parameter, called \textsf{stride}, defines the number of pixels to jump and it is often used to further reduce the output dimensions.
 
 Given this theoretical background we can implement the convolution function in many different ways, using different mathematical approaches: a study about the computational efficiency will tell us which is the best approach to choose.
-The first (naive) approach is to use a brute force technique and implement the direct evaluation of the convolution functions as described in the above equation.
-This version is certainly the easier to implement, but its computational performances are so worst than, for sake of brevity, we excluded it from our tests\footnote{
+The first (naive) approach is to use a brute force technique and implement the direct evaluation of the convolution function as described in the above equation.
+This version is certainly the easier to implement, but its computational performances are so worst that, for sake of brevity, we excluded it from our tests\footnote{
   Compared to the other implementations the direct (brute force) convolution algorithm exceeds the computational time of order of magnitudes.
   For this reason it is not taken into account during our tests.
   A possible implementation in \textsf{C++} is however provided into the \href{https://github.com/Nico-Curti/Byron/blob/master/utility/winograd_test.cpp}{\textsf{Byron} library}.
@@ -76,7 +76,7 @@ In Fig.~\ref{fig:im2col} the main scheme of this algorithm is reported.
 This algorithm optimizes the computational efficiency of the \textsf{GEMM} product but we have to store a lot of memory for the input re-organization in payback.
 
 Using the mathematical theory behind the problem a third idea can arise using the well known Convolution Theorem: the Fourier transformation of our functions (that in this case are given by the input image and the weights kernel) can be reinterpreted into a simple matrix product in the frequency space.
-This is certainly the most \quotes{physical} approach to solve this problem and probably the easier one since the Fourier Transformation is a well-known optimized algorithm, with and several efficient implementations provided in literature.
+This is certainly the most \quotes{physical} approach to solve this problem and probably the easier one since the Fourier Transformation is a well-known optimized algorithm, with several efficient implementations provided in literature.
 One of the most efficient one is provided by the \textsf{FFTW} (\emph{Fast Fourier Transform in the West}) library~\cite{FFTW05}: \textsf{FFTW3} is an open source \textsf{Ansi-C} subroutine library for computing the Discrete Fourier Transform (DFT) in multiple dimensions, without constraints in input sizes or data types.
 The library is not only computationally accurate, but it also provides an efficient parallel version for multi-threading applications.
 
@@ -84,13 +84,13 @@ A further implementation kind is given by linear algebra considerations (very cl
 This algorithm was designed to optimize the matrix product and, in particular, to reduce the computational cost of its operations.
 Suppose we have an input image given by just 4 elements and a filter mask with size equal to 3:
 
-$$
+\begin{equation}
 \mbox{img} = \left[\begin{array}{cccc} d0 & d1 & d2 & d3 \end{array}\right] \quad\quad \mbox{weights} = \left[\begin{array}{ccc} g0 & g1 & g2 \end{array}\right]
-$$
+\end{equation}
 \\
 we can now use the \textsf{im2col} algorithm previously described and reshape our input image and weights into
 
-$$
+\begin{equation}
 \mbox{img} = \left[
 \begin{array}{ccc}
 d0 & d1 & d2 \\
@@ -105,12 +105,12 @@ g1 \\
 g2
 \end{array}
 \right]
-$$
+\end{equation}
 \\
 given this data, we can simply compute the output as the matrix product of this two matrices.
 The Winograd algorithm rewrites this computation as follow:
 
-$$
+\begin{equation}
 \mbox{output} = \left[
 \begin{array}{ccc}
 d0 & d1 & d2 \\
@@ -129,25 +129,26 @@ m1 + m2 + m3 \\
 m2 - m3 - m4
 \end{array}
 \right]
-$$
+\end{equation}
 \\
 where
 
-$$
+\begin{equation}
+\begin{aligned}
 m1 = (d0 - d2)g0\quad\quad m2 = (d1 + d2)\frac{g0 + g1 + g2}{2}
-$$
-$$
-m4 = (d1 - d3)g2\quad\quad m3 = (d2 - d1)\frac{g0 - g1 + g2}{2}
-$$
 \\
-where we can easily notice that the two fractions in $m2$ and $m3$ involve only weight quantities and thus they should be computed only one time for each filter (at each step).
+m4 = (d1 - d3)g2\quad\quad m3 = (d2 - d1)\frac{g0 - g1 + g2}{2}
+\end{aligned}
+\end{equation}
+\\
+where we can easily notice that the two fractions in $m2$ and $m3$ involve only weight quantities and thus they could be computed only one time for each filter (at each step).
 Moreover, we have to manage $4$ \textsf{ADD} and $4$ \textsf{MUL} operations to calculate the $m_i$ quantities and $4$ other ADD to compute the result.
 In doing normal matrix products we have to do $6$ \textsf{MUL} operations instead of $4$: the reduction of computational expensive \textsf{MUL} operations by a factor $1.5$x is very significant\footnote{
   A multiplication takes $7$ clock-cycles in a normal CPU while an add takes only $3$ clock-cycles.
 }.
 In this simple example we use a so-called $F(4, 3)$, i.e image of size $4$ and kernel of size $3$ which gives us $2$ convolutions.
 More general formulations are $F(m\times m, r \times r)$ and if we use an image of size $4\times4$ and a kernel of size $3\times3$ we can compare the $16$ \textsf{MUL}s of the \textsf{Winograd} algorithm against the $36$ \textsf{MUL}s which are required by the normal matrix product ($2.25$x).
-The \textsf{Winograd} efficiency has been widely proved for CNN, especially when the kernel size is small.
+The \textsf{Winograd} efficiency has been widely proved for CNNs, especially when the kernel size is small.
 In our \textsf{Byron} library we provide its implementation for kernel sizes equal to $3$, since the numerical generalization is not straightforward\footnote{
   We would also highlight that this formulation is valid only if we consider unitary strides.
 }.
@@ -155,7 +156,7 @@ In our \textsf{Byron} library we provide its implementation for kernel sizes equ
 We tested the computational-time of each algorithm on different random images.
 The tests were performed on a classical bioinformatics server (128~GB RAM memory and 2 CPU E5-2620, with 8 cores each) and we considered only kernel sizes equal to $3$ (\textsf{Winograd} constrain) varying input dimensions and number of filters.
 In Fig.~\ref{fig:winograd_timing} we show the results of our simulations using the \textsf{im2col} values as reference\footnote{
-  The \textsf{im2col} algorithm can be found in the major part of Neural Network library and it is also the only convolution function implemented in the \textsf{darknet} library, which is a sort of reference for our work.
+  The \textsf{im2col} algorithm can be found in the major part of Neural Network library and it is also the only convolution function implemented in the \textsf{darknet} library, which is a reference for our work.
 }.
 
 \begin{figure}[htbp]
@@ -176,7 +177,7 @@ However, it is interesting notice how the \textsf{fftw} implementation is able t
 
 We can conclude that the \textsf{Winograd} algorithm is certainly the best choice when we have to perform a 2D convolution.
 The payback of this method is given by the rigid constraints related to the mask sizes and strides: when it is possible it remains the best solution, but in all the other cases the \textsf{im2col} implementation is a relatively good alternative.
-The efficiency of \textsf{Byron} library follows the efficiency of the \textsf{Winograd} algorithm, since the major part of layers in modern deep learning Neural Network models are Convolutional layers with size equal to $3$ and unitary stride.
+The efficiency of \textsf{Byron} library follows the efficiency of the \textsf{Winograd} algorithm, since the major part of layers in modern deep learning Neural Network models are Convolutional layers with sizes equal to $3$ and unitary strides.
 
 %https://victorzhou.com/blog/intro-to-cnns-part-1/
 

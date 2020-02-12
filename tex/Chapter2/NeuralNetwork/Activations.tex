@@ -11,8 +11,8 @@
 Activation functions (or transfer functions) are linear or non linear equations which process the output of a Neural Network neuron and bound it into a limit range of values (commonly $\in[0, 1]$ or $\in[-1, 1]$).
 The output of a simple neuron\footnote{
   We assume for simplicity a fully connected Neural Network neuron.
-} can be computed as dot product of the input and neuron weights (see previous section); in this case the output values range from $-inf$ to $+inf$ and they are equivalent to a simple linear function.
-Linear functions are very simple to trait but they are limited in their complexity and thus in their learning power.
+} can be computed as the dot product of the input and neuron weights (see previous section); in this case the output values range from $-inf$ to $+inf$ and they are equivalent to a simple linear function.
+Linear functions are very simple to trait, but they are limited in their complexity and thus in their learning power.
 Neural Networks without activation functions are just simple linear regression model (see the fully connected Neural Network properties in the previous section).
 Neural Networks are considered as \emph{Universal Function Approximators} so the introduction of non-linearity allows them to model a wide range of functions and to learn more complex relations in pattern data.
 From a biological point-of-view the activation functions model the on/off state of a neuron in the output decision process.
@@ -141,7 +141,7 @@ As can be seen in Tab.~\ref{tab:activations} it is easier to compute the activat
 This is a (well known) important type of optimization in computation term, since it reduces the number of operations and it allows to apply the backward gradient directly.
 
 To better understand the effects of activation functions, we can apply these functions on a test image.
-This can be easy done using the example scripts inserted inside our \textsf{NumPyNet} library.
+This can be easily done using the example scripts inserted into our \textsf{NumPyNet} library.
 In Fig.~\ref{fig:activations} the effects of the previously described functions are reported on a test image.
 For each function we show the output of the activation function and its gradient.
 For visualization purposes the image values have been rescaled $\in[-1, 1]$ before the input to the functions.
@@ -159,10 +159,10 @@ For visualization purposes the image values have been rescaled $\in[-1, 1]$ befo
 \end{figure}
 \end{center}
 
-From the results showed in Fig.~\ref{fig:activations} we can better appreciate the differences between the several mathematical formulas: a simple Logistic function does not produce evident effects on the test image while a Relu activation tends to overshadow the image pixels.
-This feature of the Relu activation function is very useful in Neural Network model and is also determines important theoretical consequences, which led it to be one of the most prominent solution for many Neural Network models.
+From the results showed in Fig.~\ref{fig:activations} we can better appreciate the differences between the several mathematical formulas: a simple Logistic function does not produce evident effects on the test image, while a Relu activation tends to overshadow the image pixels.
+This feature of the Relu activation function is very useful in Neural Network model and it also determines important theoretical consequences, which led it to be one of the most prominent solution for many Neural Network models.
 
-The ReLU (Rectified Linear Unit) activation function is, in fact, the most used into the modern Neural Networks models.
+The ReLU (Rectified Linear Unit) activation function is, in fact, the most used into the modern Neural Network models.
 Its diffusion is imputed to its numerical efficiency and to the benefits it brings~\cite{Glorot2011Relu}:
 
 \begin{itemize}
@@ -181,7 +181,7 @@ The possibility to have null values in output (ref Tab.~\ref{tab:activations}) a
 
 \end{itemize}
 
-In the next sections we will discuss about different kind of Neural Network models and in all of them we choose to use Relu activation function in the major part of the layers.
+In the next sections we will discuss about different kind of Neural Network models and in all of them we have chosen to use Relu activation function in the major part of the layers.
 
 % The question was which one is better to use ?
 % Answer to this question is that nowadays we should use ReLu which should only be applied to the hidden layers. And if your model suffers form dead neurons during training we should use leaky ReLu or Maxout function.

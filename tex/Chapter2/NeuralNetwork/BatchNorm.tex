@@ -15,8 +15,8 @@ This behavior produces a slowdown in the training convergence because each layer
 This problem is also called \emph{internal covariate shift}.
 
 A second problem arises from the heterogeneity of available input data.
-If we tune the model parameters according to a given set of data, which inevitably will be limited, we can meet problems during the generalization, i.e the validation of our model using new data, to new samples if they belong to an equivalent, but deformed, distribution: this kind of problem passes under the name of \emph{over-fitting}.
-A classical example is given by the image detection: if we train a Neural Network model using gray-scale images we can find generalization issues using colored images.
+If we tune the model parameters according to a given set of data, which inevitably is limited, we can meet problems during the generalization phase, i.e the validation of our model using new data, to new samples if they belong to an equivalent, but deformed, distribution: this kind of problem passes under the name of \emph{over-fitting}.
+A classical example is given by the image detection task: if we train a Neural Network model using gray-scale images, we can find generalization issues using colored images.
 This problem can be solve using regularization techniques.
 
 BatchNorm function (Batch Normalization) allows to overcome these problems with a continuous rescaling of the Neural Network intermediate values during the training\footnote{
@@ -27,45 +27,45 @@ In this way we can ensure more stability to the extracted features~\cite{Lecun20
 
 In particular, the method processes the input of a given layer in order to fight the internal covariate shift problem removing the batch mean, normalizing by the batch variance:
 
-$$
+\begin{equation}
 \mu_B = \frac{1}{m}\sum_{i=1}^{m}x_i \quad\quad {\sigma_B}^2 = \frac{1}{m-1}\sum_{i=1}^{m}(x_i - \mu_B)^2
-$$
+\end{equation}
 \\
 where $m$ represents the batch-size and $x_i$ is the value of the pixel $x$ in the $i$-th image of the batch ($\in[0, m]$).
 Thus, the input data becomes:
 
-$$
+\begin{equation}
 \hat{x_i} = \frac{x_i - \mu_B}{\sqrt{{\sigma_B}^2 + \epsilon}}
-$$
+\end{equation}
 \\
 where we add an extra $\epsilon$ in the denominator for numerical stability\footnote{
   Floating point numbers into a computer have finite precision and the variance can underflow bringing to infinite values in the BatchNorm equation.
 }.
 After this common rescaling, we apply a shift-scaling to the previous results:
 
-$$
+\begin{equation}
 y_i = \gamma\hat{x_i} + \beta
-$$
+\end{equation}
 \\
 where the $\gamma$ and $\beta$ coefficients are left as variables to be tuned during the training (they are learned during training).
 The updating rule of the function parameters ($\gamma$ and $\beta$) is given by the derivative of the previous functions:
 
-$$
+\begin{equation}
 \delta\beta = \sum_{i=1}^{m}{\delta_i}^l \quad\quad \delta\gamma = \sum_{i=0}^{m} {\delta_i}^l \cdot \mu_B
-$$
+\end{equation}
 \\
 where $\delta^l$ is the error passed from the next layer of the network structure.
 To complete the error propagation, we have to compute the derivative of the BatchNorm function output:
 
-$$
+\begin{equation}
 {\delta_i}^{l-1} = \frac{{m}\cdot \delta\hat{x_i} - \sum_{j=1}^{m}\delta\hat{x_i} - \hat{x_i} \cdot \sum_{j=1}^{m} \delta\hat{x_i} \cdot \hat{x_i}}{m \cdot \sqrt{{\sigma_B}^2 + \epsilon} }
-$$
+\end{equation}
 
 Since the BatchNorm function is became a sort of standard into deep learning models, an efficient implementation of this algorithm is essential to achieve the best computational performances.
 We have to take into account that batch-normalization procedure is commonly performed after a fully-connected layer or a convolutional one: the best performances are obtained merging the two functionality as much as possible, as suggested in~\cite{AlexeyAB}.
 
 The \textsf{Byron} library is inspired by the \textsf{darknet} library provided by Redmon J. et al. and by its many branches.
-Despite in each implementation we can find the BatchNorm function, aware of the author, in any version we can find a right implementation of this function as standalone method.
+Despite in each implementation we can find the BatchNorm function, aware of the author, in any version we can not find a right implementation of this function as standalone method.
 We have already highlighted that this normalization function can be efficiently joined to other function to increase the computational performances, but in these case we have to differentially manage the dimensions of the involved arrays.
 A standalone implementation of the BatchNorm function required a rearrangement of its functions and it has provided into our \textsf{Byron} and \textsf{NumPyNet} libraries.
 This was one of the various improvements provided by \textsf{Byron} against other \textsf{darknet}-like libraries.

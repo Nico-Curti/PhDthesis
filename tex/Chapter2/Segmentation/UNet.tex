@@ -5,10 +5,10 @@
 \subsection[U-Net model]{U-Net model}\label{segmentation:Unet}
 
 U-Net neural network model is one of the state-of-art model in image segmentation.
-It was firstly developed for biomedical image segmentation but it has shown its efficiency also in different tasks and research topics.
+It was firstly developed for biomedical image segmentation, but it has shown its efficiency also in different tasks and research topics.
 Its backbone is intrinsically a \quotes{common} CNN, but the structure can be divided into two macro paths.
 The first path of the model is a contraction path (or \emph{encoder}), while the second one is an expansion path (or \emph{decoder}).
-The first set of layers, in fact, are a sequence of convolutional and pooling layers which aim to extract features and to reduce the input dimensionality in the same way as an encoder converts a signal to a smaller range of values.
+The first set of layers, in fact, are a sequence of convolutional and pooling layers, which aim to extract features and reduce the input dimensionality, in the same way as an encoder converts a signal to a smaller range of values.
 The extracted features are then processed by the decoder, i.e a second set of convolutional and up-sampling layers, to reconstruct the feature map size and the segmentation mask.
 An illustrative representation of the model structure is shown in Fig.~\ref{fig:unet}.
 
@@ -17,7 +17,7 @@ An illustrative representation of the model structure is shown in Fig.~\ref{fig:
 \centering
 \includegraphics[width=0.85\textwidth]{unet.png}
 \caption{U-Net model scheme.
-The first part of the structure represents the encoder while the tail of the model is the decoder part.
+The first part of the structure represents the encoder, while the tail of the model is the decoder part.
 The model name is given by the numerous shortcut connections which link the encoder layers to the decoder ones: if we contract the long-range connections the global structure acquire a U form.
 The figure was generated using the \href{https://github.com/HarisIqbal88/PlotNeuralNet}{PlotNeuralNet} package of H. Iqbal.
 }
@@ -26,10 +26,10 @@ The figure was generated using the \href{https://github.com/HarisIqbal88/PlotNeu
 \end{center}
 
 We have already discussed about the functionality of each layers in the previous sections: also in this kind of model a key role is played by shortcut connections.
-The decoding path tends to lose some of the higher level features that encoder has learned: using shortcut connections the output of encoding layers are directly passed to decoding layers, so that all the important pieces of information can be preserved.
+The decoding path tends to loose some of the higher level features that encoder learned: using shortcut connections the output of encoding layers are directly passed to decoding layers, so that all the important pieces of information can be preserved.
 
 In the previous sections, we have described the common loss functions used to train Neural Network models.
-Considering the \quotes{simple} segmentation of an object from its background, the ground truth mask, i.e the \quotes{label} of the input image, would be a binary matrix.
+Considering the \quotes{simple} segmentation of an object from its background, the ground truth mask, i.e the \quotes{label} of the input image, it would be a binary matrix.
 In these cases a valid loss function (also used in our applications) is the \emph{binary cross-entropy} (ref. \ref{NN:cost}).
 
 \begin{center}
@@ -38,25 +38,25 @@ In these cases a valid loss function (also used in our applications) is the \emp
 \def\svgwidth{0.85\textwidth}
 \input{./img/iou_example.pdf_tex}
 \caption{IoU score example.
-The IoU score is computed as the area intersection of the two boxes over their union.
-Starting from the left we can see an increment of the overlap between the two boxes related to an increment in their IoU scores.
+The IoU score is computed as the area of the intersection of the two boxes over their union.
+Starting from the left we can see an increment of the overlap between the two boxes related to an increment in their IoU score.
 }
 \label{fig:iou_example}
 \end{figure}
 \end{center}
 
-A word of caution must be spent about the metrics to evaluate performances of our model.
+A word of caution must be spent about the metrics for the performance evaluations of our model.
 Standard metrics, as the \emph{accuracy}\footnote{
   The accuracy measures the number of true positives + false negatives outputs on the total number of predictions.
 }, are not good measures to face segmentation problems.
 If we want to find and segment an object into a picture, we can reasonably assume that the number of pixels concerning the object would be very few against the number of pixels related to the background.
 Thus, the told above binary mask would be a matrix with a large amount of zeros (background) and only few ones (object).
-In this case the standard metric functions have to consider an unbalanced number of samples: if the model outputs a matrix of all zeros, its accuracy is high despite the informative values are only the few pixel equals to one.
+In this case the standard metric functions have to consider an unbalanced number of samples: if the model outputs a matrix of all zeros, its accuracy would be high despite the informative values are only the few pixels equal to one.
 A possible solution to overcome this issue is given by the \emph{mean IoU score} (ref. \ref{obj_detection:yolo} for information about IoU), which measures the average IoU between the output mask and the binary ground truth:
 
-$$
+\begin{equation}
 \mbox{IoU} = \frac{\mbox{Area of Overlap}}{\mbox{Area of Union}}
-$$
+\end{equation}
 
 The efficiency and meaning of this score can be visible in Fig.~\ref{fig:iou_example}.
 

@@ -9,18 +9,18 @@ They are becoming a standard tool in Machine Learning and Deep Learning research
 From a theoretical point-of-view we can define a Neural Network as a series of non-linear multi-parametric functions.
 The model parameters are tuned during a so-called \emph{training section} in which we feed our model with a set of data with human supervision, i.e we have prior knowledge about the right and desired output of the model.
 After the training section, we can verify the efficiency of our training, using a new set of data, called \emph{test set}, which is never seen by the model.
-If we have prior knowledge about the output of our test set we can compute the accuracy (or more generally the score) of our model; otherwise we simply have an extrapolation of our data.
+If we have prior knowledge about the output of our test set we can compute the accuracy (or more generally the score) of our model (validation); otherwise we simply have an extrapolation of our data (prediction).
 
 A wide range of documentations and implementations have been written on this topic and it is more and more hard to move around the different sources.
-Leader on this topic have been became the multiple open-source \textsf{Python} libraries available on-line as \textsf{Tensorflow}~\cite{tensorflow2015-whitepaper}, \textsf{Pytorch}~\cite{paszke2017automatic} and \textsf{Caffe}~\cite{Jia:2014:Caffe}.
-Their portability and efficiency is closely related on the simplicity of the \textsf{Python} language and on the simplicity in writing complex models in a minimum number of code lines.
+Leader on this topic have became the multiple open-source \textsf{Python} libraries available on-line as \textsf{Tensorflow}~\cite{tensorflow2015-whitepaper}, \textsf{Pytorch}~\cite{paszke2017automatic} and \textsf{Caffe}~\cite{Jia:2014:Caffe}.
+Their portability and efficiency are closely related on the simplicity of the \textsf{Python} language and on the simplicity in writing complex models in a minimum number of code lines.
 Only a small part of the research community uses more deeper implementation in \textsf{C++} or other low-level programming languages.
-About them it should be mentioned the \textsf{darknet project} of Redmon J. et al. which have created a sort of standard in object detection applications using a pure \textsf{Ansi-C} library\footnote{
+About them should be mentioned the \textsf{darknet project} of Redmon J. et al. which has created a sort of standard in object detection applications using a pure \textsf{Ansi-C} library\footnote{
   \textsf{darknet} is framework for neural network model developing.
   It is written in pure \textsf{Ansi-C} by a Washington University research group.
   The library was developed only for Unix OS but in its many branches (literally \emph{forks}) a complete porting for each operative system was provided.
-  The code is particularly optimized for GPUs using the CUDA support, i.e only for NVidia GPUs.
-  It is particularly famous for object detection applications since it firstly theorize a novel approach to multi-scale object detections called YOLO (You Only Look Once).
+  The code is particularly optimized for GPUs using CUDA support, i.e only for NVidia GPUs.
+  It is particularly famous for object detection applications since it firstly theorize a novel approach to multi-scale object detections called YOLO (\emph{You Only Look Once}).
   The libraries developed in this work are all inspired on it.
   The large part of our work has been related to a deep optimization of this library either in terms of functionality and issues either in terms of computational performances.
 }.
@@ -31,29 +31,29 @@ The numerical aspects will be traced following two libraries developed by the au
 
 \textsf{NumPyNet} is born as educational framework for the study of Neural Network models.
 It is written trying to balance code readability and computational performances and it is enriched with a large documentation to better understand the functionality of each script.
-The library is written in pure \textsf{Python} and the only external library used is \textsf{Numpy}~\cite{Numpy} (a based package for the scientific research).
+The library is written in pure \textsf{Python} and the only external library used is \textsf{Numpy}~\cite{Numpy} (a base package for the scientific research).
 
-Despite all common libraries are correlated by a wide documentation is often difficult for novel users to move around the many hyper-links and papers cite in it.
+Despite all common libraries are correlated by a wide documentation is often difficult for novel users to move around the many hyper-links and papers cited in them.
 \textsf{NumPyNet} tries to overcome this problem with a minimal mathematical documentation associated to each script and a wide range of comments inside the code.
 
 An other \quotes{problem} to take in count is related to performances.
 Libraries like \textsf{Tensorflow} are certainly efficient from a computational point-of-view and the numerous wrappers (like \emph{Keras} library) guarantee an extremely simple user interface.
 On the other hand, the deeper functionalities of the code and the implementation strategies used are unavoidably hidden behind tons of code lines.
-In this way the user can performs complex computational tasks using the library as black-box package.
+In this way the user can perform complex computational tasks using the library as black-box package.
 \textsf{NumPyNet} wants to overcome this problem using simple \textsf{Python} codes, with extremely readability also for novel users, to better understand the symmetry between mathematical formulas and code.
 
-The simplicity of this library we allow to give a first numerical analysis of the model functions and, moreover, to show the results of each function to an image to better understand the effects of their applications on real data\footnote{
+The simplicity of this library allows us to give a first numerical analysis of the model functions and, moreover, to show the results of each function on an image to better understand the effects of their applications on real data\footnote{
   Aware of the author, no other example implementations have been done.
   This makes the \textsf{NumPyNet} library a useful tool for neural network study and a virtual laboratory for new neural network functions.
 }.
 Each \textsf{NumPyNet} function was tested against the equivalent \textsf{Tensorflow} implementation, using an automatic testing routine through \textsf{PyTest}~\cite{Okken:2017:PTP:3176124}.
 The full code is open-source on the \textsf{Github} page of the project.
-Its installation is guaranteed by a continuous integration framework of the code through \textsf{Travis CI} for Unix environments and \textsf{Appevyor CI} for Windows OS.
-The library supports \textsf{Python} version $\ge2.6$\footnote{
+Its installation is guaranteed by a continuous integration framework of the code through \textsf{Travis CI} for Unix environments and \textsf{Appveyor CI} for Windows OS.
+The library supports \textsf{Python} versions $\ge2.6$\footnote{
   The library provides also an \textsf{Image} object to load and process images.
-  The object is based on OpenCV API~\cite{OpenCV}.
-  \textsf{OpenCV} does not yet support \textsf{Python} version 2.7 and 3.3 so the whole \textsf{NumPyNet} package does not work on these two version of \textsf{Python}.
-  You can just exclude the \textsf{Image} scripts from the package or use a novel wrap based on different library (e.g \textsf{Pillow}).
+  The object is based on \textsf{OpenCV} API~\cite{OpenCV}.
+  \textsf{OpenCV} does not yet support \textsf{Python} versions 2.7 and 3.3 so the whole \textsf{NumPyNet} package does not work on these two versions of \textsf{Python}.
+  You can just exclude the \textsf{Image} script from the package or use a novel wrap based on different library (e.g \textsf{Pillow}).
 }.
 
 As term of comparison we discuss the more sophisticated implementation given by the \textsf{Byron} library.
@@ -61,7 +61,7 @@ As term of comparison we discuss the more sophisticated implementation given by 
 We deeply use the \textsf{C++17} functionality to reach the better performances and flexibility of our code.
 What makes \textsf{Byron} an efficient alternative to the competition is the complete multi-threading environment in which it works.
 Despite the most common Neural Network libraries are optimized for GPU environments, there are only few implementations which exploit the fully functionality of a multiple CPUs architecture.
-This gap discourage multiple research groups on the use of such computational intensive models in their applications.
+This gap discourage multiple research groups on the usage of such computational intensive models in their applications.
 \textsf{Byron} works in a fully parallel section in which each single computational function is performed using the full set of available cores.
 To further reduce the time of thread spawning, and so optimize as much as possible the code performances, the library works using a single parallel section which is opened at the beginning of the computation and closed at the end\footnote{
   For real-time applications also the time required for the thread spawn must be taken into account.
@@ -70,13 +70,13 @@ To further reduce the time of thread spawning, and so optimize as much as possib
 The \textsf{Byron} library is released under \textsf{MIT} license and publicly available on the \textsf{Github} page of the project.
 The project includes a list of common examples like object detection, super resolution, segmentation, ecc. (see the next sections for further details about this models).
 The library is also completely wrapped using \textsf{Cython} to enlarge the range of users also to the \textsf{Python} ones.
-The complete guide about its installation is provided; it can be done using \textsf{CMake}, \textsf{Make} or \textsf{Docker} and the \textsf{Python} version is available with a simple \textsf{setup.py}.
+The complete guide about its installation is provided; the installation can be done using \textsf{CMake}, \textsf{Make} or \textsf{Docker} and the \textsf{Python} version is available with a simple \textsf{setup.py}.
 The testing of each function is performed using \textsf{Pytest} framework against the \textsf{NumPyNet} implementation (faster and lighter to import than \textsf{Tensorflow}).
 
-We use \textsf{Byron} library as term of comparison with the other common libraries used for Neural Network models and for each function we have tested its computational efficiency and scalability on multiple cores.
+We use \textsf{Byron} library as term of comparison with other common libraries used for Neural Network models and for each function we have tested its computational efficiency and scalability on multiple cores.
 Two machines will be used in the computational testing: a common laptop (8~GB RAM memory and 1 CPU i7-6500U, with 2 cores) and a classical bioinformatics server (128~GB RAM memory and 2 CPU E5-2620, with 8 cores each).
 
-Starting from the next section we introduce the fundamental Neural Network model, the so-called \emph{Simple Perceptron}.
-From the simplest model we will add complexity layers to overcome the relative problems (mathematical and numerical), introducing the main functionality of the modern Neural Network architectures.
+Starting from the next section we will introduce the fundamental Neural Network model, the so-called \emph{Simple Perceptron}.
+From the simplest model we will add complexity and layers to overcome the relative problems (mathematical and numerical), introducing the main functionalities of the modern Neural Network architectures.
 
 \end{document}

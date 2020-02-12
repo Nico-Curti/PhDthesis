@@ -33,7 +33,7 @@ This can be very useful after a convolution process, in which the number of filt
 
 The main gain in using this transformation is the increment of computational efficiency of the Neural Network model.
 The introduction of Pixel Shuffle transformation in the Neural Network tail, i.e after a sequence of small processing steps which increase the number of features, reorganizes the set of features into a single bigger image, i.e the desired output in a SISR application.
-The feature processing steps, which generally are faced with convolutional layers, can be performed with smaller images in input and thus can be obtained faster, since the up-scaling task will be performed by a single Pixel Shuffle transformation.
+The features processing steps, which generally are faced with convolutional layers, can be performed with smaller images in input and thus can be obtained faster, since the up-scaling task will be performed by a single Pixel Shuffle transformation.
 
 Despite this transformation has became a standard in super-resolution applications and thus it can be found into the most common deep learning libraries (e.g \textsf{Pytorch} and \textsf{Tensorflow}) a \textsf{C++} implementation is hard to find.
 Moreover, each library implements the transformation following its own data organization\footnote{
@@ -41,7 +41,7 @@ Moreover, each library implements the transformation following its own data orga
   \textsf{Tensorflow} has a \quotes{standard} input assessment as $H \times W \times C$.
   \textsf{Pytorch} has a so-called channel-first implementation and so the input tensor is organized as $C \times H \times W$.
 }.
-For this reason we proposed in our libraries a dynamic version of the algorithm in \textsf{C++} ables to perform both versions of the algorithm.
+For this reason we proposed in our libraries a dynamic version of the algorithm ables to perform both versions of the algorithm.
 
 The algorithmic implementation of the pixel-shuffle transformation is essentially a re-indexing of the input values.
 While in a \textsf{C++} implementation of the algorithm we could obtain the desired result inside a sequence of nested for loops playing with the loop indexes, for an efficient \textsf{Python} version we need to use a sequence of transposition and reshaping to rearrange the input values.
@@ -123,12 +123,12 @@ produce the rearrangement of the indexes according to the pixel-shuffle transfor
   During the back-propagation, in fact, we have to apply the reverse transformation to the gradient.
 }.
 In the forward function we apply the \textsf{\_phase\_shift} to the sequence of channels (in the right order) and then we concatenate the results into a single tensor (output).
-The backward function, instead, needs a reordering of channel sequence after the concatenation.
+The backward function, instead, needs a reordering of channel sequences after the concatenation.
 
 As told above, in the \textsf{C++} implementation provided into the \textsf{Byron} library we can compute the desired re-indexing using a series of nested for loops.
 An equivalent solution can be obtained also by the contraction of the loops into a single one using divisions to obtain the right indexes.
 This solution was taken into account in the first version of the library but the amount of required divisions weights on the computational performances.
-The division operations are the most computationally expensive operations in terms of CPU clock-cycles.
+The division operations are the most computationally expensive ones in terms of CPU clock-cycles.
 The old versions of OpenMP multi-threading library forced the users to spend time in the evaluation of \quotes{loop-contraction} to obtain the better performances by a single parallel for loop.
 The new features of OpenMP library provide the very powerful \textsf{collapse} keyword which performs an automatic loop-contraction.
 The keyword can be applied only with a series of independent and perfectly nested\footnote{
@@ -137,7 +137,7 @@ The keyword can be applied only with a series of independent and perfectly neste
 for loops which is exactly our case.
 Moreover, we have not to take in care any thread concurrency trouble since the iterations, as the output indexes, are totally independent.
 We widely used the \textsf{collapse} keyword in the \textsf{Byron} library to simplify the code and the function evaluation, but the Pixel-Shuffle case is one of the most efficient one, since we could collapse six nested loops\footnote{
-  In the Pixel-Shuffle we have to loop over batch, width, height, channels plus a couple of loops over the scale factor that we want to apply.
+  In the Pixel-Shuffle we have to loop over batch, width, height, channels plus a couple of loops over the scale factors that we want to apply.
   In total we have to manage six dimensions that can be easily collapsed into a single one given by their product.
 } (ref. \href{https://github.com/Nico-Curti/Byron/blob/master/src/shuffler_layer.cpp}{on-line}.
 

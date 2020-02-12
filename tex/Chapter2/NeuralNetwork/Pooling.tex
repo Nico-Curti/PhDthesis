@@ -7,8 +7,8 @@
 Output Neural Network feature maps often suffer of sensitivity about features location in the input.
 One possible approach to overcome this problem is to down-sample the feature maps, making the resulting feature map more robust to changes in the position.
 Pooling functions perform this kind of down-sampling and they reduce the spatial dimension (but not depth) of the input.
-Their use represent an important computational performance improver (less feature, less operations) and a useful dimensionality reduction method.
-The reduction of feature quantity can also prevent over-fitting problems and it improves the classification performances.
+Their use represents an important computational performance improver (less feature, less operations) and a useful dimensionality reduction method.
+The reduction of features quantity can also prevent over-fitting problems and it improves the classification performances.
 
 Pooling layers are intrinsically related to Convolutional layers.
 The analogy lives in the filter mapping procedure which produces the output in both methods.
@@ -35,13 +35,13 @@ Also in this case the test was obtained using our \textsf{NumPyNet} library.
 \end{center}
 
 If in the Convolutional layers a key role was played by the matrix product, in the Pooling layers we have to carefully manage the mapping operations to obtain optimal results.
-In particular, we discuss about the optimized implementation provided into \textsf{NumPyNet}.
+In particular, we will discuss about the optimized implementation provided into \textsf{NumPyNet}.
 
 In the previous sections we introduced the \textsf{im2col} algorithm which is an efficient method to reorganize the input data.
 The same algorithm can also be applied for Pooling layers, evaluating the Pooling function (avg, max, etc.) on each row of the rearranged matrix.
 The implementation of the \textsf{im2col} algorithm in \textsf{Python} requires the evaluation of multiple indexes using complex formulas.
 Since the \textsf{NumPyNet} was founded on the \textsf{Numpy} package, we can provide an alternative implementation using the \textsf{view} functionality of the library.
-A \textsf{view} of a given array is simply another way of viewing its data: technically it means that the data of both objects (original array and the viewed one) is shared and thus no copies are created.
+A \textsf{view} of a given array is simply another way of viewing its data: technically it means that the data of both objects (original array and the viewed one) are shared and thus no copies are created.
 In particular, we can use the deeper functions of the \textsf{Numpy} package to create a reorganization of our data according to the desired output\footnote{
   The same technique was also used for the implementation of the Convolutional layer in the \textsf{NumPyNet} library.
 }.

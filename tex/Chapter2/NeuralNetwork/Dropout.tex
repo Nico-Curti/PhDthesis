@@ -57,7 +57,7 @@ The backward function simply inverts the transformation on the back-propagated g
 Despite this straightforward implementation, we have to carefully manage some crucial points into the \textsf{C++} equivalent.
 The \textsf{Byron} library works into a single parallel region, so, after the (sequential) initialization of the layer object, the forward/backward phases are evaluated by all the available threads in parallel.
 This lead us to a standard problem in multi-threading programming: the generation of independent random numbers among threads.
-Inside a parallel region all the declared variables are (by definition) shared among all the available threads.
+Inside a parallel region all the declared variables are (by construction) shared among all the available threads.
 Thus, if we simply create a random number generator we have to face the thread-concurrency.
 As consequence, the random number generated will not be independent but (most probably\footnote{
   The deterministic generation of random number is hard to reproduce into a parallel environment despite the seed initialization.
@@ -79,9 +79,9 @@ In this way the dropout function allows to update only a part of the model param
 \end{figure}
 
 As visualization example, we can use our simple test image and apply the dropout transformation (see Fig.\ref{fig:dropout}).
-Our input image shows many pixel turned off according to the given probability, as expected.
+Our input image shows many pixels turned off according to the given probability, as expected.
 On the other hand, the backward output turns on only the same pixel: for visualization purposes we manually set the gradient to a uniform value.
 
-An usage example of this functions is provided into the \textsf{NumPyNet} \href{https://github.com/Nico-Curti/NumPyNet/tree/master/examples}{examples}: in those simple examples we compare the learning performances of standard neural network models with and without the Dropout function on classical datasets.
+An usage example of this function is provided into the \textsf{NumPyNet} \href{https://github.com/Nico-Curti/NumPyNet/tree/master/examples}{examples}: in those simple examples we compare the learning performances of standard neural network models with and without the Dropout function on classical datasets.
 
 \end{document}
