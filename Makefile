@@ -27,6 +27,9 @@ thesis: $(thesisfile) \
 	latexmk -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf $(basename $(thesisfile)) -jobname=$(tesiout)
 	$(MAKE) clean
 
+relazione:
+	latexmk -synctex=1 -bibtex -interaction=nonstopmode -file-line-error -pdf relazione.tex -jobname=relazione
+	$(MAKE) clean
 
 .PHONY: clean
 clean:

@@ -1,0 +1,134 @@
+\documentclass[a4paper,11pt]{book}
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+%% Euro symbol
+\usepackage{textcomp}
+
+%% tabel rows
+%% color rows table
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage[labelformat=empty, position=top]{subcaption}
+\usepackage[export]{adjustbox}
+
+\definecolor{grayrow}{rgb}{0.85, 0.85, 0.85}
+\definecolor{lightgray}{rgb}{0.83, 0.83, 0.83}
+\definecolor{darkgrayrow}{rgb}{0.7, 0.7, 0.7}
+\definecolor{RoyalRed}{rgb}{0.61,0.11,0.19}
+
+\usepackage{emptypage} % remove header in blanck pages
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{epigraph}
+%\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+% include file and not recompile it
+\usepackage{standalone}
+\usepackage{dsfont}
+
+%% images directory
+\graphicspath{{img/}}
+%% colors
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=blue
+}
+
+\usepackage{numprint}
+\npthousandsep{\,}
+
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{snippet}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=t,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstdefinestyle{c++}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{green}\ttfamily,
+    keywordstyle=\color{blue}\ttfamily,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red}\ttfamily,
+    basicstyle=\ttfamily\footnotesize,
+    morecomment=[l][\color{magenta}]{\#}
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=t,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstdefinestyle{Java}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{green}\ttfamily,
+    keywordstyle=\color{blue}\ttfamily,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red}\ttfamily,
+    basicstyle=\ttfamily\footnotesize,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    commentstyle=\color{codegray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    basicstyle=\ttfamily,
+    moredelim=[il][\textcolor{codegray}]{$$},
+    moredelim=[is][\textcolor{codegray}]{\%\%}{\%\%}
+}
+
+\usepackage[]{algorithm2e}
+
+%% Custom commands
+
+\newcommand{\quotes}[1]{``#1''}
+
+%% Start Document
+\begin{document}
+
+\input{./tex/Relazione.tex}
+
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+
+\end{document}
